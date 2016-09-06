@@ -10,13 +10,15 @@
 # OR might it be easier if x is a 1xn array specifying the machine each job is assigned to?
 # -> See below for methods for converting between the two
 
+import random, time
+
 #----------------------------------------------------------------------------------------#
 # HEURISTICS
 
 # input: instance (see above); initial solution (list of sets); k-exchange value
 # output: local optimum found from greedy local search; makespan of local optimum;
 # runtime (not including calculation of makespan)
-def GLS(instance, initSol, k):
+def GLS(instance, k):
 	start = time.time()
 
 	# methods to use:
@@ -25,17 +27,37 @@ def GLS(instance, initSol, k):
 	# OR findBestNeighbour_jumpSwap
 	# getMakespan
 
+	# start with a naive assignment of jobs to machines
+	#x = findInitialFeasibleSolution_inputOrder(instance)
+
+	# start with a random assignment of jobs to machines
+	x = findInitialFeasibleSolution_rand(instance)
+
+	print(x) # debubbing: print initial solution
+
+	# perform the k-exchange until a local minimum is found
+	while True:
+		x_new = findBestNeighbour_jump(instance, x, k)
+
+		if x_new == x:
+			break # no exchange occured therefore we have reached a local minimum
+		else:
+			print(x_new) # debugging: print best neighbouring solution
+			x = x_new # move to neighbouring feasible solution
+
+	x_star = x
+
 	end = time.time()
 	runtime = end - start
 
-	makespan = getMakespan(x_star)
+	makespan = getMakespan(instance, x_star)
 
 	return x_star, makespan, runtime
 
 # input: instance (see above); initial solution (list of sets); k-exchange value
 # output: local optimum found using variable depth search; makespan of local optimum;
 # runtime (not including calculation of makespan)
-def VDS(instance, initSol, k):
+def VDS(instance, k):
 	start = time.time()
 
 	# methods to use:
@@ -48,21 +70,21 @@ def VDS(instance, initSol, k):
 	end = time.time()
 	runtime = end - start
 
-	makespan = getMakespan(x_star)
+	makespan = getMakespan(instance, x_star)
 
 	return x_star, makespan, runtime
 
 # todo!
 # input:
 # output: 
-def ourHeuristic(instance, initSol, k):
+def ourHeuristic(instance, k):
 	start = time.time()
 
 
 	end = time.time()
 	runtime = end - start
 
-	makespan = getMakespan(x_star)
+	makespan = getMakespan(instance, x_star)
 
 	return x_star, makespan, runtime
 
@@ -71,51 +93,64 @@ def ourHeuristic(instance, initSol, k):
 
 # input: instance (defined by array of durations and number of machines as last entry)
 # output: a feasible solution
-def findInitialFeasibleSolution(instance):
+def findInitialFeasibleSolution_inputOrder(instance):
 
-	# need to decide how to do this
-	# Ideas:
-	# Assign all jobs to first machine
-	# Assign jobs to different machines in order of input
+	# assigns jobs to machines in the order of the input given
+	# eg. instance = (p1, p2, p3, p4, p5, p6, p7, 3) will return x=[1,2,3,1,2,3,1]
+
+	numJobs = len(instance)-1
+	numMachines = instance[-1]
+
+	x = [ i%numMachines + 1 for i in range(numJobs)]
 
 	return x
 
-# input: a feasible solution x (which format?)
+# input: instance (defined by array of durations and number of machines as last entry)
+# output: a feasible solution
+def findInitialFeasibleSolution_rand(instance):
+
+	# randomly assigns jobs to machines
+
+	numJobs = len(instance)-1
+	numMachines = instance[-1]
+
+	x = [random.randint(1,numMachines) for i in range(numJobs)]
+
+	return x
+
+# input: the input instance; a feasible solution x (which format?); number of exchanges k
 # output: the best feasible solution after performing a k-jump on x
-def findBestNeighbour_jump(x, k):
+def findBestNeighbour_jump(instance, x, k):
 	
-	# methods to use:
-	# getMakespan
-
-	return x, cost
-
-# input: a feasible solution x (which format?)
-# output: the best feasible solution after performing a k-jump-swap on x
-def findBestNeighbour_jumpSwap(x, k):
-
-	# methods to use:
-	# getMakespan
-
 	# For now, I assume x is in the form x = [1,2,1,2], and do k=1 and ONLY jump.
 	
-	numMachines = max(x)
-	makespan = getMakespan(x)
-	cost = [] # cost is a list with sublists [new_makespan,new_x] that stores all jumps.
+	numMachines = instance[-1]
+	makespan = getMakespan(instance,x)
+	neighbours = [] # neighbours is a list with sublists [new_makespan,new_x] that stores all jumps
 
 	for item in range(len(x)): # for all jobs
 		for jumps in range(numMachines): # for all machines 
 			if jumps+1 != x[item]: # only consider jumps, no loops where a job jumps to the same machine
 				x_new = list(x) # make a copy of x
 				x_new[item] = jumps+1 # do the jump
-				cost.append([getMakespan(x_new),x_new]) # append the new makespan and the new x to cost
+				neighbours.append([getMakespan(instance,x_new),x_new]) # append the neighbour to neighbours list
 
-	new_cost = min(i[0] for i in cost) # Select the best jump
-	
-	# print(cost) # print the list of lists to see how it works!
+	#print(neighbours) # print the list of lists to see how it works!
+	new_cost = min(i[0] for i in neighbours) # Select the best neighbour
 
 	gain = makespan - new_cost # if the jump results in a gain
 	if gain > 0:
-		x = [i[1] for i in cost if i[0] == new_cost][0] # set x to new_x
+		x = [i[1] for i in neighbours if i[0] == new_cost][0] # set x to new_x
+
+	return x
+
+# input: the input instance; a feasible solution x (which format?); number of exchanges k
+# output: the best feasible solution after performing a k-jump-swap on x
+def findBestNeighbour_jumpSwap(instance, x, k):
+
+	# methods to use:
+	# getMakespan
+	
 
 	return x
 
@@ -135,13 +170,13 @@ def findBestNeighbour_jumpSwap(x, k):
 #    }
 
 
-# input: a feasible solution x (which format?)
+# input: the input instance; a feasible solution x (which format?)
 # output: the maximum total processing time over all machines
-def getMakespan(x):
+def getMakespan(instance, x):
 
 	makespan = 0
 	x = convertSol_toSetsOfJobs(x)
-
+	
 	for sublist in x:
 		spanMachine = 0
 
@@ -153,9 +188,6 @@ def getMakespan(x):
 			makespan = spanMachine
 
 	return makespan
-
-
-
 
 
 
@@ -209,8 +241,9 @@ def convertSol_toSetsOfJobs(x):
 
 # EXAMPLE OF SUCCESSFUL JUMP
 
-instance = [7,8,4,2,2] # Instance: (p1,p2,p3,p4,m)
-print(findBestNeighbour_jumpSwap([2,2,1,2],1))
+#instance = [7,8,4,2,2] # Instance: (p1,p2,p3,p4,m)
+#print(findBestNeighbour_jumpSwap([2,2,1,2],1))
+#GLS(instance,1)
 
 
 
