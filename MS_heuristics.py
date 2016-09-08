@@ -32,6 +32,7 @@ def GLS(instance, k):
 
 	# start with a random assignment of jobs to machines
 	x = findInitialFeasibleSolution_rand(instance)
+	#x = [1,1,1,1] # debugging: worst case assignment for simplest instance
 
 	print(x) # debubbing: print initial solution
 
@@ -122,25 +123,50 @@ def findInitialFeasibleSolution_rand(instance):
 # output: the best feasible solution after performing a k-jump on x
 def findBestNeighbour_jump(instance, x, k):
 	
-	# For now, I assume x is in the form x = [1,2,1,2], and do k=1 and ONLY jump.
+	# x of the form [1,2,1,2] and perform a k-jump.
 	
 	numMachines = instance[-1]
 	makespan = getMakespan(instance,x)
-	neighbours = [] # neighbours is a list with sublists [new_makespan,new_x] that stores all jumps
 
-	for item in range(len(x)): # for all jobs
-		for jumps in range(numMachines): # for all machines 
-			if jumps+1 != x[item]: # only consider jumps, no loops where a job jumps to the same machine
-				x_new = list(x) # make a copy of x
-				x_new[item] = jumps+1 # do the jump
-				neighbours.append([getMakespan(instance,x_new),x_new]) # append the neighbour to neighbours list
+	neighbourhood = [x] # neighbourhood is a list storing the job assignment of all visisted neighbours
+	neighboursCosts = [makespan] # stores the cost of all visited neighbours
 
-	#print(neighbours) # print the list of lists to see how it works!
-	new_cost = min(i[0] for i in neighbours) # Select the best neighbour
+	kNeighbours = [[x]]+[[] for i in range(k)] # list of lists storing the neighbours i-exchanges away, for i in 0,..,k
+	kNeighboursCosts = [[makespan]]+[[] for i in range(k)] # list of lists storing the cost of each neighbour i-exchanges away, for i in 0,..,k
+	
+	# An example of kNeighboursCosts might be:
+	#	[ [20] , 					# k=0 neighbours: cost of each neighbour after zero exchanges, ie cost of starting x
+	#	  [13,12,17,18] , 			# k=1 neighbours: cost "			   " 1-exchange away from x 
+	#	  [15,10,11,11,10,15]  ]	# k=2 neighbours: cost "			   " 2-exchanges away from x
+	# kNeighbours has a similar structure but stores the job assignment instead of costs.
+
+	for kDepth in range(k): # repeat exchange k times
+		for neighbour in kNeighbours[kDepth]: # for each neighbour kDepth exchanges away from x
+			for job in range(len(x)): # for all jobs
+				for jump in range(numMachines): # for all machines 
+					if jump+1 != neighbour[job]: # only consider jumps, no loops where a job jumps to the same machine
+						x_new = list(neighbour) # make a copy of the current neighbour
+						x_new[job] = jump+1 # do the jump
+						if x_new not in neighbourhood: # only add the new neighbour if it isnt already in the neighbourhood
+							neighbourhood.append(x_new) # append the neighbour to neighbourhood list
+							neighboursCosts.append(getMakespan(instance,x_new)) # store the cost of new neighbour
+							kNeighbours[kDepth+1].append(x_new) # append the neighbour to the set of neighbours k-exchanges away
+							kNeighboursCosts[kDepth+1].append(neighboursCosts[-1])
+
+	
+	# Debugging:
+	#print(neighbourhood) # print the list of lists to see how it works!
+	#print(neighboursCosts)
+	#print(kNeighbours)
+	#print(kNeighboursCosts)
+
+	# Now search for the lowest cost among all neighbours exactly k-exchanges away
+	new_cost = min(i for i in kNeighboursCosts[k])
+	bestNeighbourIndex = kNeighboursCosts[k].index(new_cost) # store the best neighbour's index
 
 	gain = makespan - new_cost # if the jump results in a gain
 	if gain > 0:
-		x = [i[1] for i in neighbours if i[0] == new_cost][0] # set x to new_x
+		x = kNeighbours[k][bestNeighbourIndex] # set x to the best neighbour
 
 	return x
 

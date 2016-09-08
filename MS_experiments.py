@@ -75,8 +75,8 @@ def generateRandomInstances(n,m,numToGenerate):
 # TESTING
 
 # sample input instances
-instanceList = [[7,8,3,2,2],[9,7,4,3,2,2,2,1,3],[3,6,8,2,7,13,5,9,3,5,2,6,5]]
+instanceList = [[7,8,3,2,2],[9,7,4,3,2,2,2,1,3],[3,6,8,2,7,13,5,14,2,3,2,6,5]]
 
 # run the first heuristic (GLS) on the instance list with k=1
-[makespanList, runtimeList] = runHeuristic(1,instanceList,1)
-print("makespan values: {}\nrunnning times: {}".format(makespanList, runtimeList))
+[makespanList, runtimeList] = runHeuristic(1,instanceList,3)
+print("makespan values: {}\nrunning times: {}".format(makespanList, runtimeList))
