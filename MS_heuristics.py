@@ -128,9 +128,6 @@ def findBestNeighbour_jump(instance, x, k):
 	numMachines = instance[-1]
 	makespan = getMakespan(instance,x)
 
-	neighbourhood = [x] # neighbourhood is a list storing the job assignment of all visisted neighbours
-	neighboursCosts = [makespan] # stores the cost of all visited neighbours
-
 	kNeighbours = [[x]]+[[] for i in range(k)] # list of lists storing the neighbours i-exchanges away, for i in 0,..,k
 	kNeighboursCosts = [[makespan]]+[[] for i in range(k)] # list of lists storing the cost of each neighbour i-exchanges away, for i in 0,..,k
 	
@@ -147,24 +144,20 @@ def findBestNeighbour_jump(instance, x, k):
 					if jump+1 != neighbour[job]: # only consider jumps, no loops where a job jumps to the same machine
 						x_new = list(neighbour) # make a copy of the current neighbour
 						x_new[job] = jump+1 # do the jump
-						if x_new not in neighbourhood: # only add the new neighbour if it isnt already in the neighbourhood
-							neighbourhood.append(x_new) # append the neighbour to neighbourhood list
-							neighboursCosts.append(getMakespan(instance,x_new)) # store the cost of new neighbour
+						if x_new not in kNeighbours[kDepth+1]: # only add the new neighbour if it isn't already in k-neighbourhood
 							kNeighbours[kDepth+1].append(x_new) # append the neighbour to the set of neighbours k-exchanges away
-							kNeighboursCosts[kDepth+1].append(neighboursCosts[-1])
+							kNeighboursCosts[kDepth+1].append(getMakespan(instance,x_new)) # store the neighbour's cost
 
 	
 	# Debugging:
-	#print(neighbourhood) # print the list of lists to see how it works!
-	#print(neighboursCosts)
 	#print(kNeighbours)
 	#print(kNeighboursCosts)
 
-	# Now search for the lowest cost among all neighbours exactly k-exchanges away
+	# search for the lowest cost among all neighbours exactly k-exchanges away
 	new_cost = min(i for i in kNeighboursCosts[k])
 	bestNeighbourIndex = kNeighboursCosts[k].index(new_cost) # store the best neighbour's index
 
-	gain = makespan - new_cost # if the jump results in a gain
+	gain = makespan - new_cost # if the k-exchange results in a gain
 	if gain > 0:
 		x = kNeighbours[k][bestNeighbourIndex] # set x to the best neighbour
 
