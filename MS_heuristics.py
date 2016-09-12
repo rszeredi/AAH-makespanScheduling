@@ -33,13 +33,13 @@ def GLS(instance, k):
 
 	# start with a random assignment of jobs to machines
 	x = findInitialFeasibleSolution_rand(instance)
-	#x = [1,1,1,1] # debugging: worst case assignment for simplest instance
 
 	print(x) # debubbing: print initial solution
 
 	# perform the k-exchange until a local minimum is found
 	while True:
-		x_new = findBestNeighbour_jump(instance, x, k)
+		#x_new = findBestNeighbour_jump(instance, x, k)
+		x_new = findBestNeighbour_cycle(instance, x, k)
 
 		if x_new == x:
 			break # no exchange occured therefore we have reached a local minimum
@@ -151,8 +151,8 @@ def findBestNeighbour_jump(instance, x, k):
 
 	
 	# Debugging:
-	print(kNeighbours)
-	print(kNeighboursCosts)
+	#print(kNeighbours)
+	#print(kNeighboursCosts)
 
 	# search for the lowest cost among all neighbours exactly k-exchanges away
 	new_cost = min(i for i in kNeighboursCosts[k])
@@ -166,42 +166,54 @@ def findBestNeighbour_jump(instance, x, k):
 
 
 # input: the input instance; a feasible solution x (which format?); number of exchanges k
-# output: the best feasible solution after performing a k-swap on x
-def findBestNeighbour_swap(instance, x, k):
+# output: the best feasible solution after performing a k-cycle on x
+def findBestNeighbour_cycle(instance, x, k):
 	
-	# x of the form [1,2,1,2] and perform a k-swap.
+	# x of the form [1,2,1,2] and perform a k-cycle.
 
-	# performs k swap, and only stores neighbours of k swap, not 1,2,...,k swap.
-	
+	# performs k cycle, and only stores neighbours of k cycle, not 1,2,...,k swap.
+	# The cycle exchange is only well defined for k>=2. 
+	# For k=2 the cycle exchange is simply a 1-swap.
+
 	numMachines = instance[-1]
 	makespan = getMakespan(instance,x)
 
 	kNeighbours = [[x]]+[[]] # list of lists storing x and the neighbours exactly k-exchanges away]
 	kNeighboursCosts = [[makespan]]+[[]] # list of lists storing the cost of x and of each neighbour exactly k-exchanges away
-	
-	# An example of kNeighboursCosts might be:
-	#	[ [20] , 					# k=0 neighbours: cost of each neighbour after zero exchanges, ie cost of starting x
-	#	  [13,12,17,18] , 			# k=1 neighbours: cost "			   " 1-exchange away from x 
-	#	  [15,10,11,11,10,15]  ]	# k=2 neighbours: cost "			   " 2-exchanges away from x
-	# kNeighbours has a similar structure but stores the job assignment instead of costs.
 
-	for jobs in list(itertools.combinations(range(len(x)),k+1)): # for all combinations of k jobs to swap
+	for jobs in list(itertools.combinations(range(len(x)),k)): # for all combinations of k jobs to exchange
 		x_new = list(x) # make a copy of x
-		for swaps in list(itertools.permutations(jobs,k+1)): # for all permutations of these k jobs, don't need to check whether you consider same job again? I think this does not matter.
-			for i in range(len(swaps)):
-				x_new[i] = x[swaps[i]] # perform the swap
+		for cycle in list(itertools.permutations(jobs,k)): # for all permutations of these k jobs, don't need to check whether you consider same job again? I think this does not matter.
+			
+			# Test if cycle is in fact a k-cycle. 
+			isCycle = True
+			for i in range(len(cycle)):
+				if jobs[i] == cycle[i]: # cycle is not a k-cycle if job i is looped with itself
+					isCycle = False
+					break
+				if x[jobs[i]] == x[cycle[i]]: # cycle is not a k-cycle if swapping jobs on the same machine
+					isCycle = False
+					break
+			if isCycle == False:
+				continue # if cycle is not a k-cycle, then consider next permutation
 
+			for i in range(len(cycle)):
+				x_new[jobs[i]] = x[cycle[i]] # perform the k-cycle
+				
 			if x_new not in kNeighbours[1]: # only add the new neighbour if it isn't already in k-neighbourhood
-				kNeighbours[1].append(x_new) # append the neighbour to the set of neighbours k-exchanges away
+				kNeighbours[1].append(list(x_new)) # append the neighbour to the set of neighbours k-exchanges away
  				kNeighboursCosts[1].append(getMakespan(instance,x_new)) # store the neighbour's cost
 
-	
 	# Debugging:
 	#print(kNeighbours)
 	#print(kNeighboursCosts)
 
 	# search for the lowest cost among all neighbours exactly k-exchanges away
-	new_cost = min(i for i in kNeighboursCosts[1])
+	try: # Test if there are any k-cycle neighbours of x
+		new_cost = min(i for i in kNeighboursCosts[1])
+	except ValueError:
+		return x
+
 	bestNeighbourIndex = kNeighboursCosts[1].index(new_cost) # store the best neighbour's index
 
 	gain = makespan - new_cost # if the k-exchange results in a gain
@@ -306,10 +318,10 @@ def convertSol_toSetsOfJobs(x):
 #----------------------------------------------------------------------------------------#
 
 
-# EXAMPLE OF SUCCESSFUL SWAP
+# EXAMPLE OF SUCCESSFUL CYCLE
 
-instance = [7,8,4,2,2] # Instance: (p1,p2,p3,p4,m)
-print(findBestNeighbour_swap(instance,[2,2,1,2],2))
+#instance = [7,8,4,2,2] # Instance: (p1,p2,p3,p4,m)
+#print(findBestNeighbour_cycle(instance,[2,2,1,2],2))
 
 #GLS(instance,1)
 
