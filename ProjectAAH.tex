@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper,leqno]{article}
+%\usepackage[left=12mm,top=0.5in,bottom=0.5in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{geometry, color, graphicx, mathtools}
+
+\usepackage{fancyhdr}
+\setlength\parindent{0pt}
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Ria Szeredi, Kenneth Young, Lotte Romijn}
+\lhead{MAST90098 Project}
+\cfoot{\thepage}
+
+\newcommand{\collie}[2]{\begin{minipage}[t]{0.20\linewidth}
+{#1}
+\end{minipage}
+\hfill%
+\begin{minipage}[t]{0.80\linewidth}
+{#2}
+\end{minipage}}
+
+
+\begin{document}
+\title{MAST90098 \\ Approximation Algorithms and Heuristics \\ Project - 2016}
+\author{Ria Szeredi, Kenneth Young, Lotte Romijn}
+\maketitle
+
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Makespan Scheduling Problem (MS)} \\
+
+Schedule $n$ jobs with designated processing times on $m$ identical machines in such a way that the whole processing time is minimised. \\
+
+\textbf{Input}: 
+
+Positive integers $p_1,p_2,...,p_n$ and an integer $m \geq 2$ for some $n \in \mathbb{N} - \{0\}$. Each $p_i$ is the processing time of the $i$th job on any of the $m$ available machines. \\
+
+\textbf{Constraints}: 
+
+For every input instance $(p_1,...,p_n,m)$ of MS, $\mathcal{M}(p_1,...,p_n,m) = $ \\ $\{S_1,S_2,...,S_m \> | \> S_i \subseteq \{1,2,...,n\} \textnormal{ for } i=1,...,m, \> \cup_{k=1}^m S_k = \{1,2,...,n\}, \textnormal{ and }$ \\ $S_i \cap S_j = \emptyset \textnormal{ for } i \neq j \}$. \\
+
+\textbf{Cost}: 
+
+For each $(S_1,...,S_m) \in \mathcal{M}(p_1,...,p_n,m)$, \\ $\textnormal{cost}((S_1,...,S_m),(p_1,...,p_n,m)) = \textnormal{max} \{ \sum_{l \in S_i} p_l | i = 1,...,m \}$. \\
+
+\textbf{Goal}: 
+
+\textit{minimum}
+
+
+}
+}
+
+\newpage
+
+\section{Greedy Local Search Algorithm for MS}
+We implement a greedy local search algorithm for MS, which picks the lowest cost neighbour at any iteration.\\
+
+
+\subsection*{k-Exchange neighbourhood}
+
+We first consider a \textit{jump}-neighbourhood: \\
+
+We define a mapping $f_X: \mathcal{M}(x) \rightarrow 2^{\mathcal{M}(x)}$, such that if $\beta = \{\beta_1,\beta_2,...,\beta_m \} \in f_x(\alpha)$ for some $\alpha = \{\alpha_1,\alpha_2,...,\alpha_m \} \in \mathcal{M}(x)$ if $\beta$ can be obtained from $\alpha$ by $k$ jumps. \\
+
+Each jump allows some job $i \in S_j$ for some $j \in \{1,...,m\}$ to move to any one of the $m$ machines, including to the one in which it is contained. Hence, after one jump $\alpha_i \neq \beta_j$ for some $i \in \{1,...,m\}$ and $j \in \{1,...,m\}$, and $\alpha_k = \beta_k$ for $k \neq i$ and $k \neq j$. \\
+
+We can check that the conditions for a suitable neighbourhood are satisfied. Let $\alpha = \{\alpha_1,...,\alpha_m\}$ be an initial, feasible solution.
+\begin{enumerate}
+
+\item (\textit{Reflexivity}): Since we allow a job to jump to the machine in which it is already contained, it is possible that, after $k$ jumps, all jobs are in their original machines, and the solution is identical to $\alpha$. Hence, we have that $\alpha \in f_X(\alpha)$ for every $\alpha \in \mathcal{M}(x)$. (We call this a `loop').
+
+\item (\textit{Symmetry}): If $\beta \in f_X(\alpha)$ for some $\alpha \in \mathcal{M}(x)$, then $\alpha \in f_X(\beta)$, since reversing the $k$ jumps from which $\beta$ was obtained from $\alpha$ is also a $k$ jump. 
+
+\item (\textit{Connectivity}): If we have any two feasible solutions $\alpha$ and $\beta$, we can always obtain one from the other by performing a finite number of $k$ jumps (since we allow a job to jump to any machine). If $k \geq n$, one $k$ jump suffices, since we allow loops. If $k \leq n$, we perform maximally $\lceil \frac{n}{k} \rceil$ $k$ jumps. Hence, for all $\alpha, \beta \in \mathcal{M}(x)$, there exists a positive integer $k$ and $\gamma_1,...,\gamma_k \in \mathcal{M}(x)$ such that $\gamma_1 \in f_X(\alpha)$, $\gamma_{i+1} \in f_X(\gamma_i)$ for $i=1,...,k-1$, and $\beta \in f_X(\gamma_k)$. 
+
+\end{enumerate}
+
+
+
+
+
+
+
+\end{document}
