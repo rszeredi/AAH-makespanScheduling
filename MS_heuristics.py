@@ -20,7 +20,7 @@ from pprint import pprint
 # input: instance (see above); initial solution (list of sets); k-exchange value
 # output: local optimum found from greedy local search; makespan of local optimum;
 # runtime (not including calculation of makespan)
-def GLS(instance, k, neighbourhood):
+def GLS(instance, k, neighbourhood, initSolType):
 	start = time.time()
 
 	# fixed parameters for GLS
@@ -28,8 +28,13 @@ def GLS(instance, k, neighbourhood):
 	numJobs = len(instance)-1 # get the number of jobs from the instance
 	jobsToConsider = range(1,numJobs+1) # all jobs (job numbers not indices)
 
-	# start with a naive assignment of jobs to machines
-	x = findInitialFeasibleSolution_inputOrder(instance)
+	# generate initial feasible solution
+	if initSolType == 'inputOrder':
+		# start with a naive assignment of jobs to machines
+		x = findInitialFeasibleSolution_inputOrder(instance)
+	elif initSolType == 'random':
+		# start with a random assignment of jobs to machines
+		x = findInitialFeasibleSolution_rand(instance)
 
 	# start with a random assignment of jobs to machines
 	# x = findInitialFeasibleSolution_rand(instance)
@@ -64,7 +69,7 @@ def GLS(instance, k, neighbourhood):
 def VDS(instance, k, neighbourhood, initSolType):
 
 	# temp:
-	debugging = True
+	debugging = True 
 
 	# start timer
 	start = time.time()
@@ -138,8 +143,8 @@ def VDS(instance, k, neighbourhood, initSolType):
 
 		# print for debugging
 		if debugging:
-			print '\nFinal alpha:'
-			pprint(alpha, width=40)
+			print 'Final alpha:'
+			pprint(alpha, width=100)
 			print 'Makespans:', makespan
 			print 'Gains:', gain
 			print 'Best gain index (of alpha):', l
