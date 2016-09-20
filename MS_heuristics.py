@@ -64,7 +64,7 @@ def GLS(instance, k, neighbourhood):
 def VDS(instance, k, neighbourhood, initSolType):
 
 	# temp:
-	debugging = True
+	debugging = True 
 
 	# start timer
 	start = time.time()
@@ -72,6 +72,7 @@ def VDS(instance, k, neighbourhood, initSolType):
 	# fixed parameters for GLS
 	differentSolRequired = True
 	numJobs = len(instance)-1 # get the number of jobs from the instance
+	chooseBestNeighbour = 0 # choose the first of the best neighbours
 
 	# generate initial feasible solution
 	if initSolType == 'inputOrder':
@@ -105,7 +106,8 @@ def VDS(instance, k, neighbourhood, initSolType):
 
 			# find the best neighbour of alpha[j-1] that differs from alpha[j-1] by at least one 1 from the set 'exchange'
 			# ** this is the same as the neighbour with the max gain right?
-			alpha[j] = findBestNeighbour(instance, alpha[j-1], k, neighbourhood, differentSolRequired, exchange)
+			bestNeighbourList = findBestNeighbour(instance, alpha[j-1], k, neighbourhood, differentSolRequired, exchange)
+			alpha[j] = bestNeighbourList[chooseBestNeighbour]
 
 			# find the jobs that were changed
 			jobsChanged = []
@@ -120,8 +122,10 @@ def VDS(instance, k, neighbourhood, initSolType):
 			# print for debugging
 			if debugging:
 				print 'j:', j
+				print 'Best neighbours:', bestNeighbourList
+				print 'Best neighbour chosen:', alpha[j]
 				print 'Jobs changed:', jobsChanged
-				print 'New exchange set:', exchange
+				print 'New exchange set:', exchange, '\n'
 
 		# compute all makespans of final alpha sequence
 		makespan = {}
@@ -138,8 +142,8 @@ def VDS(instance, k, neighbourhood, initSolType):
 
 		# print for debugging
 		if debugging:
-			print '\nFinal alpha:'
-			pprint(alpha, width=40)
+			print 'Final alpha:'
+			pprint(alpha, width=100)
 			print 'Makespans:', makespan
 			print 'Gains:', gain
 			print 'Best gain index (of alpha):', l
@@ -169,7 +173,7 @@ def VDS(instance, k, neighbourhood, initSolType):
 
 		else:
 			# terminate
-			print 'No improvement'
+			print 'No improvement.'
 			improvement = False
 
 	# get the final best solution
@@ -219,6 +223,8 @@ def findInitialFeasibleSolution_inputOrder(instance):
 # output: a feasible solution
 def findInitialFeasibleSolution_rand(instance):
 
+	random.seed(100)
+
 	# randomly assigns jobs to machines
 
 	numJobs = len(instance)-1
@@ -228,7 +234,10 @@ def findInitialFeasibleSolution_rand(instance):
 
 	return x
 
-# input: the input instance; a feasible solution x of the form [1,2,1,2]; number of exchanges k
+# input: the input instance;
+#		 a feasible solution x of the form [1,2,1,2];
+#		 number of exchanges k;
+#		 a list of jobs (NUMBERS, not indices) that are allowed to jump
 # output: kNeighbours: dictionary of lists storing the neighbours i-exchanges away, for i in 0,..,k;
 #		  kNeighboursCosts: dictionary of lists storing the cost of each neighbour i-exchanges away, for i in 0,..,k
 # neighbourhood allows for loops
@@ -282,43 +291,181 @@ def getKNeighbours_jump(instance, x, k, jobsToConsider):
 	# pprint(kNeighboursCosts)
 
 	return kNeighbours, kNeighboursCosts
+			
+# alternative method for jump neighbourhood
+# method only stores the current best	
+# input: the input instance;
+#		 a feasible solution x of the form [1,2,1,2];
+#		 number of exchanges k;
+#		 Boolean variable specfiying whether a different solution is required;
+#		 a list of jobs (NUMBERS, not indices) that are allowed to jump
+# output: the list of best feasible solutions in the k-exchange neighbourhood; or a set of the best feasible solutions (**do we need this??)
+# NB: could return the input instance if differentRequired is False
+def findBestNeighbour_jump_alt(instance, x, k, differentSolRequired, jobsToConsider):
+		
+	# temp
+	createSetOfBestNeighbours = True # keeps ALL best neighbours, not just the first one found - might be useful? dunnooo
+	debugging = False
 
-# input: the input instance; a feasible solution x of the form [1,2,1,2]; number of exchanges k; Boolean variable specfiying whether a different solution is required
+	# get the number of machines
+	numMachines = instance[-1]
+
+	# set the best so far to the worst possible (sum of all processing times)
+	bestNeighbourSoFar_cost = sum(instance[:-1]) # set the best so far to the worst possible (sum of all processing times; note that the last entry of instance is the number of machines)
+	bestNeighbourSoFar = []
+
+	if debugging:
+		print 'Initial best neighbour cost:', bestNeighbourSoFar_cost, '\n'
+
+	# iterate through each possible (unordered) combination of k jobs (in the set jobsToConsider) with repetition allowed
+	for setOfJobsToJump in itertools.combinations_with_replacement(jobsToConsider, k):
+		if debugging:
+			print 'original x:', x
+			print 'jobs to jump:', setOfJobsToJump
+
+		# iterate through each possible ordered combination of k machines (in the set of all machines)
+		# this represents which machines the jobs in setOfJobsToJump are to jump to 
+		for machinesToJumpTo in itertools.product(range(1,numMachines+1), repeat = k):
+
+			# make a copy of the current neighbour
+			x_new = x[:]
+
+			# jump the jobs and store in x_new
+			for i, job in enumerate(setOfJobsToJump):
+				x_new[job-1] = machinesToJumpTo[i] # do the jump
+			# compute the new makespan
+			makespan_new = getMakespan(instance, x_new)
+
+			if debugging:
+				print 'machines to jump to:', machinesToJumpTo
+				print 'x_new =', x_new, 'with makespan', makespan_new	
+
+			# first check whether we require a different solution and if x_new is the same as the initial solution
+			# if both are true then we do nothing
+
+			if (differentSolRequired and x_new == x):
+				if debugging:
+					print 'x_new is the same as the initial solution and we require a different solution.'
+					print 'Action: no update to best neighbour.'
+			else:
+
+				# if the new makespan is strictly better than the current, update the best neighbour
+				if makespan_new	< bestNeighbourSoFar_cost:
+
+					# empty the current bestNeighbourSet and add x_new
+					bestNeighbourSoFar = []
+					bestNeighbourSoFar.append(x_new)
+
+					# update the best makespan found so far
+					bestNeighbourSoFar_cost = makespan_new
+
+					if debugging:
+						print 'Cost improvement.'
+						print 'Action: Best so far updated.'
+					
+				# if x_new has the same makespan, but we are collecting all best solutions
+				elif createSetOfBestNeighbours and makespan_new == bestNeighbourSoFar_cost:
+
+					# add this neighbour to the set of best found so far
+					bestNeighbourSoFar.append(x_new)
+
+					if debugging:
+						print 'Same as current makespan.'
+						print 'Action: add to the best neighbour set.'
+				else:
+					if debugging:
+						print 'No cost improvement.'
+						print 'Action: no update to best neighbour.'
+
+		if debugging:
+			print ''
+
+	# remove duplicate neighbours, if any
+	bestNeighbourSoFar.sort()
+	bestNeighbourSoFar = list(bestNeighbourSoFar for bestNeighbourSoFar,_ in itertools.groupby(bestNeighbourSoFar))
+
+	return bestNeighbourSoFar
+
+# input: the input instance;
+#		 a feasible solution x of the form [1,2,1,2];
+#		 number of exchanges k;
+#		 a string specifying the neighbourhood to use (eg. 'jump', 'jump_alt', 'swap');
+#		 Boolean variable specfiying whether a different solution is required; a list of jobs that are allowed to jump
 # output: the best feasible solution in the k-exchange neighbourhood
 # NB: could return the input instance if differentRequired is False
 def findBestNeighbour(instance, x, k, neighbourhood, differentSolRequired, jobsToConsider):
 	
+	# initialise the best neighbour list
+	bestNeighbourList = []
+
 	# debugging
-	print 'Finding best neighbour of', x
+	debugging = True
+	if debugging:
+		print 'Finding the best neighbours of', x, 'with makespan', getMakespan(instance, x)
 	
-	# get the neighbourhood dictionaries
+	# get the neighbourhood dictionaries (compute best neighbour in the case of jump_alt neighbourhood)
 	if neighbourhood == 'jump':
 		kNeighbours, kNeighboursCosts = getKNeighbours_jump(instance,x,k, jobsToConsider)
 	elif neighbourhood == 'swap':
 		kNeighbours, kNeighboursCosts = getKNeighbours_swap(instance,x,k, jobsToConsider)
+	elif neighbourhood == 'jump_alt':
+		bestNeighbourList = findBestNeighbour_jump_alt(instance, x, k, differentSolRequired, jobsToConsider)
+		# findBestNeighbour_jump_alt finds best neighbour straight away, so exit
+		return bestNeighbourList
 
 	# search for the lowest cost among all neighbours exactly k-exchanges away
-	new_cost = min(i for i in kNeighboursCosts[k])
-	bestNeighbourIndex = kNeighboursCosts[k].index(new_cost) # store the best neighbour's index
+	min_cost = min(i for i in kNeighboursCosts[k])
+	# get the indices of all neighbours with this cost
+	bestNeighbourIndices = [index for index, element in enumerate(kNeighboursCosts[k]) if min_cost == element]
 
-	x_new = kNeighbours[k][bestNeighbourIndex] # set x to the best neighbour
+	# append each solution with the minimum makespan to the best neighbour list
+	for index in bestNeighbourIndices:
+		bestNeighbourList.append(kNeighbours[k][index])
+
+	# remove duplicates, if any
+	bestNeighbourList.sort()
+	bestNeighbourList = list(bestNeighbourList for bestNeighbourList,_ in itertools.groupby(bestNeighbourList))
 	
-	if differentSolRequired and x == x_new:
+	# check whether we require a different solution and if there is only one element in the best neighbour list and this element is the same as the initial solution
+	if differentSolRequired and len(bestNeighbourList) == 1 and x == bestNeighbourList[0]:
+
+		# empty the best neighbour list
+		bestNeighbourList = []
+
+		# get indices of the elements that were transformed to the original x
+		nonIdentityIndices = [index for index, element in enumerate(kNeighbours[k]) if element != x]
 
 		# get the neighbours that are not equal to the original solution
-		neighbours_excl_identity = [x for x in kNeighbours[k] if kNeighbours[k][kNeighbours[k].index(x)] != x_new]
+		neighbours_excl_identity = []
+		for index in nonIdentityIndices:
+			neighbours_excl_identity.append(kNeighbours[k][index])
+
 		# get the costs of those neighbours
-		neighbours_excl_identity_costs = [cost for cost in kNeighboursCosts[k] if kNeighbours[k][kNeighboursCosts[k].index(cost)] != x_new]
+		neighbours_excl_identity_costs = []
+		for index in nonIdentityIndices:
+			neighbours_excl_identity_costs.append(kNeighboursCosts[k][index])
 
-		# re-calculate best neighbour from resulting list
-		# NB: may be a different soltion with the same makespan
-		new_cost = min(i for i in neighbours_excl_identity_costs)
-		# store the best neighbour's index
-		bestNeighbourIndex = neighbours_excl_identity_costs.index(new_cost)
-		# update the best neighbour
-		x_new = neighbours_excl_identity[bestNeighbourIndex]
+		# find the best makespan in resulting list
+		min_cost = min(neighbours_excl_identity_costs)
 
-	return x_new
+		# get the indices of all neighbours with this new min cost
+		bestNeighbourIndices = [index for index, element in enumerate(kNeighboursCosts[k]) if min_cost == element]
+
+		# append each solution with the minimum makespan to the best neighbour list
+		for index in bestNeighbourIndices:
+			bestNeighbourList.append(kNeighbours[k][index])
+
+		# remove duplicates, if any
+		bestNeighbourList.sort()
+		bestNeighbourList = list(bestNeighbourList for bestNeighbourList,_ in itertools.groupby(bestNeighbourList))
+
+	elif differentSolRequired and len(bestNeighbourList) > 1 and x in bestNeighbourList:
+
+		# remove the initial solution
+		bestNeighbourList.remove(x)
+
+	return bestNeighbourList
+
 
 # input: the input instance; a feasible solution x (which format?); number of exchanges k
 # output: the best feasible solution after performing a k-cycle on x
@@ -471,54 +618,84 @@ def convertSol_toSetsOfJobs(x):
 #----------------------------------------------------------------------------------------#
 
 def main():
+
+	test = {}
+	test['jump'] = False
+	test['jump_alt'] = False
+	test['GLS'] = False
+	test['VDS'] = True
+
 	# test instance
 	instance = [7,8,4,2,2] # Instance: (p1,p2,p3,p4,m)
-	# initSol = [1,2,1,2]
+	initSol  = [1,2,2,1]
+
+	# instance = [9,7,4,3,2,2,2,1,3]
+	# initSol  = [1,1,2,1,3,1,3,2]
+
+	# instance = [3,6,8,2,7,13,5,14,2,3,2,6,5]
+	# initSol  = [1,1,2,4,3,1,3,2,5,3,4,1,5]
+
+	numJobs = len(instance)-1
+
+	# PARAMS
+	k = 2
+	differentSolRequired = True
+	jobsToConsider = range(1,numJobs+1) # job NUMBERS - NOT indices
 
 	# NEIGHBOURHOOD TESTING
-	# print '\nNeighbourhood Testing'
+	print '\nNeighbourhood Testing\n'
 
 	# EXAMPLE OF SUCCESSFUL SWAP	
 	# bestNeighbour = findBestNeighbour_swap(instance,initSol,2)
 	# print bestNeighbour, getMakespan(instance,bestNeighbour)
 
-	# # EXAMPLE OF SUCCESSFUL JUMP	
-	# jobsToConsider = [1,2,3,4] # job NUMBERS - NOT indices
-	# initSol = [1,1,2,1]
-	# k = 3
-	# neighbourhood = 'jump'
-	# differentSolRequired = True
+	# EXAMPLE OF SUCCESSFUL JUMP
+	if test['jump']:
+		neighbourhood = 'jump'
+		print 'Neighbourhood: %s' %(neighbourhood)
+		print 'k = %s; instance: %s;' %(k, instance)
 
-	# bestNeighbour = findBestNeighbour(instance, initSol, k, neighbourhood, differentSolRequired, jobsToConsider)
-	
-	# print 'Best neighbour:', bestNeighbour
-	# print 'Makespan:', getMakespan(instance,bestNeighbour)
+		bestNeighbourList = findBestNeighbour(instance, initSol, k, neighbourhood, differentSolRequired, jobsToConsider)
+		print 'Best neighbour list:', bestNeighbourList
+		print 'Makespan:', getMakespan(instance,bestNeighbourList[0])
+
+		print '\n'
+
+	# JUMP ALTERNATIVE
+	if test['jump_alt']:
+		neighbourhood = 'jump_alt'
+		print 'Neighbourhood: %s' %(neighbourhood)
+		print 'k = %s; instance: %s;' %(k, instance)
+
+		bestNeighbourList = findBestNeighbour(instance, initSol, k, neighbourhood, differentSolRequired, jobsToConsider)
+		print 'Best neighbour list:', bestNeighbourList
+		print 'Makespan:', getMakespan(instance,bestNeighbourList[0])
 
 
 	# GLS TESTING
-	# k = 1
-	# neighbourhood = 'jump'
-	# print '\nGLS Testing'
-	# print 'k =', k, '; instance:', instance, '; neighbourhood:', neighbourhood
+	if test['GLS']:
+		k = 1
+		neighbourhood = 'jump'
+		print '\nGLS Testing'
+		print 'k = %s; instance: %s; neighbourhood: %s' %(k, instance, neighbourhood)
 
-	# x_star, makespan, runtime = GLS(instance, k, neighbourhood)
+		x_star, makespan, runtime = GLS(instance, k, neighbourhood)
 
-	# print 'Final:', x_star, 'with makespan', makespan
+		print 'Final:', x_star, 'with makespan', makespan
 
 	# VDS TESTING
-	instance = [9,7,4,3,2,2,2,1,3]
-	k = 2
-	neighbourhood = 'jump'
-	initSolType = 'random'
+	if test['VDS']:
+		k = 2
+		neighbourhood = 'jump'
+		initSolType = 'random'
 
-	print '\nVDS Testing'
-	print 'Instance:', instance
-	print 'k = %s; Neighbourhood: %s; Initial solution type: %s' %(k, neighbourhood, initSolType)
+		print '\nVDS Testing'
+		print 'Instance:', instance
+		print 'k = %s; Neighbourhood: %s; Initial solution type: %s' %(k, neighbourhood, initSolType)
 
-	x_star, makespan, runtime = VDS(instance, k, neighbourhood, initSolType)
+		x_star, makespan, runtime = VDS(instance, k, neighbourhood, initSolType)
 
-	print '\nFinal:', x_star, 'with makespan', makespan
-
+		print '\nFinal:', x_star, 'with makespan', makespan
 
 if __name__ == "__main__":
 	main()
