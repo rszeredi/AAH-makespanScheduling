@@ -27,6 +27,7 @@ def GLS(instance, k, neighbourhood, initSolType):
 	differentSolRequired = False
 	numJobs = len(instance)-1 # get the number of jobs from the instance
 	jobsToConsider = range(1,numJobs+1) # all jobs (job numbers not indices)
+	chooseBestNeighbour = 0 # choose the first of the best neighbours
 
 	# generate initial feasible solution
 	if initSolType == 'inputOrder':
@@ -36,16 +37,14 @@ def GLS(instance, k, neighbourhood, initSolType):
 		# start with a random assignment of jobs to machines
 		x = findInitialFeasibleSolution_rand(instance)
 
-	# start with a random assignment of jobs to machines
-	# x = findInitialFeasibleSolution_rand(instance)
-
-	print 'Initial solution:', x # debubbing: print initial solution
+	print 'Initial solution:', x # debugging: print initial solution
 
 	# perform the k-exchange until a local minimum is found
 	while True:
 
 		# find the best neighbour and store as x_new
-		x_new = findBestNeighbour(instance, x, k, neighbourhood, differentSolRequired, jobsToConsider)
+		bestNeighbourList = findBestNeighbour(instance, x, k, neighbourhood, differentSolRequired, jobsToConsider)
+		x_new = bestNeighbourList[chooseBestNeighbour]
 
 		if x_new == x:
 			break # no exchange occured therefore we have reached a local minimum
@@ -69,7 +68,7 @@ def GLS(instance, k, neighbourhood, initSolType):
 def VDS(instance, k, neighbourhood, initSolType):
 
 	# temp:
-	debugging = True 
+	debugging = False 
 
 	# start timer
 	start = time.time()
@@ -404,7 +403,7 @@ def findBestNeighbour(instance, x, k, neighbourhood, differentSolRequired, jobsT
 	bestNeighbourList = []
 
 	# debugging
-	debugging = True
+	debugging = False
 	if debugging:
 		print 'Finding the best neighbours of', x, 'with makespan', getMakespan(instance, x)
 	
@@ -627,28 +626,28 @@ def main():
 	test = {}
 	test['jump'] = False
 	test['jump_alt'] = False
-	test['GLS'] = False
+	test['GLS'] = True
 	test['VDS'] = True
 
 	# test instance
 	instance = [7,8,4,2,2] # Instance: (p1,p2,p3,p4,m)
 	initSol  = [1,2,2,1]
 
-	# instance = [9,7,4,3,2,2,2,1,3]
-	# initSol  = [1,1,2,1,3,1,3,2]
+	instance = [9,7,4,3,2,2,2,1,3]
+	initSol  = [1,1,2,1,3,1,3,2]
 
-	# instance = [3,6,8,2,7,13,5,14,2,3,2,6,5]
-	# initSol  = [1,1,2,4,3,1,3,2,5,3,4,1,5]
+	instance = [3,6,8,2,7,13,5,14,2,3,2,6,5]
+	initSol  = [1,1,2,4,3,1,3,2,5,3,4,1,5]
 
 	numJobs = len(instance)-1
 
 	# PARAMS
-	k = 2
+	k = 3
 	differentSolRequired = True
 	jobsToConsider = range(1,numJobs+1) # job NUMBERS - NOT indices
 
 	# NEIGHBOURHOOD TESTING
-	print '\nNeighbourhood Testing\n'
+	print 'NEIGHBOURHOOD TESTING\n'
 
 	# EXAMPLE OF SUCCESSFUL SWAP	
 	# bestNeighbour = findBestNeighbour_swap(instance,initSol,2)
@@ -677,30 +676,33 @@ def main():
 		print 'Makespan:', getMakespan(instance,bestNeighbourList[0])
 
 
+	# HEURISTIC TESTING
+	print 'HEURISTIC TESTING\n'
+	k = 1
+	neighbourhood = 'jump_alt'
+	initSolType = 'random'
+
 	# GLS TESTING
 	if test['GLS']:
-		k = 1
-		neighbourhood = 'jump'
-		print '\nGLS Testing'
-		print 'k = %s; instance: %s; neighbourhood: %s' %(k, instance, neighbourhood)
+		print 'GLS Testing'
+		print 'Instance:', instance
+		print 'k = %s; Neighbourhood: %s; Initial solution type: %s' %(k, neighbourhood, initSolType)
 
-		x_star, makespan, runtime = GLS(instance, k, neighbourhood)
+		x_star, makespan, runtime = GLS(instance, k, neighbourhood, initSolType)
 
 		print 'Final:', x_star, 'with makespan', makespan
+		print 'Runtime:', runtime, '\n'
 
 	# VDS TESTING
 	if test['VDS']:
-		k = 2
-		neighbourhood = 'jump'
-		initSolType = 'random'
-
-		print '\nVDS Testing'
+		print 'VDS Testing'
 		print 'Instance:', instance
 		print 'k = %s; Neighbourhood: %s; Initial solution type: %s' %(k, neighbourhood, initSolType)
 
 		x_star, makespan, runtime = VDS(instance, k, neighbourhood, initSolType)
 
-		print '\nFinal:', x_star, 'with makespan', makespan
+		print 'Final:', x_star, 'with makespan', makespan
+		print 'Runtime:', runtime, '\n'
 
 if __name__ == "__main__":
 	main()
