@@ -22,21 +22,26 @@ def runHeuristic(heuristic, instanceList, k):
 	makespanList = []
 	runtimeList = []
 
+	neighbourhood = 'jump'
+	initSolType = 'random'
+
+
 	if heuristic == 1: # run the greedy local search
 		for instance in instanceList:
 
 			print("GLS for instance {}:".format(instanceList.index(instance)+1)) # debugging
+			print 'k = %s; Neighbourhood: %s; Initial solution type: %s' %(k, neighbourhood, initSolType)
 
-			[x_star, makespan, runtime] = GLS(instance, k)
+			[x_star, makespan, runtime] = GLS(instance, k,neighbourhood,initSolType)
+
+			print '\nFinal:', x_star, 'with makespan', makespan
 
 			makespanList.append(makespan)
 			runtimeList.append(runtime)
 
-			print
-
 	elif heuristic == 2: # run the variable depth search
 		for instance in instanceList:
-			[x_star, makespan, runtime] = VDS(instance, k)
+			[x_star, makespan, runtime] = VDS(instance, k,neighbourhood,initSolType)
 
 			makespanList.append(makespan)
 			runtimeList.append(runtime)
@@ -78,5 +83,5 @@ def generateRandomInstances(n,m,numToGenerate):
 instanceList = [[7,8,3,2,2],[9,7,4,3,2,2,2,1,3],[3,6,8,2,7,13,5,14,2,3,2,6,5]]
 
 # run the first heuristic (GLS) on the instance list with k=1
-[makespanList, runtimeList] = runHeuristic(1,instanceList,3)
+[makespanList, runtimeList] = runHeuristic(1,instanceList,2)
 print("makespan values: {}\nrunning times: {}".format(makespanList, runtimeList))

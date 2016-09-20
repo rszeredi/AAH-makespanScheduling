@@ -69,7 +69,7 @@ We first consider a \textit{jump}-neighbourhood: \\
 
 We define a mapping $f_X: \mathcal{M}(x) \rightarrow 2^{\mathcal{M}(x)}$, such that if $\beta = \{\beta_1,\beta_2,...,\beta_m \} \in f_x(\alpha)$ for some $\alpha = \{\alpha_1,\alpha_2,...,\alpha_m \} \in \mathcal{M}(x)$ if $\beta$ can be obtained from $\alpha$ by $k$ jumps. \\
 
-Each jump allows some job $i \in S_j$ for some $j \in \{1,...,m\}$ to move to any one of the $m$ machines, including to the one in which it is contained. Hence, after one jump $\alpha_i \neq \beta_j$ for some $i \in \{1,...,m\}$ and $j \in \{1,...,m\}$, and $\alpha_k = \beta_k$ for $k \neq i$ and $k \neq j$. \\
+Each jump allows some job $i \in S_j$ for some $j \in \{1,...,m\}$ to move to any one of the $m$ machines, including to the one in which it is contained. Hence, after one jump $\alpha_i \neq \beta_j$ for some $i \in \{1,...,m\}$ and $j \in \{1,...,m\}$, and $\alpha_k = \beta_k$ for $k \neq i$ and $k \neq j$, or $\alpha = \beta$ if the job jumps to its own machine. \\
 
 We can check that the conditions for a suitable neighbourhood are satisfied. Let $\alpha = \{\alpha_1,...,\alpha_m\}$ be an initial, feasible solution.
 \begin{enumerate}
@@ -81,6 +81,72 @@ We can check that the conditions for a suitable neighbourhood are satisfied. Let
 \item (\textit{Connectivity}): If we have any two feasible solutions $\alpha$ and $\beta$, we can always obtain one from the other by performing a finite number of $k$ jumps (since we allow a job to jump to any machine). If $k \geq n$, one $k$ jump suffices, since we allow loops. If $k \leq n$, we perform maximally $\lceil \frac{n}{k} \rceil$ $k$ jumps. Hence, for all $\alpha, \beta \in \mathcal{M}(x)$, there exists a positive integer $k$ and $\gamma_1,...,\gamma_k \in \mathcal{M}(x)$ such that $\gamma_1 \in f_X(\alpha)$, $\gamma_{i+1} \in f_X(\gamma_i)$ for $i=1,...,k-1$, and $\beta \in f_X(\gamma_k)$. 
 
 \end{enumerate}
+
+
+We also consider a \textit{swap}-neighbourhood: \\
+
+We define a mapping $f_X: \mathcal{M}(x) \rightarrow 2^{\mathcal{M}(x)}$, such that if $\beta = \{\beta_1,\beta_2,...,\beta_m \} \in f_x(\alpha)$ for some $\alpha = \{\alpha_1,\alpha_2,...,\alpha_m \} \in \mathcal{M}(x)$ if $\beta$ can be obtained from $\alpha$ by $k$ swaps. \\
+
+Each swap allows a pair of jobs $(i,j) \in \{1,...,n\} \times \{1,...,n\}$ to swap from machine. 
+
+Hence, after one swap $(\alpha_i, \alpha_j) \neq (\beta_i,\beta_j)$ for some $(i,j) \in \{1,...,n\} \times \{1,...,n\}$, and $\alpha_k = \beta_k$ for $k \neq i$ and $k \neq j$.  \\
+
+We can check that the conditions for a suitable neighbourhood are satisfied. Let $\alpha = \{\alpha_1,...,\alpha_m\}$ be an initial, feasible solution.
+\begin{enumerate}
+
+\item (\textit{Reflexivity}): Since we allow the swapping of two jobs from the same machine, it is possible that, after a number of $k$-swaps, all jobs are in their original machines, and the solution is identical to $\alpha$. Hence, we have that $\alpha \in f_X(\alpha)$ for every $\alpha \in \mathcal{M}(x)$. (We call this a `loop').
+
+\item (\textit{Symmetry}): If $\beta \in f_X(\alpha)$ for some $\alpha \in \mathcal{M}(x)$, then $\alpha \in f_X(\beta)$, since reversing the $k$ swap from which $\beta$ was obtained from $\alpha$ is also a $k$ swap. 
+
+\item (\textit{Connectivity}): If we have any two feasible solutions $\alpha$ and $\beta$, the connectivity property is not always satisfied. For instance, if $\alpha$ and $\beta$ only differ from each other by one job, i.e. one job is positioned into a different machine, then we can not get $\beta$ from $\alpha$ by doing one swap (or a $k$ swap, since we have reflexivity). 
+
+\end{enumerate}
+
+Hence, for the \textit{swap}-neighbourhood the connectivity property of a neighbourhood is not satisfied. However, we can consider a neighbourhood which includes both jumps and swaps. In order to do this, we need to determine the order of jumping and swapping. For instance, a $k$-jump followed by an $l$-swap, or an $l$-swap followed by a $k$-jump, or a $k$-jump followed by an $l$-swap followed by an $s$-jump, etc., for positive integers $k$, $l$, $s$. Because such neighbourhoods include the $k$-jump neighbourhood, for which connectivity is satisfied, we have that connectivity is also satisfied for any of these combinations. 
+
+
+\subsection*{GLS for MS}
+We implement the \textit{greedy local search} (GLS) algorithm in Python. First, we use a $k$-jump neighbourhood with $k=...$. \\
+
+\newpage
+\section{Variable Depth Search Algorithm for MS}
+
+In our Python code, we generally represent any feasible solution $\{S_1,S_2,...,S_m\}$ to the Knapsack problem as a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in [1,...,m]$ which represents in which machine job $i$ is contained. Methods have been included which convert the solutions between these two representations (\textit{convertSol\_toListOfMachines} and \textit{convertSol\_toSetsOfJobs}). \\
+
+
+Pseudo-code for VDS:
+We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Knapsack problem. 
+\begin{enumerate}
+\item We generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$, \color{red} MENTION HOW \color{black}
+\item $\textnormal{IMPROVEMENT} := \textnormal{TRUE}$
+\item $\textnormal{EXCHANGE} := \{1,2,...,n\}$, $J=0$, $\alpha_J := \xi$
+\item \textbf{while} $\textnormal{IMPROVEMENT} = \textnormal{TRUE}$ \textbf{do begin}
+\begin{enumerate}
+\item \textbf{while} $\textnormal{EXCHANGE} \neq \emptyset$ \textbf{do}
+\begin{enumerate}
+\item \textbf{begin} $J := J+1$
+\item $\alpha_J := $ the best neighbour in the $k$-neighbourhood of $\alpha_{J-1}$. We define \textit{gain}$(\alpha_{J-1}, \delta) = \textnormal{makespan}(\alpha_{J-1}) - \textnormal{makespan}(\delta)$. Hence, the best neighbour $\alpha_J$ is defined such that \\ \textit{gain}$(\alpha_{J-1},\alpha_J) = $max$\{$\textit{gain}$(\alpha_{J-1},\delta) | \delta \in \textnormal{Neigh}_k(\alpha_{J-1}) - \{\alpha_{J-1} \}$ and $\delta$ differs from $\alpha_{J-1}$ in the parameters of $\textnormal{EXCHANGE}$ only $\}$.
+\item $\textnormal{EXCHANGE} := \textnormal{EXCHANGE} - \{ \textnormal{the parameters in which } \alpha_J \textnormal{ and } \alpha_{J-1} \textnormal{ differ } \}$ (i.e., we remove the job index for which the machine has been changed from $\textnormal{EXCHANGE}$). 
+\end{enumerate}
+\item \textbf{end}
+\item Compute \textit{gain}$(\alpha,\alpha_i) = \textnormal{makespan}(\alpha) - \textnormal{makespan}(\alpha_i)$, for $i=1,...,J$
+\item Compute $l \in \{1,...,J\}$ such that \\ \textit{gain}$(\alpha,\alpha_l) = \textnormal{max}\{$\textit{gain}$(\alpha,\alpha_i) \> | i \in \{1,2,...,J\} \}$
+\item \textbf{if} \textit{gain}$(\alpha,\alpha_l) > 0$ \textbf{then}
+\begin{enumerate}
+\item $\textnormal{EXCHANGE} := \{1,2,...,n\}$
+\item \textbf{end}
+\end{enumerate}
+\item \textbf{else} $\textnormal{IMPROVEMENT} := \textnormal{FALSE}$
+\item \textbf{end}
+\end{enumerate}
+\item \textbf{output}$(\alpha)$
+\end{enumerate}
+
+
+
+
+Say something about `differentsolrequired'
+
 
 
 
