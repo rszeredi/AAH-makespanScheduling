@@ -23,6 +23,8 @@ from pprint import pprint
 def GLS(instance, k, neighbourhood, initSolType):
 	start = time.time()
 
+	debugging = False
+
 	# fixed parameters for GLS
 	differentSolRequired = False
 	numJobs = len(instance)-1 # get the number of jobs from the instance
@@ -37,7 +39,8 @@ def GLS(instance, k, neighbourhood, initSolType):
 		# start with a random assignment of jobs to machines
 		x = findInitialFeasibleSolution_rand(instance)
 
-	print 'Initial solution:', x # debugging: print initial solution
+	if debugging:
+		print 'Initial solution:', x # debugging: print initial solution
 
 	# perform the k-exchange until a local minimum is found
 	while True:
@@ -538,6 +541,21 @@ def findBestNeighbour_jumpSwap(instance, x, k):
 	
 
 	return x
+
+
+
+# input: a list of input instances
+# output: a list of lower bounds on the makespans of each instance
+def findMakespanLowerBound(instanceList):
+
+	lowerBoundList = []
+	totalProcessTime = 0
+
+	for instance in instanceList:
+		totalProcessTime = sum(instance[i] for i in range(len(instance)-1))
+		lowerBoundList.append(totalProcessTime/instance[-1])
+
+	return lowerBoundList
 
 
 #----------------------------------------------------------------------------------------#
