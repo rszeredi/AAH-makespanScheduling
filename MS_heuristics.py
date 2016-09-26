@@ -10,6 +10,7 @@
 # OR might it be easier if x is a 1xn array specifying the machine each job is assigned to?
 # -> See below for methods for converting between the two
 
+from __future__ import division
 import random, time, numpy
 import itertools
 from pprint import pprint
