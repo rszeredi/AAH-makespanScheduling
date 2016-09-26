@@ -10,7 +10,7 @@
 # OR might it be easier if x is a 1xn array specifying the machine each job is assigned to?
 # -> See below for methods for converting between the two
 
-import random, time
+import random, time, numpy
 import itertools
 from pprint import pprint
 
@@ -195,12 +195,101 @@ def VDS(instance, k, neighbourhood, initSolType):
 
 	return x_star, makespan, runtime
 
-# todo!
-# input:
-# output: 
-def ourHeuristic(instance, k):
+# input: instance (see above); initial solution (list of sets); k-exchange value; type of neighbourhood (e.g. jump); initial solution type
+# output: local optimum found using simulated annealing; makespan of local optimum;
+# runtime (not including calculation of makespan) 
+def ourHeuristic(instance, k, neighbourhood, initSolType):
+
+	# First try: Simulated Annealing
+
+	#TODO: research cooling schedules, aim is to accept new solutions more easily when the temperature is large. Look at plateauing?
+	#TODO: do we only consider one neighbour per temperature value?
+	#TODO: select initial temperature, possibly with algorithm as in https://www.mendeley.com/catalog/computing-initial-temperature-simulated-annealing/ 
+
 	start = time.time()
 
+	debugging = False
+
+	# fixed parameters for Simulated Annealing
+	differentSolRequired = False
+	numJobs = len(instance)-1 # get the number of jobs from the instance
+	jobsToConsider = range(1,numJobs+1) # all jobs (job numbers not indices)
+	chooseBestNeighbour = 0 # choose the first of the best neighbours
+	numMachines = instance[-1]; # number of machines in instance
+
+	# generate initial feasible solution
+	if initSolType == 'inputOrder':
+		# start with a naive assignment of jobs to machines
+		x = findInitialFeasibleSolution_inputOrder(instance)
+	elif initSolType == 'random':
+		# start with a random assignment of jobs to machines
+		x = findInitialFeasibleSolution_rand(instance)
+
+	if debugging:
+		print 'Initial solution:', x, 'with makespan', getMakespan(instance,x) # debugging: print initial solution
+
+	# Select initial temperature, and temperature reduction function as function of T and time.
+
+	T0=T=10;
+	I=0;
+
+	while T>10**(-6):
+
+		x_new = x[:]; # Reset x_new to x
+
+
+		jobsToChange = []
+
+		for i in range(1,k+1): # Select k random jobs from all jobs (could contain duplicates).
+
+			jobToChange = random.choice(jobsToConsider); # CHECK SEED? Use numpy?
+			jobsToChange.append(jobToChange);
+
+		
+		
+		# Change these k jobs to random machine.
+		for i in range(0,k):
+
+			x_new[jobsToChange[i]-1] = random.choice(range(1,numMachines+1)) # CHECK SEED? Use numpy?
+
+
+		if debugging:
+			print "Iteration I=", I+1
+			print "Randomly selected neighbour: ", x_new
+
+		costa = getMakespan(instance,x);
+		costb = getMakespan(instance,x_new);
+
+		if costb <= costa:
+			if debugging:
+				print "Found a better neighbour"
+
+			x = x_new[:];
+
+		else:
+			r = random.uniform(0,1);
+			if debugging:
+				print "Random number generated: ", r
+
+			if r < numpy.exp((-costb+costa)/T): # Cooling factor should be close to 1 for large temperatures, 
+												# so that we accept new solutions at large temperatures.
+
+				if debugging:
+					print "r satisfies stochastic criterium"
+					print "Cooling factor", numpy.exp((-costb+costa)/T)
+				x = x_new[:];
+
+
+
+			# TODO: Indented or not indented????
+		I=I+1;
+		#T=T0*0.8**I; # Exponential multiplicative cooling.
+		#T=T0-0.8*I; # Simple exponential cooling. 
+		#T = T0/(1+0.8*I); # Linear multiplicative cooling.
+		T = T0/(1+0.8*I**2); # Quadratic multiplicative cooling. BIT SLOWER THAN VDS BUT GOOD SOLUTIONS FOR EXAMPLE BELOW!
+
+	# output best solution found
+	x_star = x
 
 	end = time.time()
 	runtime = end - start
@@ -644,8 +733,9 @@ def main():
 	test = {}
 	test['jump'] = False
 	test['jump_alt'] = False
-	test['GLS'] = True
+	test['GLS'] = False
 	test['VDS'] = True
+	test['Heuristic'] = True
 
 	# test instance
 	instance = [7,8,4,2,2] # Instance: (p1,p2,p3,p4,m)
@@ -721,6 +811,17 @@ def main():
 
 		print 'Final:', x_star, 'with makespan', makespan
 		print 'Runtime:', runtime, '\n'
+
+	if test['Heuristic']:
+		print 'Heuristic Testing'
+		print 'Instance:', instance
+		print 'k = %s; Neighbourhood: %s; Initial solution type: %s' %(k, neighbourhood, initSolType)
+
+		x_star, makespan, runtime = ourHeuristic(instance, k, neighbourhood, initSolType)
+
+		print 'Final:', x_star, 'with makespan', makespan
+		print 'Runtime:', runtime, '\n'
+
 
 if __name__ == "__main__":
 	main()
