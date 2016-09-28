@@ -2,7 +2,9 @@
 
 # This file contains:
 # Heuristics (GLS, VDS, *our heuristic*)
-# All auxiliary functions for heuristics
+# Functions for generating initial feasible solutions (input order, random assignment, greedy)
+# Functions for finding the best neighbour
+# Other auxiliary functions for heuristics (getMakespan, least loaded machine, LB, converting between two forms of a solution)
 
 # FORMATTING:
 # instance: 1 array (p1,p2,...,p_n,m)
@@ -39,6 +41,9 @@ def GLS(instance, k, neighbourhood, initSolType):
 	elif initSolType == 'random':
 		# start with a random assignment of jobs to machines
 		x = findInitialFeasibleSolution_rand(instance)
+	elif initSolType == 'GMS':
+		# use the Greedy Makespan Scheduling algorithm (4.2.1.3 in textbook)
+		x = findInitialFeasibleSolution_GMS(instance)
 
 	if debugging:
 		print 'Initial solution:', x # debugging: print initial solution
@@ -89,6 +94,9 @@ def VDS(instance, k, neighbourhood, initSolType):
 	elif initSolType == 'random':
 		# start with a random assignment of jobs to machines
 		x = findInitialFeasibleSolution_rand(instance)
+	elif initSolType == 'GMS':
+		# use the Greedy Makespan Scheduling algorithm (4.2.1.3 in textbook)
+		x = findInitialFeasibleSolution_GMS(instance)
 
 	print 'Initial solution:', x, 'with makespan', getMakespan(instance, x) # debugging: print initial solution
 
@@ -209,7 +217,7 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 
 	start = time.time()
 
-	debugging = False
+	debugging = True
 
 	# fixed parameters for Simulated Annealing
 	differentSolRequired = False
@@ -225,6 +233,9 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 	elif initSolType == 'random':
 		# start with a random assignment of jobs to machines
 		x = findInitialFeasibleSolution_rand(instance)
+	elif initSolType == 'GMS':
+		# use the Greedy Makespan Scheduling algorithm (4.2.1.3 in textbook)
+		x = findInitialFeasibleSolution_GMS(instance)
 
 	if debugging:
 		print 'Initial solution:', x, 'with makespan', getMakespan(instance,x) # debugging: print initial solution
@@ -235,6 +246,7 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 	I=0;
 
 	while T>10**(-6):
+	# while I<10:
 
 		x_new = x[:]; # Reset x_new to x
 
@@ -284,10 +296,13 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 
 			# TODO: Indented or not indented????
 		I=I+1;
-		#T=T0*0.8**I; # Exponential multiplicative cooling.
-		#T=T0-0.8*I; # Simple exponential cooling. 
-		#T = T0/(1+0.8*I); # Linear multiplicative cooling.
-		T = T0/(1+0.8*I**2); # Quadratic multiplicative cooling. BIT SLOWER THAN VDS BUT GOOD SOLUTIONS FOR EXAMPLE BELOW!
+		# T=T0*0.8**I; # Exponential multiplicative cooling.
+		T=T0-0.8*I; # Simple exponential cooling. 
+		# T = T0/(1+0.8*I); # Linear multiplicative cooling.
+		# T = T0/(1+0.8*I**2); # Quadratic multiplicative cooling. BIT SLOWER THAN VDS BUT GOOD SOLUTIONS FOR EXAMPLE BELOW!
+		if debugging:
+			print 'New T:', T, '\n'
+			print 'T0', T0
 
 	# output best solution found
 	x_star = x
@@ -300,7 +315,7 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 	return x_star, makespan, runtime
 
 #----------------------------------------------------------------------------------------#
-# AUXILIARY FUNCTIONS FOR HEURISTICS
+# INITIAL FEASIBLE SOLUTION FUNCTIONS FOR HEURISTICS
 
 # input: instance (defined by array of durations and number of machines as last entry)
 # output: a feasible solution
@@ -330,6 +345,70 @@ def findInitialFeasibleSolution_rand(instance):
 	x = [random.randint(1,numMachines) for i in range(numJobs)]
 
 	return x
+
+# input: instance (defined by array of durations and number of machines as last entry)
+# output: a feasible solution
+def findInitialFeasibleSolution_GMS(instance):
+
+	debugging = False
+
+	# fixed params
+	numJobs = len(instance)-1
+	numMachines = instance[-1]
+
+	# initialise solution
+	x = []
+	for machineNumber in range(1,numMachines+1):
+		x.append([])
+
+	# initialise array to store total processing times of each machine
+	Time = [0 for machineNumber in range(1,numMachines+1)]
+
+	# first sort jobs by non-increasing processing time
+	sortedJobNumbers = sorted(range(1,len(instance[:-1])+1), key=lambda k: instance[k-1], reverse=True)
+	
+	if debugging:
+		print 'sortedJobNumbers:', sortedJobNumbers
+		print 'sorted durations:', 
+		for jobNumber in sortedJobNumbers:
+			print instance[jobNumber-1],
+		print ''
+
+	# assign the m largest jobs to the machines
+	for machineNumber in range(1,numMachines+1):
+		jobToAdd = sortedJobNumbers[machineNumber-1]
+		x[machineNumber-1].append(jobToAdd)
+		Time[machineNumber-1] = instance[jobToAdd-1]
+	if debugging:
+		print 'Solution after the first %g job assigned:' %(numMachines), x
+		print 'with runtimes', Time, '\n'
+
+	# iterate through the remaining jobs, assigning the job to the least loaded machine
+	for jobNumber in sortedJobNumbers[numMachines:numJobs+1]:
+
+		# find the least loaded machine
+		# leastLoadedMachineNumber = getLeastLoadedMachine(instance, x)
+		smallestMachineTime = min(Time)
+		leastLoadedMachineNumber = Time.index(smallestMachineTime)+1
+
+		if debugging:
+			print 'Machine %s is currently least loaded with runtime %s' %(leastLoadedMachineNumber, Time[leastLoadedMachineNumber-1])
+
+		# assign the next job to the least loaded machine
+		x[leastLoadedMachineNumber-1].append(jobNumber)
+		Time[leastLoadedMachineNumber-1] += instance[jobNumber-1]
+
+		if debugging:
+			print 'Add job %g (with time %s) to this machine.' %(jobNumber, instance[jobNumber-1])
+			print 'New solution:', x
+			print 'with runtimes', Time
+			print ''
+
+	return x
+
+
+#----------------------------------------------------------------------------------------#
+# NEIGHBOURHOOD FUNCTIONS FOR HEURISTICS
 
 # input: the input instance;
 #		 a feasible solution x of the form [1,2,1,2];
@@ -633,21 +712,6 @@ def findBestNeighbour_jumpSwap(instance, x, k):
 	return x
 
 
-
-# input: a list of input instances
-# output: a list of lower bounds on the makespans of each instance
-def findMakespanLowerBound(instanceList):
-
-	lowerBoundList = []
-	totalProcessTime = 0
-
-	for instance in instanceList:
-		totalProcessTime = sum(instance[i] for i in range(len(instance)-1))
-		lowerBoundList.append(totalProcessTime/instance[-1])
-
-	return lowerBoundList
-
-
 #----------------------------------------------------------------------------------------#
 # MAYBE ATTRIBUTE PROCESSING TIMES TO JOB OBJECT???
 #class Job(object):
@@ -662,6 +726,8 @@ def findMakespanLowerBound(instanceList):
 #    "p3": Job(3,11)
 #    }
 
+#----------------------------------------------------------------------------------------#
+# OTHER AUXILIARY FUNCTIONS
 
 # input: the input instance; a feasible solution x (which format?)
 # output: the maximum total processing time over all machines
@@ -682,10 +748,52 @@ def getMakespan(instance, x):
 
 	return makespan
 
+# input: the input instance; a partial solution x (format: [[1, 3], [2, 4]])
+# output: the machine NUMBER which is the least loaded wrt the partial solution x
+# I realised I didn't actually need this function for GMS initial solution but keeping it anyway just in case haha
+def getLeastLoadedMachine(instance, x):
+
+	# fixed params
+	numMachines = instance[-1]
+	numJobs = len(instance)-1
+
+	# initialise
+	leastLoadedMachine = numMachines+1 # dummy
+	leastLoadedMachine_load = sum(instance) # maximum possible load + numMachines (ie. impossible)
+
+	# iterate through each machine and find the least loaded one
+	for machineIndex in range(numMachines):
+
+		# compute the load of the current machine
+		load = sum(instance[jobNumber-1] for jobNumber in x[machineIndex])
+
+		# compare to the current min
+		if load < leastLoadedMachine_load:
+
+			# update the least loaded machine and its load
+			leastLoadedMachine = machineIndex+1
+			leastLoadedMachine_load = load
+
+	return leastLoadedMachine
+
+# input: a list of input instances
+# output: a list of lower bounds on the makespans of each instance
+def findMakespanLowerBound(instanceList):
+
+	lowerBoundList = []
+	totalProcessTime = 0
+
+	for instance in instanceList:
+		totalProcessTime = sum(instance[i] for i in range(len(instance)-1))
+		lowerBoundList.append(totalProcessTime/instance[-1])
+
+	return lowerBoundList
+
+
 #----------------------------------------------------------------------------------------#
 # CONVERTING BETWEEN DIFFERENT VIEWS OF A SOLUTION
 # NB: need to be careful with indexing vs. job/machine names
-
+# NB2: needs to be a complete solution (not partial eg. in GMS)
 
 # Eg. x = [[1, 3], [2, 4]]
 # to  x_new = [1, 2, 1, 2]
@@ -695,7 +803,7 @@ def convertSol_toListOfMachines(x):
 		return x
 
 	# initialise machine number 0 for each job
-	numJobs = max(max(x))
+	numJobs = max([job for listOfJobs in x for job in listOfJobs])
 	x_new = []
 	for job in range(numJobs):
 		x_new.append(0)
@@ -735,15 +843,16 @@ def main():
 	test['jump'] = False
 	test['jump_alt'] = False
 	test['GLS'] = False
-	test['VDS'] = True
-	test['Heuristic'] = True
+	test['VDS'] = False
+	test['Heuristic'] = False
+	test['GMS'] = True
 
 	# test instance
 	instance = [7,8,4,2,2] # Instance: (p1,p2,p3,p4,m)
-	initSol  = [1,2,2,1]
+	initSol  = [1,2,1,2]
 
-	instance = [9,7,4,3,2,2,2,1,3]
-	initSol  = [1,1,2,1,3,1,3,2]
+	# instance = [9,7,4,3,2,2,2,1,3]
+	# initSol  = [1,1,2,1,3,1,3,2]
 
 	instance = [3,6,8,2,7,13,5,14,2,3,2,6,5]
 	initSol  = [1,1,2,4,3,1,3,2,5,3,4,1,5]
@@ -789,7 +898,7 @@ def main():
 	print 'HEURISTIC TESTING\n'
 	k = 1
 	neighbourhood = 'jump_alt'
-	initSolType = 'random'
+	initSolType = 'inputOrder'
 
 	# GLS TESTING
 	if test['GLS']:
@@ -823,6 +932,17 @@ def main():
 		print 'Final:', x_star, 'with makespan', makespan
 		print 'Runtime:', runtime, '\n'
 
+
+	print 'OTHER TESTING\n'
+
+	if test['GMS']:
+		print 'Testing initial feasible solution generation with GMS:'
+		print 'instance:', instance
+		GMS_sol = findInitialFeasibleSolution_GMS(instance)
+		print 'GMS solution:', GMS_sol
+		GMS_sol = convertSol_toListOfMachines(GMS_sol)
+		makespan = getMakespan(instance, GMS_sol)
+		print 'Converted:', GMS_sol, 'with makespan', makespan
 
 if __name__ == "__main__":
 	main()
