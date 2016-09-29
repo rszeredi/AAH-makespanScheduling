@@ -43,7 +43,9 @@ def GLS(instance, k, neighbourhood, initSolType):
 		x = findInitialFeasibleSolution_rand(instance)
 	elif initSolType == 'GMS':
 		# use the Greedy Makespan Scheduling algorithm (4.2.1.3 in textbook)
-		x = findInitialFeasibleSolution_GMS(instance)
+		GMS_sol = findInitialFeasibleSolution_GMS(instance)
+		x = convertSol_toListOfMachines(GMS_sol)
+
 
 	if debugging:
 		print 'Initial solution:', x # debugging: print initial solution
@@ -96,9 +98,11 @@ def VDS(instance, k, neighbourhood, initSolType):
 		x = findInitialFeasibleSolution_rand(instance)
 	elif initSolType == 'GMS':
 		# use the Greedy Makespan Scheduling algorithm (4.2.1.3 in textbook)
-		x = findInitialFeasibleSolution_GMS(instance)
+		GMS_sol = findInitialFeasibleSolution_GMS(instance)
+		x = convertSol_toListOfMachines(GMS_sol)
 
-	print 'Initial solution:', x, 'with makespan', getMakespan(instance, x) # debugging: print initial solution
+	if debugging:
+		print 'Initial solution:', x, 'with makespan', getMakespan(instance, x) # debugging: print initial solution
 
 	# initialise
 	improvement = True
@@ -189,7 +193,8 @@ def VDS(instance, k, neighbourhood, initSolType):
 
 		else:
 			# terminate
-			print 'No improvement.'
+			if debugging:
+				print 'No improvement.'
 			improvement = False
 
 	# get the final best solution
@@ -217,7 +222,7 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 
 	start = time.time()
 
-	debugging = True
+	debugging = False
 
 	# fixed parameters for Simulated Annealing
 	differentSolRequired = False
@@ -235,7 +240,8 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 		x = findInitialFeasibleSolution_rand(instance)
 	elif initSolType == 'GMS':
 		# use the Greedy Makespan Scheduling algorithm (4.2.1.3 in textbook)
-		x = findInitialFeasibleSolution_GMS(instance)
+		GMS_sol = findInitialFeasibleSolution_GMS(instance)
+		x = convertSol_toListOfMachines(GMS_sol)
 
 	if debugging:
 		print 'Initial solution:', x, 'with makespan', getMakespan(instance,x) # debugging: print initial solution
@@ -844,8 +850,8 @@ def main():
 	test['jump_alt'] = False
 	test['GLS'] = False
 	test['VDS'] = False
-	test['Heuristic'] = False
-	test['GMS'] = True
+	test['Heuristic'] = True
+	test['GMS'] = False
 
 	# test instance
 	instance = [7,8,4,2,2] # Instance: (p1,p2,p3,p4,m)
@@ -896,9 +902,9 @@ def main():
 
 	# HEURISTIC TESTING
 	print 'HEURISTIC TESTING\n'
-	k = 1
+	k = 2
 	neighbourhood = 'jump_alt'
-	initSolType = 'inputOrder'
+	initSolType = 'random'
 
 	# GLS TESTING
 	if test['GLS']:

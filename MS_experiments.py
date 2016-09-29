@@ -13,7 +13,7 @@ from MS_heuristics import *
 # EXPERIMENTS
 # input: heuristic name (GLS, VDS or "???"); instanceList
 # output: list of makespans for instance; list of runtimes for each instance
-def runHeuristic(heuristic, instanceList, k, debugging):
+def runHeuristic(heuristic, instanceList, k, initSolType, debugging):
 
 	# methods to use:
 	# GLS
@@ -24,10 +24,10 @@ def runHeuristic(heuristic, instanceList, k, debugging):
 	runtimeList = []
 
 	neighbourhood = 'jump_alt'
-	initSolType = 'random'
+	#initSolType = 'random'
 
 
-	if heuristic == 1: # run the greedy local search
+	if heuristic == 'GLS': # run the greedy local search
 		for instance in instanceList:
 
 			if debugging:
@@ -42,14 +42,14 @@ def runHeuristic(heuristic, instanceList, k, debugging):
 			makespanList.append(makespan)
 			runtimeList.append(runtime)
 
-	elif heuristic == 2: # run the variable depth search
+	elif heuristic == 'VDS': # run the variable depth search
 		for instance in instanceList:
 			[x_star, makespan, runtime] = VDS(instance, k, neighbourhood, initSolType)
 
 			makespanList.append(makespan)
 			runtimeList.append(runtime)
 
-	elif heuristic == 3: # run our heuristic
+	elif heuristic == 'Ours': # run our heuristic
 		for instance in instanceList:
 
 			[x_star, makespan, runtime] = ourHeuristic(instance, k, neighbourhood, initSolType)
@@ -65,29 +65,47 @@ def runHeuristic(heuristic, instanceList, k, debugging):
 
 # input: n jobs
 # output: 1xn array, dur, of n random durations
-def generateRandomDurations(n,worstCase,seed):
-	maxDur = 100 # what val to use here?
+def generateRandomDurations(n,dist,seed):
+	maxDur = 100
 
 	if seed:
-		# To be completed
 		numpy.random.seed(0)
 
-	if worstCase:
-		# To be completed
-		dur = [numpy.random.randint(1,maxDur) for i in range(n)]
-	else:
+	if dist == 'fatTailed':
+		# Focus the processing times on very high and very low values
+		# Note: max duration must be a 'nice' number (ie divisible by 5 or 10) for fatTailed to work
+
+		# Define the probabilities
+		numHighProb = 0.05*maxDur
+		highProb = 0.3/numHighProb
+		numLowProb = 0.9*maxDur
+		lowProb = 0.4/numLowProb
+
+		# Initialize probability distribution function
+		PDF = [lowProb for i in range(maxDur)]
+
+		for i in range(maxDur):
+			# Only processing times in the lowest 5% and highest 5% get high probabilities
+			if (i < 0.05*maxDur) or (i >= 0.95*maxDur):
+				PDF[i]=highProb
+
+		dur = [numpy.random.choice(numpy.arange(1,maxDur+1), replace=True, p=PDF) for i in range(n)]
+		print dur
+
+	elif dist == 'uniform':
+		# Uniformly distribute the processing times between 1 and the maximum
 		dur = [numpy.random.randint(1,maxDur) for i in range(n)]
 
 	return dur
 
 # input: number of jobs n; number of machines m; number of instances to generate
 # output: list of lists (the instances)
-def generateRandomInstances(n,m,numToGenerate,worstCase,seed):
+def generateRandomInstances(n,m,numToGenerate,dist,seed):
 
 	instances = [None for i in range(numToGenerate)]
 
 	for i in range(numToGenerate):
-		dur = generateRandomDurations(n,worstCase,seed)
+		dur = generateRandomDurations(n,dist,seed)
 		instances[i] = dur+[m]
 
 	return instances
@@ -97,21 +115,15 @@ def generateRandomInstances(n,m,numToGenerate,worstCase,seed):
 # EXPERIMENTS
 
 def main():
-	# sample input instances
-	#instanceList = [[7,8,3,2,2],[9,7,4,3,2,2,2,1,3],[3,6,8,2,7,13,5,14,2,3,2,6,5]]
-
-	# run the first heuristic (GLS) on the instance list with k=1
-	#[makespanList, runtimeList] = runHeuristic(1,instanceList,k)
-	#print("makespan values: {}\nrunning times: {}".format(makespanList, runtimeList))
-
 
 	# Define constants for experiments
 	k=2						# number of exchanges
-	realizations=3			# number of empirical data points
-	worstCase=False			# whether to test the worst case for processing times
+	realizations=20			# number of empirical data points
+	dist='uniform'			# distribution of processing times
 	seed=False				# whether to seed the randomization
 	debugging=False			# whether to print solutions
-	alg=3					# algorithm to use. GLS=1, VDS=2, ours=3
+	alg='Ours'				# algorithm to use: 'GLS', 'VDS', or 'Ours'
+	initSolType='random'		# initial solution to use: 'inputOrder', 'random', or 'GMS'
 
 
 	# Define n and m values to run experiments for
@@ -126,24 +138,21 @@ def main():
 
 
 	# Initialize output files
-	makespanGap = open('data/makespanGap_alg%s_k%s.csv' %(alg,k), 'w')
-	runtime = open('data/runtime_alg%s_k%s.csv' %(alg,k), 'w')
+	if seed:
+		makespanGap = open('data/makespanGap_%s_%s_k%s-%s_seeded.csv' %(alg,initSolType,k,realizations), 'w')
+		runtime = open('data/runtime_%s_%s_k%s-%s_seeded.csv' %(alg,initSolType,k,realizations), 'w')
+	else:
+		makespanGap = open('data/makespanGap_%s_%s_k%s-%s_noSeed.csv' %(alg,initSolType,k,realizations), 'w')
+		runtime = open('data/runtime_%s_%s_k%s-%s_noSeed.csv' %(alg,initSolType,k,realizations), 'w')
 	
 
-	if alg==1:
-		print '\nEXPERIMENTS: GLS'
-	elif alg==2:
-		print '\nEXPERIMENTS: VDS'
-	elif alg==3:
-		print '\nEXPERIMENTS: OUR HEURISTIC'
+	print '\nEXPERIMENTS: %s\n' %(alg)
 
-	print 'k=%s with %s empirical data points' %(k,realizations),
-
-	if seed: print('(seeded) and')
-	else: print('(unseeded) and')
-
-	if worstCase: print 'fat-tailed distribution of processing times.\n'
-	else: print 'uniformly distributed processing times.\n'
+	print 'k-value:\t\t\t %s' %(k)
+	print 'Empirical data points:\t\t %s' %(realizations)
+	print 'Seeded randomization:\t\t %s' %(seed)
+	print 'Initial solution type:\t\t %s'%(initSolType)
+	print 'Processing times distribution:\t %s\n' %(dist)
 
 	print('Number of Machines: {}'.format(mList))
 	print('Number of Jobs: {}'.format(nList))
@@ -154,10 +163,10 @@ def main():
 		for j in range(len(nList)):
 			print '...%s jobs: avgRuntime=' %(nList[j]),
 			# Generate random instances for the given n and m
-			instanceList = generateRandomInstances(nList[j],mList[i],realizations,worstCase,seed)
+			instanceList = generateRandomInstances(nList[j],mList[i],realizations,dist,seed)
 
 			# Run the algorithm on the test instances
-			makespanList, runtimeList = runHeuristic(alg,instanceList,k,debugging)
+			makespanList, runtimeList = runHeuristic(alg,instanceList,k,initSolType,debugging)
 
 			# Find a lower bound on each instance's makespan
 			makespanLBList = findMakespanLowerBound(instanceList)
@@ -184,7 +193,14 @@ def main():
 
 	makespanGap.close()
 	runtime.close()
-	print "\nFull results are stored in 'makespanGap_alg%s_k%s.csv' and 'runtime_alg%s_k%s.csv'\n" %(alg,k,alg,k)
+	if seed:
+		print "\nFull results are stored in:"
+		print "	data/makespanGap_%s_%s_k%s-%s_seeded.csv" %(alg,initSolType,k,realizations)
+		print "	data/runtime_%s_%s_k%s-%s_seeded.csv\n" %(alg,initSolType,k,realizations)
+	else:
+		print "\nFull results are stored in:"
+		print "	data/makespanGap_%s_%s_k%s-%s_noSeed.csv" %(alg,initSolType,k,realizations)
+		print "	data/runtime_%s_%s_k%s-%s_noSeed.csv\n" %(alg,initSolType,k,realizations)
 
 if __name__ == "__main__":
 	main()
