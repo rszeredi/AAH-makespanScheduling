@@ -16,6 +16,7 @@ from __future__ import division
 import random, time, numpy
 import itertools
 from pprint import pprint
+import math
 
 #----------------------------------------------------------------------------------------#
 # HEURISTICS
@@ -32,7 +33,8 @@ def GLS(instance, k, neighbourhood, initSolType):
 	differentSolRequired = False
 	numJobs = len(instance)-1 # get the number of jobs from the instance
 	jobsToConsider = range(1,numJobs+1) # all jobs (job numbers not indices)
-	chooseBestNeighbour = 0 # choose the first of the best neighbours
+	# chooseBestNeighbour = 0 # choose the first of the best neighbours
+	useSeed_initSol = False # whether to seed the random initial solution
 
 	# generate initial feasible solution
 	if initSolType == 'inputOrder':
@@ -40,7 +42,7 @@ def GLS(instance, k, neighbourhood, initSolType):
 		x = findInitialFeasibleSolution_inputOrder(instance)
 	elif initSolType == 'random':
 		# start with a random assignment of jobs to machines
-		x = findInitialFeasibleSolution_rand(instance)
+		x = findInitialFeasibleSolution_rand(instance, useSeed_initSol)
 	elif initSolType == 'GMS':
 		# use the Greedy Makespan Scheduling algorithm (4.2.1.3 in textbook)
 		GMS_sol = findInitialFeasibleSolution_GMS(instance)
@@ -55,7 +57,7 @@ def GLS(instance, k, neighbourhood, initSolType):
 
 		# find the best neighbour and store as x_new
 		bestNeighbourList = findBestNeighbour(instance, x, k, neighbourhood, differentSolRequired, jobsToConsider)
-		x_new = bestNeighbourList[chooseBestNeighbour]
+		x_new = random.choice(bestNeighbourList)
 
 		if x_new == x:
 			break # no exchange occured therefore we have reached a local minimum
@@ -87,7 +89,8 @@ def VDS(instance, k, neighbourhood, initSolType):
 	# fixed parameters for GLS
 	differentSolRequired = True
 	numJobs = len(instance)-1 # get the number of jobs from the instance
-	chooseBestNeighbour = 0 # choose the first of the best neighbours
+	# chooseBestNeighbour = 0 # choose the first of the best neighbours
+	useSeed_initSol = False # whether to seed the random initial solution
 
 	# generate initial feasible solution
 	if initSolType == 'inputOrder':
@@ -95,7 +98,7 @@ def VDS(instance, k, neighbourhood, initSolType):
 		x = findInitialFeasibleSolution_inputOrder(instance)
 	elif initSolType == 'random':
 		# start with a random assignment of jobs to machines
-		x = findInitialFeasibleSolution_rand(instance)
+		x = findInitialFeasibleSolution_rand(instance, useSeed_initSol)
 	elif initSolType == 'GMS':
 		# use the Greedy Makespan Scheduling algorithm (4.2.1.3 in textbook)
 		GMS_sol = findInitialFeasibleSolution_GMS(instance)
@@ -127,7 +130,7 @@ def VDS(instance, k, neighbourhood, initSolType):
 			# find the best neighbour of alpha[j-1] that differs from alpha[j-1] by at least one 1 from the set 'exchange'
 			# ** this is the same as the neighbour with the max gain right?
 			bestNeighbourList = findBestNeighbour(instance, alpha[j-1], k, neighbourhood, differentSolRequired, exchange)
-			alpha[j] = bestNeighbourList[chooseBestNeighbour]
+			alpha[j] = random.choice(bestNeighbourList)
 
 			# find the jobs that were changed
 			jobsChanged = []
@@ -228,8 +231,15 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 	differentSolRequired = False
 	numJobs = len(instance)-1 # get the number of jobs from the instance
 	jobsToConsider = range(1,numJobs+1) # all jobs (job numbers not indices)
-	chooseBestNeighbour = 0 # choose the first of the best neighbours
+	# chooseBestNeighbour = 0 # choose the first of the best neighbours
 	numMachines = instance[-1]; # number of machines in instance
+	useSeed_initSol = False # whether to seed the random initial solution
+
+	# parameters to play with for initial temperature generation algorithm
+	chi0 = 0.8			# desired acceptance probability
+	S = 1000				# number of random transitions to generate
+	p = 1 				# value in equation (6) in paper
+	epsilon = 10**(-3)	# convergence criterion
 
 	# generate initial feasible solution
 	if initSolType == 'inputOrder':
@@ -237,7 +247,7 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 		x = findInitialFeasibleSolution_inputOrder(instance)
 	elif initSolType == 'random':
 		# start with a random assignment of jobs to machines
-		x = findInitialFeasibleSolution_rand(instance)
+		x = findInitialFeasibleSolution_rand(instance, useSeed_initSol)
 	elif initSolType == 'GMS':
 		# use the Greedy Makespan Scheduling algorithm (4.2.1.3 in textbook)
 		GMS_sol = findInitialFeasibleSolution_GMS(instance)
@@ -247,30 +257,21 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 		print 'Initial solution:', x, 'with makespan', getMakespan(instance,x) # debugging: print initial solution
 
 	# Select initial temperature, and temperature reduction function as function of T and time.
-
-	T0=T=10;
+	# T0=T=10;
+	T0=T=getInitialTemp(instance, k, chi0, S, p, epsilon)
+	# algorithm may return None because of division by zero
+	# re-run to fix (the algorithm generates different random transitions)
+	while not T0:
+		# if debugging:
+		print 'Initial temperature algorithm returned None. Re-run algorithm.'
+		T0=T=getInitialTemp(instance, k, chi0, S, p, epsilon)
 	I=0;
+	# if debugging:
+	print 'T0 from algorithm:', T0, '\n'
 
 	while T>10**(-6):
-	# while I<10:
 
-		x_new = x[:]; # Reset x_new to x
-
-
-		jobsToChange = []
-
-		for i in range(1,k+1): # Select k random jobs from all jobs (could contain duplicates).
-
-			jobToChange = random.choice(jobsToConsider); # CHECK SEED? Use numpy?
-			jobsToChange.append(jobToChange);
-
-		
-		
-		# Change these k jobs to random machine.
-		for i in range(0,k):
-
-			x_new[jobsToChange[i]-1] = random.choice(range(1,numMachines+1)) # CHECK SEED? Use numpy?
-
+		x_new = getRandomNeighbour(instance, k, x)
 
 		if debugging:
 			print "Iteration I=", I+1
@@ -308,7 +309,6 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 		# T = T0/(1+0.8*I**2); # Quadratic multiplicative cooling. BIT SLOWER THAN VDS BUT GOOD SOLUTIONS FOR EXAMPLE BELOW!
 		if debugging:
 			print 'New T:', T, '\n'
-			print 'T0', T0
 
 	# output best solution found
 	x_star = x
@@ -339,9 +339,10 @@ def findInitialFeasibleSolution_inputOrder(instance):
 
 # input: instance (defined by array of durations and number of machines as last entry)
 # output: a feasible solution
-def findInitialFeasibleSolution_rand(instance):
+def findInitialFeasibleSolution_rand(instance, useSeed):
 
-	random.seed(100)
+	if useSeed:
+		random.seed(100)
 
 	# randomly assigns jobs to machines
 
@@ -795,6 +796,146 @@ def findMakespanLowerBound(instanceList):
 
 	return lowerBoundList
 
+# input: the instance
+#		 k: number of exchanges
+#		 chi0: desired value of the acceptance probability
+#		 S: number of random transitions to generate
+#		 p: value of p in the Tn update (eq 6 in the paper)
+# output: a good approximation of the temperature required for the desire chi0 value
+# NB: n is initialised as 0 for clearer indexing of array (rather than 1 as in algorithm)
+def getInitialTemp(instance, k, chi0, S, p, epsilon):
+
+	debugging = False
+	store = False # store T and chi values in array for debugging ** delete later?
+	Johnson = True # how to calculate initial T_0 ("T1" in paper) value - Johnson corresponds to eqn (7)
+
+	# Step 1b: generate and store S random positive transitions
+	Emax, Emin = generateRandomTransitions(instance, k, S)
+	# find the difference between the costs of each transition
+	delta = [max_i-min_i for max_i,min_i in zip(Emax,Emin)]
+
+	# Step 1c: initialise n and T
+	# NB: n is started at 0 for clearer indexing of array (rather than 1 as in algorithm)
+	n = 0
+	if Johnson:
+		T_n = -sum(delta) / (S*math.log(chi0))
+	else:
+		T_n = 1 # "any strictly positive number"
+	
+	if store:
+		T = []
+		T.append(T_n)
+
+	# Step 2a: compute chi^hat(T_0)
+	chi_hat_T_n = sum(math.exp(-Emax[t]/T_n) for t in range(S))/sum(math.exp(-Emin[t]/T_n) for t in range(S))
+	if store:
+		chi_hat = []
+		chi_hat.append(chi_hat_T_n)
+
+	if debugging:
+		# print 'Emax:', Emax
+		# print 'Emin:', Emin
+		# print 'Delta:', delta
+		print 'epsilon:', epsilon
+		print '\nInitially:'
+		print 'n =', n
+		print 'T:', T_n
+		print 'chi_hat:', chi_hat_T_n
+		print 'diff:', abs(chi_hat_T_n-chi0), '\n'
+
+	# Step 2b: test if the current chi_hat is close enough to chi0, otherwise update T_n and re-calculate chi_hat
+	while abs(chi_hat_T_n-chi0) > epsilon: # and n<10:
+
+		# update T and n
+		T_n = T_n*(math.log(chi_hat_T_n)/math.log(chi0))**(1/p)
+		if store:
+			T.append(T_n)
+		n+=1
+
+		# re-compute chi_hat		
+		try: # in case division by zero occurs
+			chi_hat_T_n = sum(math.exp(-Emax[t]/T_n) for t in range(S))/sum(math.exp(-Emin[t]/T_n) for t in range(S))
+		except ZeroDivisionError:
+			print 'Division by zero. Return None.'
+			return None
+		
+		if store:
+			chi_hat.append(chi_hat_T_n)
+
+		if debugging:
+			print 'Update T'
+			print 'n =', n
+			print 'New T:', T_n
+			print 'New chi_hat:', chi_hat_T_n
+			print 'diff from epsilon:', abs(chi_hat_T_n-chi0), '\n'
+
+	if debugging:
+		print 'Final T:', T_n
+
+	# return the last value of T
+	if store:
+		return T[-1]
+	else:
+		return T_n
+
+# input: the instance
+# 		 S: number of random transitions to generate
+# output: Emax: the maximum makespan out of the two solutions
+#		  Emin: the minimum makespan out of the two solutions
+def generateRandomTransitions(instance, k, S):
+
+	debugging = False
+
+	Emax = []
+	Emin = []
+	useSeed = False
+
+	for sample in range(S):
+
+		# generate a random solution and get its makespan
+		randomSol = findInitialFeasibleSolution_rand(instance, useSeed)
+		makespan_sol = getMakespan(instance, randomSol)
+
+		# generate a random neighbour and get its makespan
+		neighbour = getRandomNeighbour(instance, k, randomSol)
+		makespan_neighbour = getMakespan(instance, neighbour)
+		
+		# store the higher cost in Emax and the lower cost in Emin
+		Emax.append(max(makespan_sol, makespan_neighbour))
+		Emin.append(min(makespan_sol, makespan_neighbour))
+
+		if debugging:
+			print 'Random solution:', randomSol, 'with makespan', makespan_sol
+			print 'Random Neighbour:', neighbour, 'with makespan', makespan_neighbour, '\n'
+
+	return Emax, Emin
+
+# input: the instance
+#		 k value
+#		 a solution x in format [1,2,1,2]
+# output: a new solution after k jumps (can jump to same machine)
+def getRandomNeighbour(instance, k, x):
+
+	# fixed params
+	numJobs = len(instance)-1
+	numMachines = instance[-1]
+	jobsToConsider = range(1,numJobs+1)
+
+	jobsToChange = []
+	x_new = x[:]
+
+	for i in range(1,k+1): # Select k random jobs from all jobs (could contain duplicates).
+
+		jobToChange = random.choice(jobsToConsider); # CHECK SEED? Use numpy?
+		jobsToChange.append(jobToChange);
+	
+	# Change these k jobs to random machine.
+	for i in range(0,k):
+
+		x_new[jobsToChange[i]-1] = random.choice(range(1,numMachines+1)) # CHECK SEED? Use numpy?
+
+	return x_new
+
 
 #----------------------------------------------------------------------------------------#
 # CONVERTING BETWEEN DIFFERENT VIEWS OF A SOLUTION
@@ -852,6 +993,7 @@ def main():
 	test['VDS'] = False
 	test['Heuristic'] = True
 	test['GMS'] = False
+	test['initTemp'] = False
 
 	# test instance
 	instance = [7,8,4,2,2] # Instance: (p1,p2,p3,p4,m)
@@ -862,6 +1004,8 @@ def main():
 
 	instance = [3,6,8,2,7,13,5,14,2,3,2,6,5]
 	initSol  = [1,1,2,4,3,1,3,2,5,3,4,1,5]
+
+	instance = [3,6,8,2,7,13,5,14,2,3,2,6,5,4,3,6,12,14,15,14,1,16,25,23,25,21,25,24,5]
 
 	numJobs = len(instance)-1
 
@@ -904,7 +1048,7 @@ def main():
 	print 'HEURISTIC TESTING\n'
 	k = 2
 	neighbourhood = 'jump_alt'
-	initSolType = 'random'
+	initSolType = 'GMS'
 
 	# GLS TESTING
 	if test['GLS']:
@@ -949,6 +1093,13 @@ def main():
 		GMS_sol = convertSol_toListOfMachines(GMS_sol)
 		makespan = getMakespan(instance, GMS_sol)
 		print 'Converted:', GMS_sol, 'with makespan', makespan
+
+	if test['initTemp']:
+		chi0 = 0.8
+		S = 500
+		p = 1
+		epsilon = 10**(-3)
+		print 'T0', getInitialTemp(instance, k, chi0, S, p, epsilon)
 
 if __name__ == "__main__":
 	main()
