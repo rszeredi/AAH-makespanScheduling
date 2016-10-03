@@ -69,7 +69,7 @@ def generateRandomDurations(n,dist,seed):
 	maxDur = 100
 
 	if seed:
-		numpy.random.seed(0)
+		numpy.random.seed(0) # Careful!! Used 0 for first experiments.
 
 	if dist == 'fatTailed':
 		# Focus the processing times on very high and very low values
@@ -109,6 +109,55 @@ def generateRandomInstances(n,m,numToGenerate,dist,seed):
 		instances[i] = dur+[m]
 
 	return instances
+
+
+def getvalueforinitialTemperature():
+
+	numpy.random.seed(0)
+
+	nList=[10,20,30,40,50,60,70,80,90,100]
+	mList=[2,4,6,8,10]
+	realizations = 100
+	dist = 'uniform'
+	seed = False
+	k = 2
+
+	# parameters to play with for initial temperature generation algorithm
+	chi0 = 0.8			# desired acceptance probability
+	S = 1000			# number of random transitions to generate
+	p = 1 				# value in equation (6) in paper
+	epsilon = 10**(-3)	# convergence criterion
+
+
+
+	initialTempFile = open('data/initialTemp_k=%s_%s_S=1000_chi0=0.8.csv' %(k,realizations), 'w')
+
+	for i in range(len(mList)):
+		print '\nExperimentizing with %s machines and...' %(mList[i])
+
+		for j in range(len(nList)):
+			print '...%s jobs:'%(nList[j])
+
+			temperaturelist = []
+
+			instanceList = generateRandomInstances(nList[j],mList[i],realizations,dist,seed)
+			for l in range(len(instanceList)):
+				temp = getInitialTemp(instanceList[l], k, chi0, S, p, epsilon)
+				temperaturelist.append(temp)
+
+			avgTemperature = sum(temperaturelist)/realizations
+			print '%.4f' %(avgTemperature)
+
+# 			# Store the results
+			if j+1 == len(nList):
+				initialTempFile.write('%f' % avgTemperature)
+			else:
+				initialTempFile.write('%f,' % avgTemperature)
+		
+		initialTempFile.write('\n')
+
+
+
 
 
 #----------------------------------------------------------------------------------------#
@@ -204,3 +253,4 @@ def main():
 
 if __name__ == "__main__":
 	main()
+#	getvalueforinitialTemperature()
