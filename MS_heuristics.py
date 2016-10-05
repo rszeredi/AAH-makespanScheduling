@@ -253,11 +253,11 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 		GMS_sol = findInitialFeasibleSolution_GMS(instance)
 		x = convertSol_toListOfMachines(GMS_sol)
 
-	if debugging:
-		print 'Initial solution:', x, 'with makespan', getMakespan(instance,x) # debugging: print initial solution
+	# if debugging:
+	print 'Initial solution:', x, 'with makespan', getMakespan(instance,x) # debugging: print initial solution
 
 	# Select initial temperature, and temperature reduction function as function of T and time.
-	# T0=T=10;
+	# T0=T=1.5*max(instance[:-1]);
 	T0=T=getInitialTemp(instance, k, chi0, S, p, epsilon)
 	# algorithm may return None because of division by zero
 	# re-run to fix (the algorithm generates different random transitions)
@@ -268,6 +268,10 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 	I=0;
 	# if debugging:
 	print 'T0 from algorithm:', T0, '\n'
+
+	# keep track of overall best solution
+	bestSolSoFar = x[:]
+	bestSolSoFar_makespan = getMakespan(instance, x)
 
 	while T>10**(-6):
 
@@ -299,19 +303,26 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 					print "Cooling factor", numpy.exp((-costb+costa)/T)
 				x = x_new[:];
 
+		# check if the new solution is better than the current best
+		if getMakespan(instance, x) < bestSolSoFar_makespan:
+			bestSolSoFar = x[:]
+			bestSolSoFar_makespan = getMakespan(instance,x)
 
 
 			# TODO: Indented or not indented????
 		I=I+1;
 		# T=T0*0.8**I; # Exponential multiplicative cooling.
-		T=T0-0.8*I; # Simple exponential cooling. 
-		# T = T0/(1+0.8*I); # Linear multiplicative cooling.
-		# T = T0/(1+0.8*I**2); # Quadratic multiplicative cooling. BIT SLOWER THAN VDS BUT GOOD SOLUTIONS FOR EXAMPLE BELOW!
+		T=T0-I; # Simple exponential cooling. 
+		# T = T0/(1+I); # Linear multiplicative cooling.
+		# T = T0/(1+I**2); # Quadratic multiplicative cooling. BIT SLOWER THAN VDS BUT GOOD SOLUTIONS FOR EXAMPLE BELOW!
 		if debugging:
 			print 'New T:', T, '\n'
 
-	# output best solution found
-	x_star = x
+	# output best solution found (check the final x compared to bestSolSoFar)
+	if getMakespan(instance, x) > bestSolSoFar_makespan:
+		x_star = bestSolSoFar
+	else:
+		x_star = x
 
 	end = time.time()
 	runtime = end - start
@@ -984,7 +995,7 @@ def convertSol_toSetsOfJobs(x):
 
 #----------------------------------------------------------------------------------------#
 
-def main():
+def test():
 
 	test = {}
 	test['jump'] = False
@@ -1002,10 +1013,10 @@ def main():
 	# instance = [9,7,4,3,2,2,2,1,3]
 	# initSol  = [1,1,2,1,3,1,3,2]
 
-	instance = [3,6,8,2,7,13,5,14,2,3,2,6,5]
-	initSol  = [1,1,2,4,3,1,3,2,5,3,4,1,5]
+	# instance = [3,6,8,2,7,13,5,14,2,3,2,6,5]
+	# initSol  = [1,1,2,4,3,1,3,2,5,3,4,1,5]
 
-	instance = [3,6,8,2,7,13,5,14,2,3,2,6,5,4,3,6,12,14,15,14,1,16,25,23,25,21,25,24,5]
+	# instance = [3,6,8,2,7,13,5,14,2,3,2,6,5,4,3,6,12,14,15,14,1,16,25,23,25,21,25,24,5]
 
 	numJobs = len(instance)-1
 
@@ -1100,6 +1111,11 @@ def main():
 		p = 1
 		epsilon = 10**(-3)
 		print 'T0', getInitialTemp(instance, k, chi0, S, p, epsilon)
+
+def main():
+
+	test()
+	
 
 if __name__ == "__main__":
 	main()
