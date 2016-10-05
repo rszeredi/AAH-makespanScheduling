@@ -68,9 +68,6 @@ def runHeuristic(heuristic, instanceList, k, initSolType, debugging):
 def generateRandomDurations(n,dist,seed):
 	maxDur = 100
 
-	if seed:
-		numpy.random.seed(0) # Careful!! Used 0 for first experiments.
-
 	if dist == 'fatTailed':
 		# Focus the processing times on very high and very low values
 		# Note: max duration must be a 'nice' number (ie divisible by 5 or 10) for fatTailed to work
@@ -104,12 +101,60 @@ def generateRandomInstances(n,m,numToGenerate,dist,seed):
 
 	instances = [None for i in range(numToGenerate)]
 
+	if seed:
+		numpy.random.seed(0)
+
 	for i in range(numToGenerate):
 		dur = generateRandomDurations(n,dist,seed)
 		instances[i] = dur+[m]
 
 	return instances
 
+# input: number of jobs n; number of machines m; number of realizations of the instance to read in
+# output: list of lists (the instances)
+def readStoredInstances(n,m,numToRead):
+
+	instances = [None for i in range(numToRead)]
+
+	for i in range(numToRead):
+		# Read in the input from the csv instance file
+		file = open('test-instances/instance_m{}_n{}_{:03}.csv'.format(m,n,i+1), 'rb')
+		inputInst = list(csv.reader(file))
+
+		# Add processing times
+		instances[i] = [ int(inputInst[j+1][0]) for j in range(len(inputInst)-1) ]
+		
+		# Add number of machines
+		instances[i].append(int(inputInst[0][0]))
+
+		file.close()
+
+	return instances
+
+def saveInstances():
+
+	nList=[10,20,30,40,50,60,70,80,90,100]
+	mList=[2,4,6,8,10]
+	realizations = 20
+	dist = 'uniform'
+	seed = True
+
+	for n in nList:
+		for m in mList:
+			
+			# Generate instances for each n and m combination
+			instanceList = generateRandomInstances(n,m,realizations,dist,seed)
+
+			# Create output files for each realization
+			for r in range(realizations):
+				instanceOutput = open('test-instances/instance_m{}_n{}_{:03}.csv'.format(m,n,r+1), 'w')
+
+				instanceOutput.write('%s\n' %(instanceList[r][-1])) # store the number of machines
+
+				for i in range(n):
+					instanceOutput.write('%s\n' %(instanceList[r][i]))
+
+				instanceOutput.close()
 
 def getvalueforinitialTemperature():
 
@@ -157,9 +202,6 @@ def getvalueforinitialTemperature():
 		initialTempFile.write('\n')
 
 
-
-
-
 #----------------------------------------------------------------------------------------#
 # EXPERIMENTS
 
@@ -167,11 +209,11 @@ def main():
 
 	# Define constants for experiments
 	k=2						# number of exchanges
-	realizations=20			# number of empirical data points
+	realizations=1			# number of empirical data points
 	dist='uniform'			# distribution of processing times
-	seed=False				# whether to seed the randomization
+	seed=True				# whether to seed the randomization
 	debugging=False			# whether to print solutions
-	alg='Ours'				# algorithm to use: 'GLS', 'VDS', or 'Ours'
+	alg='GLS'				# algorithm to use: 'GLS', 'VDS', or 'Ours'
 	initSolType='random'		# initial solution to use: 'inputOrder', 'random', or 'GMS'
 
 
@@ -182,8 +224,8 @@ def main():
 	nList=[10,20,30,40,50,60,70,80,90,100]
 	mList=[2,4,6,8,10]
 
-	nList=[15,20,25,30,35,40,45,50]
-	mList=[2,4,6,8,10]
+	# nList=[15,20,25,30,35,40,45,50]
+	# mList=[2,4,6,8,10]
 
 
 	# Initialize output files
@@ -211,8 +253,13 @@ def main():
 
 		for j in range(len(nList)):
 			print '...%s jobs: avgRuntime=' %(nList[j]),
-			# Generate random instances for the given n and m
-			instanceList = generateRandomInstances(nList[j],mList[i],realizations,dist,seed)
+
+			if seed:
+				# Read in the previously stored data
+				instanceList = readStoredInstances(nList[j],mList[i],realizations)
+			else:
+				# Generate random instances for the given n and m
+				instanceList = generateRandomInstances(nList[j],mList[i],realizations,dist,False)
 
 			# Run the algorithm on the test instances
 			makespanList, runtimeList = runHeuristic(alg,instanceList,k,initSolType,debugging)
@@ -253,4 +300,5 @@ def main():
 
 if __name__ == "__main__":
 	main()
-#	getvalueforinitialTemperature()
+	# getvalueforinitialTemperature()
+	# saveInstances()

@@ -253,8 +253,8 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 		GMS_sol = findInitialFeasibleSolution_GMS(instance)
 		x = convertSol_toListOfMachines(GMS_sol)
 
-	# if debugging:
-	print 'Initial solution:', x, 'with makespan', getMakespan(instance,x) # debugging: print initial solution
+	if debugging:
+		print 'Initial solution:', x, 'with makespan', getMakespan(instance,x) # debugging: print initial solution
 
 	# Select initial temperature, and temperature reduction function as function of T and time.
 	# T0=T=1.5*max(instance[:-1]);
@@ -266,8 +266,8 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 		print 'Initial temperature algorithm returned None. Re-run algorithm.'
 		T0=T=getInitialTemp(instance, k, chi0, S, p, epsilon)
 	I=0;
-	# if debugging:
-	print 'T0 from algorithm:', T0, '\n'
+	if debugging:
+		print 'T0 from algorithm:', T0, '\n'
 
 	# keep track of overall best solution
 	bestSolSoFar = x[:]
