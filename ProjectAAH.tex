@@ -7,7 +7,13 @@
 \usepackage{comment}
 \usepackage{tikz}
 \usepackage{subcaption}
-\usepackage{slashbox}
+\usepackage{./slashbox}
+\usepackage{enumitem}
+\setlist{
+  listparindent=\parindent,
+  parsep=0pt,
+  listparindent = 1em
+}
 
 \usetikzlibrary{matrix}
 
@@ -15,7 +21,7 @@
 
 \usepackage{fancyhdr}
 \setlength\parindent{0pt}
- 
+
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{Ria Szeredi, Kenneth Young, Lotte Romijn}
@@ -43,27 +49,25 @@
 
 Schedule $n$ jobs with designated processing times on $m$ identical machines in such a way that the whole processing time is minimised. \\
 
-\textbf{Input}: 
+\textbf{Input}:
 
 Positive integers $p_1,p_2,...,p_n$ and an integer $m \geq 2$ for some $n \in \mathbb{N} - \{0\}$. Each $p_i$ is the processing time of the $i$th job on any of the $m$ available machines. \\
 
-\textbf{Constraints}: 
+\textbf{Constraints}:
 
 For every input instance $(p_1,...,p_n,m)$ of MS, $\mathcal{M}(p_1,...,p_n,m) = $ \\ $\{S_1,S_2,...,S_m \> | \> S_i \subseteq \{1,2,...,n\} \textnormal{ for } i=1,...,m, \> \cup_{k=1}^m S_k = \{1,2,...,n\}, \textnormal{ and }$ \\ $S_i \cap S_j = \emptyset \textnormal{ for } i \neq j \}$. \\
 
-\textbf{Cost}: 
+\textbf{Cost}:
 
 For each $(S_1,...,S_m) \in \mathcal{M}(p_1,...,p_n,m)$, \\ $\textnormal{cost}((S_1,...,S_m),(p_1,...,p_n,m)) = \textnormal{max} \{ \sum_{l \in S_i} p_l | i = 1,...,m \}$. \\
 
-\textbf{Goal}: 
+\textbf{Goal}:
 
 \textit{minimum}
 
 
 }
 }
-
-\newpage
 
 \section{Greedy Local Search Algorithm for MS}
 We implement a greedy local search (GLS) algorithm for MS, which picks the lowest cost neighbour at any iteration.\\
@@ -81,9 +85,9 @@ We can check that the conditions for a suitable neighbourhood are satisfied. Let
 
 \item (\textit{Reflexivity}): Since we allow a job to jump to the machine in which it is already contained, it is possible that, after $k$ jumps, all jobs are in their original machines, and the solution is identical to $\alpha$. Hence, we have that $\alpha \in f_X(\alpha)$ for every $\alpha \in \mathcal{M}(x)$. (We call this a `loop').
 
-\item (\textit{Symmetry}): If $\beta \in f_X(\alpha)$ for some $\alpha \in \mathcal{M}(x)$, then $\alpha \in f_X(\beta)$, since reversing the $k$ jumps from which $\beta$ was obtained from $\alpha$ is also a $k$ jump. 
+\item (\textit{Symmetry}): If $\beta \in f_X(\alpha)$ for some $\alpha \in \mathcal{M}(x)$, then $\alpha \in f_X(\beta)$, since reversing the $k$ jumps from which $\beta$ was obtained from $\alpha$ is also a $k$ jump.
 
-\item (\textit{Connectivity}): If we have any two feasible solutions $\alpha$ and $\beta$, we can always obtain one from the other by performing a finite number of $k$ jumps (since we allow a job to jump to any machine). If $k \geq n$, one $k$ jump suffices, since we allow loops. If $k \leq n$, we perform maximally $\lceil \frac{n}{k} \rceil$ $k$ jumps. Hence, for all $\alpha, \beta \in \mathcal{M}(x)$, there exists a positive integer $k$ and $\gamma_1,...,\gamma_k \in \mathcal{M}(x)$ such that $\gamma_1 \in f_X(\alpha)$, $\gamma_{i+1} \in f_X(\gamma_i)$ for $i=1,...,k-1$, and $\beta \in f_X(\gamma_k)$. 
+\item (\textit{Connectivity}): If we have any two feasible solutions $\alpha$ and $\beta$, we can always obtain one from the other by performing a finite number of $k$ jumps (since we allow a job to jump to any machine). If $k \geq n$, one $k$ jump suffices, since we allow loops. If $k \leq n$, we perform maximally $\lceil \frac{n}{k} \rceil$ $k$ jumps. Hence, for all $\alpha, \beta \in \mathcal{M}(x)$, there exists a positive integer $k$ and $\gamma_1,...,\gamma_k \in \mathcal{M}(x)$ such that $\gamma_1 \in f_X(\alpha)$, $\gamma_{i+1} \in f_X(\gamma_i)$ for $i=1,...,k-1$, and $\beta \in f_X(\gamma_k)$.
 
 \end{enumerate}
 
@@ -92,7 +96,7 @@ We also consider a \textit{swap}-neighbourhood: \\
 
 We define a mapping $f_X: \mathcal{M}(x) \rightarrow 2^{\mathcal{M}(x)}$, such that if $\beta = \{\beta_1,\beta_2,...,\beta_m \} \in f_x(\alpha)$ for some $\alpha = \{\alpha_1,\alpha_2,...,\alpha_m \} \in \mathcal{M}(x)$ if $\beta$ can be obtained from $\alpha$ by $k$ swaps. \\
 
-Each swap allows a pair of jobs $(i,j) \in \{1,...,n\} \times \{1,...,n\}$ to swap from machine. 
+Each swap allows a pair of jobs $(i,j) \in \{1,...,n\} \times \{1,...,n\}$ to swap from machine.
 
 Hence, after one swap $(\alpha_i, \alpha_j) \neq (\beta_i,\beta_j)$ for some $(i,j) \in \{1,...,n\} \times \{1,...,n\}$, and $\alpha_k = \beta_k$ for $k \neq i$ and $k \neq j$.  \\
 
@@ -101,13 +105,13 @@ We can check that the conditions for a suitable neighbourhood are satisfied. Let
 
 \item (\textit{Reflexivity}): Since we allow the swapping of two jobs from the same machine, it is possible that, after a number of $k$-swaps, all jobs are in their original machines, and the solution is identical to $\alpha$. Hence, we have that $\alpha \in f_X(\alpha)$ for every $\alpha \in \mathcal{M}(x)$. (We call this a `loop').
 
-\item (\textit{Symmetry}): If $\beta \in f_X(\alpha)$ for some $\alpha \in \mathcal{M}(x)$, then $\alpha \in f_X(\beta)$, since reversing the $k$ swap from which $\beta$ was obtained from $\alpha$ is also a $k$ swap. 
+\item (\textit{Symmetry}): If $\beta \in f_X(\alpha)$ for some $\alpha \in \mathcal{M}(x)$, then $\alpha \in f_X(\beta)$, since reversing the $k$ swap from which $\beta$ was obtained from $\alpha$ is also a $k$ swap.
 
-\item (\textit{Connectivity}): If we have any two feasible solutions $\alpha$ and $\beta$, the connectivity property is not always satisfied. For instance, if $\alpha$ and $\beta$ only differ from each other by one job, i.e. one job is positioned into a different machine, then we can not get $\beta$ from $\alpha$ by doing one swap (or a $k$ swap, since we have reflexivity). 
+\item (\textit{Connectivity}): If we have any two feasible solutions $\alpha$ and $\beta$, the connectivity property is not always satisfied. For instance, if $\alpha$ and $\beta$ only differ from each other by one job, i.e. one job is positioned into a different machine, then we can not get $\beta$ from $\alpha$ by doing one swap (or a $k$ swap, since we have reflexivity).
 
 \end{enumerate}
 
-Hence, for the \textit{swap}-neighbourhood the connectivity property of a neighbourhood is not satisfied. However, we can consider a neighbourhood which includes both jumps and swaps. In order to do this, we need to determine the order of jumping and swapping. For instance, a $k$-jump followed by an $l$-swap, or an $l$-swap followed by a $k$-jump, or a $k$-jump followed by an $l$-swap followed by an $s$-jump, etc., for positive integers $k$, $l$, $s$. Because such neighbourhoods include the $k$-jump neighbourhood, for which connectivity is satisfied, we have that connectivity is also satisfied for any of these combinations. 
+Hence, for the \textit{swap}-neighbourhood the connectivity property of a neighbourhood is not satisfied. However, we can consider a neighbourhood which includes both jumps and swaps. In order to do this, we need to determine the order of jumping and swapping. For instance, a $k$-jump followed by an $l$-swap, or an $l$-swap followed by a $k$-jump, or a $k$-jump followed by an $l$-swap followed by an $s$-jump, etc., for positive integers $k$, $l$, $s$. Because such neighbourhoods include the $k$-jump neighbourhood, for which connectivity is satisfied, we have that connectivity is also satisfied for any of these combinations.
 \end{comment}
 
 
@@ -125,7 +129,7 @@ We subsequently calculate the solution quality, denoting the makespan value prod
 \begin{equation}
 \textnormal{`makespan gap'} = \frac{\textnormal{makespan}}{\textnormal{lower bound} - 1} \times 100\%.
 \end{equation}
- 
+
 Here, we present the results of 1 realizations per $n$, $m$, and $k$. \\
 
 
@@ -165,20 +169,20 @@ Here, we present the results of 1 realizations per $n$, $m$, and $k$. \\
 \scriptsize
 \begin{tabular}{l*{9}{c}}
 \backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-2 & 0.001157 & 0.001984 & 0.00259 & 0.003404 & 0.004791 & 0.005282 & 0.008337 & 0.009274 \\4 & 0.004138 & 0.007958 & 0.010999 & 0.017825 & 0.023851 & 0.031814 & 0.044572 & 0.044368 \\6 & 0.012903 & 0.018906 & 0.03005 & 0.04325	 & 0.058014 & 0.067476 & 0.093211 & 0.095713 \\8 & 0.019928 & 0.035517 & 0.04338 & 0.075433 & 0.102123 & 0.150451 & 0.216973 & 0.218985 \\10 & 0.026137 & 0.060186 & 0.080977 & 0.134945 & 0.179109 & 0.199928 & 0.324753 & 0.385431 
+2 & 0.001157 & 0.001984 & 0.00259 & 0.003404 & 0.004791 & 0.005282 & 0.008337 & 0.009274 \\4 & 0.004138 & 0.007958 & 0.010999 & 0.017825 & 0.023851 & 0.031814 & 0.044572 & 0.044368 \\6 & 0.012903 & 0.018906 & 0.03005 & 0.04325	 & 0.058014 & 0.067476 & 0.093211 & 0.095713 \\8 & 0.019928 & 0.035517 & 0.04338 & 0.075433 & 0.102123 & 0.150451 & 0.216973 & 0.218985 \\10 & 0.026137 & 0.060186 & 0.080977 & 0.134945 & 0.179109 & 0.199928 & 0.324753 & 0.385431
 \end{tabular}
 \label{tab:Q1ck=1runtime}
 \end{subtable}
 \end{table}
 
-Hence, we choose $k=2$. 
+Hence, we choose $k=2$.
 
 
 
 \section*{GLS 1.d}
-We perform an experimental study to test the performance of the GLS algorithm, using $k=2$. We test for $n=10,20,30,40,50,60,70,80,90,100$ and $m=2,4,6,8,10$. 
+We perform an experimental study to test the performance of the GLS algorithm, using $k=2$. We test for $n=10,20,30,40,50,60,70,80,90,100$ and $m=2,4,6,8,10$.
 
-For each combination of $n$, $m$ and $k$, we generate 20 instances of MS. For each instance, we randomly select the processing times $p_i$, for $i=1,...,n$, uniformly distributed between 1 and 100. 
+For each combination of $n$, $m$ and $k$, we generate 20 instances of MS. For each instance, we randomly select the processing times $p_i$, for $i=1,...,n$, uniformly distributed between 1 and 100.
 
 
 We now also use different initial solutions; before starting the GLS algorithm, we need to find an initial, feasible solution for the instance. We do this by randomly putting the jobs in any machine ('random'), or by using the greedy makespan algorithm ('GMS'). The GMS works by first sorting the jobs by non-increasing processing time, assigning the $m$ largest jobs each to a different machine, and assigning the remaining jobs to the least loaded machine. \\
@@ -242,11 +246,11 @@ Here, we present the averaged results of 20 realizations per $n$, $m$, and $k$. 
 
 \section{Variable Depth Search Algorithm for MS}
 
-In our Python code, we generally represent any feasible solution $\{S_1,S_2,...,S_m\}$ to the Knapsack problem as a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in [1,...,m]$ which represents in which machine job $i$ is contained. Methods have been included which convert the solutions between these two representations (\textit{convertSol\_toListOfMachines} and \textit{convertSol\_toSetsOfJobs}). \\
+In our Python code, we generally represent any feasible solution $\{S_1,S_2,...,S_m\}$ to the Makespan Scheduling problem as a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in [1,...,m]$ which represents in which machine job $i$ is contained. Methods have been included which convert the solutions between these two representations (\textit{convertSol\_toListOfMachines} and \textit{convertSol\_toSetsOfJobs}). \\
 
 
 Pseudo-code for VDS:
-We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Knapsack problem. 
+We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Knapsack problem.
 \begin{enumerate}
 \item We generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$, \color{red} MENTION HOW \color{black}
 \item $\textnormal{IMPROVEMENT} := \textnormal{TRUE}$
@@ -257,7 +261,7 @@ We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Knapsack proble
 \begin{enumerate}
 \item \textbf{begin} $J := J+1$
 \item $\alpha_J := $ the best neighbour in the $k$-neighbourhood of $\alpha_{J-1}$. We define \textit{gain}$(\alpha_{J-1}, \delta) = \textnormal{makespan}(\alpha_{J-1}) - \textnormal{makespan}(\delta)$. Hence, the best neighbour $\alpha_J$ is defined such that \\ \textit{gain}$(\alpha_{J-1},\alpha_J) = $max$\{$\textit{gain}$(\alpha_{J-1},\delta) | \delta \in \textnormal{Neigh}_k(\alpha_{J-1}) - \{\alpha_{J-1} \}$ and $\delta$ differs from $\alpha_{J-1}$ in the parameters of $\textnormal{EXCHANGE}$ only $\}$.
-\item $\textnormal{EXCHANGE} := \textnormal{EXCHANGE} - \{ \textnormal{the parameters in which } \alpha_J \textnormal{ and } \alpha_{J-1} \textnormal{ differ } \}$ (i.e., we remove the job index for which the machine has been changed from $\textnormal{EXCHANGE}$). 
+\item $\textnormal{EXCHANGE} := \textnormal{EXCHANGE} - \{ \textnormal{the parameters in which } \alpha_J \textnormal{ and } \alpha_{J-1} \textnormal{ differ } \}$ (i.e., we remove the job index for which the machine has been changed from $\textnormal{EXCHANGE}$).
 \end{enumerate}
 \item \textbf{end}
 \item Compute \textit{gain}$(\alpha,\alpha_i) = \textnormal{makespan}(\alpha) - \textnormal{makespan}(\alpha_i)$, for $i=1,...,J$
@@ -278,11 +282,55 @@ We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Knapsack proble
 
 Say something about `differentsolrequired'
 
+\section{Simulated Annealing Algorithm for MS}
 
+The heuristic we chose to implement is simulated annealing. In this section, we present pseudocode for the algorithm, as well as details about the generation of the initial value of the temperature. We also present experimental results for the same test instances used in parts 1(d) and 2(c). Finally, we conclude with a comparison to the performance of the simulated annealing heuristic to the performance of the GLS and VDS algorithms.
 
+\subsection*{Simulated Annealing Algorithm Pseudocode}
+In our algorithm, we make a slight modification to keep track of the best solution found by the algorithm. This is compared to the final solution found by the simulated annealing algorithm. We do this in order to avoid the algorithm returning a worse solution than one previously found. \\
 
+We again use the GMS algorithm (see section \ref{}) to generate an initial feasible solution. \\
 
+\emph{Input}: An input instance $I = (p_1,p_2,...,p_n,m)$ of the Makespan Scheduling problem.
+\begin{enumerate}
+\item Generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$, using GMS. \\
+$T$ = getInitialTemp($S, \chi_0,...$)
+\item $I := 0$ \\
+$best:=\xi$
+\item\textbf{while} $T>0$ \textbf{do}
+\begin{enumerate}
+\item \textbf{begin} Randomly select a neighbour $\beta\in Neigh_x(\alpha)$
+\item \textbf{if} makespan($\beta$) $\leq$ makespan($\alpha$) \textbf{then}
+\begin{enumerate}
+\item $\alpha:=\beta$
+\end{enumerate}
+\item[] \textbf{else}
+\begin{enumerate}
+\item Generate a random number $r$ uniformly in the range $(0,1)$
+\item \textbf{if} $r<e^{-\frac{\text{makespan}(\alpha)-\text{makespan}(\beta)}{T}}$ \textbf{then}
+\begin{enumerate}
+\item[] $\alpha:=\beta$
+\end{enumerate}
+\end{enumerate}
+\item \textbf{if}
+$\text{makespan}(\alpha) < \text{makespan}(best)$ \textbf{then}
+\begin{enumerate}
+\item[] $best:=\alpha$
+\end{enumerate}
+\item $I:=I+1$
+\item $T:=\text{reduceTemperature}(T,I)$
+\end{enumerate}
+\item[] \textbf{end while}
+\item \textbf{if} $\text{makespan}(\alpha) < \text{makespan}(best)$ \\
+\indent \textbf{output}$(\alpha)$ \\
+\textbf{else} \\
+\indent \textbf{output}$(best)$
+\end{enumerate}
 
+\subsection*{Choice of the Initial Temperature}
+We use an algorithm by \ref{}, which generates an initial temperature based on ... . The pseudocode is as follows.
+
+\subsection*{Choice of the Temperature Reduction Function}
 
 
 \end{document}
