@@ -36,7 +36,7 @@
 {#2}
 \end{minipage}}
 
-\renewcommand{\baselinestretch}{1.2} 
+\renewcommand{\baselinestretch}{1.2}
 
 
 \begin{document}
@@ -81,7 +81,12 @@ We consider a \textit{k-jump}-neighbourhood: \\
 
 We define a mapping $f_X: \mathcal{M}(x) \rightarrow 2^{\mathcal{M}(x)}$, such that if $\beta = \{\beta_1,\beta_2,...,\beta_m \} \in f_x(\alpha)$ for some $\alpha = \{\alpha_1,\alpha_2,...,\alpha_m \} \in \mathcal{M}(x)$ if $\beta$ can be obtained from $\alpha$ by $k$ jumps. \\
 
-Each jump allows some job $i \in S_j$ for some $j \in \{1,...,m\}$ to move to any one of the $m$ machines, including to the one in which it is contained. Hence, after one jump $\alpha_i \neq \beta_j$ for some $i \in \{1,...,m\}$ and $j \in \{1,...,m\}$, and $\alpha_k = \beta_k$ for $k \neq i$ and $k \neq j$, or $\alpha = \beta$ if the job jumps to its own machine. \\
+Each jump allows some job $p \in S_i$ for some $i \in \{1,...,m\}$ to move to any one of the $m$ machines, including to the one in which it is contained. Hence, after one jump we have one of two cases:
+\begin{itemize}
+\item $\alpha_i \neq \beta_i$ and $\alpha_j \neq \beta_j$ for some $i \in \{1,...,m\}$ and $j \in \{1,...,m\}$, and $\alpha_\ell = \beta_\ell$ for $\ell \neq i$ and $\ell \neq j$, or
+\item $\alpha = \beta$ if the job jumps to its own machine. \\
+\end{itemize}
+
 
 We can check that the conditions for a suitable neighbourhood are satisfied. Let $\alpha = \{\alpha_1,...,\alpha_m\}$ be an initial, feasible solution.
 \begin{enumerate}
@@ -121,6 +126,8 @@ Hence, for the \textit{swap}-neighbourhood the connectivity property of a neighb
 \section*{GLS 1.b}
 We implement the \textit{greedy local search} (GLS) algorithm in Python. We will call the resulting total processing time, produced by the algorithm, the `makespan value'. See attached \color{red} code files \color{black}. \\
 
+In our code for GLS, Variable-Depth Search (Section \ref{}) and Simulated Annealing (Section \ref{}), we represent a feasible solution $\{S_1,S_2,...,S_m\}$ to the Makespan Scheduling problem as a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in [1,...,m]$ which represents in which machine job $i$ is contained. Methods have been included which convert the solutions between these two representations (\textit{convertSol\_toListOfMachines} and \textit{convertSol\_toSetsOfJobs}). Further details about the implementation of the procedure to find the best $k$-\emph{jump}-neighbour of a solution are provided in Section \ref{}.\\
+
 \section*{GLS 1.c}
 We perform an experimental study on randomly generated instances of MS across a range of $n$ and $m$ values in order to select an appropriate value for $k$. \\
 
@@ -128,7 +135,7 @@ We consider $n=15, 20, 25, 30, 35, 40, 45, 50$, $m=2,4,6,8,10$, and $k=1,2,3$. F
 \begin{equation}
 \textnormal{lower bound} = \frac{\sum_{i=1}^n p_i}{m}.
 \end{equation}
-We subsequently calculate the solution quality, denoting the makespan value produced by GLS as `makespan', 
+We subsequently calculate the solution quality, denoting the makespan value produced by GLS as `makespan',
 \begin{equation}
 \textnormal{`makespan gap'} = \frac{\textnormal{makespan}}{\textnormal{lower bound} - 1} \times 100\%,
 \end{equation}
@@ -141,7 +148,7 @@ We can see in Table \ref{tab:Q1ck=1makespangap}, \ref{tab:Q1ck=2makespangap}, an
 
 In Table  \ref{tab:Q1ck=1runtime}, \ref{tab:Q1ck=2runtime}, and \ref{tab:Q1ck=3runtime}, we see that for all $n$ and $m$, the run time increases as $k$ increases. It increases exponentially: we see that the average run time is 0.072 s for $k=1$, 19.79 s for $k=2$, and 1199 s for $k=3$. The runtime is larger for large $m$ and large $n$, as in this case there are many possibilities for jobs to make a jump, and hence, we have a large neighbourhood. \\
 
-For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we see that for all instances we have considered so far, the run time is smaller than 5 minutes (300 seconds). Moreover, the makespan gap is smaller than for $k=1$, for all instances except for $n=15$ and $m=8,10$, i.e. when the number of jobs is relatively close to the number of machines. Hence, we make a trade-off between solution quality and run time, and select $k=2$ as our $k$-value. 
+For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we see that for all instances we have considered so far, the run time is smaller than 5 minutes (300 seconds). Moreover, the makespan gap is smaller than for $k=1$, for all instances except for $n=15$ and $m=8,10$, i.e. when the number of jobs is relatively close to the number of machines. Hence, we make a trade-off between solution quality and run time, and select $k=2$ as our $k$-value.
 
 
 \begin{table}
@@ -306,7 +313,7 @@ For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we
 \begin{tabular}{l|*{9}{c}}
 \backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
 \hline
-2& 0&	0&	0.09&	0&	0.05&	0.06&	0.05&	0 \\4& 0.67&	0.43&	0.3&	0&	0.12&	0.05&	0.05&	0.04 \\6& 2.65&	0.70&	0.89&	0.82&	0.29&	0.25&	0.19&	0.08 \\8& 13.54&	1.21&	0.53&	0.70&	0.53&	0.35&	0.16&	0.50 \\10& 7.75&	19.6&	3.10&	2.56&	2.47&	1.07&	0.87&	0.66 
+2& 0&	0&	0.09&	0&	0.05&	0.06&	0.05&	0 \\4& 0.67&	0.43&	0.3&	0&	0.12&	0.05&	0.05&	0.04 \\6& 2.65&	0.70&	0.89&	0.82&	0.29&	0.25&	0.19&	0.08 \\8& 13.54&	1.21&	0.53&	0.70&	0.53&	0.35&	0.16&	0.50 \\10& 7.75&	19.6&	3.10&	2.56&	2.47&	1.07&	0.87&	0.66
 \end{tabular}
 \label{tab:Q1ck=2makespangapGMS}
 \end{subtable}
@@ -320,7 +327,7 @@ For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we
 \begin{tabular}{l|*{9}{c}}
 \backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
 \hline
-2& 0.02&	0.03&	0.05&	0.08&	0.22&	0.68&	0.71&	0.28 \\4& 0.1&	0.37&	0.46&	0.44&	1.97&	2.49&	4.22&	5.5 \\6& 0.77&	0.71&	2.1&	6.81&	6.08&	10.06&	17.3&	19.14 \\8& 1.11&	1.14&	2.76&	11.8&	6.81&	32.03&	33.08&	77.17 \\10& 1.47&	4.42&	7.41&	18.62&	49.96&	40.49&	54.06&	190.83 
+2& 0.02&	0.03&	0.05&	0.08&	0.22&	0.68&	0.71&	0.28 \\4& 0.1&	0.37&	0.46&	0.44&	1.97&	2.49&	4.22&	5.5 \\6& 0.77&	0.71&	2.1&	6.81&	6.08&	10.06&	17.3&	19.14 \\8& 1.11&	1.14&	2.76&	11.8&	6.81&	32.03&	33.08&	77.17 \\10& 1.47&	4.42&	7.41&	18.62&	49.96&	40.49&	54.06&	190.83
 \end{tabular}
 \label{tab:Q1ck=2runtimeGMS}
 \end{subtable}
@@ -404,7 +411,7 @@ We now also use different initial solutions; before starting the GLS algorithm, 
 
 We consider a `reasonable' runtime to be approximately 5 minutes. The averaged results of 10 realizations per $n$, $m$, and $k$ are presented in Table \ref{tab:Q1d} and Figure \ref{fig:Q1d}. In Figure \ref{fig:Q1d}, only makespan gap values between 0 and 20 \% are plotted, and run time values between 0 and 300 s (5 minutes). \\
 
-From Table \ref{tab:Q1dmakespangapRandom}, we can calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 4.09 \%. In Table \ref{tab:Q1dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the random initial solution is 4.11 \%. In Table \ref{tab:Q1druntimeRandom}, the average run time over all $n$ and $m$ for the random initial solution is 176.74 s. In Table \ref{tab:Q1druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 171.04 s. Hence, the random initial solution and the GMS initial solution give similar results. \color{red} WHY \color{black} Later we will also use these two initial solutions when testing VDS and our heuristic. 
+From Table \ref{tab:Q1dmakespangapRandom}, we can calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 4.09 \%. In Table \ref{tab:Q1dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the random initial solution is 4.11 \%. In Table \ref{tab:Q1druntimeRandom}, the average run time over all $n$ and $m$ for the GMS initial solution is 176.74 s. In Table \ref{tab:Q1druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 171.04 s. Hence, the random initial solution and the GMS initial solution give similar results. \color{red} WHY \color{black} Later we will also use these two initial solutions when testing VDS and our heuristic.
 
 
 \begin{table}
@@ -546,42 +553,59 @@ From Table \ref{tab:Q1dmakespangapRandom}, we can calculate that the average mak
 
 \section{Variable Depth Search Algorithm for MS}
 
-In our Python code, we generally represent any feasible solution $\{S_1,S_2,...,S_m\}$ to the Makespan Scheduling problem as a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in [1,...,m]$ which represents in which machine job $i$ is contained. Methods have been included which convert the solutions between these two representations (\textit{convertSol\_toListOfMachines} and \textit{convertSol\_toSetsOfJobs}). \\
+\section*{VDS 2.a}
+\textbf{Pseudo-code for VDS}\\
+We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Makespan Scheduling problem. Recall that, during implementation, we use a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, to represent a solution.
 
-
-Pseudo-code for VDS:
-We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Knapsack problem.
 \begin{enumerate}
-\item We generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$, \color{red} MENTION HOW \color{black}
+\item Generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$ \color{red} MENTION HOW \color{black}
 \item $\textnormal{IMPROVEMENT} := \textnormal{TRUE}$
-\item $\textnormal{EXCHANGE} := \{1,2,...,n\}$, $J=0$, $\alpha_J := \xi$
-\item \textbf{while} $\textnormal{IMPROVEMENT} = \textnormal{TRUE}$ \textbf{do begin}
+\item[] $\textnormal{EXCHANGE} := \{1,2,...,n\}$
+\item[] $J=0$, $\alpha_J := \xi$
+\item \textbf{while} $\textnormal{IMPROVEMENT} = \textnormal{TRUE}$ \textbf{do}
 \begin{enumerate}
 \item \textbf{while} $\textnormal{EXCHANGE} \neq \emptyset$ \textbf{do}
 \begin{enumerate}
-\item \textbf{begin} $J := J+1$
-\item $\alpha_J := $ the best neighbour in the $k$-neighbourhood of $\alpha_{J-1}$. We define \textit{gain}$(\alpha_{J-1}, \delta) = \textnormal{makespan}(\alpha_{J-1}) - \textnormal{makespan}(\delta)$. Hence, the best neighbour $\alpha_J$ is defined such that \\ \textit{gain}$(\alpha_{J-1},\alpha_J) = $max$\{$\textit{gain}$(\alpha_{J-1},\delta) | \delta \in \textnormal{Neigh}_k(\alpha_{J-1}) - \{\alpha_{J-1} \}$ and $\delta$ differs from $\alpha_{J-1}$ in the parameters of $\textnormal{EXCHANGE}$ only $\}$.
-\item $\textnormal{EXCHANGE} := \textnormal{EXCHANGE} - \{ \textnormal{the parameters in which } \alpha_J \textnormal{ and } \alpha_{J-1} \textnormal{ differ } \}$ (i.e., we remove the job index for which the machine has been changed from $\textnormal{EXCHANGE}$).
+\item $J := J+1$
+\item $\alpha_J := findBestNeighbour(I,\alpha_{J-1},k,\text{ True, EXCHANGE})$
+%the best neighbour in the $k$-neighbourhood of $\alpha_{J-1}$. We define \textit{gain}$(\alpha_{J-1}, \delta) = \textnormal{makespan}(\alpha_{J-1}) - \textnormal{makespan}(\delta)$. Hence, the best neighbour $\alpha_J$ is defined such that \\ \textit{gain}$(\alpha_{J-1},\alpha_J) = $max$\{$\textit{gain}$(\alpha_{J-1},\delta) | \delta \in \textnormal{Neigh}_k(\alpha_{J-1}) - \{\alpha_{J-1} \}$ and $\delta$ differs from $\alpha_{J-1}$ in the parameters of $\textnormal{EXCHANGE}$ only $\}$.
+\item $\textnormal{EXCHANGE} := \textnormal{EXCHANGE} - \{\text{jobs whose machines changed in the transition}$\\
+\hspace*{6cm} from $\alpha_{J-1} \text{ to } \alpha_{J}\} $
+%\item $\textnormal{EXCHANGE} := \textnormal{EXCHANGE} - \{ \textnormal{the parameters in which } \alpha_J \textnormal{ and } \alpha_{J-1} \textnormal{ differ } \}$ (i.e., we remove the job index for which the machine has been changed from $\textnormal{EXCHANGE}$).
 \end{enumerate}
-\item \textbf{end}
-\item Compute \textit{gain}$(\alpha,\alpha_i) = \textnormal{makespan}(\alpha) - \textnormal{makespan}(\alpha_i)$, for $i=1,...,J$
-\item Compute $l \in \{1,...,J\}$ such that \\ \textit{gain}$(\alpha,\alpha_l) = \textnormal{max}\{$\textit{gain}$(\alpha,\alpha_i) \> | i \in \{1,2,...,J\} \}$
-\item \textbf{if} \textit{gain}$(\alpha,\alpha_l) > 0$ \textbf{then}
+\item[] \textbf{end while}
+\item Compute \textit{gain}$(\xi,\alpha_i) = \textnormal{makespan}(\xi) - \textnormal{makespan}(\alpha_i)$, for $i=1,...,J$
+\item Compute $l \in \{1,...,J\}$ such that \\ \textit{gain}$(\xi,\alpha_l) = \textnormal{max}\{$\textit{gain}$(\xi,\alpha_i) \> | i \in \{1,2,...,J\} \}$
+\item \textbf{if} \textit{gain}$(\xi,\alpha_l) > 0$ \textbf{then}
 \begin{enumerate}
-\item $\textnormal{EXCHANGE} := \{1,2,...,n\}$
-\item \textbf{end}
+\item[] $\xi:=\alpha_l$
+\item[] $\textnormal{EXCHANGE} := \{1,2,...,n\}$
 \end{enumerate}
-\item \textbf{else} $\textnormal{IMPROVEMENT} := \textnormal{FALSE}$
-\item \textbf{end}
+\item[] \textbf{else}
+\begin{enumerate}
+\item[] $\textnormal{IMPROVEMENT} := \textnormal{FALSE}$
 \end{enumerate}
+\end{enumerate}
+\item[] \textbf{end while}
 \item \textbf{output}$(\alpha)$
 \end{enumerate}
 
+\textbf{Neighbourhood function and satisfaction of conditions in Section 3.6.2 of the textbook} \\
+Our neighbourhood function, \textit{findBestNeighbour} (step (3)(a)(ii)), returns a solution which can be reached from the input solution in at most $k$ jumps. It does so by systematically iterating through all neighbours and updating the solution if a better neighbour is found. Finding the best neighbour of a feasible solution, $\alpha_i$ is equivalent to finding a feasible solution, $\alpha_{i+1}$, which is such that $gain(\alpha_i,\alpha_{i+1})=\max\{gain(\alpha_i,\delta) | \delta\in Neigh(\alpha_i)\}$. \textcolor{red}{Obvious or explain further?} Thus condition (ii)(a) in Section 3.6.2 of the textbook is satisfied.\\
 
+In order to satisfy the conditions (i) and (ii)(b), we have included two special input arguments to the \textit{findBestNeighbour} method:
+\begin{enumerate}
+\item \textit{differentSolRequired} is a Boolean parameter, which indicates whether we require a neighbour which differs by at least one $\xi_i$ to the original solution. This is set to be True for the VDS algorithm (whereas for the GLS algorithm, we set it to False). The function does not update the best neighbour if the neighbour is the same as the input solution. The implementation of this parameter ensures that the final feasible solution has all jobs assigned to a different machine to the original solution. Thus condition (i) is satisfied.
+\item \textit{jobsToConsider} is a list representing the jobs whose assigned machine we are allowed to change. The \textit{findBestNeighbour} method only iterates over the jobs in this list in its search for the best neighbour, thus returning a solution which is such that any jobs not in the list stay on their original machine. In the VDS algorithm, the input argument is the EXCHANGE list. Thus, at each iteration of the while loop in step (), we obtain a neighbour which differs from the previous solution in the parameters of EXCHANGE only. This list is initialised as the set of all jobs, and is updated at each iteration of the while loop in step () by removing any jobs that were changed. This procedure is continued until there remain no jobs to be changed, and condition (ii)(b) is thus satisfied.
+\end{enumerate}
 
+\section*{VDS 2.b}
+We use Python to implement the \emph{Variable Depth Search}. See attached.
 
-Say something about `differentsolrequired'
+\section*{VDS 2.c}
+We perform an experimental study for VDS using the same instances that were generated for part 1(d)...
 
+\newpage
 \section{Simulated Annealing Algorithm for MS}
 
 The heuristic we chose to implement is simulated annealing. In this section, we present pseudocode for the algorithm, as well as details about the generation of the initial value of the temperature. We also present experimental results for the same test instances used in parts 1(d) and 2(c). Finally, we conclude with a comparison to the performance of the simulated annealing heuristic to the performance of the GLS and VDS algorithms.
@@ -594,7 +618,7 @@ We again use the GMS algorithm (see section \ref{}) to generate an initial feasi
 \emph{Input}: An input instance $I = (p_1,p_2,...,p_n,m)$ of the Makespan Scheduling problem.
 \begin{enumerate}
 \item Generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$, using GMS. \\
-$T$ = getInitialTemp($S, \chi_0,...$)
+$T$ = getInitialTemp($I, k, \chi_0, S, p, \epsilon$)
 \item $I := 0$ \\
 $best:=\xi$
 \item\textbf{while} $T>0$ \textbf{do}
@@ -618,7 +642,7 @@ $\text{makespan}(\alpha) < \text{makespan}(best)$ \textbf{then}
 \item[] $best:=\alpha$
 \end{enumerate}
 \item $I:=I+1$
-\item $T:=\text{reduceTemperature}(T,I)$
+\item $T:=\text{reduceTemperature}(T_0,I)$
 \end{enumerate}
 \item[] \textbf{end while}
 \item \textbf{if} $\text{makespan}(\alpha) < \text{makespan}(best)$ \\
@@ -627,10 +651,56 @@ $\text{makespan}(\alpha) < \text{makespan}(best)$ \textbf{then}
 \indent \textbf{output}$(best)$
 \end{enumerate}
 
-\subsection*{Choice of the Initial Temperature}
-We use an algorithm by \ref{}, which generates an initial temperature based on ... . The pseudocode is as follows.
+\subsection*{Choice of the Initial Temperature: getInitialTemp}
+Since the performance of the algorithm varies greatly depending on the initial value of the temperature, we follow the work of Ben-Ameur [\ref{}] to generate an initial temperature. The algorithm produces a value which is based on ... . The pseudocode is as follows.\\
 
-\subsection*{Choice of the Temperature Reduction Function}
+\textbf{Ben-Ameur algorithm for computing the initial temperature}\\
+\emph{Input:}
+\begin{itemize}
+  \item The input instance $I=(p_1,...,p_n,m)$
+  \item $k$ exchange value
+  \item The desired acceptance probability (?) $\chi_0$
+  \item The number of random transitions to generate $S$
+  \item $p$ ?
+\end{itemize}
+\begin{enumerate}
+  \item Generate a set, $\mathcal{S}$, of size $S$, of random positive transitions and store the makespan values in $E_{max}$ and $E_{min}$.
+  \item $T= ?$
+  \item[] Compute $\chi(T):=\frac{\displaystyle\sum\limits_{t\in \mathcal{S}} e^\frac{E_{{max}_{t}}}{T_n}}{\displaystyle\sum\limits_{t\in \mathcal{S}} e^\frac{E_{{min}_{t}}}{T_n}}$
+  \item \textbf{while} $|\chi(T)-\chi_0|>\epsilon$ \textbf{do}
+  \begin{enumerate}
+    \item $T:=T\cdot(\frac{\ln()}{\ln()})^{\frac{1}{p}}$
+    \item Compute $\chi(T)$
+  \end{enumerate}
+  \item \textbf{output} $T$
+\end{enumerate}
 
+
+\subsection*{Choice of the Temperature Reduction Function: reduceTemperature}
+
+We consider several options for the cooling schedule. All are functions, $f$, of the initial temperature, $T_0$, and the iteration number, $I$. \\
+
+\textbf{Exponential multiplicative cooling}
+\begin{flalign*}
+& f_1(T_0,I)=T_0\cdot \mu^I & \\
+& \text{where we set } \mu=0.8. &
+\end{flalign*}
+
+\textbf{Simple exponential cooling}
+\begin{flalign*}
+f_2(T_0,I)=T_0 - I &&
+\end{flalign*}
+
+\textbf{Linear multiplicative cooling}
+\begin{flalign*}
+f_3(T_0,I)=\frac{1}{1+I}\cdot T_0 &&
+\end{flalign*}
+
+\textbf{Quadratic multiplicative cooling}
+\begin{flalign*}
+f_4(T_0,I)=\frac{1}{1+I^2}\cdot T_0 &&
+\end{flalign*}
+
+\subsection*{Experimental Study}
 
 \end{document}
