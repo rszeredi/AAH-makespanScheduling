@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage[square, comma]{natbib}
 \usepackage{comment}
 \usepackage{tikz}
 \usepackage{float}
@@ -74,7 +75,7 @@ For each $(S_1,...,S_m) \in \mathcal{M}(p_1,...,p_n,m)$, \\ $\textnormal{cost}((
 }
 \newpage
 
-\section{Greedy Local Search Algorithm for MS}
+\section{Greedy Local Search Algorithm for MS} \label{sec:GLS}
 We implement a greedy local search (GLS) algorithm for MS, which picks the lowest cost neighbour at any iteration.\\
 
 \section*{GLS 1.a}
@@ -101,6 +102,9 @@ We can check that the conditions for a suitable neighbourhood are satisfied. Let
 
 \end{enumerate}
 
+The cardinality of this neighbourhood is quite large. If $k=1$, we can move from one feasible solution of MS to another by moving one job, to the same or a different machine. If we have $n$ jobs and $m$ machines, there are $n \> m$ possible $1$-jumps. For general $k$, there are $(n \> m)^k$ possible $k$-jumps.
+
+
 \begin{comment}
 We also consider a \textit{swap}-neighbourhood: \\
 
@@ -126,9 +130,9 @@ Hence, for the \textit{swap}-neighbourhood the connectivity property of a neighb
 
 
 \section*{GLS 1.b}
-We implement the \textit{greedy local search} (GLS) algorithm in Python. We will call the resulting total processing time, produced by the algorithm, the `makespan value'. See attached \color{red} code files \color{black}. \\
+We implement the \textit{greedy local search} algorithm in Python. See attached. We will call the resulting total processing time, produced by the algorithm, the `makespan value'. \\
 
-In our code for GLS, Variable-Depth Search (Section \ref{}) and Simulated Annealing (Section \ref{}), we represent a feasible solution $\{S_1,S_2,...,S_m\}$ to the Makespan Scheduling problem as a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in [1,...,m]$ which represents in which machine job $i$ is contained. Methods have been included which convert the solutions between these two representations (\textit{convertSol\_toListOfMachines} and \textit{convertSol\_toSetsOfJobs}). Further details about the implementation of the procedure to find the best $k$-\emph{jump}-neighbour of a solution are provided in Section \ref{}.\\
+In our code for GLS, Variable-Depth Search (Section \ref{sec:VDS}) and Simulated Annealing (Section \ref{sec:simulatedannealing}), we represent a feasible solution $\{S_1,S_2,...,S_m\}$ to the Makespan Scheduling problem as a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in [1,...,m]$ which represents in which machine job $i$ is contained. Methods have been included which convert the solutions between these two representations (\textit{convertSol\_toListOfMachines} and \textit{convertSol\_toSetsOfJobs}). Further details about the implementation of the procedure to find the best $k$-\emph{jump}-neighbour of a solution are provided in Section \color{red} \ref{} \color{black}.\\
 
 \section*{GLS 1.c}
 We perform an experimental study on randomly generated instances of MS across a range of $n$ and $m$ values in order to select an appropriate value for $k$. \\
@@ -141,16 +145,16 @@ We subsequently calculate the solution quality, denoting the makespan value prod
 \begin{equation}
 \textnormal{`makespan gap'} = \frac{\textnormal{makespan}}{\textnormal{lower bound} - 1} \times 100\%,
 \end{equation}
-which represents the percentage that makespan value is above its lower bound
+which represents the percentage that makespan value is above its lower bound. \\
 
 The results of 1 realization per $n$, $m$, and $k$ are given in Table \ref{tab:Q1c} and Figure \ref{fig:Q1c}.
-In Figure \ref{fig:Q1c}, we show three-dimensional plots of $n$ versus $m$ versus the makespan gap (in percentage), in Figure \ref{fig:Q1cSFig1}, \ref{fig:Q1cSFig3}, and \ref{fig:Q1cSFig5}, and $n$ versus $m$ versus the run time (in seconds), in Figure \ref{fig:Q1cSFig2}, \ref{fig:Q1cSFig4}, and \ref{fig:Q1cSFig6}. For clarity, we only plot values for the makespan between 0 and 20 \%, and values for the run time between 0 and 300 seconds. We consider a `reasonable' runtime to be approximately 5 minutes (300 seconds). \\
+In Figure \ref{fig:Q1c}, we show three-dimensional plots of $n$ versus $m$ versus the makespan gap (in percentage), in Figure \ref{fig:Q1cSFig1}, \ref{fig:Q1cSFig3}, and \ref{fig:Q1cSFig5}, and $n$ versus $m$ versus the run time (in seconds), in Figure \ref{fig:Q1cSFig2}, \ref{fig:Q1cSFig4}, and \ref{fig:Q1cSFig6}. For clarity, we only plot values for the makespan between 0 and 20 \%, and values for the run time between 0 and 1200 seconds. We consider a `reasonable' runtime to be approximately 20 minutes (1200 seconds). \\
 
-We can see in Table \ref{tab:Q1ck=1makespangap}, \ref{tab:Q1ck=2makespangap}, and \ref{tab:Q1ck=3makespangap} that for all $n$ and $m$, the makespan gap decreases as we increase $k$. For $k=1$, the average makespan gap for all $n$ and $m$ in Table \ref{tab:Q1ck=1makespangap} is 6.98 \%. For $k=2$,  the average makespan gap for all $n$ and $m$ in Table \ref{tab:Q1ck=2makespangap} is 3.68 \%. For $k=3$,  the average makespan gap for all $n$ and $m$ in Table \ref{tab:Q1ck=3makespangap} is 1.32 \%. The makespan gap is larger for small $n$ and large $m$, i.e. when few jobs need to be distributed over many machines. It is especially larger when $n$ is close to $m$. \color{red} SAY WHY \color{black} \\
+We can see in Table \ref{tab:Q1ck=1makespangap}, \ref{tab:Q1ck=2makespangap}, and \ref{tab:Q1ck=3makespangap} that for all $n$ and $m$, the makespan gap decreases as we increase $k$. For $k=1$, the average makespan gap for all $n$ and $m$ in Table \ref{tab:Q1ck=1makespangap} is 6.98 \%. For $k=2$,  the average makespan gap for all $n$ and $m$ in Table \ref{tab:Q1ck=2makespangap} is 3.68 \%. For $k=3$,  the average makespan gap for all $n$ and $m$ in Table \ref{tab:Q1ck=3makespangap} is 1.32 \%. The makespan gap is larger for small $n$ and large $m$, i.e. when few jobs need to be distributed over many machines. It is especially larger when $n$ is close to $m$. \color{red} SAY WHY: in fact, the lower bound is not such a great measure of solution quality for these instances \color{black} \\
 
-In Table  \ref{tab:Q1ck=1runtime}, \ref{tab:Q1ck=2runtime}, and \ref{tab:Q1ck=3runtime}, we see that for all $n$ and $m$, the run time increases as $k$ increases. It increases exponentially: we see that the average run time is 0.072 s for $k=1$, 19.79 s for $k=2$, and 1199 s for $k=3$. The runtime is larger for large $m$ and large $n$, as in this case there are many possibilities for jobs to make a jump, and hence, we have a large neighbourhood. \\
+In Table  \ref{tab:Q1ck=1runtime}, \ref{tab:Q1ck=2runtime}, and \ref{tab:Q1ck=3runtime}, we see that for all $n$ and $m$, the run time increases as $k$ increases. It increases exponentially: we see that the average run time is 0.072 s for $k=1$, 19.79 s for $k=2$, and 1199 s for $k=3$. The runtime is increases as $n$ and $m$ increase, as in this case there are many possibilities for jobs to make a jump, and hence, we have a large neighbourhood. In Figure \ref{fig:Q1cSFig2}, \ref{fig:Q1cSFig4}, and \ref{fig:Q1cSFig6}, the run time has been plotted for $k=1$, $k=2$, $k=3$, respectively. We have used the same range of the run time values (between 0 and 1200 s) for all three plots, and compared to $k=3$, we can see that the run times for $k=1$ and $k=2$ are significantly smaller. However, for $n=10$ and $m=10$, the run time for $k=2$ is approximately 3 minutes (195 seconds), and approximately 500 times larger than the run time for $k=1$, which is 0.385 s.   \\
 
-For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we see that for all instances we have considered so far, the run time is smaller than 5 minutes (300 seconds). Moreover, the makespan gap is smaller than for $k=1$, for all instances except for $n=15$ and $m=8,10$, i.e. when the number of jobs is relatively close to the number of machines. Hence, we make a trade-off between solution quality and run time, and select $k=2$ as our $k$-value.
+For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we see that for all instances we have considered so far, the run time is smaller than 20 minutes (1200 seconds). Moreover, the makespan gap is smaller than for $k=1$, for all instances except for $n=15$ and $m=8,10$, i.e. when the number of jobs is relatively close to the number of machines. Hence, we make a trade-off between solution quality and run time, and select $k=2$ as our $k$-value.
 
 
 \begin{table}[H]
@@ -292,7 +296,6 @@ For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we
 {\large \bf $k=1$}
 \end{center}
 \centering
-%\caption{k=1 \color{red} AND SAME TABLES FOR K=2 AND K=3, PREFER NEXT TO EACH OTHER \color{black}}
 \begin{subtable}{0.48\textwidth}
 \centering
 \caption[Makespan gap]{Makespan gap}
@@ -445,14 +448,32 @@ We perform an experimental study to test the performance of the GLS algorithm, u
 
 For each combination of $n$, $m$ and $k$, we generate 10 instances of MS. For each instance, we randomly select the processing times $p_i$, for $i=1,...,n$, uniformly distributed between 1 and 100. Each instance is generated with a different random seed. \\
 
-We now also use different initial solutions; before starting the GLS algorithm, we need to find an initial, feasible solution for the instance. We do this by randomly putting the jobs in any machine ('random'), or by using the greedy makespan algorithm ('GMS'). The GMS works by first sorting the jobs by non-increasing processing time, assigning the $m$ largest jobs each to a different machine, and assigning the remaining jobs to the least loaded machine. \\
+We now also use different initial solutions; before starting the GLS algorithm, we need to find an initial, feasible solution for the instance. We do this by randomly putting the jobs in any machine ('random'), or by using the greedy makespan algorithm ('GMS'). The GMS works by first sorting the jobs by non-increasing processing time, assigning the $m$ largest jobs each to a different machine, and assigning the remaining jobs to the least loaded machine. I.e., using the original problem notation: 
 
-We consider a `reasonable' runtime to be approximately 5 minutes. The averaged results of 10 realizations per $n$, $m$, and $k$ are presented in Table \ref{tab:Q1d} and Figure \ref{fig:Q1d}. In Figure \ref{fig:Q1d}, only makespan gap values between 0 and 20 \% are plotted, and run time values between 0 and 300 s (5 minutes). \\
+\begin{enumerate}
+\item We reindex the jobs such that $p_1 \geq p_2 \geq ... \geq p_n$
+\item Let $S_i = \{ \}$ for $i=1,...,m$
+\item \textbf{For} $i=1,...,m$
+\begin{enumerate}
+\item $S_i := \{i \}$
+\end{enumerate}
+\item[] \textbf{end for}
+\item \textbf{For} $j=m+1,...n$ (only if $n > m$)
+\begin{enumerate}
+\item $k := \textnormal{min} \{ \sum_{l \in S_i} p_l | i = 1,...,m \}$
+\item $S_k = S_k \cup \{ j \}$
+\end{enumerate}
+\item[] \textbf{end for}
+\end{enumerate}
 
-From Table \ref{tab:Q1dmakespangapRandom}, we can calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 4.09 \%. In Table \ref{tab:Q1dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the random initial solution is 4.11 \%. In Table \ref{tab:Q1druntimeRandom}, the average run time over all $n$ and $m$ for the GMS initial solution is 176.74 s. In Table \ref{tab:Q1druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 171.04 s. Hence, the random initial solution and the GMS initial solution give similar results. \color{red} WHY \color{black} Later we will also use these two initial solutions when testing VDS and our heuristic.
+We then convert the initial solution $\{S_1,S_2,...,S_m\}$ to the representation $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in [1,...,m]$ which represents in which machine job $i$ is contained, by using \textit{convertSol\_toListOfMachines}, as described before. Both the `Random' and `GMS' initial solutions are feasible solutions, since all jobs are assigned to one machine $S_i$, such that $\{S_1,S_2,...,S_m \> | \> S_i \subseteq \{1,2,...,n\} \textnormal{ for } i=1,...,m, \> \cup_{k=1}^m S_k = \{1,2,...,n\}, \textnormal{ and } S_i \cap S_j = \emptyset \textnormal{ for } i \neq j \}$. \\
+
+We consider a `reasonable' runtime to be approximately 20 minutes. The averaged results of 10 realizations per $n$, $m$, and $k$ are presented in Table \ref{tab:Q1d} and Figure \ref{fig:Q1d}. In Figure \ref{fig:Q1d}, only makespan gap values between 0 and 20 \% are plotted, and run time values between 0 and 1200 s (20 minutes). \\
+
+From Table \ref{tab:Q1dmakespangapRandom}, we can calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 4.09 \%. In Table \ref{tab:Q1dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the random initial solution is 4.11 \%. In Table \ref{tab:Q1druntimeRandom}, the average run time over all $n$ and $m$ for the GMS initial solution is 176.74 s. In Table \ref{tab:Q1druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 171.04 s. Hence, the random initial solution and the GMS initial solution give similar results. \color{red} This suggests that local minima can be found just as easily from either initial solution \color{black} Later we will also use these two initial solutions when testing VDS and our heuristic.
 
 
-\begin{table}[H]
+\begin{table}[t]
 \begin{center}
 {\Large \bf GLS experiments}
 \end{center}
@@ -577,7 +598,7 @@ From Table \ref{tab:Q1dmakespangapRandom}, we can calculate that the average mak
   \caption{GMS}
   \label{fig:Q1dSFig4}
 \end{subfigure}
-\caption[Experiments GLS: Random and GMS]{\textbf{Experiments GLS: k=2, using random and GMS initial solution.} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a random initial solution. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using the GMS initial solution. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 300 s. }
+\caption[Experiments GLS: Random and GMS]{\textbf{Experiments GLS: k=2, using random and GMS initial solution.} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a random initial solution. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using the GMS initial solution. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
 \label{fig:Q1d}
 
 \end{figure}
@@ -605,14 +626,14 @@ From Table \ref{tab:Q1dmakespangapRandom}, we can calculate that the average mak
 
 
 
-\section{Variable Depth Search Algorithm for MS}
+\section{Variable Depth Search Algorithm for MS} \label{sec:VDS}
 
 \section*{VDS 2.a}
 \textbf{Pseudo-code for VDS}\\
 We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Makespan Scheduling problem. Recall that, during implementation, we use a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, to represent a solution.
 
 \begin{enumerate}
-\item Generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$ \color{red} MENTION HOW \color{black}
+\item Generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$ \\ (`Random' or `GMS' described in Section GLS 1.d)
 \item $\textnormal{IMPROVEMENT} := \textnormal{TRUE}$
 \item[] $\textnormal{EXCHANGE} := \{1,2,...,n\}$
 \item[] $J=0$, $\alpha_J := \xi$
@@ -634,6 +655,7 @@ We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Makespan Schedu
 \begin{enumerate}
 \item[] $\xi:=\alpha_l$
 \item[] $\textnormal{EXCHANGE} := \{1,2,...,n\}$
+\item[] \color{red} $J=0$, $\alpha_J := \xi$ \color{black}
 \end{enumerate}
 \item[] \textbf{else}
 \begin{enumerate}
@@ -641,17 +663,23 @@ We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Makespan Schedu
 \end{enumerate}
 \end{enumerate}
 \item[] \textbf{end while}
-\item \textbf{output}$(\alpha)$
+\item \textbf{output}$(\xi)$
 \end{enumerate}
 
+
+\newpage
+
 \textbf{Neighbourhood function and satisfaction of conditions in Section 3.6.2 of the textbook} \\
-Our neighbourhood function, \textit{findBestNeighbour} (step (3)(a)(ii)), returns a solution which can be reached from the input solution in at most $k$ jumps. It does so by systematically iterating through all neighbours and updating the solution if a better neighbour is found. Finding the best neighbour of a feasible solution, $\alpha_i$ is equivalent to finding a feasible solution, $\alpha_{i+1}$, which is such that $gain(\alpha_i,\alpha_{i+1})=\max\{gain(\alpha_i,\delta) | \delta\in Neigh(\alpha_i)\}$. \textcolor{red}{Obvious or explain further?} Thus condition (ii)(a) in Section 3.6.2 of the textbook is satisfied.\\
+
+Our neighbourhood function, \textit{findBestNeighbour} (step (3)(a)(ii)), returns a solution which can be reached from the input solution in at most $k$ jumps. It does so by systematically iterating through all neighbours and updating the solution if a better neighbour is found. Finding the best neighbour of a feasible solution, $\alpha_i$ is equivalent to finding a feasible solution, $\alpha_{i+1}$, which is such that $gain(\alpha_i,\alpha_{i+1})=\max\{gain(\alpha_i,\delta) | \delta\in Neigh(\alpha_i)\} = \max\{\textnormal{cost}(\alpha_i) - \textnormal{cost}(\delta) | \delta\in Neigh(\alpha_i)\}$, and we only update $\alpha_i$ to $\alpha_{i+1}$ if $gain(\alpha_i,\alpha_{i+1}) > 0$. Thus condition (ii)(a) in Section 3.6.2 of the textbook is satisfied.\\
 
 In order to satisfy the conditions (i) and (ii)(b), we have included two special input arguments to the \textit{findBestNeighbour} method:
 \begin{enumerate}
 \item \textit{differentSolRequired} is a Boolean parameter, which indicates whether we require a neighbour which differs by at least one $\xi_i$ to the original solution. This is set to be True for the VDS algorithm (whereas for the GLS algorithm, we set it to False). The function does not update the best neighbour if the neighbour is the same as the input solution. The implementation of this parameter ensures that the final feasible solution has all jobs assigned to a different machine to the original solution. Thus condition (i) is satisfied.
-\item \textit{jobsToConsider} is a list representing the jobs whose assigned machine we are allowed to change. The \textit{findBestNeighbour} method only iterates over the jobs in this list in its search for the best neighbour, thus returning a solution which is such that any jobs not in the list stay on their original machine. In the VDS algorithm, the input argument is the EXCHANGE list. Thus, at each iteration of the while loop in step (), we obtain a neighbour which differs from the previous solution in the parameters of EXCHANGE only. This list is initialised as the set of all jobs, and is updated at each iteration of the while loop in step () by removing any jobs that were changed. This procedure is continued until there remain no jobs to be changed, and condition (ii)(b) is thus satisfied.
+\item \textit{jobsToConsider} is a list representing the jobs whose assigned machine we are allowed to change. The \textit{findBestNeighbour} method only iterates over the jobs in this list in its search for the best neighbour, thus returning a solution which is such that any jobs not in the list stay on their original machine. In the VDS algorithm, the input argument is the EXCHANGE list. Thus, at each iteration within the while loop in step 3.a, we obtain a neighbour which differs from the previous solution in the parameters of EXCHANGE only. This list is initialised as the set of all jobs, and is updated at each iteration of the while loop in step 3.a.iii by removing any jobs that were changed. This procedure is continued until there remain no jobs to be changed, after which we break out of the while loop in step 3.a, and condition (ii)(b) is thus satisfied.
 \end{enumerate}
+
+Note that our implementation of the VDS algorithm differs slightly from the textbook. We reset $J$ and $\alpha_J$ in step 3.d, which is not done in the textbook. In subsequent iterations of the while loop (step 3), we do not consider `old' neighbours, i.e. neighbours found by previous iterations of the inner while loop (step 3.a). We chose to do this because these old neighbours can not be better than the current best solution $\xi$, since otherwise we would have moved it before. And by this procedure, we only need to check the value of $J$ gains every iteration of the while loop (step 3), and we terminate if we can not find a better solution among any of the $J$ neighbours generated. 
 
 \section*{VDS 2.b}
 We use Python to implement the \emph{Variable Depth Search}. See attached.
@@ -664,15 +692,16 @@ We perform an experimental study for VDS using the same instances that were gene
 
 The heuristic we chose to implement is simulated annealing. In this section, we present pseudocode for the algorithm, as well as details about the generation of the initial value of the temperature. We also present experimental results for the same test instances used in parts 1(d) and 2(c). Finally, we conclude with a comparison to the performance of the simulated annealing heuristic to the performance of the GLS and VDS algorithms.
 
-\subsection*{Simulated Annealing Algorithm Pseudocode}
+\subsection*{Simulated Annealing Algorithm Pseudocode} \label{sec:simulatedannealing}
 In our algorithm, we make a slight modification to keep track of the best solution found by the algorithm. This is compared to the final solution found by the simulated annealing algorithm. We do this in order to avoid the algorithm returning a worse solution than one previously found. \\
 
-We again use the GMS algorithm (see section \ref{}) to generate an initial feasible solution. \\
+We again use the `Random' or `GMS' initial feasible solutions, described in section GLS 1.d. \\
 
 \emph{Input}: An input instance $I = (p_1,p_2,...,p_n,m)$ of the Makespan Scheduling problem.
 \begin{enumerate}
-\item Generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$, using GMS. \\
-$T$ = getInitialTemp($I, k, \chi_0, S, p, \epsilon$)
+\item Generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$, using Random or GMS. \\
+% $T$ = getInitialTemp($I, k, \chi_0, S, p, \epsilon$) 
+$T := T_0 := 1.5 \times \max\{ \> p_i \>  | i = 1,...,n \}$ (See below for a discussion)
 \item $I := 0$ \\
 $best:=\xi$
 \item\textbf{while} $T>0$ \textbf{do}
@@ -696,7 +725,7 @@ $\text{makespan}(\alpha) < \text{makespan}(best)$ \textbf{then}
 \item[] $best:=\alpha$
 \end{enumerate}
 \item $I:=I+1$
-\item $T:=\text{reduceTemperature}(T_0,I)$
+\item $T:=\text{reduceTemperature}(T,I)$
 \end{enumerate}
 \item[] \textbf{end while}
 \item \textbf{if} $\text{makespan}(\alpha) < \text{makespan}(best)$ \\
@@ -705,29 +734,60 @@ $\text{makespan}(\alpha) < \text{makespan}(best)$ \textbf{then}
 \indent \textbf{output}$(best)$
 \end{enumerate}
 
-\subsection*{Choice of the Initial Temperature: getInitialTemp}
-Since the performance of the algorithm varies greatly depending on the initial value of the temperature, we follow the work of Ben-Ameur [\ref{}] to generate an initial temperature. The algorithm produces a value which is based on ... . The pseudocode is as follows.\\
+\subsection*{Choice of the Initial Temperature \color{red} Maybe in Appendix? \color{black}}
+Since the performance of the algorithm depends on the initial value of the temperature, we follow the work of Ben-Ameur \citep{ameur2004}, who developed an algorithm to pre-determine the initial temperature $T_0$. \\
+
+In the simulated annealing algorithm presented above, the probability of accepting a bad move (with cost increase) from solution $\alpha$ to $\beta$ is
+\begin{equation}
+e^{-\frac{\textnormal{cost}(\alpha)-\textnormal{cost}(\beta)}{T}} = e^{-\frac{\textnormal{makespan}(\alpha)-\text{makespan}(\beta)}{T}},
+\end{equation}
+where $T$ is the current temperature, and $\textnormal{cost}(\alpha) > \textnormal{cost}(\beta)$. 
+We consider the average probability of accepting a bad move as
+\begin{equation}
+\pi_\alpha = \frac{e^{-\frac{\text{cost}(\alpha)-\text{cost}(\beta)}{T}}}{\sum_j  \> e^{-\frac{\text{cost}(\alpha)-\text{cost}(\beta_j)}{T}}},
+\end{equation}
+where we sum over all possible neighbours $\beta_j$ of $\alpha$ (and assume the generation probability of reaching a neighbour is symmetrical, see \citet{ameur2004}). The idea of \citet{ameur2004} is to choose the initial temperature such that the acceptance probability is close to a certain value $\chi_0$ by estimating this acceptance probability based on a random set of neighbours of $\alpha$ which increase the cost. For a full discussion of the algorithm, please refer to \citet{ameur2004}. The pseudo-code of our implementation is described below: \\
 
 \textbf{Ben-Ameur algorithm for computing the initial temperature}\\
 \emph{Input:}
 \begin{itemize}
   \item The input instance $I=(p_1,...,p_n,m)$
-  \item $k$ exchange value
-  \item The desired acceptance probability (?) $\chi_0$
-  \item The number of random transitions to generate $S$
-  \item $p$ ?
+  \item $k=2$ exchange value
+  \item The desired acceptance probability $\chi_0 = 0.8$
+  \item The number of random transitions to generate $S = 1000$
+  \item $p = 1$
+  \item $\epsilon = 0.001$
 \end{itemize}
 \begin{enumerate}
-  \item Generate a set, $\mathcal{S}$, of size $S$, of random positive transitions and store the makespan values in $E_{max}$ and $E_{min}$.
-  \item $T= ?$
+  \item Generate a set, $\mathcal{S}$, of size $S$, of random transitions:
+  \item[] For each random transition, we generate a random initial solution $\alpha$ and move to a random neighbour $\beta$. We let $E_\textnormal{max} := \min\{\textnormal{cost}(\alpha),\textnormal{cost}(\beta)\}$ and $E_{\textnormal{min}} := \max\{\textnormal{cost}(\alpha),\textnormal{cost}(\beta)\}$ for each transition $S$.
+  \item $T_1:= - \frac{\sum_{t \in S} E_{\textnormal{max}_t} - E_{\textnormal{min}_t}}{|S| \textnormal{ln}(\xi_0)}$
+  \item[] Let $n=1$
   \item[] Compute $\chi(T):=\frac{\displaystyle\sum\limits_{t\in \mathcal{S}} e^\frac{E_{{max}_{t}}}{T_n}}{\displaystyle\sum\limits_{t\in \mathcal{S}} e^\frac{E_{{min}_{t}}}{T_n}}$
-  \item \textbf{while} $|\chi(T)-\chi_0|>\epsilon$ \textbf{do}
+  \item \textbf{while} $|\chi(T_n)-\chi_0|>\epsilon$ \textbf{do}
   \begin{enumerate}
-    \item $T:=T\cdot(\frac{\ln()}{\ln()})^{\frac{1}{p}}$
-    \item Compute $\chi(T)$
+    \item $T_{n+1} := T_{n} \cdot(\frac{\ln(\chi(T_n))}{\ln(\chi_0)})^{\frac{1}{p}}$
+    \item Compute $\chi(T_n)$
   \end{enumerate}
-  \item \textbf{output} $T$
+  \item \textbf{output} $T_n$
 \end{enumerate}
+
+We will use this algorithm to generate the initial temperature for test cases with \\ $n=10,20,30,40,50,60,70,80,90,100$ and $m=2,4,6,8,10$, in order to get an idea of how large the initial temperature should be for these instances. We do this 100 times per combination of $n$ and $m$, with processing times uniformly distributed between 0 and 100, and calculate the average. The averaged results are shown in Figure \ref{fig:Initialtemperature}. We see that the initial temperature is larger when the number of machines is small, and the number of jobs is large. There is more variation in the initial temperature varying the number of machines than the number of jobs. By performing a few more test instances with smaller and larger processing times (with self-made instances and not shown in this report), we found that choosing an initial temperature of approximately 1.5 times larger than the largest processing time in an instance gives good results (and is faster, since we do not need to call the algorithm by \citet{ameur2004} for every run of our simulated annealing algorithm). We can also see that this approximately holds for the instances in Figure \ref{fig:Initialtemperature}, since the processing times are uniformly distributed between 0 and 100, and the temperature is approximately 150 for a small number of machines. 
+
+
+\begin{figure}[H]
+\begin{center}
+{\large \bf  Initial Temperature for Simulated Annealing}
+\end{center}
+\begin{subfigure}{\textwidth}
+  \centering
+  \tikz[remember picture]\node[inner sep=0pt,outer sep=0pt] (rates1){\includegraphics[width=.7\linewidth,height=.3\linewidth]{plots/InitialTemperature.png}};
+\end{subfigure}%
+\caption{The initial temperatures generated by the algorithm by \citet{ameur2004}, using 100 realizations per $n$ and $m$, processing times between 0 and 100, and the `Random' initial solution.}
+\label{fig:Initialtemperature}
+\end{figure}
+
+
 
 
 \subsection*{Choice of the Temperature Reduction Function: reduceTemperature}
@@ -905,6 +965,10 @@ We also found that when the instance size became exceedingly large, using a unif
 
 \end{figure}
 
+
+\newpage
+\bibliography{references}{}
+\bibliographystyle{apalike}
 
 \newpage
 
