@@ -209,11 +209,11 @@ def main():
 
 	# Define constants for experiments
 	k=2						# number of exchanges
-	realizations=1			# number of empirical data points
+	realizations=10			# number of empirical data points
 	dist='uniform'			# distribution of processing times
 	seed=True				# whether to seed the randomization
 	debugging=False			# whether to print solutions
-	alg='GLS'				# algorithm to use: 'GLS', 'VDS', or 'Ours'
+	alg='Ours'				# algorithm to use: 'GLS', 'VDS', or 'Ours'
 	initSolType='random'		# initial solution to use: 'inputOrder', 'random', or 'GMS'
 
 

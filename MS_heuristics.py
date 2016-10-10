@@ -257,14 +257,14 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 		print 'Initial solution:', x, 'with makespan', getMakespan(instance,x) # debugging: print initial solution
 
 	# Select initial temperature, and temperature reduction function as function of T and time.
-	# T0=T=1.5*max(instance[:-1]);
-	T0=T=getInitialTemp(instance, k, chi0, S, p, epsilon)
+	T0=T=1.5*max(instance[:-1]);
+	# T0=T=getInitialTemp(instance, k, chi0, S, p, epsilon)
 	# algorithm may return None because of division by zero
 	# re-run to fix (the algorithm generates different random transitions)
-	while not T0:
-		# if debugging:
-		print 'Initial temperature algorithm returned None. Re-run algorithm.'
-		T0=T=getInitialTemp(instance, k, chi0, S, p, epsilon)
+	# while not T0:
+	# 	# if debugging:
+	# 	print 'Initial temperature algorithm returned None. Re-run algorithm.'
+	# 	T0=T=getInitialTemp(instance, k, chi0, S, p, epsilon)
 	I=0;
 	if debugging:
 		print 'T0 from algorithm:', T0, '\n'
@@ -312,9 +312,9 @@ def ourHeuristic(instance, k, neighbourhood, initSolType):
 			# TODO: Indented or not indented????
 		I=I+1;
 		# T=T0*0.8**I; # Exponential multiplicative cooling.
-		T=T0-I; # Simple exponential cooling. 
+		# T=T0-I; # Simple exponential cooling. 
 		# T = T0/(1+I); # Linear multiplicative cooling.
-		# T = T0/(1+I**2); # Quadratic multiplicative cooling. BIT SLOWER THAN VDS BUT GOOD SOLUTIONS FOR EXAMPLE BELOW!
+		T = T0/(1+I**2); # Quadratic multiplicative cooling. BIT SLOWER THAN VDS BUT GOOD SOLUTIONS FOR EXAMPLE BELOW!
 		if debugging:
 			print 'New T:', T, '\n'
 
