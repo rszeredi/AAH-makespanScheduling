@@ -13,7 +13,7 @@
 # -> See below for methods for converting between the two
 
 from __future__ import division
-import random, time, numpy
+import random, time, numpy, sys, csv
 import itertools
 from pprint import pprint
 import math
@@ -993,6 +993,27 @@ def convertSol_toSetsOfJobs(x):
 
 	return x_new
 
+
+
+#---Input Reading--------------------------------------------------------------#
+# input: the name of csv file in the correct form. list of processing times then the number of machines
+# output: a python list of the instance
+def readInstance(filename):
+
+	# Read in the input from the csv instance file
+	file = open(filename, 'rb')
+	inputInst = list(csv.reader(file))
+
+	# Add processing times
+	instance = [ int(inputInst[j+1][0]) for j in range(len(inputInst)-1) ]
+	
+	# Add number of machines
+	instance.append(int(inputInst[0][0]))
+
+	file.close()
+
+	return instance
+
 #----------------------------------------------------------------------------------------#
 
 def test():
@@ -1112,10 +1133,54 @@ def test():
 		epsilon = 10**(-3)
 		print 'T0', getInitialTemp(instance, k, chi0, S, p, epsilon)
 
-def main():
+def main(argv):
+	# Run our simulated annealing algorithm on the given input instance
 
-	test()
+	# Specify the test instances one of two ways:
+	# 1. as a command line argument (eg. >python MS_heuristics 'instance01.csv'), or
+	# 2. in the if statement here
+	if len(argv) > 0:
+		inputList = [argv[0]]
+	else:
+		inputList = ['test-instances/instance_m10_n30_002.csv',  # <======== input files here
+					 'test-instances/instance_m10_n30_003.csv',
+					 'test-instances/instance_m10_n30_004.csv']
+
+
+	# Read in the data
+	inputIndexes = range(len(inputList))
+	instances = [None for i in range(len(inputList))]
+
+	for i in inputIndexes:
+		instances[i] = readInstance(inputList[i])
+
+
+	# Define experiment constants
+	k=2							# number of exchanges
+	neighbourhood = 'jump_alt'	# specify the 
+	initSolType='GMS'			# initial solution to use
+	debugging=True				# whether to print solutions to the command line
+
+
+	# Initialize Output
+	makespanList = [0 for i in inputIndexes]
+	runtimeList = [0 for i in inputIndexes]
+	solList = [None for i in inputIndexes]
+
+	print '\nTesting the given input:\n'
+
+	for i in inputIndexes:
+		# Run simulated annealing
+		[solList[i], makespanList[i], runtimeList[i]] = ourHeuristic(instances[i], k, neighbourhood, initSolType)
+
+		# Print the results
+		print 'Results for instance %s:' %(instances[i])
+		print 'Makespan = \t%s' %(makespanList[i])
+		print 'Runtime = \t%s' %(runtimeList[i])
+		print 'Solution = \t%s\n' %(solList[i])
+
 	
 
 if __name__ == "__main__":
-	main()
+	main(sys.argv[1:])
+	# test()

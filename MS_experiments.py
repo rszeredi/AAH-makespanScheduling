@@ -112,24 +112,17 @@ def generateRandomInstances(n,m,numToGenerate,dist,seed):
 
 # input: number of jobs n; number of machines m; number of realizations of the instance to read in
 # output: list of lists (the instances)
-def readStoredInstances(n,m,numToRead):
+def readStoredInstances(n,m,numToRead,inputDir='test-instances/',filename=False):
 
 	instances = [None for i in range(numToRead)]
 
 	for i in range(numToRead):
-		# Read in the input from the csv instance file
-		file = open('test-instances/instance_m{}_n{}_{:03}.csv'.format(m,n,i+1), 'rb')
-		inputInst = list(csv.reader(file))
+		filename = '{}instance_m{}_n{}_{:03}.csv'.format(inputDir,m,n,i+1)
 
-		# Add processing times
-		instances[i] = [ int(inputInst[j+1][0]) for j in range(len(inputInst)-1) ]
-		
-		# Add number of machines
-		instances[i].append(int(inputInst[0][0]))
-
-		file.close()
+		instances[i] = readInstance(filename)
 
 	return instances
+
 
 def saveInstances():
 
@@ -215,6 +208,7 @@ def main():
 	debugging=False			# whether to print solutions
 	alg='Ours'				# algorithm to use: 'GLS', 'VDS', or 'Ours'
 	initSolType='random'		# initial solution to use: 'inputOrder', 'random', or 'GMS'
+	inputDir = 'test-instances/'	# define the location of stored test data
 
 
 	# Define n and m values to run experiments for
@@ -256,7 +250,7 @@ def main():
 
 			if seed:
 				# Read in the previously stored data
-				instanceList = readStoredInstances(nList[j],mList[i],realizations)
+				instanceList = readStoredInstances(nList[j],mList[i],realizations,inputDir)
 			else:
 				# Generate random instances for the given n and m
 				instanceList = generateRandomInstances(nList[j],mList[i],realizations,dist,False)
