@@ -1,7 +1,7 @@
 # AAH 2016 Group Assignment: Lotte, Ken, Ria
 
 # This file contains:
-# Heuristics (GLS, VDS, *our heuristic*)
+# Heuristics (GLS, VDS, Simulated Annealing)
 # Functions for generating initial feasible solutions (input order, random assignment, greedy)
 # Functions for finding the best neighbour
 # Other auxiliary functions for heuristics (getMakespan, least loaded machine, LB, converting between two forms of a solution)
@@ -660,7 +660,7 @@ def findBestNeighbour(instance, x, k, neighbourhood, differentSolRequired, jobsT
 
 	return bestNeighbourList
 
-
+# NB: we do not use this neighbourhood
 # input: the input instance; a feasible solution x (which format?); number of exchanges k
 # output: the best feasible solution after performing a k-cycle on x
 def findBestNeighbour_cycle(instance, x, k):
@@ -717,32 +717,6 @@ def findBestNeighbour_cycle(instance, x, k):
 		x = kNeighbours[1][bestNeighbourIndex] # set x to the best neighbour
 
 	return x
-
-
-# input: the input instance; a feasible solution x (which format?); number of exchanges k
-# output: the best feasible solution after performing a k-jump-swap on x
-def findBestNeighbour_jumpSwap(instance, x, k):
-
-	# methods to use:
-	# getMakespan
-	
-
-	return x
-
-
-#----------------------------------------------------------------------------------------#
-# MAYBE ATTRIBUTE PROCESSING TIMES TO JOB OBJECT???
-#class Job(object):
-#    def __init__(self, processing_time,jobIndex):
-#    	self.index = jobIndex
-#        self.proctime = processing_time
-
-#jobs = {
-    # Job with processing time 10
-#    "p1": Job(1,10),
-#    "p2": Job(2,7),
-#    "p3": Job(3,11)
-#    }
 
 #----------------------------------------------------------------------------------------#
 # OTHER AUXILIARY FUNCTIONS
@@ -1157,7 +1131,7 @@ def main(argv):
 
 	# Define experiment constants
 	k=2							# number of exchanges
-	neighbourhood = 'jump_alt'	# specify the 
+	neighbourhood = 'jump_alt'	# specify the neighbourhood 
 	initSolType='GMS'			# initial solution to use
 	debugging=True				# whether to print solutions to the command line
 
