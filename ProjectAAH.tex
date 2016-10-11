@@ -185,231 +185,6 @@ In Table  \ref{tab:Q1ck=1runtime}, \ref{tab:Q1ck=2runtime}, and \ref{tab:Q1ck=3r
 
 For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we see that for all instances we have considered so far, the run time is smaller than 20 minutes (1200 seconds). Moreover, the makespan gap is smaller than for $k=1$, for all instances except for $n=15$ and $m=8,10$, i.e. when the number of jobs is relatively close to the number of machines. Hence, we make a trade-off between solution quality and run time, and select $k=2$ as our $k$-value.
 
-
-\begin{table}[H]
-\begin{center}
-{\large \bf GLS experiments with random initial solution}
-\end{center}
-\begin{center}
-{\large \bf $k=1$}
-\end{center}
-\centering
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Makespan gap]{Makespan gap}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\footnotesize
-\begin{tabular}{l|*{9}{c}}
-\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-\hline
-2 & 1.40 & 0.35 & 0.34 & 0.15 & 0.14 & 0.09 & 0.04 & 0.07  \\
-4 & 5.93 & 2.84 & 2.51 & 1.43 & 1.56 & 0.84 & 0.88 & 0.69 \\
-6 & 11.99 & 10.06 & 5.62 & 3.73 & 2.74 & 3.00 & 2.58 & 1.93 \\
-8 & 17.85 & 12.18 & 13.44 & 12.42 & 8.11 & 6.45 & 5.03 & 3.81 \\
-10 & 40.01 & 19.70 & 14.06 & 18.40 & 14.12 & 9.98 & 12.30 & 10.50  \\
-\end{tabular}
-\label{tab:Q1ck=1makespangap}
-\end{subtable}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Run time]{Run time}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\footnotesize
-\begin{tabular}{l|*{9}{c}}
-\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-\hline
-2& 0.001&	0.002&	0.003&	0.003&	0.005&	0.005&	0.008&	0.009 \\
-4& 0.004&	0.008&	0.011&	0.018&	0.024&	0.032&	0.045&	0.044 \\
-6& 0.013&	0.019&	0.030&	0.043&	0.058&	0.067&	0.093&	0.096 \\
-8& 0.020&	0.036&	0.043&	0.075&	0.102&	0.150&	0.217&	0.219 \\
-9& 0.026&	0.060&	0.081&	0.135&	0.179&	0.200&	0.325&	0.385
-\end{tabular}
-\label{tab:Q1ck=1runtime}
-\end{subtable}
-\begin{center}
-\vspace{0.6cm}
-{\large \bf $k=2$}
-\end{center}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Makespan gap]{Makespan gap}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\footnotesize
-\begin{tabular}{l|*{9}{c}}
-\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-\hline
-2& 0.14&	0&	0.08&	0.06&	0&	0.05&	0.04&	0.04 \\
-4& 0.12&	0.22&	0.21&	0.06&	0.17&	0.09&	0.04&	0 \\
-6& 4.87&	1.11&	2.59&	1.49&	0.53&	0.37&	0.24&	0.30 \\
-8& 32.00&	7.36&	0.85&	0.95&	0.78&	0.76&	0.42&	0.76 \\
-10 &65.48&	7.61&	8.24&	3.38&	2.89&	1.53&	0.56&	0.83
-\end{tabular}
-\label{tab:Q1ck=2makespangap}
-\end{subtable}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Run time]{Run time}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\footnotesize
-\begin{tabular}{l|*{9}{c}}
-\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-\hline
-2& 0.02&	0.05&	0.05&	0.07&	0.11&	0.45&	0.72&	1.09 \\
-4& 0.18&	0.78&	0.64&	0.73&	2.40&	4.68&	7.40&	5.21 \\
-6& 0.50&	0.87&	3.27&	2.82&	8.53&	19.86&	11.44&	29.11 \\
-8& 1.02&	3.38&	8.65&	17.52&	21.71&	42.08&	49.94&	94.56 \\
-10& 2.30&	5.59&	10.94&	23.56&	59.58&	53.83&	100.87&	195.12 \\
-\end{tabular}
-\label{tab:Q1ck=2runtime}
-\end{subtable}
-\begin{center}
-\vspace{0.6cm}
-{\large \bf $k=3$}
-\end{center}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Makespan gap]{Makespan gap}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\footnotesize
-\begin{tabular}{l|*{9}{c}}
-\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-\hline
-2& 0.14&	0&	0&	0&	0&	0&	0&	0.04 \\
-4& 0.20&	0.41&	0.14&	0.12&	0&	0.08&	0.08&	0.11 \\
-6& 2.45&	1.65&	0.56&	0.12&	0.10&	0&	0.08&	0.04 \\
-8& 12.88&	4.13&	0.42&	0.37&	0.96&	0.42&	0.40&	0.41 \\
-10& 17.59&	2.27&	3.09&	1.10&	0.86&	0.93&	0.40&	0.26
-\end{tabular}
-\label{tab:Q1ck=3makespangap}
-\end{subtable}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Run time]{Run time}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\scriptsize
-\begin{tabular}{l|*{9}{c}}
-\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-\hline
-2& 0.09&	0.24&	1.37&	1.62&	3.98&	11.04&	16.93&	25.06 \\[1.5ex]
-4& 1.21&	7.75&	14.09&	34.79&	42.06&	121.77&	291.35&	505.66 \\[1.5ex]
-6& 7.90&	25.30&	64.16&	131.15&	244.04&	871.73&	1262.60&	2590.84 \\[1.5ex]
-8& 19.78&	80.02&	194.86&	435.55&	987.58&	2624.76&	3264.98&	5114.31 \\[1.5ex]
-10& 54.73&	153.17&	347.68&	604.12&	2002.52&	4088.55&	6251.35&	15462.72 \\[1.5ex]
-\end{tabular}
-\label{tab:Q1ck=3runtime}
-\end{subtable}
-\caption{GLS experiments: $k=1,2,3$, using a random initial solution. The makespan gap is given in \% and the run time in seconds.}
-\label{tab:Q1c}
-\end{table}
-
-
-
-\begin{comment}
-\begin{table}
-\begin{center}
-{\large \bf GLS experiments with GMS initial solution}
-\end{center}
-\begin{center}
-{\large \bf $k=1$}
-\end{center}
-\centering
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Makespan gap]{Makespan gap}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\footnotesize
-\begin{tabular}{l|*{9}{c}}
-\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-\hline
-2& 0.87&	0.11&	0.08&	0.39&	0.13&	0&	0.05&	0 \\
-4& 4.35&	2.38&	1.48&	0.86&	0.38&	0.22&	0.46&	0 \\
-6& 7.71&	4.16&	2.04&	1.60&	0.44&	1.37&	2.15&	1.20 \\
-8& 5.50&	7.32&	1.38&	4.85&	1.86&	1.39&	2.95&	0.80 \\
-10& 49.55&	7.72&	5.01&	5.23&	6.09&	1.33&	3.50&	2.30
-\end{tabular}
-\label{tab:Q1ck=1makespangapGMS}
-\end{subtable}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Run time]{Run time}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\footnotesize
-\begin{tabular}{l|*{9}{c}}
-\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-\hline
-2& 0.0005&	0.001&	0.001&	0.001&	0.002&	0.002&	0.003&	0.003 \\
-4& 0.002&	0.003&	0.002&	0.006&	0.008&	0.005&	0.012&	0.007 \\
-6& 0.003&	0.002&	0.01&	0.013&	0.006&	0.013&	0.040&	0.018 \\
-8& 0.004&	0.012&	0.009&	0.022&	0.014&	0.010&	0.034&	0.066 \\
-10& 0.024&	0.012&	0.026&	0.035&	0.045&	0.011&	0.055&	0.098
-\end{tabular}
-\label{tab:Q1ck=1runtimeGMS}
-\end{subtable}
-\begin{center}
-\vspace{0.6cm}
-{\large \bf $k=2$}
-\end{center}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Makespan gap]{Makespan gap}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\footnotesize
-\begin{tabular}{l|*{9}{c}}
-\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-\hline
-2& 0&	0&	0.09&	0&	0.05&	0.06&	0.05&	0 \\
-4& 0.67&	0.43&	0.3&	0&	0.12&	0.05&	0.05&	0.04 \\
-6& 2.65&	0.70&	0.89&	0.82&	0.29&	0.25&	0.19&	0.08 \\
-8& 13.54&	1.21&	0.53&	0.70&	0.53&	0.35&	0.16&	0.50 \\
-10& 7.75&	19.6&	3.10&	2.56&	2.47&	1.07&	0.87&	0.66
-\end{tabular}
-\label{tab:Q1ck=2makespangapGMS}
-\end{subtable}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Run time]{Run time}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\footnotesize
-\begin{tabular}{l|*{9}{c}}
-\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
-\hline
-2& 0.02&	0.03&	0.05&	0.08&	0.22&	0.68&	0.71&	0.28 \\
-4& 0.1&	0.37&	0.46&	0.44&	1.97&	2.49&	4.22&	5.5 \\
-6& 0.77&	0.71&	2.1&	6.81&	6.08&	10.06&	17.3&	19.14 \\
-8& 1.11&	1.14&	2.76&	11.8&	6.81&	32.03&	33.08&	77.17 \\
-10& 1.47&	4.42&	7.41&	18.62&	49.96&	40.49&	54.06&	190.83
-\end{tabular}
-\label{tab:Q1ck=2runtimeGMS}
-\end{subtable}
-\begin{center}
-\vspace{0.6cm}
-{\large \bf $k=3$}
-\end{center}
-
-\end{table}
-\end{comment}
-
-
 \begin{figure}[H]
 \begin{center}
 {\Large \bf GLS experiments}
@@ -479,102 +254,7 @@ For each combination of $n$, $m$ and $k$, we generate 10 instances of MS. For ea
 
 We consider a `reasonable' runtime to be approximately 20 minutes. The averaged results of 10 realisations per $n$, $m$, and $k$ are presented in Table \ref{tab:Q1d} and Figure \ref{fig:Q1d}. In Figure \ref{fig:Q1d}, only makespan gap values between 0 and 20 \% are plotted, and run time values between 0 and 1200 s (20 minutes). \\
 
-From Table \ref{tab:Q1dmakespangapRandom}, we calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 4.09 \%. In Table \ref{tab:Q1dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the GMS initial solution is 4.11 \%. In Table \ref{tab:Q1druntimeRandom}, the average run time over all $n$ and $m$ for the random initial solution is 176.74 s. In Table \ref{tab:Q1druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 171.04 s. Hence, the random initial solution and the GMS initial solution give similar results. \color{red} This suggests that local minima can be found just as easily from either initial solution \color{black} Later we will also use these two methods for generating an initial solution when testing VDS and our heuristic.
-
-\newpage
-\begin{table}[h]
-\begin{center}
-{\Large \bf GLS experiments}
-\end{center}
-\begin{center}
-{\large Random initial solution}
-\end{center}
-\raggedright
-%\caption{k=1 \color{red} AND SAME TABLES FOR K=2 AND K=3, PREFER NEXT TO EACH OTHER \color{black}}
-\begin{subtable}{0.48\textwidth}
-\caption[Makespan gap]{Makespan gap}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\scriptsize
-\begin{tabular}{l|*{11}{c}}
-\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
-\hline
-2& 0.56&	0.06&	0.05&	0&	0.02&	0.02&	0.02&	0.01&	0.02&	0.01 \\
-4& 6.23&	0.54&	0.22&	0.10&	0.10&	0.05&	0.02&	0.04&	0.02&	0.02 \\
-6& 17.52&	1.05&	0.36&	0.29&	0.15&	0.15&	0.07&	0.09&	0.10&	0.07 \\
-8& 66.76&	5.64&	1.12&	0.50&	0.27&	0.37&	0.17&	0.12&	0.14&	0.15 \\
-10& 86.32&	9.86&	2.13&	0.87&	0.64&	0.33&	0.26&	0.32&	0.27&	0.20
-\end{tabular}
-\label{tab:Q1dmakespangapRandom}
-\end{subtable}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Run time]{Run time}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\scriptsize
-\begin{tabular}{l|*{11}{c}}
-\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
-\hline
-2& 0.00&	0.02&	0.11&	0.19&	0.54&	1.78&	4.51&	5.66&	7.93&	14.52 \\
-4& 0.04&	0.23&	0.84&	2.22&	4.81&	8.02&	19.77&	62.60&	82.57&	131.87 \\
-6& 0.78&	0.80&	3.09&	9.10&	25.45&	51.87&	116.10&	206.22&	322.23&	456.87 \\
-8& 10.07&	5.73&	13.29&	21.49&	61.11&	97.83&	198.89&	427.29&	640.75&	1117.00 \\
-10& 32.48&	23.80&	39.58&	98.76&	185.58&	360.85&	659.68&	533.94&	1154.13&	1614.11
-\end{tabular}
-\label{tab:Q1druntimeRandom}
-\end{subtable}
-\begin{center}
-\vspace{0.6cm}
-{\large GMS initial solution}
-\end{center}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Makespan gap]{Makespan gap}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\scriptsize
-\begin{tabular}{l|*{11}{c}}
-\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
-\hline
-2& 0.52&	0.06&	0.05&	0&	0.02&	0.02&	0.02&	0.01&	0.02&	0.01 \\
-4& 6.44&	0.35&	0.16&	0.08&	0.07&	0.03&	0.02&	0.04&	0.02&	0.02 \\
-6& 17.52&	1.54&	0.57&	0.29&	0.17&	0.07&	0.10&	0.10&	0.07&	0.07 \\
-8& 66.76&	6.27&	0.85&	0.57&	0.36&	0.27&	0.14&	0.12&	0.09&	0.09 \\
-10& 86.32&	9.75&	2.33&	1.07&	0.45&	0.36&	0.26&	0.34&	0.21&	0.17
-\end{tabular}
-\label{tab:Q1dmakespangapGMS}
-\end{subtable}
-\begin{subtable}{0.48\textwidth}
-\centering
-\caption[Run time]{Run time}
-%\renewcommand\arraystretch{1.3}
-\renewcommand\tabcolsep{1pt}
-\centering
-\scriptsize
-\begin{tabular}{l|*{11}{c}}
-\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
-\hline
-2& 0.00&	0.02&	0.11&	0.17&	1.17&	0.92&	3.56&	6.89&	14.87&	11.88 \\
-4& 0.03&	0.16&	0.56&	1.9&	3.43&	7.78&	10.23&	58.41&	60.2&	153.82 \\
-6& 0.88&	1.12&	3.21&	6.83&	20.65&	47&	99.3&	166.63&	203.52&	209.51 \\
-8& 5.42&	8.8&	23.13&	15.65&	38.21&	62.5&	175.91&	530.53&	602.13&	1157.53 \\
-10& 23.73&	35.67&	37.07&	84.23&	167.81&	399.51&	345.57&	697.98&	1457.24&	1588.73
-\end{tabular}
-\label{tab:Q1druntimeGMS}
-\end{subtable}
-
-\caption{Experiments GLS: k=2, using random and GMS initial solution. The makespan gap is given in \% and the run time in seconds.}
-\label{tab:Q1d}
-\end{table}
-
-
-
-
-
+From Table \ref{tab:Q1dmakespangapRandom}, we calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 4.09 \%. In Table \ref{tab:Q1dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the GMS initial solution is 4.11 \%. In Table \ref{tab:Q1druntimeRandom}, the average run time over all $n$ and $m$ for the random initial solution is 176.74 s. In Table \ref{tab:Q1druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 171.04 s. Hence, the random initial solution and the GMS initial solution give similar results. This suggests that local minima can be found just as easily from either initial solution. We will also use these two methods for generating an initial solution when testing VDS and our heuristic.
 
 
 \begin{figure}[H]
@@ -696,10 +376,51 @@ We use Python to implement the \emph{Variable Depth Search}. See ``VDS'' in MS\_
 
 \section*{VDS 2.c}
 \subsection*{Experimental results}
-We perform an experimental study for VDS using the same instances that were generated for part 1(d)...
+We perform an experimental study for VDS using the same instances that were generated for part 1(d). The results are displayed in Table \ref{tab:Q2d} and Figure \ref{fig:Q2c}. \\
+
+From Table \ref{tab:Q2dmakespangapRandom}, we calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 3.38 \%. In Table \ref{tab:Q2dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the GMS initial solution is 3.28 \%. In Table \ref{tab:Q2druntimeRandom}, the average run time over all $n$ and $m$ for the random initial solution is 79.30 s. In Table \ref{tab:Q2druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 42.69 s. Hence, a local minimum is reached faster from the GMS initial solution than the random initial solution, but the makespan gap is similar to the random initial solution.
 
 \subsection*{Comparison to GLS}
-text
+By comparing Table \ref{tab:Q1d} with Table \ref{tab:Q2d}, we can see that both the makespan gap and the run time of VDS are always lower than the makespan gap and the run time of GLS, for all combinations of $n$ and $m$. \color{red} COMMENT WHY + INTRODUCE WHY NEW HEURISTIC A LITTLE BIT \color{black}
+
+
+
+
+\begin{figure}[H]
+\begin{center}
+{\Large \bf VDS experiments}
+\end{center}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \tikz[remember picture]\node[inner sep=0pt,outer sep=0pt] (rates1){\includegraphics[width=.95\linewidth,height=.7\linewidth]{plots/Q2cRandomMakespanGap.eps}};
+  \caption{Random}
+  \label{fig:Q1dSFig1}
+  \vspace{1cm}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \tikz[remember picture]\node[inner sep=0pt,outer sep=0pt] (rates2){\includegraphics[width=.95\linewidth,height=.7\linewidth]{plots/Q2cRandomRunTime.eps}};
+    \caption{Random}
+    \label{fig:Q1dSFig2}
+    \vspace{1cm}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+ \tikz[remember picture]\node[inner sep=0pt,outer sep=0pt] (rates3){\includegraphics[width=.95\linewidth,height=.7\linewidth]{plots/Q2cGMSMakespanGap.eps}};
+   \caption{GMS}
+  \label{fig:Q1dSFig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \tikz[remember picture]\node[inner sep=0pt,outer sep=0pt] (rates4){\includegraphics[width=.95\linewidth,height=.7\linewidth]{plots/Q2cGMSRunTime.eps}};
+  \caption{GMS}
+  \label{fig:Q1dSFig4}
+\end{subfigure}
+\caption[Experiments VDSS: Random and GMS]{\textbf{Experiments VDS: k=2, using random and GMS initial solution.} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a random initial solution. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using the GMS initial solution. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
+\label{fig:Q2c}
+
+\end{figure}
+
 
 \newpage
 \section{Simulated Annealing Algorithm for MS}
@@ -752,7 +473,7 @@ $\text{makespan}(\alpha) < \text{makespan}(best)$ \textbf{then}
 \indent \textbf{output}$(best)$
 \end{enumerate}
 
-\subsection{Choice of the Initial Temperature \color{red} Maybe in Appendix? \color{black}}
+\subsection{Choice of the Initial Temperature}
 \label{subsec:initTemp}
 The performance of the algorithm can vary greatly depending on the initial value of the temperature. We follow the work of Ben-Ameur \citep{ameur2004}, who developed an algorithm to pre-determine the initial temperature $T_0$. \\
 
@@ -994,13 +715,399 @@ We also found that when the instance size became exceedingly large, using a unif
 \newpage
 
 \section{Appendix}
-\subsection*{Full results for GLS experiements}
-tables
+\subsection*{Full results for GLS experiments}
+\begin{table}[H]
+\begin{center}
+{\large \bf GLS experiments with random initial solution}
+\end{center}
+\begin{center}
+{\large \bf $k=1$}
+\end{center}
+\centering
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{9}{c}}
+\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
+\hline
+2 & 1.40 & 0.35 & 0.34 & 0.15 & 0.14 & 0.09 & 0.04 & 0.07  \\
+4 & 5.93 & 2.84 & 2.51 & 1.43 & 1.56 & 0.84 & 0.88 & 0.69 \\
+6 & 11.99 & 10.06 & 5.62 & 3.73 & 2.74 & 3.00 & 2.58 & 1.93 \\
+8 & 17.85 & 12.18 & 13.44 & 12.42 & 8.11 & 6.45 & 5.03 & 3.81 \\
+10 & 40.01 & 19.70 & 14.06 & 18.40 & 14.12 & 9.98 & 12.30 & 10.50  \\
+\end{tabular}
+\label{tab:Q1ck=1makespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{9}{c}}
+\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
+\hline
+2& 0.001&	0.002&	0.003&	0.003&	0.005&	0.005&	0.008&	0.009 \\
+4& 0.004&	0.008&	0.011&	0.018&	0.024&	0.032&	0.045&	0.044 \\
+6& 0.013&	0.019&	0.030&	0.043&	0.058&	0.067&	0.093&	0.096 \\
+8& 0.020&	0.036&	0.043&	0.075&	0.102&	0.150&	0.217&	0.219 \\
+9& 0.026&	0.060&	0.081&	0.135&	0.179&	0.200&	0.325&	0.385
+\end{tabular}
+\label{tab:Q1ck=1runtime}
+\end{subtable}
+\begin{center}
+\vspace{0.6cm}
+{\large \bf $k=2$}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{9}{c}}
+\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
+\hline
+2& 0.14&	0&	0.08&	0.06&	0&	0.05&	0.04&	0.04 \\
+4& 0.12&	0.22&	0.21&	0.06&	0.17&	0.09&	0.04&	0 \\
+6& 4.87&	1.11&	2.59&	1.49&	0.53&	0.37&	0.24&	0.30 \\
+8& 32.00&	7.36&	0.85&	0.95&	0.78&	0.76&	0.42&	0.76 \\
+10 &65.48&	7.61&	8.24&	3.38&	2.89&	1.53&	0.56&	0.83
+\end{tabular}
+\label{tab:Q1ck=2makespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{9}{c}}
+\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
+\hline
+2& 0.02&	0.05&	0.05&	0.07&	0.11&	0.45&	0.72&	1.09 \\
+4& 0.18&	0.78&	0.64&	0.73&	2.40&	4.68&	7.40&	5.21 \\
+6& 0.50&	0.87&	3.27&	2.82&	8.53&	19.86&	11.44&	29.11 \\
+8& 1.02&	3.38&	8.65&	17.52&	21.71&	42.08&	49.94&	94.56 \\
+10& 2.30&	5.59&	10.94&	23.56&	59.58&	53.83&	100.87&	195.12 \\
+\end{tabular}
+\label{tab:Q1ck=2runtime}
+\end{subtable}
+\begin{center}
+\vspace{0.6cm}
+{\large \bf $k=3$}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{9}{c}}
+\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
+\hline
+2& 0.14&	0&	0&	0&	0&	0&	0&	0.04 \\
+4& 0.20&	0.41&	0.14&	0.12&	0&	0.08&	0.08&	0.11 \\
+6& 2.45&	1.65&	0.56&	0.12&	0.10&	0&	0.08&	0.04 \\
+8& 12.88&	4.13&	0.42&	0.37&	0.96&	0.42&	0.40&	0.41 \\
+10& 17.59&	2.27&	3.09&	1.10&	0.86&	0.93&	0.40&	0.26
+\end{tabular}
+\label{tab:Q1ck=3makespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{9}{c}}
+\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
+\hline
+2& 0.09&	0.24&	1.37&	1.62&	3.98&	11.04&	16.93&	25.06 \\[1.5ex]
+4& 1.21&	7.75&	14.09&	34.79&	42.06&	121.77&	291.35&	505.66 \\[1.5ex]
+6& 7.90&	25.30&	64.16&	131.15&	244.04&	871.73&	1262.60&	2590.84 \\[1.5ex]
+8& 19.78&	80.02&	194.86&	435.55&	987.58&	2624.76&	3264.98&	5114.31 \\[1.5ex]
+10& 54.73&	153.17&	347.68&	604.12&	2002.52&	4088.55&	6251.35&	15462.72 \\[1.5ex]
+\end{tabular}
+\label{tab:Q1ck=3runtime}
+\end{subtable}
+\caption{GLS experiments: $k=1,2,3$, using a random initial solution. The makespan gap is given in \% and the run time in seconds.}
+\label{tab:Q1c}
+\end{table}
 
-\subsection*{Full results for VDS experiements}
-more tables
 
-\subsection*{Full results for simulated annealing experiements}
+
+\begin{comment}
+\begin{table}
+\begin{center}
+{\large \bf GLS experiments with GMS initial solution}
+\end{center}
+\begin{center}
+{\large \bf $k=1$}
+\end{center}
+\centering
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{9}{c}}
+\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
+\hline
+2& 0.87&	0.11&	0.08&	0.39&	0.13&	0&	0.05&	0 \\
+4& 4.35&	2.38&	1.48&	0.86&	0.38&	0.22&	0.46&	0 \\
+6& 7.71&	4.16&	2.04&	1.60&	0.44&	1.37&	2.15&	1.20 \\
+8& 5.50&	7.32&	1.38&	4.85&	1.86&	1.39&	2.95&	0.80 \\
+10& 49.55&	7.72&	5.01&	5.23&	6.09&	1.33&	3.50&	2.30
+\end{tabular}
+\label{tab:Q1ck=1makespangapGMS}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{9}{c}}
+\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
+\hline
+2& 0.0005&	0.001&	0.001&	0.001&	0.002&	0.002&	0.003&	0.003 \\
+4& 0.002&	0.003&	0.002&	0.006&	0.008&	0.005&	0.012&	0.007 \\
+6& 0.003&	0.002&	0.01&	0.013&	0.006&	0.013&	0.040&	0.018 \\
+8& 0.004&	0.012&	0.009&	0.022&	0.014&	0.010&	0.034&	0.066 \\
+10& 0.024&	0.012&	0.026&	0.035&	0.045&	0.011&	0.055&	0.098
+\end{tabular}
+\label{tab:Q1ck=1runtimeGMS}
+\end{subtable}
+\begin{center}
+\vspace{0.6cm}
+{\large \bf $k=2$}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{9}{c}}
+\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
+\hline
+2& 0&	0&	0.09&	0&	0.05&	0.06&	0.05&	0 \\
+4& 0.67&	0.43&	0.3&	0&	0.12&	0.05&	0.05&	0.04 \\
+6& 2.65&	0.70&	0.89&	0.82&	0.29&	0.25&	0.19&	0.08 \\
+8& 13.54&	1.21&	0.53&	0.70&	0.53&	0.35&	0.16&	0.50 \\
+10& 7.75&	19.6&	3.10&	2.56&	2.47&	1.07&	0.87&	0.66
+\end{tabular}
+\label{tab:Q1ck=2makespangapGMS}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{9}{c}}
+\backslashbox{m}{n} & 15 & 20 & 25 & 30 & 35 & 40 & 45 & 50 \\
+\hline
+2& 0.02&	0.03&	0.05&	0.08&	0.22&	0.68&	0.71&	0.28 \\
+4& 0.1&	0.37&	0.46&	0.44&	1.97&	2.49&	4.22&	5.5 \\
+6& 0.77&	0.71&	2.1&	6.81&	6.08&	10.06&	17.3&	19.14 \\
+8& 1.11&	1.14&	2.76&	11.8&	6.81&	32.03&	33.08&	77.17 \\
+10& 1.47&	4.42&	7.41&	18.62&	49.96&	40.49&	54.06&	190.83
+\end{tabular}
+\label{tab:Q1ck=2runtimeGMS}
+\end{subtable}
+\begin{center}
+\vspace{0.6cm}
+{\large \bf $k=3$}
+\end{center}
+
+\end{table}
+\end{comment}
+
+\newpage
+\begin{table}[h]
+\begin{center}
+{\Large \bf GLS experiments}
+\end{center}
+\begin{center}
+{\large Random initial solution}
+\end{center}
+\raggedright
+%\caption{k=1 \color{red} AND SAME TABLES FOR K=2 AND K=3, PREFER NEXT TO EACH OTHER \color{black}}
+\begin{subtable}{0.48\textwidth}
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.56&	0.06&	0.05&	0.005&	0.02&	0.02&	0.02&	0.01&	0.02&	0.01 \\
+4& 6.23&	0.54&	0.22&	0.10&	0.10&	0.05&	0.02&	0.04&	0.02&	0.02 \\
+6& 17.52&	1.05&	0.36&	0.29&	0.15&	0.15&	0.07&	0.09&	0.10&	0.07 \\
+8& 66.76&	5.64&	1.12&	0.50&	0.27&	0.37&	0.17&	0.12&	0.14&	0.15 \\
+10& 86.32&	9.86&	2.13&	0.87&	0.64&	0.33&	0.26&	0.32&	0.27&	0.20
+\end{tabular}
+\label{tab:Q1dmakespangapRandom}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.003&	0.02&	0.11&	0.19&	0.54&	1.78&	4.51&	5.66&	7.93&	14.52 \\
+4& 0.04&	0.23&	0.84&	2.22&	4.81&	8.02&	19.77&	62.60&	82.57&	131.87 \\
+6& 0.78&	0.80&	3.09&	9.10&	25.45&	51.87&	116.10&	206.22&	322.23&	456.87 \\
+8& 10.07&	5.73&	13.29&	21.49&	61.11&	97.83&	198.89&	427.29&	640.75&	1117.00 \\
+10& 32.48&	23.80&	39.58&	98.76&	185.58&	360.85&	659.68&	533.94&	1154.13&	1614.11
+\end{tabular}
+\label{tab:Q1druntimeRandom}
+\end{subtable}
+\begin{center}
+\vspace{0.6cm}
+{\large GMS initial solution}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.52&	0.06&	0.05&	0.005&	0.02&	0.02&	0.02&	0.01&	0.02&	0.01 \\
+4& 6.44&	0.35&	0.16&	0.08&	0.07&	0.03&	0.02&	0.04&	0.02&	0.02 \\
+6& 17.52&	1.54&	0.57&	0.29&	0.17&	0.07&	0.10&	0.10&	0.07&	0.07 \\
+8& 66.76&	6.27&	0.85&	0.57&	0.36&	0.27&	0.14&	0.12&	0.09&	0.09 \\
+10& 86.32&	9.75&	2.33&	1.07&	0.45&	0.36&	0.26&	0.34&	0.21&	0.17
+\end{tabular}
+\label{tab:Q1dmakespangapGMS}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.002&	0.02&	0.11&	0.17&	1.17&	0.92&	3.56&	6.89&	14.87&	11.88 \\
+4& 0.03&	0.16&	0.56&	1.90&	3.43&	7.78&	10.23&	58.41&	60.20&	153.82 \\
+6& 0.88&	1.12&	3.21&	6.83&	20.65&	47.00&	99.30&	166.63&	203.52&	209.51 \\
+8& 5.42&	8.80&	23.13&	15.65&	38.21&	62.50&	175.91&	530.53&	602.13&	1157.53 \\
+10& 23.73&	35.67&	37.07&	84.23&	167.81&	399.51&	345.57&	697.98&	1457.24&	1588.73
+\end{tabular}
+\label{tab:Q1druntimeGMS}
+\end{subtable}
+
+\caption{Experiments GLS: k=2, using random and GMS initial solution. The makespan gap is given in \% and the run time in seconds.}
+\label{tab:Q1d}
+\end{table}
+
+\newpage
+\subsection*{Full results for VDS experiments}
+
+\begin{table}[h]
+\begin{center}
+{\Large \bf VDS experiments}
+\end{center}
+\begin{center}
+{\large Random initial solution}
+\end{center}
+\raggedright
+%\caption{k=1 \color{red} AND SAME TABLES FOR K=2 AND K=3, PREFER NEXT TO EACH OTHER \color{black}}
+\begin{subtable}{0.48\textwidth}
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.42&	0.06&	0.05&	0.04&	0.01&	0.01&	0.01&	0.01&	0.01&	0.01 \\4& 6.15&	0.45&	0.20&	0.09&	0.06&	0.05&	0.03&	0.03&	0.04&	0.03 \\6& 16.67&	2.03&	0.76&	0.36&	0.17&	0.16&	0.11&	0.09&	0.09&	0.06 \\8& 39.52&	4.38&	1.66&	0.98&	0.45&	0.27&	0.27&	0.15&	0.17&	0.14 \\10& 74.41&	10.72&	2.95&	1.52&	0.81&	0.71&	0.44&	0.49&	0.33&	0.3
+\end{tabular}
+\label{tab:Q2dmakespangapRandom}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.01&	0.10&	0.38&	1.04&	2.33&	4.48&	7.89&	12.97&	19.78&	23.71 \\4& 0.03&	0.33&	0.96&	2.8&	5.16&	10.38&	17.77&	28.79&	45.04&	68.83 \\6& 0.06&	0.80&	3.18&	8.09&	15.77&	27.5&	47.15&	79.88&	113.68&	163.41 \\8& 0.11&	2.08&	6.33&	13.37&	32.37&	59.61&	108.79&	164.35&	249.3&	395.79 \\10& 0.29&	4.65&	22.51&	57.23&	110.67&	184.46&	364.6&	508.84&	416.92&	550.51
+\end{tabular}
+\label{tab:Q2druntimeRandom}
+\end{subtable}
+\begin{center}
+\vspace{0.6cm}
+{\large GMS initial solution}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2 & 0.3&	0.06&	0.05&	0.04&	0.01&	0.01&	0.01&	0.01&	0.01&	0.01 \\4 & 5.98&	0.48&	0.17&	0.09&	0.06&	0.05&	0.03&	0.03&	0.04&	0.03 \\6 & 16.67&	1.02&	0.48&	0.29&	0.17&	0.10&	0.10&	0.07&	0.06&	0.03 \\8 & 39.52&	4.40&	1.31&	0.54&	0.40&	0.27&	0.20&	0.17&	0.08&	0.09 \\10 & 74.41&	10.62&	1.82&	0.97&	0.87&	0.57&	0.4&	0.34&	0.22&	0.21
+\end{tabular}
+\label{tab:Q2dmakespangapGMS}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.005&	0.04&	0.12&	0.36&	0.73&	1.66&	2.73&	4.12&	6.89&	8.02 \\4& 0.02&	0.18&	0.73&	1.91&	3.73&	7.58&	14.25&	16.9&	30.05&	47.58 \\6& 0.03&	0.59&	2.12&	4.92&	10.35&	19.15&	35.08&	53.96&	83.02&	137.75 \\8& 0.05&	0.78&	4.02&	9.29&	21.99&	36.30&	82.26&	110.99&	168.01&	234.97 \\ 10& 0.08&	0.69&	7.07&	16.36&	28.4&	60.31&	99.14&	189.61&	229.96&	339.72
+\end{tabular}
+\label{tab:Q2druntimeGMS}
+\end{subtable}
+
+\caption{Experiments VDS: k=2, using random and GMS initial solution. The makespan gap is given in \% and the run time in seconds.}
+\label{tab:Q2d}
+\end{table}
+
+
+\newpage
+\subsection*{Full results for simulated annealing experiments}
 even more tables
 
 \end{document}
