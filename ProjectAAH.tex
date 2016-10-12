@@ -20,6 +20,9 @@
 
 \usetikzlibrary{matrix}
 
+\renewcommand{\figurename}{\textsc{Figure}}
+\renewcommand{\tablename}{\textsc{Table}}
+
 \usepackage{geometry, color, graphicx, mathtools}
 
 \usepackage{fancyhdr}
@@ -30,14 +33,6 @@
 \rhead{Ria Szeredi, Kenneth Young, Lotte Romijn}
 \lhead{MAST90098 Project}
 \cfoot{\thepage}
-
-\newcommand{\collie}[2]{\begin{minipage}[t]{0.20\linewidth}
-{#1}
-\end{minipage}
-\hfill%
-\begin{minipage}[t]{0.80\linewidth}
-{#2}
-\end{minipage}}
 
 \renewcommand{\baselinestretch}{1.2}
 
@@ -130,7 +125,7 @@ Hence, for the \textit{swap}-neighbourhood the connectivity property of a neighb
 \end{comment}
 
 
-\section*{1.b Implementation}
+\section*{1.b Implementation} \label{sec:implementation}
 We implement the \textit{greedy local search} algorithm in Python (See \emph{GLS} in MS\_heurstics.py). We will call the resulting total processing time, produced by the algorithm, the `makespan value'. \\
 
 In our code for GLS, Variable-Depth Search (Section \ref{sec:VDS}) and Simulated Annealing (Section \ref{sec:simulatedannealing}), we represent a feasible solution $\{S_1,S_2,...,S_m\}$ to the Makespan Scheduling problem as a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in [1,...,m]$ which represents in which machine job $i$ is contained. Methods have been included which convert the solutions between these two representations (\textit{convertSol\_toListOfMachines} and \textit{convertSol\_toSetsOfJobs}). \\
@@ -161,7 +156,7 @@ The GMS algorithm works by first sorting the jobs by non-increasing processing t
 \item[] \textbf{end for}
 \end{enumerate}
 
-We then convert the initial solution $\{S_1,S_2,...,S_m\}$ to the representation $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in \{1,...,m\}$ represents in which machine job $i$ is contained, by using \textit{convertSol\_toListOfMachines}, as described before. Both the `Random' and `GMS' initial solutions are feasible solutions, since all jobs are assigned to one machine $S_i$, such that $\{S_1,S_2,...,S_m \> | \> S_i \subseteq \{1,2,...,n\} \textnormal{ for } i=1,...,m, \> \cup_{k=1}^m S_k = \{1,2,...,n\}, \textnormal{ and } S_i \cap S_j = \emptyset \textnormal{ for } i \neq j \}$. \\
+We then convert the initial solution $\{S_1,S_2,...,S_m\}$ to the representation $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in \{1,...,m\}$ represents in which machine job $i$ is contained, by using \textit{convertSol\_toListOfMachines}, as described before. Both the random and GMS initial solutions are feasible solutions, since all jobs are assigned to one machine $S_i$, such that $\{S_1,S_2,...,S_m \> | \> S_i \subseteq \{1,2,...,n\} \textnormal{ for } i=1,...,m, \> \cup_{k=1}^m S_k = \{1,2,...,n\}, \textnormal{ and } S_i \cap S_j = \emptyset \textnormal{ for } i \neq j \}$. \\
 
 \section*{1.c Selecting the value of $k$}
 We perform an experimental study on randomly generated instances of MS across a range of $n$ and $m$ values in order to select an appropriate value for $k$. \\
@@ -187,7 +182,7 @@ For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we
 
 \begin{figure}[H]
 \begin{center}
-{\Large \bf GLS experiments}
+{\Large \bf GLS Experiments}
 \end{center}
 \centering
 \begin{subfigure}{.05\textwidth}
@@ -248,13 +243,15 @@ For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we
 \end{figure}
 
 \section*{1.d Experimental Study}
-We perform an experimental study to test the performance of the GLS algorithm, using $k=2$. We test for $n=10,20,30,40,50,60,70,80,90,100$ and $m=2,4,6,8,10$. We also now test both methods (`random' and `GMS) for finding an initial feasible solution. \\
+We perform an experimental study to test the performance of the GLS algorithm, using $k=2$. We test for $n=10,20,30,40,50,60,70,80,90,100$ and $m=2,4,6,8,10$. We also now test both methods (random and GMS) for finding an initial feasible solution. \\
 
 For each combination of $n$, $m$ and $k$, we generate 10 instances of MS. For each instance, we randomly select the processing times $p_i$, for $i=1,...,n$, uniformly distributed between 1 and 100. Each instance is generated with a different random seed. \\
 
 We consider a `reasonable' runtime to be approximately 20 minutes. The averaged results of 10 realisations per $n$, $m$, and $k$ are presented in Table \ref{tab:Q1d} and Figure \ref{fig:Q1d}. In Figure \ref{fig:Q1d}, only makespan gap values between 0 and 20 \% are plotted, and run time values between 0 and 1200 s (20 minutes). \\
 
 From Table \ref{tab:Q1dmakespangapRandom}, we calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 4.09 \%. In Table \ref{tab:Q1dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the GMS initial solution is 4.11 \%. In Table \ref{tab:Q1druntimeRandom}, the average run time over all $n$ and $m$ for the random initial solution is 176.74 s. In Table \ref{tab:Q1druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 171.04 s. Hence, the random initial solution and the GMS initial solution give similar results. This suggests that local minima can be found just as easily from either initial solution. We will also use these two methods for generating an initial solution when testing VDS and our heuristic.
+
+\todo[inline]{Note: when $n=10$ and $m=10$ the solution is optimal!! But we get a huge makespan gap, so need to mention that the makespan gap is not a great measure when $n$ and $m$ are comparable.}
 
 
 \begin{figure}[H]
@@ -326,7 +323,7 @@ We first present detailed pseudo-code for the VDS, as well as provide a justific
 We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Makespan Scheduling problem. Recall that, during implementation, we use a list $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, to represent a solution.
 
 \begin{enumerate}
-\item Generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$ \\ (`Random' or `GMS' described in Section GLS 1.d)
+\item Generate an initial feasible solution $\xi = \{\xi_1,\xi_2,...,\xi_n\}$ \\ (random or GMS described in Section \ref{sec:implementation})
 \item $\textnormal{IMPROVEMENT} := \textnormal{TRUE}$
 \item[] $\textnormal{EXCHANGE} := \{1,2,...,n\}$
 \item[] $J=0$, $\alpha_J := \xi$
@@ -376,19 +373,21 @@ We use Python to implement the \emph{Variable Depth Search}. See ``VDS'' in MS\_
 
 \section*{VDS 2.c}
 \subsection*{Experimental results}
-We perform an experimental study for VDS using the same instances that were generated for part 1(d). The results are displayed in Table \ref{tab:Q2d} and Figure \ref{fig:Q2c}. \\
+We perform an experimental study for VDS using the same instances that were generated for part 1(d), where we generated 10 instances for each combination of $n$ and $m$. The averaged results are displayed in Table \ref{tab:Q2d} and Figure \ref{fig:Q2c}. \\
 
-From Table \ref{tab:Q2dmakespangapRandom}, we calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 3.38 \%. In Table \ref{tab:Q2dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the GMS initial solution is 3.28 \%. In Table \ref{tab:Q2druntimeRandom}, the average run time over all $n$ and $m$ for the random initial solution is 79.30 s. In Table \ref{tab:Q2druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 42.69 s. Hence, a local minimum is reached faster from the GMS initial solution than the random initial solution, but the makespan gap is similar to the random initial solution.
+From Table \ref{tab:Q2dmakespangapRandom}, we calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 3.38 \%. In Table \ref{tab:Q2dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the GMS initial solution is 3.28 \%. In Table \ref{tab:Q2druntimeRandom}, the average run time over all $n$ and $m$ for the random initial solution is 79.30 s. In Table \ref{tab:Q2druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 42.69 s. Hence, a local minimum is reached faster from the GMS initial solution than from the random initial solution, but the values of the reached local minima are similar for both initial solution methods. Hence, a best solution is found more easily from a GMS initial solution, which has a makespan value which is less than twice the optimal makespan value, whereas in a random initial solution the initial makespan value can be as high as the sum of all processing times (if all jobs are put in the same machine). 
 
 \subsection*{Comparison to GLS}
-By comparing Table \ref{tab:Q1d} with Table \ref{tab:Q2d}, we can see that both the makespan gap and the run time of VDS are always lower than the makespan gap and the run time of GLS, for all combinations of $n$ and $m$. \color{red} COMMENT WHY + INTRODUCE WHY NEW HEURISTIC A LITTLE BIT \color{black}
+By comparing Table \ref{tab:Q1d} with Table \ref{tab:Q2d}, we can see that both the makespan gap and the run time of VDS are generally lower than the makespan gap and the run time of GLS, for all combinations of $n$ and $m$. The averages described above are also lower. This is expected since the VDS algorithm performs several local $k$-jumps in order to see whether there are better solutions at larger distances from the current best solution, whereas the GLS algorithm only iterates to the nearest local minimum from the initial feasible solution. Since VDS is better than GLS, we suggest that there are multiple local minima in our neighbourhood. \\
+
+In the following, we implement the simulated annealing algorithm. In this algorithm, we are able to escape from local minima and jump to worse neighbours. 
 
 
 
 
 \begin{figure}[H]
 \begin{center}
-{\Large \bf VDS experiments}
+{\Large \bf VDS Experiments}
 \end{center}
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -426,7 +425,7 @@ By comparing Table \ref{tab:Q1d} with Table \ref{tab:Q2d}, we can see that both 
 \section{Simulated Annealing Algorithm for MS}
 \label{sec:simulatedannealing}
 
-The heuristic we chose to implement is simulated annealing, for which we present detailed pseudo-code in \ref{subsec:SA_pseudo}. This algorithm has several free parameters, namely, the neighbourhood function, the cooling schedule which determines the rate at which the temperature decreases, and the initial value of the temperature. We use the same neighbourhood as defined in \ref{sec:GLS}. Several cooling schedules are considered, and the results of experiments performed on each are presented in \ref{subsec:tempReduc}. In \ref{subsec:initTemp}, we consider an algorithm \ref{} to find a good initial value of the temperature.
+The heuristic we chose to implement is simulated annealing, for which we present detailed pseudo-code in \ref{subsec:SA_pseudo}. This algorithm has several free parameters, namely, the neighbourhood function, the cooling schedule which determines the rate at which the temperature decreases, and the initial value of the temperature. We use the same neighbourhood as defined in \ref{sec:GLS}. Several cooling schedules are considered, and the results of experiments performed on each are presented in \ref{subsec:tempReduc}. In \ref{subsec:initTemp}, we consider an algorithm developed by \citet{ameur2004} to find a good initial value of the temperature.
 
 Finally, we conclude with a comparison to the performance of the simulated annealing heuristic to the performance of the GLS and VDS algorithms.
 
@@ -434,7 +433,7 @@ Finally, we conclude with a comparison to the performance of the simulated annea
 \label{subsec:SA_pseudo}
 In our algorithm, we make a slight modification to keep track of the best solution found by the algorithm (Step (3)). In the final step, the best solution is compared to the final solution found by the simulated annealing algorithm. We do this in order to avoid the algorithm returning a worse solution than one previously found. \\
 
-We again use the `Random' or `GMS' initial feasible solutions, described in section GLS 1.d. \\
+We again use the random or GMS initial feasible solutions, described in Section GLS 1.d. \\
 
 \emph{Input}: An input instance $I = (p_1,p_2,...,p_n,m)$ of the Makespan Scheduling problem.
 \begin{enumerate}
@@ -464,7 +463,7 @@ $\text{makespan}(\alpha) < \text{makespan}(best)$ \textbf{then}
 \item[] $best:=\alpha$
 \end{enumerate}
 \item $I:=I+1$
-\item $T:=\text{reduceTemperature}(T,I)$
+\item $T:=\text{reduceTemperature}(T_0,I)$
 \end{enumerate}
 \item[] \textbf{end while}
 \item \textbf{if} $\text{makespan}(\alpha) < \text{makespan}(best)$ \\
@@ -512,7 +511,7 @@ where we sum over all possible neighbours $\beta_j$ of $\alpha$ (and assume the 
   \item \textbf{output} $T_n$
 \end{enumerate}
 
-We will use this algorithm to generate the initial temperature for test cases with \\ $n=10,20,30,40,50,60,70,80,90,100$ and $m=2,4,6,8,10$, in order to get an idea of how large the initial temperature should be for these instances. We do this 100 times per combination of $n$ and $m$, with processing times uniformly distributed between 0 and 100, and calculate the average. The averaged results are shown in Figure \ref{fig:Initialtemperature}. We see that the initial temperature is larger when the number of machines is small, and the number of jobs is large. There is more variation in the initial temperature varying the number of machines than the number of jobs. By performing a few more test instances with smaller and larger processing times (with self-made instances and not shown in this report), we found that choosing an initial temperature of approximately 1.5 times larger than the largest processing time in an instance gives good results (and is faster, since we do not need to call the algorithm by \citet{ameur2004} for every run of our simulated annealing algorithm). We can also see that this approximately holds for the instances in Figure \ref{fig:Initialtemperature}, since the processing times are uniformly distributed between 0 and 100, and the temperature is approximately 150 for a small number of machines.
+We will use this algorithm to generate the initial temperature for test cases with \\ $n=10,20,30,40,50,60,70,80,90,100$ and $m=2,4,6,8,10$, in order to get an idea of how large the initial temperature should be for these instances. We do this 100 times per combination of $n$ and $m$, with processing times uniformly distributed between 0 and 100, and calculate the average. The averaged results are shown in Table \ref{tab:Q3InitialTemp} and Figure \ref{fig:Initialtemperature}. We see that the initial temperature is larger when the number of machines is small, and the number of jobs is large. There is more variation in the initial temperature varying the number of machines than the number of jobs. By performing a few more test instances with smaller and larger processing times (with self-made instances and not shown in this report), we found that choosing an initial temperature of approximately 1.5 times larger than the largest processing time in an instance gives good results (and is faster, since we do not need to call the algorithm by \citet{ameur2004} for every run of our simulated annealing algorithm). We can also see that this approximately holds for the instances in Figure \ref{fig:Initialtemperature}, since the processing times are uniformly distributed between 0 and 100, and the temperature is approximately 150 for a small number of machines.
 
 
 \begin{figure}[H]
@@ -521,9 +520,9 @@ We will use this algorithm to generate the initial temperature for test cases wi
 \end{center}
 \begin{subfigure}{\textwidth}
   \centering
-  \tikz[remember picture]\node[inner sep=0pt,outer sep=0pt] (rates1){\includegraphics[width=.7\linewidth,height=.3\linewidth]{plots/InitialTemperature.png}};
+  \tikz[remember picture]\node[inner sep=0pt,outer sep=0pt] (rates1){\includegraphics[width=.7\linewidth,height=.4\linewidth]{plots/InitialTemperature.png}};
 \end{subfigure}%
-\caption{The initial temperatures generated by the algorithm by \citet{ameur2004}, using 100 realisations per $n$ and $m$, processing times between 0 and 100, and the `Random' initial solution.}
+\caption{The initial temperatures generated by the algorithm by \citet{ameur2004}, using 100 realisations per $n$ and $m$, processing times between 0 and 100, and the random initial solution.}
 \label{fig:Initialtemperature}
 \end{figure}
 
@@ -533,7 +532,7 @@ We will use this algorithm to generate the initial temperature for test cases wi
 \subsection{Choice of the Temperature Reduction Function: reduceTemperature}
 \label{subsec:tempReduc}
 
-We consider several options for the cooling schedule. All are functions, $f$, of the initial temperature, $T_0$, and the iteration number, $I$. \\
+We consider several options for the cooling schedule, which is called \textit{reduceTemperature}$(T_0,I)$ in the pseudocode of Section \ref{subsec:SA_pseudo}. All are functions, $f$, of the initial temperature, $T_0$, and the iteration number, $I$. \\
 
 \textbf{Exponential multiplicative cooling}
 \begin{flalign*}
@@ -556,9 +555,13 @@ f_3(T_0,I)=\frac{1}{1+I}\cdot T_0 &&
 f_4(T_0,I)=\frac{1}{1+I^2}\cdot T_0 &&
 \end{flalign*}
 
-We experimented with the four possible cooling functions to use for the simulated annealing algorithm: simple linear cooling, linear multiplcative cooling, quadratic multiplicative cooling and exponential multiplicative. We found that the quadratic multiplicative function to be by far the slowest, taking around ten times as long as the other methods. However, it's solutions were of far better quality than all three of the other functions so we choose to use this as our cooling function. The results of these experiments can be found in the forms of graphs in figures \ref{} and \ref{}. The table of the exact numerical results are listed in the appendices in tables \ref{} through \ref{}.
+We experiment with the four possible cooling functions to use for the simulated annealing algorithm: simple linear cooling, linear multiplicative cooling, quadratic multiplicative cooling and exponential multiplicative cooling. We implemented the simulated annealing algorithm of Section \ref{subsec:SA_pseudo} in Python. See ``ourHeuristic'' in MS heuristics.py. \\
 
-We note that all experiements for the choice of cooling function were performed with a random initial solution. In the next section, we investigate the best choice of initial solution to use.
+For $n=10,20,30,40,50,60,70,80,90,100$ and $m=2,4,6,8,10$, we run our simulated annealing algorithm 10 times, using a random initial solution. The averaged results are given in Table \ref{tab:Q3Cooling} and \ref{tab:Q3CoolingQuadMult}, and in Figure \ref{fig:Q3CoolingFig1} and \ref{fig:Q3CoolingFig2}. \\
+
+We find that the quadratic multiplicative function to be by far the slowest, taking around ten times as long as the other methods. However, the makespan gap is always lower, and more than 10 times lower when $n>50$ and $m>6$ for the quadratic multiplicative method. We see that when the number of jobs is close to the number of machines, the makespan gaps are comparable for all methods. Because the quadratic multiplicative method has a better solution quality, we choose to continue with this cooling schedule. \\
+
+In the next section, we investigate the best choice of initial solution to use.
 
 \begin{figure}[H]
 \begin{center}
@@ -590,7 +593,7 @@ We note that all experiements for the choice of cooling function were performed 
   \caption{Linear Multiplicative Runtime}
   \label{fig:Q3CoolingSFig4}
 \end{subfigure}
-\caption[Experiments Simulated Annealing: Cooling Schedules]{\textbf{Experiments Simulated Annealing: simple linear and linear multiplcative cooling functions} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a simple linear cooling function. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using a linear multiplicative cooling function. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
+\caption[Experiments Simulated Annealing: Cooling Schedules]{\textbf{Experiments Simulated Annealing: simple linear and linear multiplcative cooling functions.} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a simple linear cooling function. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using a linear multiplicative cooling function. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
 \label{fig:Q3CoolingFig1}
 
 \end{figure}
@@ -625,7 +628,7 @@ We note that all experiements for the choice of cooling function were performed 
   \caption{Exponential Multiplicative Runtime}
   \label{fig:Q3CoolingSFig8}
 \end{subfigure}
-\caption[Experiments Simulated Annealing: Cooling Schedules]{\textbf{Experiments Simulated Annealing: quadratic and exponential multiplicative cooling functions} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a quadratic multiplicative cooling function. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using a exponential multiplicative cooling function. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
+\caption[Experiments Simulated Annealing: Cooling Schedules]{\textbf{Experiments Simulated Annealing: quadratic and exponential multiplicative cooling functions.} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a quadratic multiplicative cooling function. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using a exponential multiplicative cooling function. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
 \label{fig:Q3CoolingFig2}
 
 \end{figure}
@@ -633,7 +636,8 @@ We note that all experiements for the choice of cooling function were performed 
 
 
 \subsection*{Choice of Initial Solution}
-We test both random and GMS initial solutions for our heuristic procedure. GMS gave superior results....
+We test both random and GMS initial solutions for our heuristic procedure. The results of 10 realisations per $n$ and $m$ are shown in Table \ref{tab:Q3SimulatedAnnealing} and Figure \ref{fig:Q3InitSol}. We see that the random and GMS initial solution give similar results. The average makespan gap over all $n$ and $m$ for the random initial solution is 3.69 \%, while for the GMS initial solution it is 3.55 \%. The average run time over all $n$ and $m$ for the random initial solution is 1.19 s, while for the GMS initial solution it is 1.22 s. Hence, like GLS and VDS, the performance of our simulated annealing algorithm is not affected by a choice between these two initial solution methods.
+
 
 \begin{figure}[H]
 \begin{center}
@@ -665,21 +669,39 @@ We test both random and GMS initial solutions for our heuristic procedure. GMS g
   \caption{GMS}
   \label{fig:Q3InitSolSFig4}
 \end{subfigure}
-\caption[Experiments Simulated Annealing: Initial Solution]{\textbf{Experiments Simulated Annealing: random and GMS initial solutions} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a random initial solution. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using the GMS initial solution. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
+\caption[Experiments Simulated Annealing: Initial Solution]{\textbf{Experiments Simulated Annealing: random and GMS initial solutions.} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a random initial solution. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using the GMS initial solution. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
 \label{fig:Q3InitSol}
 
 \end{figure}
 
+\subsection{Comparison to GLS and VDS}
+We can compare the makespan gaps and run times of our simulated annealing solutions with GLS and VDS. 
+Comparing tables \ref{tab:Q1d}, \ref{tab:Q2c}, and \ref{tab:Q3SimulatedAnnealing}, and their respective figures \ref{fig:Q1d}, \ref{fig:Q2c}, and \ref{fig:Q3InitSol}, we see that the makespan gaps by the simulated annealing algorithm are comparable to the makespan gaps by VDS. However, the run time of the simulated annealing algorithm is much faster, with average run time over all $n$ and $m$ (1.19 s for the random initial solution and 1.22 s for the GMS initial solution) much faster than the average run time of VDS (79.30 s for the random initial solution and 42.69 s for the GMS initial solution), and more than 100 times faster than GLS (176.74 s for the random initial solution and 171.04 s for the GMS initial solution). \\
+
+\color{red} MORE!!! \color{black}
+
+
 
 
 \subsection{Performance Limitations}
-To test the performance limitations of the simulated annealing algorithm we experimented with very large input instances. By choosing to use the slowest of the cooling functions we may have limited the size of input instances that our algorithm could handle in a reasonable amount of time. Even so, instances with 10,000 jobs still terminated within 10 minutes.
+To test the performance limitations of the simulated annealing algorithm we experiment with very large input instances. By choosing to use the slowest of the cooling functions (i.e. quadratic multiplicative cooling) we may have limited the size of input instances that our algorithm could handle in a reasonable amount of time. Even so, instances with 10,000 jobs still terminate within 10 minutes. \\
 
-So far the input instances we have been generating and experimenting upon have had a uniform distribution of processing times between 1 and some constant maximum value. We choose the maximum processing time to be 100 for all the instances we generated for testing the limitations of the GLS and VDS algorithms. However, we found that the processing times to be a major factor in the runtime of very large instances and using a simple constant of 100 did not suffice. So for these experiements we let the maximum processing time be a function of $n$, the number of jobs, namely: $\text{max processing time}=\frac{n}{10}$.
+So far the input instances we generated had a uniform distribution of processing times between 1 and some constant maximum value. We chose the maximum processing time to be 100 for all the instances we generated for testing the limitations of the GLS and VDS algorithms. However, the processing times of the jobs and their distribution could also influence the run time. In order to show this, we let the maximum processing time be a function of $n$, the number of jobs, namely: $\text{max processing time}=n/10$. \\
 \todo[inline]{include reasoning behind division by 10}
+\todo[inline]{why $m=2$ and very large processing times}
+\todo[inline]{explain how we generate fat tailed distribution}
+The averaged results of 10 realisations for large $n$ and $m=2$ are shown in Table \ref{tab:Q3limitsresults} and Figure \ref{fig:Q3Limit}, for both the uniform and the fat-tailed distributions of processing times between 0 and $n/10$. We see that the makespan gap decreases with approximate slope 1, as $n$ increases. This gives that the makespan gap is of $O(1/n)$. The run time increases as $n$ increases and is approximately of $O(n^2)$. \\
 
-We also found that when the instance size became exceedingly large, using a uniform distribution of processing times made the simulated annealing algorithm find close to optimal solutions more easily. So in an attempt to create input instance with worst case processing times we tried another distribution.\todo[inline]{explain bad distribution choice}
-\todo[inline]{discuss the performance of simulated annealing on both distributions}
+
+We also find that when the instance size became exceedingly large, using a uniform distribution of processing times (in blue) made the simulated annealing algorithm find close to optimal solutions more easily.  \\
+
+\todo[inline]{Explain evening out of makespan gap results, it becomes really small for large n and small m}
+\todo[inline]{Explain results in Table \ref{tab:Q3Pathoresults} and \ref{fig:Q3Patho}}
+In an attempt to create input instance with worst case processing times we tried another distribution.\todo[inline]{explain bad distribution choice}
+
+
+\todo[inline]{The makespan gap is not good at determining the optimal solution when n is close to m, see n=10 and m=10 always gives makespan gap around 70-80, also for the pathological instances we considered!!! However, this could actually be close to the optimal solution....}
+
 
 
 \begin{figure}[H]
@@ -697,15 +719,38 @@ We also found that when the instance size became exceedingly large, using a unif
   \centering
   \tikz[remember picture]\node[inner sep=0pt,outer sep=0pt] (rates2){\includegraphics[width=.95\linewidth,height=.7\linewidth]{plots/Q3LimitRuntime.eps}};
     \caption{Runtime}
-    \label{fig:Q3LimitSFig1}
+    \label{fig:Q3LimitSFig2}
     \vspace{1cm}
 \end{subfigure}
-\caption[Experiments Simulated Annealing: Limits]{\textbf{Experiments Simulated Annealing: } \small Blue line: uniform distribution, red line: pathological distribution. (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using both types of distributions. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
+\caption[Experiments Simulated Annealing: Limits]{\textbf{Experiments Simulated Annealing.} \small Blue line: uniform distribution, red line: pathological distribution. (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using both types of distributions. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
 \label{fig:Q3Limit}
 
 \end{figure}
 
-\subsection{Comparison to GLS and VDS}
+
+\begin{figure}[H]
+\begin{center}
+{\Large \bf Simulated Annealing Pathological Instances}
+\end{center}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \tikz[remember picture]\node[inner sep=0pt,outer sep=0pt] (rates1){\includegraphics[width=.95\linewidth,height=.7\linewidth]{plots/Q3PathoMakespanGap.eps}};
+  \caption{Makespan Gap}
+  \label{fig:Q3PathoSFig1}
+  \vspace{1cm}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \tikz[remember picture]\node[inner sep=0pt,outer sep=0pt] (rates2){\includegraphics[width=.95\linewidth,height=.7\linewidth]{plots/Q3PathoRuntime.eps}};
+    \caption{Runtime}
+    \label{fig:Q3PathoSFig2}
+    \vspace{1cm}
+\end{subfigure}
+\caption[Experiments Simulated Annealing: Pathological instances]{ }
+\label{fig:Q3Patho}
+
+\end{figure}
+
 
 
 \newpage
@@ -718,7 +763,7 @@ We also found that when the instance size became exceedingly large, using a unif
 \subsection*{Full results for GLS experiments}
 \begin{table}[H]
 \begin{center}
-{\large \bf GLS experiments with random initial solution}
+{\large \bf GLS Experiments with Random Initial Solution}
 \end{center}
 \begin{center}
 {\large \bf $k=1$}
@@ -840,7 +885,7 @@ We also found that when the instance size became exceedingly large, using a unif
 \end{tabular}
 \label{tab:Q1ck=3runtime}
 \end{subtable}
-\caption{GLS experiments: $k=1,2,3$, using a random initial solution. The makespan gap is given in \% and the run time in seconds.}
+\caption{GLS Experiments: $k=1,2,3$, using a random initial solution. The makespan gap is given in \% and the run time in seconds.}
 \label{tab:Q1c}
 \end{table}
 
@@ -849,7 +894,7 @@ We also found that when the instance size became exceedingly large, using a unif
 \begin{comment}
 \begin{table}
 \begin{center}
-{\large \bf GLS experiments with GMS initial solution}
+{\large \bf GLS Experiments with GMS Initial Solution}
 \end{center}
 \begin{center}
 {\large \bf $k=1$}
@@ -942,7 +987,7 @@ We also found that when the instance size became exceedingly large, using a unif
 \newpage
 \begin{table}[h]
 \begin{center}
-{\Large \bf GLS experiments}
+{\Large \bf GLS Experiments}
 \end{center}
 \begin{center}
 {\large Random initial solution}
@@ -1034,7 +1079,7 @@ We also found that when the instance size became exceedingly large, using a unif
 
 \begin{table}[h]
 \begin{center}
-{\Large \bf VDS experiments}
+{\Large \bf VDS Experiments}
 \end{center}
 \begin{center}
 {\large Random initial solution}
@@ -1050,7 +1095,11 @@ We also found that when the instance size became exceedingly large, using a unif
 \begin{tabular}{l|*{11}{c}}
 \backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
 \hline
-2& 0.42&	0.06&	0.05&	0.04&	0.01&	0.01&	0.01&	0.01&	0.01&	0.01 \\4& 6.15&	0.45&	0.20&	0.09&	0.06&	0.05&	0.03&	0.03&	0.04&	0.03 \\6& 16.67&	2.03&	0.76&	0.36&	0.17&	0.16&	0.11&	0.09&	0.09&	0.06 \\8& 39.52&	4.38&	1.66&	0.98&	0.45&	0.27&	0.27&	0.15&	0.17&	0.14 \\10& 74.41&	10.72&	2.95&	1.52&	0.81&	0.71&	0.44&	0.49&	0.33&	0.3
+2& 0.42&	0.06&	0.05&	0.04&	0.01&	0.01&	0.01&	0.01&	0.01&	0.01 \\
+4& 6.15&	0.45&	0.20&	0.09&	0.06&	0.05&	0.03&	0.03&	0.04&	0.03 \\
+6& 16.67&	2.03&	0.76&	0.36&	0.17&	0.16&	0.11&	0.09&	0.09&	0.06 \\
+8& 39.52&	4.38&	1.66&	0.98&	0.45&	0.27&	0.27&	0.15&	0.17&	0.14 \\
+10& 74.41&	10.72&	2.95&	1.52&	0.81&	0.71&	0.44&	0.49&	0.33&	0.30
 \end{tabular}
 \label{tab:Q2dmakespangapRandom}
 \end{subtable}
@@ -1064,7 +1113,11 @@ We also found that when the instance size became exceedingly large, using a unif
 \begin{tabular}{l|*{11}{c}}
 \backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
 \hline
-2& 0.01&	0.10&	0.38&	1.04&	2.33&	4.48&	7.89&	12.97&	19.78&	23.71 \\4& 0.03&	0.33&	0.96&	2.8&	5.16&	10.38&	17.77&	28.79&	45.04&	68.83 \\6& 0.06&	0.80&	3.18&	8.09&	15.77&	27.5&	47.15&	79.88&	113.68&	163.41 \\8& 0.11&	2.08&	6.33&	13.37&	32.37&	59.61&	108.79&	164.35&	249.3&	395.79 \\10& 0.29&	4.65&	22.51&	57.23&	110.67&	184.46&	364.6&	508.84&	416.92&	550.51
+2& 0.01&	0.10&	0.38&	1.04&	2.33&	4.48&	7.89&	12.97&	19.78&	23.71 \\
+4& 0.03&	0.33&	0.96&	2.8&	5.16&	10.38&	17.77&	28.79&	45.04&	68.83 \\
+6& 0.06&	0.80&	3.18&	8.09&	15.77&	27.5&	47.15&	79.88&	113.68&	163.41 \\
+8& 0.11&	2.08&	6.33&	13.37&	32.37&	59.61&	108.79&	164.35&	249.3&	395.79 \\
+10& 0.29&	4.65&	22.51&	57.23&	110.67&	184.46&	364.6&	508.84&	416.92&	550.51
 \end{tabular}
 \label{tab:Q2druntimeRandom}
 \end{subtable}
@@ -1082,7 +1135,11 @@ We also found that when the instance size became exceedingly large, using a unif
 \begin{tabular}{l|*{11}{c}}
 \backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
 \hline
-2 & 0.3&	0.06&	0.05&	0.04&	0.01&	0.01&	0.01&	0.01&	0.01&	0.01 \\4 & 5.98&	0.48&	0.17&	0.09&	0.06&	0.05&	0.03&	0.03&	0.04&	0.03 \\6 & 16.67&	1.02&	0.48&	0.29&	0.17&	0.10&	0.10&	0.07&	0.06&	0.03 \\8 & 39.52&	4.40&	1.31&	0.54&	0.40&	0.27&	0.20&	0.17&	0.08&	0.09 \\10 & 74.41&	10.62&	1.82&	0.97&	0.87&	0.57&	0.4&	0.34&	0.22&	0.21
+2 & 0.3&	0.06&	0.05&	0.04&	0.01&	0.01&	0.01&	0.01&	0.01&	0.01 \\
+4 & 5.98&	0.48&	0.17&	0.09&	0.06&	0.05&	0.03&	0.03&	0.04&	0.03 \\
+6 & 16.67&	1.02&	0.48&	0.29&	0.17&	0.10&	0.10&	0.07&	0.06&	0.03 \\
+8 & 39.52&	4.40&	1.31&	0.54&	0.40&	0.27&	0.20&	0.17&	0.08&	0.09 \\
+10 & 74.41&	10.62&	1.82&	0.97&	0.87&	0.57&	0.40&	0.34&	0.22&	0.21
 \end{tabular}
 \label{tab:Q2dmakespangapGMS}
 \end{subtable}
@@ -1096,7 +1153,11 @@ We also found that when the instance size became exceedingly large, using a unif
 \begin{tabular}{l|*{11}{c}}
 \backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
 \hline
-2& 0.005&	0.04&	0.12&	0.36&	0.73&	1.66&	2.73&	4.12&	6.89&	8.02 \\4& 0.02&	0.18&	0.73&	1.91&	3.73&	7.58&	14.25&	16.9&	30.05&	47.58 \\6& 0.03&	0.59&	2.12&	4.92&	10.35&	19.15&	35.08&	53.96&	83.02&	137.75 \\8& 0.05&	0.78&	4.02&	9.29&	21.99&	36.30&	82.26&	110.99&	168.01&	234.97 \\ 10& 0.08&	0.69&	7.07&	16.36&	28.4&	60.31&	99.14&	189.61&	229.96&	339.72
+2& 0.005&	0.04&	0.12&	0.36&	0.73&	1.66&	2.73&	4.12&	6.89&	8.02 \\
+4& 0.02&	0.18&	0.73&	1.91&	3.73&	7.58&	14.25&	16.9&	30.05&	47.58 \\
+6& 0.03&	0.59&	2.12&	4.92&	10.35&	19.15&	35.08&	53.96&	83.02&	137.75 \\
+8& 0.05&	0.78&	4.02&	9.29&	21.99&	36.30&	82.26&	110.99&	168.01&	234.97 \\ 
+10& 0.08&	0.69&	7.07&	16.36&	28.4&	60.31&	99.14&	189.61&	229.96&	339.72
 \end{tabular}
 \label{tab:Q2druntimeGMS}
 \end{subtable}
@@ -1108,6 +1169,399 @@ We also found that when the instance size became exceedingly large, using a unif
 
 \newpage
 \subsection*{Full results for simulated annealing experiments}
-even more tables
+
+\begin{table}[H]
+\begin{center}
+{\large \bf Simulated Annealing: Initial Temperature Experiments}
+\end{center}
+\centering
+\begin{subtable}{0.48\textwidth}
+\centering
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 137.50&	148.50&	151.58&	155.20&	158.34&	159.77&	160.23&	160.42&	161.75&	162.98 \\4& 125.65&	132.39&	132.44&	135.34&	137.76&	135.69&	136.86&	136.74&	137.98&	137.36 \\6& 112.59&	111.42&	111.93&	113.47&	112.62&	112.60&	109.90&	108.87&	109.27&	107.83 \\8& 99.38&	95.47&	98.13&	94.30&	94.06&	93.97&	91.72&	91.25&	91.70&	90.41 \\10& 90.92&	87.78&	84.77&	82.27&	83.51&	82.64&	81.23&	79.21&	79.73&	77.77
+\end{tabular}
+\label{tab:Q3InitialTemp}
+\end{subtable}
+\caption{Simulated Annealing Experiments for determining the initial temperature, using the algorithm by \citet{ameur2004}. The temperature values are shown in the table and are the average result of 100 runs of the algorithm per combination of $n$ and $m$.}
+\label{tab:Q3InitialTemp}
+\end{table}
+
+
+\begin{table}[H]
+\begin{center}
+{\large \bf Simulated Annealing Experiments with Different Cooling Schedules}
+\end{center}
+\begin{center}
+{\large \bf Exponential Multiplicative}
+\end{center}
+\centering
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 1.53&	0.44&	0.29&	0.21&	0.15&	0.16&	0.10&	0.12&	0.08&	0.04 \\[1.5ex]4& 15.02&	5.22&	5.47&	3.22&	2.03&	1.93&	1.80&	1.46&	1.44&	2.00 \\[1.5ex]6& 27.12&	14.37&	10.21&	10.67&	8.08&	7.04&	5.91&	5.27&	4.90&	4.37 \\[1.5ex]8& 49.03&	26.15&	18.73&	16.85&	14.32&	10.54&	10.74&	11.70&	9.04&	11.03 \\[1.5ex]10& 74.41&	46.23&	27.69&	23.50&	20.27&	22.58&	14.06&	19.23&	16.68&	18.97
+\end{tabular}
+\label{tab:Q3CoolingExpMultmakespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.004&	0.005&	0.006&	0.007&	0.008&	0.009&	0.01&	0.011&	0.012&	0.013 \\[1.5ex]4& 0.004&	0.006&	0.007&	0.008&	0.009&	0.009&	0.011&	0.012&	0.013&	0.014 \\[1.5ex]6& 0.004&	0.005&	0.007&	0.008&	0.009&	0.010&	0.011&	0.012&	0.013&	0.014 \\[1.5ex]8& 0.004&	0.006&	0.007&	0.008&	0.009&	0.010&	0.012&	0.013&	0.015&	0.015 \\[1.5ex]10& 0.004&	0.006&	0.007&	0.008&	0.009&	0.010&	0.011&	0.012&	0.013&	0.014
+\end{tabular}
+\label{tab:Q3CoolingExpMultruntime}
+\end{subtable}
+\begin{center}
+\vspace{0.6cm}
+{\large \bf Simple Exponential}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.62&	0.16&	0.13&	0.15&	0.1&	0.06&	0.05&	0.07&	0.03&	0.03 \\[1.5ex]4& 13.61&	9.11&	5.94&	3.15&	4.29&	3.77&	3.10&	3.01&	2.10&	2.71 \\[1.5ex]6& 35.97&	20.15&	15.51&	10.14&	11.13&	10.49&	9.77&	7.75&	6.81&	7.18 \\[1.5ex]8& 48.48&	32.54&	27.04&	21.54&	20.39&	19.17&	16.95&	16.88&	13.25&	14.84 \\[1.5ex]10& 76.40&	53.07&	34.71&	35.65&	27.68&	27.96&	25&	25.57&	19.42&	20.73
+\end{tabular}
+\label{tab:Q3CoolingSimplemakespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.005&	0.007&	0.009&	0.011&	0.012&	0.014&	0.016&	0.017&	0.019&	0.022 \\[1.5ex]4& 0.006&	0.008&	0.010&	0.012&	0.013&	0.015&	0.017&	0.019&	0.021&	0.022 \\[1.5ex]6& 0.005&	0.008&	0.010&	0.012&	0.014&	0.017&	0.019&	0.020&	0.022&	0.024 \\[1.5ex]8& 0.006&	0.008&	0.011&	0.012&	0.015&	0.017&	0.019&	0.021&	0.022&	0.024 \\[1.5ex]10& 0.006&	0.008&	0.010&	0.013&	0.015&	0.017&	0.018&	0.020&	0.022&	0.024
+\end{tabular}
+\label{tab:Q3CoolingSimpleruntime}
+\end{subtable}
+\caption{Simulated Annealing Experiments, using different cooling schedules with a random initial solution. The makespan gap is given in \% and the run time in seconds.}
+\label{tab:Q3Cooling}
+\end{table}
+
+\begin{table}
+\begin{center}
+\vspace{0.6cm}
+{\large \bf Linear Multiplicative}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline 
+2& 1.68&	0.50&	0.23&	0.17&	0.08&	0.13&	0.07&	0.10&	0.06&	0.05 \\[1.5ex]4& 13.57&	5.67&	3.60&	2.09&	2.10&	1.84&	1.52&	1.96&	1.80&	1.36 \\[1.5ex]6& 24.51&	14.50&	9.96&	7.34&	6.71&	6.97&	6.38&	6.45&	5.41&	6.64 \\[1.5ex]8& 42.67&	29.03&	22.98&	15.91&	13.85&	12.43&	12.65&	12.84&	12.94&	8.49 \\[1.5ex]10& 75.94&	43.49&	27.51&	27.18&	22.34&	22.40&	21.44&	17.39&	18.47&	18.14
+\end{tabular}
+\label{tab:Q3CoolingLinmultmakespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.004&	0.005&	0.006&	0.007&	0.008&	0.009&	0.010&	0.011&	0.011&	0.013 \\[1.5ex]4& 0.003&	0.005&	0.006&	0.007&	0.008&	0.009&	0.010&	0.011&	0.012&	0.013 \\[1.5ex]6& 0.004&	0.005&	0.006&	0.007&	0.009&	0.010&	0.011&	0.012&	0.013&	0.014 \\[1.5ex]8& 0.004&	0.005&	0.007&	0.008&	0.009&	0.010&	0.011&	0.012&	0.013&	0.015 \\[1.5ex]10& 0.004&	0.006&	0.007&	0.008&	0.009&	0.010&	0.011&	0.012&	0.013&	0.014
+\end{tabular}
+\label{tab:Q3CoolingLinmultruntime}
+\end{subtable}
+\begin{center}
+{\large \bf Quadratic Multiplicative}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline 
+2& 0.33&	0.06&	0.05&	0.04&	0.01&	0.01&	0.01&	0.01&	0.01&	0.01 \\4& 6.06&	0.37&	0.28&	0.13&	0.11&	0.08&	0.08&	0.05&	0.05&	0.03 \\6& 16.67&	1.66&	0.97&	0.85&	0.45&	0.29&	0.27&	0.33&	0.18&	0.19 \\8& 39.52&	4.79&	2.59&	1.65&	1.16&	1.03&	0.71&	0.72&	0.64&	0.40 \\10& 74.41&	11.17&	4.76&	3.23&	2.22&	1.93&	1.23&	1.08&	0.89&	0.81 
+\end{tabular}
+\label{tab:Q3CoolingQuadmultmakespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.43&	0.62&	0.78&	0.93&	1.04&	1.18&	1.33&	1.49&	1.57&	1.74 \\4& 0.46&	0.64&	0.78&	0.93&	1.11&	1.24&	1.40&	1.56&	1.72&	1.87 \\6& 0.49&	0.65&	0.85&	1.02&	1.14&	1.31&	1.44&	1.58&	1.74&	1.85 \\8& 0.51&	0.68&	0.85&	1.00&	1.16&	1.32&	1.46&	1.64&	1.75&	1.89 \\10& 0.52&	0.71&	0.87&	1.02&	1.18&	1.35&	1.50&	1.65&	1.80&	1.95
+\end{tabular}
+\label{tab:Q3CoolingQuadmultruntime}
+\end{subtable}
+\caption{Simulated Annealing Experiments, using the quadratic multiplicative cooling schedule with a random initial solution. The makespan gap is given in \% and the run time in seconds.}
+\label{tab:Q3CoolingQuadMult}
+\end{table}
+
+\begin{table}[h]
+\begin{center}
+{\Large \bf Simulated Annealing Experiments}
+\end{center}
+\begin{center}
+{\large Random initial solution}
+\end{center}
+\raggedright
+\begin{subtable}{0.48\textwidth}
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.33&	0.06&	0.05&	0.04&	0.01&	0.01&	0.01&	0.01&	0.01&	0.01 \\4& 6.06&	0.37&	0.28&	0.13&	0.11&	0.08&	0.08&	0.05&	0.05&	0.03 \\6& 16.67&	1.66&	0.97&	0.85&	0.45&	0.29&	0.27&	0.33&	0.18&	0.19 \\8& 39.52&	4.79&	2.59&	1.65&	1.16&	1.03&	0.71&	0.72&	0.64&	0.40 \\10& 74.41&	11.17&	4.76&	3.23&	2.22&	1.93&	1.23&	1.08&	0.89&	0.81 
+\end{tabular}
+\label{tab:Q3SimulatedAnnealingmakespangapRandom}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.43&	0.62&	0.78&	0.93&	1.04&	1.18&	1.33&	1.49&	1.57&	1.74 \\4& 0.46&	0.64&	0.78&	0.93&	1.11&	1.24&	1.40&	1.56&	1.72&	1.87 \\6& 0.49&	0.65&	0.85&	1.02&	1.14&	1.31&	1.44&	1.58&	1.74&	1.85 \\8& 0.51&	0.68&	0.85&	1.00&	1.16&	1.32&	1.46&	1.64&	1.75&	1.89 \\10& 0.52&	0.71&	0.87&	1.02&	1.18&	1.35&	1.50&	1.65&	1.80&	1.95
+\end{tabular}
+\label{tab:Q3SimulatedAnnealingruntimeRandom}
+\end{subtable}
+\begin{center}
+\vspace{0.6cm}
+{\large GMS initial solution}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.42&	0.06&	0.05&	0.04&	0.01&	0.01&	0.01&	0.01&	0.01&	0.01 \\4& 6.06&	0.30&	0.24&	0.16&	0.11&	0.08&	0.07&	0.03&	0.05&	0.03 \\6& 16.67&	2.05&	1.19&	0.49&	0.34&	0.26&	0.24&	0.22&	0.14&	0.16 \\8& 39.52&	4.78&	2.54&	1.08&	0.75&	0.72&	0.51&	0.37&	0.37&	0.23 \\10& 74.41&	10.62&	4.37&	2.50&	1.32&	1.35&	0.75&	0.7&	0.57&	0.40
+\end{tabular}
+\label{tab:Q3SimulatedAnnealingmakespangapGMS}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{11}{c}}
+\backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
+\hline
+2& 0.43&	0.62&	0.81&	0.89&	1.04&	1.19&	1.31&	1.52&	1.56&	1.77 \\4& 0.46&	0.68&	0.84&	1.02&	1.19&	1.35&	1.40&	1.50&	1.67&	1.75 \\6& 0.50&	0.68&	0.84&	1.04&	1.16&	1.32&	1.46&	1.54&	1.66&	1.87 \\8& 0.55&	0.73&	0.87&	1.06&	1.20&	1.34&	1.51&	1.70&	1.83&	1.98 \\10& 0.55&	0.74&	0.90&	1.04&	1.22&	1.39&	1.58&	1.76&	1.91&	2.04
+\end{tabular}
+\label{tab:Q3SimulatedAnnealingruntimeGMS}
+\end{subtable}
+
+\caption{Experiments Simulated Annealing: k=2, using random and GMS initial solution. The makespan gap is given in \% and the run time in seconds.}
+\label{tab:Q3SimulatedAnnealing}
+\end{table}
+
+\begin{table}
+\begin{center}
+{\large \bf Results of Figure \ref{fig:Q3Limit}}
+\end{center}
+\begin{center}
+{\large Fat-tailed}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{7}{c}}
+\backslashbox{m}{n} & $10^2$ & $5\times10^{2}$ & $10^{3}$ & $5\times10^{3}$ & $10^{4}$ & $5\times10^{4}$ \\
+\hline 
+2& 0.127066&	0.009453&	0.002206&	0.000137&	0.000042&	0.000004 \\
+\end{tabular}
+\label{tab:Q3LimitsresultsMakespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{7}{c}}
+\backslashbox{m}{n} & $10^2$ & $5\times10^{2}$ & $10^{3}$ & $5\times10^{3}$ & $10^{4}$ & $5\times10^{4}$ \\
+\hline
+2& 0.59&	5.65&	15.59&	184.36&	509.67&	5185.65 \\
+\end{tabular}
+\label{tab:Q3LimitsresultsRuntime}
+\end{subtable}
+\vspace{0.5cm}
+\begin{center}
+{\large Uniform}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{7}{c}}
+\backslashbox{m}{n} & $10^2$ & $5\times10^{2}$ & $10^{3}$ & $5\times10^{3}$ & $10^{4}$ & $5\times10^{4}$ \\
+\hline 
+2& 0.103995&	0.00808&	0.001029&	0.00006&	0.000023&	0.000003
+\end{tabular}
+\label{tab:Q3LimitsresultsMakespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\scriptsize
+\begin{tabular}{l|*{7}{c}}
+\backslashbox{m}{n} & $10^2$ & $5\times10^{2}$ & $10^{3}$ & $5\times10^{3}$ & $10^{4}$ & $5\times10^{4}$ \\
+\hline
+2& 0.42&	4.52&	12.98&	155.38&	482.84&	4521.27 \\
+\end{tabular}
+\label{tab:Q3LimitsresultsRuntime}
+\end{subtable}
+\caption{Testing the limits of the simulated annealing algorithm, using the GMS initial solution}
+\label{tab:Q3Limitsresults}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+{\large \bf Results of Figure \ref{fig:Q3Patho}}
+\end{center}
+\begin{center}
+{\large Fat-tailed}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{6}{c}}
+\backslashbox{m}{n} & 100 & 500 & 1000 & 3000 & 5000  \\
+\hline 
+90 & 	79.22	& 	& 	& 	& \\
+450 & & 79.86 & & & \\
+900 & & & 83.08 & & \\
+2700 & & & & 82.80 & \\
+4500 & & & & & 81.80 \\
+\end{tabular}
+\label{tab:Q3PathoresultsMakespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{6}{c}}
+\backslashbox{m}{n} & 100 & 500 & 1000 & 3000 & 5000  \\
+\hline 
+90 & 	1.75	& 	& 	& 	& \\
+450 & & 20.20 & & & \\
+900 & & & 61.65 & & \\
+2700 & & & & 203.57 & \\
+4500 & & & & & 789.59 \\
+\end{tabular}
+\label{tab:Q3PathoresultsRuntime}
+\end{subtable}
+\vspace{0.5cm}
+\begin{center}
+{\large Uniform}
+\end{center}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Makespan gap]{Makespan gap}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{6}{c}}
+\backslashbox{m}{n} & 100 & 500 & 1000 & 3000 & 5000  \\
+\hline 
+90 & 	75.55	& 	& 	& 	& \\
+450 & & 78.57 & & & \\
+900 & & & 80.63 & & \\
+2700 & & & & 79.80 & \\
+4500 & & & & & 79.93 \\
+\end{tabular}
+\label{tab:Q3PathoresultsMakespangap}
+\end{subtable}
+\begin{subtable}{0.48\textwidth}
+\centering
+\caption[Run time]{Run time}
+%\renewcommand\arraystretch{1.3}
+\renewcommand\tabcolsep{1pt}
+\centering
+\footnotesize
+\begin{tabular}{l|*{6}{c}}
+\backslashbox{m}{n} & 100 & 500 & 1000 & 3000 & 5000  \\
+\hline 
+90 & 	1.36	& 	& 	& 	& \\
+450 & & 16.12 & & & \\
+900 & & &  50.76 & & \\
+2700 & & & & 185.77 & \\
+4500 & & & & & 703.25 \\
+\end{tabular}
+\label{tab:Q3PathoresultsRuntime}
+\end{subtable}
+\caption{Testing pathological instances of MS with the simulated annealing algorithm, using the GMS initial solution. For each experiment, $m/n = 0.9$ is kept constant.}
+\label{tab:Q3Pathoresults}
+\end{table}
 
 \end{document}
