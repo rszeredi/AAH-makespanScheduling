@@ -72,22 +72,24 @@ def generateRandomDurations(n,dist,seed):
 		# Focus the processing times on very high and very low values
 		# Note: max duration must be a 'nice' number (ie divisible by 5 or 10) for fatTailed to work
 
-		# Define the probabilities
-		numHighProb = 0.05*maxDur
-		highProb = 0.3/numHighProb
-		numLowProb = 0.9*maxDur
-		lowProb = 0.4/numLowProb
+		# Define the distribution parameters
+		kurtosis = 0.01		# sharpness of the peaks (lower means sharper)
+
+		numHighProb = kurtosis*maxDur
+		highProb = 0.45/numHighProb
+		numLowProb = (1 - 2*kurtosis)*maxDur
+		lowProb = 0.1/numLowProb
 
 		# Initialize probability distribution function
 		PDF = [lowProb for i in range(maxDur)]
 
 		for i in range(maxDur):
 			# Only processing times in the lowest 5% and highest 5% get high probabilities
-			if (i < 0.05*maxDur) or (i >= 0.95*maxDur):
+			if (i < kurtosis*maxDur) or (i >= (1-kurtosis)*maxDur):
 				PDF[i]=highProb
 
+		# print sum(PDF)
 		dur = [numpy.random.choice(numpy.arange(1,maxDur+1), replace=True, p=PDF) for i in range(n)]
-		print dur
 
 	elif dist == 'uniform':
 		# Uniformly distribute the processing times between 1 and the maximum
@@ -201,12 +203,12 @@ def getvalueforinitialTemperature():
 def main():
 
 	# Define constants for experiments
-	k=2						# number of exchanges
-	realizations=10			# number of empirical data points
+	k=3						# number of exchanges
+	realizations=1			# number of empirical data points
 	dist='uniform'			# distribution of processing times
-	seed=True				# whether to seed the randomization
+	seed=False				# whether to seed the randomization
 	debugging=False			# whether to print solutions
-	alg='Ours'				# algorithm to use: 'GLS', 'VDS', or 'Ours'
+	alg='GLS'				# algorithm to use: 'GLS', 'VDS', or 'Ours'
 	initSolType='random'		# initial solution to use: 'inputOrder', 'random', or 'GMS'
 	inputDir = 'test-instances/'	# define the location of stored test data
 
@@ -218,8 +220,14 @@ def main():
 	nList=[10,20,30,40,50,60,70,80,90,100]
 	mList=[2,4,6,8,10]
 
-	# nList=[15,20,25,30,35,40,45,50]
-	# mList=[2,4,6,8,10]
+	nList=[15,20,25,30,35,40,45,50]
+	mList=[2,4,6,8,10]
+
+	# nList=[20,25,30,35,40,45]
+	# mList=[2]
+
+	# nList =[5000]
+	# mList = [4500]
 
 
 	# Initialize output files
