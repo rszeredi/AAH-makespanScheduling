@@ -703,6 +703,8 @@ The averaged results of 10 realisations for large $n$ and $m=2$ are shown in Tab
 
 We also find that when the instance size became exceedingly large, using a uniform distribution of processing times (in blue) made the simulated annealing algorithm find close to optimal solutions more easily than the new distribution (in red). This indicates that our poor distribution of processing times is slightly more difficult for simulated annealing to solve. Moreover, as $n$ and $m$ increase we can conclude that the large and small processing times in our pathological distribution `even out' and make the problem easier to solve.
 
+
+
 \begin{figure}[H]
 \begin{center}
 {\Large \bf Simulated Annealing Performance Experiments}
@@ -731,15 +733,23 @@ So far, we have measured the solution quality by calculating the makespan gap, a
 \subsubsection{Other measures of solution quality}
 \color{red}
 Another possible strategy for measuring the solution quality is to calculate the ratio between of the makespan output by GMS, described in Section \ref{sec:implementation}, and the makespan output of our simulated annealing algorithm. When we take the GMS as initial solution in the simulated annealing algorithm, the final makespan of our heuristic can not be worse than GMS, since we save the current best solution and output this if no better solution is found. We re-run the simulated annealing algorithm for the instances of MS we saved and used for GLS and VDS in Table \ref{tab:Q1d} and \ref{tab:Q2d}, and also determine the optimal solution using ....
+GMS is an 4/3-approximation algorithm.... 
 \color{black}
 
 
 \subsubsection{Constraint Programming}
 We can calculate whether our solution is optimal by taking the ratio between the solution output by our simulated annealing algorithm and the optimal solution.
+
+
+
 \todo[inline]{Detail on true implementation of MP, in bash?}
 
 
 \todo[inline]{*insert table with 100\% in all entries here*}
+
+
+\section{Conclusion}
+We conclude that our simulated annealing algorithm is much faster than GLS and VDS for the MS input instances we have seen, while producing solutions of similar quality as VDS. We initially measured the quality of GLS, VDS, and our heuristic using the makespan gap, which uses the lower bound of the total processing time assuming all processing times are fractional.......... 
 
 
 \newpage
