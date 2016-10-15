@@ -1,0 +1,11 @@
+instance_m2_n60_001, Optimal: 1462, SA: 1462, Ratio: 
+instance_m2_n60_002, Optimal: 1433, SA: 1433, Ratio: 
+instance_m2_n60_003, Optimal: 1449, SA: 1449, Ratio: 
+instance_m2_n60_004, Optimal: 1513, SA: 1513, Ratio: 
+instance_m2_n60_005, Optimal: 1333, SA: 1333, Ratio: 
+instance_m2_n60_006, Optimal: 1722, SA: 1722, Ratio: 
+instance_m2_n60_007, Optimal: 1422, SA: 1422, Ratio: 
+instance_m2_n60_008, Optimal: 1440, SA: 1440, Ratio: 
+instance_m2_n60_009, Optimal: 1539, SA: 1539, Ratio: 
+instance_m2_n60_010, Optimal: 1737, SA: 1737, Ratio: 
+instance_m2_n60_011, Optimal: 1654, SA: 1654, Ratio: 

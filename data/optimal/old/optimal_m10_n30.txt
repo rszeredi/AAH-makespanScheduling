@@ -1,0 +1,11 @@
+instance_m10_n30_001, Suboptimal: 178, SA: 179, Ratio: 
+instance_m10_n30_002, Suboptimal: 119, SA: 122, Ratio: 
+instance_m10_n30_003, Optimal: 137, SA: 146, Ratio: 
+instance_m10_n30_004, Suboptimal: 152, SA: 156, Ratio: 
+instance_m10_n30_005, Suboptimal: 143, SA: 150, Ratio: 
+instance_m10_n30_006, Suboptimal: 149, SA: 157, Ratio: 
+instance_m10_n30_007, Suboptimal: 152, SA: 155, Ratio: 
+instance_m10_n30_008, Suboptimal: 154, SA: 160, Ratio: 
+instance_m10_n30_009, Suboptimal: 133, SA: 135, Ratio: 
+instance_m10_n30_010, Suboptimal: 137, SA: 138, Ratio: 
+instance_m10_n30_011, Suboptimal: 178, SA: 181, Ratio: 

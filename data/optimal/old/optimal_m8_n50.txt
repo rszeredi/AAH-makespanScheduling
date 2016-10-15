@@ -1,0 +1,5 @@
+instance_m8_n50_001, GMS: 334, LB: 331, CP: Suboptimal, 332,  seconds, SA: 334, 1.05 seconds, CP_SA_gap: .0060
+instance_m8_n50_002, GMS: 269, LB: 268, CP: Optimal, 268, 1.46 seconds, SA: 269, 1.04 seconds, CP_SA_gap: .0037
+instance_m8_n50_003, GMS: 306, LB: 303, CP: Suboptimal, 303, 1.77 seconds, SA: 306, 1.10 seconds, CP_SA_gap: .0099
+instance_m8_n50_004, GMS: 314, LB: 313, CP: Suboptimal, 313, 6.40 seconds, SA: 314, 1.01 seconds, CP_SA_gap: .0031
+instance_m8_n50_005, GMS: 307, LB: 301, CP: Optimal, 301, 5.21 seconds, SA: 307, 1.00 seconds, CP_SA_gap: .0199

@@ -1,0 +1,8 @@
+instance_m6_n100_001, GMS: 799, LB: 798, CP: Optimal, 798, 2.51 seconds, SA: 799, 1.63 seconds, CP_SA_gap: .0012
+instance_m6_n100_002, GMS: 824, LB: 821, CP: Optimal, 821, 18.20 seconds, SA: 821, 1.66 seconds, CP_SA_gap: 0
+instance_m6_n100_003, GMS: 780, LB: 779, CP: Suboptimal, 780, 300 seconds, SA: 780, 1.52 seconds, CP_SA_gap: 0
+instance_m6_n100_004, GMS: 876, LB: 875, CP: Suboptimal, 876, 300 seconds, SA: 876, 1.62 seconds, CP_SA_gap: 0
+instance_m6_n100_005, GMS: 797, LB: 796, CP: Optimal, 796, 60.84 seconds, SA: 797, 1.72 seconds, CP_SA_gap: .0012
+instance_m6_n100_006, GMS: 951, LB: 950, CP: Suboptimal, 952, 300 seconds, SA: 950, 1.54 seconds, CP_SA_gap: -.0022
+instance_m6_n100_007, GMS: 890, LB: 889, CP: Optimal, 889, 0.01 seconds, SA: 890, 1.50 seconds, CP_SA_gap: .0011
+instance_m6_n100_008, GMS: 782, LB: 781, CP: Suboptimal, 782, 300 seconds, SA: 782, 1.62 seconds, CP_SA_gap: 0

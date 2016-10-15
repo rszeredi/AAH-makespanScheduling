@@ -1,0 +1,2 @@
+instance_m4_n100_001, GMS: 1197, LB: 1197, CP: Suboptimal, 1199, 10 seconds, SA: 1197, 1.62 seconds, CP_SA_gap: -.0017
+instance_m4_n100_002, GMS: 1230, LB: 1230, CP: Suboptimal, 1230, 0.00 seconds, SA: 1230, 1.50 seconds, CP_SA_gap: 0
