@@ -680,28 +680,49 @@ Comparing tables \ref{tab:Q1d}, \ref{tab:Q2d}, and \ref{tab:Q3SimulatedAnnealing
 In addition, in Table \ref{tab:Q2d} and \ref{tab:Q3SimulatedAnnealing}, we see that the makespan gap when $n$ and $m$ are comparable (or equal when $n=m=10$) is approximately equal for VDS and simulated annealing. As noted in Section \ref{sec:selectingk}, our measure of solution quality (makespan gap) is bad in these cases. However, we can see that VDS and simulated annealing have similar results for these cases. In Section \ref{subsec:SolQual}, we will address this issue and compare the results of our simulated annealing algorithm to solutions given by an exact algorithm (MIP). 
 
 \subsection{Performance Limitations} \label{subsec:SimAnn_Limit}
-To test the performance limitations of the simulated annealing algorithm we experiment with very large input instances. By choosing to use the slowest of the cooling functions (i.e. quadratic multiplicative cooling) we may have limited the size of input instances that our algorithm could handle in a reasonable amount of time. Even so, instances with 10,000 jobs still terminate within 10 minutes. \\
+To test the performance limitations of the simulated annealing algorithm we experiment with very large input instances. By choosing to use the slowest of the cooling functions (i.e. quadratic multiplicative cooling) we may have limited the size of input instances that our algorithm could handle in a reasonable amount of time. Even so, we found instances with 10,000 jobs still terminate within 10 minutes. \\
 
 So far the input instances we generated had a uniform distribution of processing times between 1 and some constant maximum value. We chose the maximum processing time to be 100 for all the instances we generated for testing the limitations of the GLS and VDS algorithms. However, the processing times of the jobs and their distribution could also influence the solution quality. \\
 
-In order to demonstrate this, we let the maximum processing time be defined as a function of $n$, namely: $\text{max-processing-time}=n/10$. The division by 10 here is an artefact of our heuristic being implemented in Python, as when we tested the input instance of 1,000,000 jobs and 2 machines, calculating the total load of a machine required storing scalar values. Without the assistance of 3rd party packages, Python cannot store scalar values larger than $2^{31}$ and so this calculation resulted in overflow errors. Dividing by 10 solved this issue for the size of the instances we aimed to test. \\
+In order to explore this, we let the maximum processing time be defined as a function of $n$, namely: $\text{max-processing-time}=n/10$. The division by 10 here is an artefact of our heuristic being implemented in Python, as when we tested the input instance of 1,000,000 jobs and 2 machines, calculating the total load of a machine required storing large scalar values. Without the assistance of 3rd party packages to handle memory allocation, Python cannot store scalar values larger than $2^{31}$ and so this calculation resulted in overflow errors. Simply dividing by 10 solved this issue for the size of the instances we aimed to test. \\
 
 For these experiments we vary the number of jobs but kept the number of machines constant at $m=2$. Our initial testing indicated that when $n$ became 2 orders of magnitude larger than $m$, the exact number of machines began to have very little influence on the results. Note, in Table \ref{tab:Q3SimulatedAnnealingruntimeRandom} and  \ref{tab:Q3SimulatedAnnealingruntimeGMS} and Figure \ref{fig:Q3InitSol}, the run time does not vary much with $m$. So, instead of testing $n=$ 100, 500, 1000, 5,000, 10,000 and 50,000 against a range of $m$ values, we chose $m$ to be a constant, thus saving computation time and still achieving the desired outcome of testing simulated annealing's limits. \\
 
 \subsubsection{Engineering Poor Input Instances}
-We aim to create instances of the problem which are particularly difficult to solve to optimality. To this end, we investigate ways to distribute the processing times between 1 and $n/10$ other than simply using the uniform distribution. \\
+We aim to create instances of the problem which are particularly difficult to solve to optimality. To this end, we investigate ways to distribute the processing times between 1 and $n/10$ other than simply using the uniform distribution. We consider instances where the processing times were almost exclusively concentrated near the extreme values, i.e. the minimum and maximum. We introduce the following definitions before the formulation of the poor distribution is provided.
+\begin{align}
+\varrho: & \text{ Maximum possible processing time.} \nonumber\\
+\kappa: & \text{ The concentration of the processing times in the extremes.} \nonumber\\
+\Pi: & \text{ Probability of a job having a processing time from one extreme.} \nonumber\\
+\pi: & \text{ Probabilty of a job having a processing time not from an extreme} \nonumber\\
+N: & \text{ Number of processing times assigned a large probability in each extreme, } N =\lfloor \kappa\varrho \rfloor. \nonumber\\
+\nu: & \text{ Number of processing times assigned a small probability, } \nu =\varrho - 2N. \nonumber
+\
+\end{align}
 
-{\bf Poor Distribution Definition} \\
-In order to create these instances, we first generate a new probability distribution function for the processing times. This distribution function makes it more likely to select either very small or very large processing times for the jobs. Specifically, we give processing times in the lowest 5 \% and highest 5 \% of a pre-specified maximum processing time the highest probability, in such a way that the total probability of jobs having processing time within 5 \% of 0 or the maximum is 0.9. With this probability density function, we then select processing times using Python's (Numpy) random inbuilt random number generator, which takes the probability density function as input. \\
+{\bf Poor Distribution Definition}\\
+Let $X$ be a random variable with probability density function, $f$, defined as follows,
+\[
+P(X=x)=f(x) := 
+\begin{cases} 
+      \Pi/N & 1 \leq x < \kappa\varrho, \\
+      \pi/\nu & \kappa\varrho \leq x < (1-\kappa)\varrho, \\
+      \Pi/N & (1-\kappa)\varrho\leq x \leq \varrho .
+   \end{cases}\textbf{}
+\]
 
-We consider instances where the processing times are almost exclusively concentrated near the minimum and maximum possible values. We are motivated to try such a distribution as the makespan values between most neighbouring solutions will have a high level of volatility. Given $k=2$ and a jump-neighbourhood, this is demonstrated as follows; consider any two jobs which in iteration $i$ of the simulated annealing algorithm are chosen to be exchanged. Given the distribution we construct heavily weights the concentration of processing times to very large and very small values, we can assume almost certainly that the processing times of these jobs will be near 1 or $\frac{n}{10}$. The neighbourhood of our current solution will contain a large amount of exchanges that have little if any affect on the makespan (when moving small jobs), together with a large amount of neighbours which will have wildly large affects (when moving large jobs). \\
+For the our experiments we chose $\Pi=0.45$, $\pi=0.1$ and $\kappa=0.01$. So 90\% of the total probabililty was concentrated in 2\% of the possible processing times. To implement this probability density function, we select processing times using Python's (Numpy) random inbuilt random number generator, which takes the probability density function as input. \\
+
+We are motivated to try such a distribution as the makespan values between most neighbouring solutions will have a high level of volatility. This should result from the distribution heavily weighting the concentration of processing times to within a percent of 1 or $\varrho$. When the simulated annealing algorithm consider a random neighbour to move to, this neighbour will likely have an approximately equal makespan to our current solution or a drastically differing one. So the neighbourhood of any feasible solution will contain a large amount of exchanges that have little if any affect on the makespan (when moving small jobs), together with a large amount of neighbours which will have wildly large affects (when moving large jobs). \\
 
 An instance with such a poor distribution of processing times will have a volatile neighbourhood topology. This should result in simulated annealing having more difficulty in finding the good local optima.
 
 \subsubsection{Results of Performance Limits Experiments}
 The averaged results of 10 realisations for large $n$ and $m=2$ are shown in Tables \ref{tab:Q3Limitsresults} and Figure \ref{fig:Q3Limit}, for both the uniform and the poor distributions of processing times between 0 and $n/10$. We see that the makespan gap decreases with approximate slope 1, as $n$ increases. This gives that the makespan gap is of $O(1/n)$. The run time increases as $n$ increases and is approximately of $O(n^2)$. \\
 
-We also find that when the instance size became exceedingly large, using a uniform distribution of processing times (in blue) made the simulated annealing algorithm find close to optimal solutions more easily than the new distribution (in red). This indicates that our poor distribution of processing times is slightly more difficult for simulated annealing to solve. Moreover, as $n$ and $m$ increase we can conclude that the large and small processing times in our pathological distribution `even out' and make the problem easier to solve.
+From Figure \ref{fig:Q3LimitSFig2} where we have plotted the runtime results for the $n=$ 100, 500, 1000, 5,000, 10,000 and 50,000, we can see that for the largest number of jobs considered our simulated annealing algorithm has taken longer than the specified 20 minutes to terminate. Specifically, the algorithm required on average 75 minutes for a uniform distribution of processing time and an average of 86 minutes for the poor distribution (see tables \ref{tab:Q3LimitsresultsRuntimeSFig2} and \ref{tab:Q3LimitsresultsRuntimeSFig4}). But for $n=10,000$, our heuristic terminated within 10 minutes for both distributions tested. Noting that Figure \ref{fig:Q3LimitSFig2} is a LogLog plot, we can draw that the largest input instance our heuristic could handle in a reasonable amount of time has $n\approx$ 20,000-30,000. \\
+
+We also find that when the instance size became exceedingly large, using a uniform distribution of processing times (in blue) made the simulated annealing algorithm find close to optimal solutions more easily than the new distribution (in red). This indicates that our poor distribution of processing times is slightly more difficult for simulated annealing to solve. Moreover, as $n$ increases we can conclude that the large and small processing times in our pathological distribution `even out' and make the problem easier to solve.
 
 
 
@@ -1475,7 +1496,7 @@ We conclude that our simulated annealing algorithm is much faster than GLS and V
 \hline 
 2& 0.127066&  0.009453& 0.002206& 0.000137& 0.000042& 0.000004 \\
 \end{tabular}
-\label{tab:Q3LimitsresultsMakespangap}
+\label{tab:Q3LimitsresultsMakespangapSFig1}
 \end{subtable}
 \begin{subtable}{0.48\textwidth}
 \centering
@@ -1489,7 +1510,7 @@ We conclude that our simulated annealing algorithm is much faster than GLS and V
 \hline
 2& 0.59&  5.65& 15.59&  184.36& 509.67& 5185.65 \\
 \end{tabular}
-\label{tab:Q3LimitsresultsRuntime}
+\label{tab:Q3LimitsresultsRuntimeSFig2}
 \end{subtable}
 \vspace{0.5cm}
 \begin{center}
@@ -1507,7 +1528,7 @@ We conclude that our simulated annealing algorithm is much faster than GLS and V
 \hline 
 2& 0.103995&  0.00808&  0.001029& 0.00006&  0.000023& 0.000003
 \end{tabular}
-\label{tab:Q3LimitsresultsMakespangap}
+\label{tab:Q3LimitsresultsMakespangapSFig3}
 \end{subtable}
 \begin{subtable}{0.48\textwidth}
 \centering
@@ -1521,7 +1542,7 @@ We conclude that our simulated annealing algorithm is much faster than GLS and V
 \hline
 2& 0.42&  4.52& 12.98&  155.38& 482.84& 4521.27 \\
 \end{tabular}
-\label{tab:Q3LimitsresultsRuntime}
+\label{tab:Q3LimitsresultsRuntimeSFig4}
 \end{subtable}
 \caption{Testing the limits of the simulated annealing algorithm, using the GMS initial solution}
 \label{tab:Q3Limitsresults}
