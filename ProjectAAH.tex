@@ -80,7 +80,7 @@ We implement a greedy local search (GLS) algorithm for MS, which picks the lowes
 
 We consider a \textit{k-jump}-neighbourhood: \\
 
-We define a mapping $f_X: \mathcal{M}(x) \rightarrow 2^{\mathcal{M}(x)}$, such that if $\beta = \{\beta_1,\beta_2,...,\beta_m \} \in f_x(\alpha)$ for some $\alpha = \{\alpha_1,\alpha_2,...,\alpha_m \} \in \mathcal{M}(x)$ if $\beta$ can be obtained from $\alpha$ by $k$ ``jumps". \\
+We define a mapping $f_X: \mathcal{M}(x) \rightarrow 2^{\mathcal{M}(x)}$, such that if $\alpha = \{\alpha_1,\alpha_2,...,\alpha_m \} \in \mathcal{M}(x)$ and $\beta = \{\beta_1,\beta_2,...,\beta_m \} \in \mathcal{M}(x)$, and $\alpha$ can be obtained from $\beta$ by $k$ ``jumps'', then $\beta\in f_x(\alpha)$. \\
 
 Each jump allows some job $p \in S_i$ for some $i \in \{1,...,m\}$ to move to any one of the $m$ machines, including to the one in which it is contained. Hence, after one jump we have one of two cases:
 \begin{itemize}
@@ -135,13 +135,13 @@ In our code for GLS, Variable-Depth Search (Section \ref{sec:VDS}) and Simulated
 
 To find the best $k$-\emph{jump}-neighbour of a solution, we define a function \emph{findBestNeighbour} which returns the best solution that can be reached from the input solution in one $k$-jump. It does so by systematically iterating through all possible combinations of jobs to jump and machines to jump to, and updating the solution if a better neighbour is found.\\
 
-The GLS algorithm requires an initial, feasible solution for each instance. We consider two methods do generate initial solutions:
+The GLS algorithm requires an initial, feasible solution for each instance. We consider two methods to generate initial solutions:
 \begin{enumerate}
 \item Random: assigning each job to a random machine (see \emph{findInitialFeasibleSolution\_rand}).
-\item GMS - Greedy Makespan Scheduling algorithm (see \emph{findInitialFeasibleSolution\_GMS})
+\item Greedy Makespan Scheduling algorithm (GMS) (see \emph{findInitialFeasibleSolution\_GMS})
 \end{enumerate}
 
-The GMS algorithm works by first sorting the jobs by non-increasing processing time, assigning the $m$ largest jobs each to a different machine, and assigning the remaining jobs to the least loaded machine. I.e., using the original problem notation:
+The GMS algorithm works by first sorting the jobs by non-increasing processing time, assigning the $m$ largest jobs each to a different machine, and assigning the remaining jobs in order to the least loaded machine at each iteration. I.e., using the original problem notation:
 
 \begin{enumerate}
 \item We reindex the jobs such that $p_1 \geq p_2 \geq ... \geq p_n$
@@ -154,7 +154,7 @@ The GMS algorithm works by first sorting the jobs by non-increasing processing t
 \item \textbf{For} $j=m+1,...,n$ (only if $n > m$)
 \begin{enumerate}
 \item $M := \textnormal{min} \{ \sum_{l \in S_i} p_l | i = 1,...,m \}$
-\item $S_M = S_M \cup \{ j \}$
+\item $S_M := S_M \cup \{ j \}$
 \end{enumerate}
 \item[] \textbf{end for}
 \item \textbf{output($\{S_1,S_2,...,S_m\}$)}
@@ -162,12 +162,12 @@ The GMS algorithm works by first sorting the jobs by non-increasing processing t
 
 It can be shown that GMS is a $2$-approximation algorithm for MS (Section 4.2.1 of the textbook). \\
 
-We then convert the resulting initial solution $\{S_1,S_2,...,S_m\}$ to the representation $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in \{1,...,m\}$ represents in which machine job $i$ is contained, by using \textit{convertSol\_toListOfMachines}, as described before. Both the random and GMS initial solutions are feasible solutions, since all jobs are assigned to one machine $S_i$, such that $\{S_1,S_2,...,S_m \> | \> S_i \subseteq \{1,2,...,n\} \textnormal{ for } i=1,...,m, \> \cup_{k=1}^m S_k = \{1,2,...,n\}, \textnormal{ and } S_i \cap S_j = \emptyset \textnormal{ for } i \neq j \}$.
+We then convert the resulting initial solution $\{S_1,S_2,...,S_m\}$ to the representation $\xi = [\xi_1,\xi_2,...,\xi_n]$ of length $n$, where each $\xi_i \in \{1,...,m\}$ represents in which machine job $i$ is contained, by using \textit{convertSol\_toListOfMachines}, as described before. Both the random and GMS initial solutions are feasible solutions, since all jobs are assigned to one machine such that $S_i \subseteq \{1,2,...,n\} \textnormal{ for } i=1,...,m, \> \cup_{k=1}^m S_k = \{1,2,...,n\}, \textnormal{ and } S_i \cap S_j = \emptyset \textnormal{ for } i \neq j$.
 
 \section*{1.c Selecting the value of $k$} \label{sec:selectingk}
 We perform an experimental study on randomly generated instances of MS across a range of $n$ and $m$ values in order to select an appropriate value for $k$. \\
 
-We consider $n=15, 20, 25, 30, 35, 40, 45, 50$, $m=2,4,6,8,10$, and $k=1,2,3$. For each combination of $n$, $m$ and $k$, we generate 1 instance of MS. For each instance, we randomly select the processing times $p_i$, for $i=1,...,n$, uniformly distributed between 1 and 100. We determine the run time of our GLS implementation for each instance, and the solution quality by comparing the makespan value to a lower bound. We define this lower bound to be the least possible makespan value if we were able to process fractions of the jobs on any machine, i.e.
+We consider $n=15, 20, 25, 30, 35, 40, 45, 50$, $m=2,4,6,8,10$, and $k=1,2,3$. For each combination of $n$, $m$ and $k$, we generate 1 instance of MS. For each instance, we randomly select the processing times, $p_i$, for $i=1,...,n$, uniformly distributed between 1 and 100. We determine the run time of our GLS implementation for each instance, and the solution quality by comparing the makespan value to a lower bound. We define this lower bound to be the least possible makespan value if we were able to process fractions of the jobs on any machine, i.e.
 \begin{equation}
 \textnormal{lower bound} = \frac{\sum_{i=1}^n p_i}{m}. \label{eq:NaiveLB}
 \end{equation}
@@ -184,7 +184,7 @@ We can see in Tables \ref{tab:Q1ck=1makespangap}, \ref{tab:Q1ck=2makespangap}, a
 
 In Table  \ref{tab:Q1ck=1runtime}, \ref{tab:Q1ck=2runtime}, and \ref{tab:Q1ck=3runtime}, we see that for all $n$ and $m$, the run time increases as $k$ increases. It increases rapidly: we see that the average run time over all combinations of $n$ and $m$ is 0.072 s for $k=1$, 19.79 s for $k=2$, and 1199 s for $k=3$. As we increase $k$, the size of the neighbourhood increases by a factor of $n \> m$. However, for all combinations of $n$ and $m$, the run time increases by a factor less than $n \> m$ as we increase $k$. Moreover, when $k$ is larger and we increase $n$ and $m$, the neighbourhood increases more (since the size is $(n \> m)^k$). Hence, in the tables we can see that the run time increases faster for larger $k$, as we increase $n$ and $m$. In Figures \ref{fig:Q1cSFig2}, \ref{fig:Q1cSFig4}, and \ref{fig:Q1cSFig6}, the run time has been plotted for $k=1$, $k=2$, $k=3$, respectively. We have used the same range of the run time values (between 0 and 1200 s) for all three plots. Compared to $k=3$, we can see that the run times for $k=1$ and $k=2$ are significantly smaller. However, for $n=50$ and $m=10$, the run time for $k=2$ is approximately 3 minutes (195 seconds), and approximately 500 ($n \> m = 50 \times 10 = 500$) times larger than the run time for $k=1$, which is 0.385 s.   \\
 
-For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we see that for all instances we have considered so far, the run time is smaller than 20 minutes (1200 seconds). Moreover, the makespan gap is smaller than for $k=1$, for all instances except for $n=15$ and $m=8,10$, i.e. when the number of jobs is relatively close to the number of machines. Hence, we make a trade-off between solution quality and run time, and select $k=2$ as our $k$-value.
+For our remaining experiments, we choose $k=2$. In Figure \ref{fig:Q1cSFig4}, we see that for all instances we have considered so far, the run time is less than 20 minutes (1200 seconds). Moreover, the makespan gap is smaller than for $k=1$, for all instances except for $n=15$ and $m=8,10$, i.e. when the number of jobs is relatively close to the number of machines. Hence, we make a trade-off between solution quality and run time, and select our $k$-exchange value to be equal to 2.
 
 \begin{figure}[H]
 \begin{center}
@@ -253,9 +253,9 @@ We perform an experimental study to test the performance of the GLS algorithm, u
 
 For each combination of $n$ and $m$, we generate 10 instances of MS. For each instance, we randomly select the processing times $p_i$, for $i=1,...,n$, uniformly distributed between 1 and 100. Each instance is generated with a different random seed. \\
 
-We consider a `reasonable' run time to be approximately 20 minutes. The averaged results of 10 realisations per $n$, $m$, and $k$ are presented in Table \ref{tab:Q1d} and Figure \ref{fig:Q1d}. In Figure \ref{fig:Q1d}, only makespan gap values between 0 and 20 \% are plotted, and run time values between 0 and 1200 s (20 minutes). \\
+We consider a `reasonable' run time to be approximately 20 minutes. The averaged results of 10 realisations per $n$, $m$, and $k$ are presented in Table \ref{tab:Q1d} and Figure \ref{fig:Q1d}. In Figure \ref{fig:Q1d}, only makespan gap values between 0 and 20 \% and run time values between 0 and 1200 s (20 minutes) are plotted. \\
 
-From Table \ref{tab:Q1dmakespangapRandom}, we calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 4.09 \%. In Table \ref{tab:Q1dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the GMS initial solution is 4.11 \%. In Table \ref{tab:Q1druntimeRandom}, the average run time over all $n$ and $m$ for the random initial solution is 176.74~s. In Table \ref{tab:Q1druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 171.04 s. Hence, the random initial solution and the GMS initial solution give similar results. This suggests that local minima can be found just as easily from either initial solution. We will also use these two methods for generating an initial solution when testing VDS and our heuristic.
+From Table \ref{tab:Q1dmakespangapRandom}, we calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 4.09 \%. In Table \ref{tab:Q1dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the GMS initial solution is 4.11 \%. In Tables  \ref{tab:Q1druntimeRandom} and \ref{tab:Q1druntimeGMS}, we calculate the average run time over all $n$ and $m$ values for the random and GMS initial solution to be 176.74~s and 171.04~s repectively. Hence, the random initial solution and the GMS initial solution give similar results. This suggests that local minima can be found just as easily from either initial solution. We will also use these two methods for generating an initial solution when testing VDS and our heuristic.
 
 
 
@@ -290,7 +290,7 @@ From Table \ref{tab:Q1dmakespangapRandom}, we calculate that the average makespa
   \caption{GMS}
   \label{fig:Q1dSFig4}
 \end{subfigure}
-\caption[Experiments GLS: Random and GMS]{\textbf{Experiments GLS: k=2, using random and GMS initial solution.} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a random initial solution. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using the GMS initial solution. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
+\caption[Experiments GLS: Random and GMS]{\textbf{Experiments GLS: $k=2$, using random and GMS initial solution.} \small (a) and (b) display the average makespan gap (in percentage) and the average run time (in seconds), using a random initial solution. (c) and (d) show the average makespan gap (in percentage) and the average run time (in seconds), using the GMS initial solution. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
 \label{fig:Q1d}
 
 \end{figure}
@@ -366,13 +366,13 @@ We begin with an input instance $I = (p_1,p_2,...,p_n,m)$ of the Makespan Schedu
 
 Our neighbourhood function, \textit{findBestNeighbour} (step (3)(a)(ii)), is the same function we used for GLS, but taking a few different input parameters which we will describe below. Finding the best neighbour of a feasible solution, $\alpha_i$ is equivalent to finding a feasible solution, $\alpha_{i+1}$, which is such that $gain(\alpha_i,\alpha_{i+1})=\max\{gain(\alpha_i,\delta) | \delta\in Neigh(\alpha_i)\} = \max\{\textnormal{cost}(\alpha_i) - \textnormal{cost}(\delta) | \delta\in Neigh(\alpha_i)\}$, and we only update $\alpha_i$ to $\alpha_{i+1}$ if $gain(\alpha_i,\alpha_{i+1}) > 0$. Thus condition (ii)(a) in Section 3.6.2 of the textbook is satisfied.\\
 
-In order to satisfy the conditions (i) and (ii)(b), we have included two special input arguments to the \textit{findBestNeighbour} method:
+In order to satisfy conditions (i) and (ii)(b), we have included two special input arguments to the \textit{findBestNeighbour} method:
 \begin{enumerate}
-\item \textit{differentSolRequired} is a Boolean parameter, which indicates whether we require a neighbour which differs by at least one $\xi_i$ to the original solution. This is set to be True for the VDS algorithm (whereas for the GLS algorithm, we set it to False). The function does not update the best neighbour if the neighbour is the same as the input solution. The implementation of this parameter ensures that the final feasible solution has all jobs assigned to a different machine to the original solution. Thus condition (i) is satisfied.
-\item \textit{jobsToConsider} is a list representing the jobs whose assigned machine we are allowed to change. The \textit{findBestNeighbour} method only iterates over the jobs in this list in its search for the best neighbour, thus returning a solution which is such that any jobs not in the list stay on their original machine. In the VDS algorithm, the input argument is the EXCHANGE list. Thus, at each iteration within the while loop in step 3.a, we obtain a neighbour which differs from the previous solution in the parameters of EXCHANGE only. This list is initialised as the set of all jobs, and is updated at each iteration of the while loop in step 3.a.iii by removing any jobs that were changed. This procedure is continued until there remain no jobs to be changed, after which we break out of the while loop in step 3.a, and condition (ii)(b) is thus satisfied.
+\item \textit{differentSolRequired} is a Boolean parameter, which indicates whether we require a neighbour which differs by at least one $\xi_i$ to the original solution. This is set to be True for the VDS algorithm (whereas for the GLS algorithm, we set it to False). The function does not update the best neighbour if the neighbour is the same as the input solution. The implementation of this parameter ensures that the final feasible solution, $\alpha_J$, has all jobs assigned to a different machine to the original solution. Thus condition (i) is satisfied.
+\item \textit{jobsToConsider} is a list representing the jobs whose assigned machine is allowed to change. The \textit{findBestNeighbour} method only iterates over the jobs in this list in its search for the best neighbour, thus returning a solution which is such that any jobs not in the list stay on their original machine. In the VDS algorithm, the input argument is the EXCHANGE list. Thus, at each iteration within the while loop in step 3.a, we obtain a neighbour which differs from the previous solution in the parameters of EXCHANGE only. This list is initialised as the set of all jobs, and is updated at each iteration of the while loop in step 3.a.iii by removing any jobs that were changed. This procedure is continued until there remain no jobs to be changed, after which we break out of the while loop in step 3.a, and condition (ii)(b) is thus satisfied.
 \end{enumerate}
 
-Note that our implementation of the VDS algorithm differs slightly from the textbook. We reset $J$ and $\alpha_J$ in step 3.d, displayed in red, which is not done in the textbook. In subsequent iterations of the while loop (step 3), we do not consider `old' neighbours, i.e. neighbours found by previous iterations of the inner while loop (step 3.a). We choose to do this because these old neighbours can not be better than the current best solution $\xi$, since otherwise we would have moved it before. And by this procedure, we only need to check the value of $J$ gains every iteration of the while loop (step 3), and we terminate if we can not find a better solution among any of the $J$ neighbours generated.
+Note that our implementation of the VDS algorithm differs slightly from the textbook. We reset $J$ and $\alpha_J$ in step 3.d, displayed in red, which is not done in the textbook. In subsequent iterations of the while loop (step 3), we do not consider `old' neighbours, i.e. neighbours found by previous iterations of the inner while loop (step 3.a). We choose to do this because these old neighbours can not be better than the current best solution $\xi$, since otherwise we would have moved to it before. By this procedure, we only need to check the value of $J$ gains every iteration of the while loop (step 3), and we terminate if we can not find a better solution among any of the $J$ neighbours generated.
 
 \section*{VDS 2.b}
 We use Python to implement the \emph{Variable Depth Search}. See \emph{VDS} in MS\_heuristics.py.
@@ -381,7 +381,7 @@ We use Python to implement the \emph{Variable Depth Search}. See \emph{VDS} in M
 \subsection*{Experimental results}
 We perform an experimental study for VDS using the same instances that were generated for Section 1(d), where we generated 10 instances for each combination of $n$ and $m$. The averaged results are displayed in Table \ref{tab:Q2d} and Figure \ref{fig:Q2c}. \\
 
-From Table \ref{tab:Q2dmakespangapRandom}, we calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 3.38 \%. In Table \ref{tab:Q2dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the GMS initial solution is 3.28 \%. In Table \ref{tab:Q2druntimeRandom}, the average run time over all $n$ and $m$ for the random initial solution is 79.30 s. In Table \ref{tab:Q2druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 42.69 s. Hence, a local minimum is reached faster from the GMS initial solution than from the random initial solution, but the values of the reached local minima are similar for both initial solution methods. Hence, a best solution is found more easily from a GMS initial solution, which has a makespan value which is less than twice the optimal makespan value, whereas in a random initial solution the initial makespan value can be as high as the sum of all processing times (if all jobs are put in the same machine). 
+From Table \ref{tab:Q2dmakespangapRandom}, we calculate that the average makespan gap over all $n$ and $m$ for the random initial solution is 3.38 \%. In Table \ref{tab:Q2dmakespangapGMS}, the average makespan gap over all $n$ and $m$ for the GMS initial solution is 3.28 \%. In Table \ref{tab:Q2druntimeRandom}, the average run time over all $n$ and $m$ for the random initial solution is 79.30 s. In Table \ref{tab:Q2druntimeGMS}, the average run time over all $n$ and $m$ for the GMS initial solution is 42.69 s. Hence, a local minimum is reached faster from the GMS initial solution than from the random initial solution, but the values of the reached local minima are similar for both initial solution methods. Hence, a best solution is found more easily from a GMS initial solution, which has a makespan value which is less than twice the optimal makespan value, whereas in a random initial solution the initial makespan value can be as high as the sum of all processing times (if all jobs are put in the same machine).
 
 \subsection*{Comparison to GLS}
 By comparing Table \ref{tab:Q1d} with Table \ref{tab:Q2d}, we can see that both the makespan gap and the run time of VDS are generally lower than the makespan gap and the run time of GLS, for all combinations of $n$ and $m$. The averages described above are also lower. This is expected since the VDS algorithm performs several local $k$-jumps in order to see whether there are better solutions at larger distances from the current best solution, whereas the GLS algorithm only iterates to the nearest local minimum from the initial feasible solution. Since VDS is better than GLS, there are multiple local minima in our neighbourhood. \\
@@ -419,7 +419,7 @@ By comparing Table \ref{tab:Q1d} with Table \ref{tab:Q2d}, we can see that both 
   \caption{GMS}
   \label{fig:Q1dSFig4}
 \end{subfigure}
-\caption[Experiments VDSS: Random and GMS]{\textbf{Experiments VDS: k=2, using random and GMS initial solution.} \small (a) and (b) display the makespan gap (in percentage) and the run time (in seconds), using a random initial solution. (c) and (d) show the makespan gap (in percentage) and the run time (in seconds), using the GMS initial solution. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
+\caption[Experiments VDSS: Random and GMS]{\textbf{Experiments VDS: $k=2$, using random and GMS initial solution.} \small (a) and (b) display the average makespan gap (in percentage) and the average run time (in seconds), using a random initial solution. (c) and (d) show the average makespan gap (in percentage) and the average run time (in seconds), using the GMS initial solution. We only plot makespan gap values between 0 and 20 \%, and run time values between 0 and 1200 s. }
 \label{fig:Q2c}
 
 \end{figure}
@@ -429,13 +429,13 @@ By comparing Table \ref{tab:Q1d} with Table \ref{tab:Q2d}, we can see that both 
 \section{Simulated Annealing Algorithm for MS}
 \label{sec:simulatedannealing}
 
-The heuristic we choose to implement is simulated annealing, for which we present detailed pseudo-code in Section \ref{subsec:SA_pseudo}. This algorithm has several free parameters, namely, the neighbourhood function, the cooling schedule which determines the rate at which the temperature decreases, and the initial value of the temperature. We use the same neighbourhood as defined in Section \ref{sec:GLS}. \\
+The heuristic we choose to implement is Simulated Annealing, for which we present detailed pseudo-code in Section \ref{subsec:SA_pseudo}. This algorithm has several free parameters, namely, the neighbourhood function, the cooling schedule which determines the rate at which the temperature decreases, and the initial value of the temperature. We use the same $k$-exchange neighbourhood as defined in Section \ref{sec:GLS}. \\
 
-In Section \ref{subsec:initTemp}, we consider an algorithm developed by \citet{ameur2004} to find a good initial value of the temperature. Several cooling schedules are considered, and the results of experiments performed on each are presented in Section \ref{subsec:tempReduc}. Section \ref{subsec:SimAnn_Comp} contains the results of comparing the performance of the simulated annealing heuristic to the performance of the GLS and VDS algorithms. This then motivates Section \ref{subsec:SimAnn_Limit}, in which we push our heuristic to its limits to find the largest possible input instances which can be handled. Finally, in Section \ref{subsec:SolQual}, we conclude by providing other possible methods of determining solution quality and how our heuristic performs with respect to each one.
+In Section \ref{subsec:initTemp}, we consider an algorithm developed by \citet{ameur2004} to find a good initial value of the temperature. Several cooling schedules are considered, and the results of experiments performed on each are presented in Section \ref{subsec:tempReduc}. Section \ref{subsec:SimAnn_Comp} contains the results of comparing the performance of the simulated annealing heuristic to the performance of the GLS and VDS algorithms. This then motivates Section \ref{subsec:SimAnn_Limit}, in which we push our heuristic to its limits to find the largest possible input instances which can be handled. Finally, in Section \ref{subsec:SolQual}, we conclude by providing another method of determining solution quality and how our heuristic performs with respect to this new measure.
 
 \subsection{Simulated Annealing Algorithm Pseudocode}
 \label{subsec:SA_pseudo}
-In our algorithm, we make a slight modification to keep track of the best solution found by the algorithm (Step (3)). In the final step, the best solution is compared to the final solution found by the simulated annealing algorithm. We do this in order to avoid the algorithm returning a worse solution than one previously found. \\
+In our algorithm, we make a slight modification to keep track of the best solution found by the algorithm (Step (3c)). In the final step, the best solution is compared to the final solution found by the simulated annealing algorithm. We do this in order to avoid the algorithm returning a worse solution than one previously found. \\
 
 We again use the random or GMS initial feasible solutions, described in Section \ref{sec:implementation}. \\
 
@@ -504,19 +504,19 @@ where we sum over all possible neighbours $\beta_j$ of $\alpha$ (and assume the 
 \end{itemize}
 \begin{enumerate}
   \item Generate a set, $\mathcal{S}$, of size $S$, of random transitions:
-  \item[] For each random transition, we generate a random initial solution $\alpha$ and move to a random neighbour $\beta$. We let $E_\textnormal{max} := \min\{\textnormal{cost}(\alpha),\textnormal{cost}(\beta)\}$ and $E_{\textnormal{min}} := \max\{\textnormal{cost}(\alpha),\textnormal{cost}(\beta)\}$ for each transition $S$.
+  \item[] For each random transition, generate a random initial solution $\alpha$ and move to a random neighbour $\beta$. Let $E_\textnormal{max} := \min\{\textnormal{cost}(\alpha),\textnormal{cost}(\beta)\}$ and $E_{\textnormal{min}} := \max\{\textnormal{cost}(\alpha),\textnormal{cost}(\beta)\}$ for each transition $S$.
   \item $T_1:= - \frac{\sum_{t \in S} E_{\textnormal{max}_t} - E_{\textnormal{min}_t}}{|S| \textnormal{ln}(\xi_0)}$
   \item[] Let $n=1$
   \item[] Compute $\chi(T):=\frac{\displaystyle\sum\limits_{t\in \mathcal{S}} e^\frac{E_{{max}_{t}}}{T_n}}{\displaystyle\sum\limits_{t\in \mathcal{S}} e^\frac{E_{{min}_{t}}}{T_n}}$
   \item \textbf{while} $|\chi(T_n)-\chi_0|>\epsilon$ \textbf{do}
   \begin{enumerate}
-    \item $T_{n+1} := T_{n} \cdot(\frac{\ln(\chi(T_n))}{\ln(\chi_0)})^{\frac{1}{p}}$
+    \item $T_{n+1} := T_{n} \cdot(\frac{\ln(\chi(T_n))}{\ln(\chi_0)})$%$^{\frac{1}{p}}$    (p=1)
     \item Compute $\chi(T_n)$
   \end{enumerate}
   \item \textbf{output} $T_n$
 \end{enumerate}
 
-We will use this algorithm to generate the initial temperature for test cases with $n=$ 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 and $m=$ 2, 4, 6, 8, 10, in order to get an idea of how large the initial temperature should be for these instances. We do this 100 times per combination of $n$ and $m$, with processing times uniformly distributed between 1 and 100, and calculate the average. The averaged results are shown in Table \ref{tab:Q3InitialTemp} and Figure \ref{fig:Initialtemperature}. We see that the initial temperature is larger when the number of machines is small, and the number of jobs is large. There is more variation in the initial temperature varying the number of machines than the number of jobs. By performing a few more test instances with smaller and larger processing times (with self-made instances and not shown in this report), we found that choosing an initial temperature of approximately 1.5 times larger than the largest processing time in an instance gives good results (and is faster, since we do not need to call the algorithm by \citet{ameur2004} for every run of our simulated annealing algorithm). We can also see that this approximately holds for the instances in Figure \ref{fig:Initialtemperature}, since the processing times are uniformly distributed between 1 and 100, and the temperature is approximately 150 for a small number of machines.
+We use this algorithm to generate the initial temperature for test cases with $n=$ 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 and $m=$ 2, 4, 6, 8, 10, in order to get an idea of how large the initial temperature should be for these instances. We do this 100 times per combination of $n$ and $m$, with processing times uniformly distributed between 1 and 100, and calculate the average. The averaged results are shown in Table \ref{tab:Q3InitialTemp} and Figure \ref{fig:Initialtemperature}. We see that the initial temperature is larger when the number of machines is small, and the number of jobs is large. There is more variation in the initial temperature when the number of machines is varied, rather than when the number of jobs is varied. By performing a few more test instances with smaller and larger processing times (with self-made instances and not shown in this report), we found that choosing an initial temperature of approximately 1.5 times larger than the largest processing time in an instance gives good results (and is faster, since we do not need to call the algorithm by \citet{ameur2004} for every run of our simulated annealing algorithm). We can also see that this approximately holds for the instances in Figure \ref{fig:Initialtemperature}, since the processing times are uniformly distributed between 1 and 100, and the temperature is approximately 150 for a small number of machines.
 
 
 \begin{figure}[H]
@@ -571,7 +571,7 @@ We experiment with these four cooling functions for the simulated annealing algo
 
 For $n=10,20,30,40,50,60,70,80,90,100$ and $m=2,4,6,8,10$, we run our simulated annealing algorithm 10 times, using a random initial solution. The averaged results are given in Table \ref{tab:Q3Cooling} and \ref{tab:Q3CoolingQuadMult}, and in Figure \ref{fig:Q3CoolingFig1} and \ref{fig:Q3CoolingFig2}. \\
 
-We find that the quadratic multiplicative function is by far the slowest, taking between ten and a hundred times longer than the other methods. However, the makespan gap is always lower, and more than 10 times lower when $n>50$ and $m>6$ for the quadratic multiplicative method. We see that when the number of jobs is close to the number of machines, the makespan gaps are comparable for all methods. Because the quadratic multiplicative method has a better solution quality, we choose to continue with this cooling schedule. \\
+We find that the quadratic multiplicative function is by far the slowest, taking between ten and a hundred times longer than the other methods. However, the makespan gap is always lower, and more than 10 times lower when $n>50$ and $m>6$ for the quadratic multiplicative method. We see that when the number of jobs is close to the number of machines, the makespan gaps are comparable for all methods. Because the quadratic multiplicative method results in better solution quality, we choose to continue with this cooling schedule. \\
 
 In the next section, we investigate the best choice of initial solution to use.
 
@@ -687,19 +687,19 @@ We test both random and GMS initial solutions for our heuristic procedure. The r
 \end{figure}
 
 \subsection{Comparison to GLS and VDS} \label{subsec:SimAnn_Comp}
-We can compare the makespan gaps and run times of our simulated annealing solutions with GLS and VDS. 
-Comparing tables \ref{tab:Q1d}, \ref{tab:Q2d}, and \ref{tab:Q3SimulatedAnnealing}, and their respective figures \ref{fig:Q1d}, \ref{fig:Q2c}, and \ref{fig:Q3InitSol}, we see that the makespan gaps by the simulated annealing algorithm are comparable to the makespan gaps by VDS. However, the run time of the simulated annealing algorithm is much faster, with average run time over all $n$ and $m$ (1.19 s for the random initial solution and 1.22 s for the GMS initial solution) much faster than the average run time of VDS (79.30 s for the random initial solution and 42.69 s for the GMS initial solution), and more than 100 times faster than GLS (176.74 s for the random initial solution and 171.04 s for the GMS initial solution). \\
+We can compare the makespan gaps and run times of our simulated annealing solutions with GLS and VDS.
+Comparing Tables \ref{tab:Q1d}, \ref{tab:Q2d}, and \ref{tab:Q3SimulatedAnnealing}, and their respective Figures \ref{fig:Q1d}, \ref{fig:Q2c}, and \ref{fig:Q3InitSol}, we see that the makespan gaps by the simulated annealing algorithm are comparable to the makespan gaps by VDS. However, the run time of the simulated annealing algorithm is much faster, with average run time over all $n$ and $m$ (1.19 s for the random initial solution and 1.22 s for the GMS initial solution) much faster than the average run time of VDS (79.30 s for the random initial solution and 42.69 s for the GMS initial solution), and more than 100 times faster than GLS (176.74 s for the random initial solution and 171.04 s for the GMS initial solution). \\
 
-In addition, in Table \ref{tab:Q2d} and \ref{tab:Q3SimulatedAnnealing}, we see that the makespan gap when $n$ and $m$ are comparable (or equal when $n=m=10$) is approximately equal for VDS and simulated annealing. As noted in Section \ref{sec:selectingk}, our measure of solution quality (makespan gap) is bad in these cases. However, we can see that VDS and simulated annealing have similar results for these cases. In Section \ref{subsec:SolQual}, we will address this issue and compare the results of our simulated annealing algorithm to solutions given by an exact algorithm (MIP). 
+In addition, in Tables \ref{tab:Q2d} and \ref{tab:Q3SimulatedAnnealing}, we see that the makespan gap when $n$ and $m$ are comparable (or equal when $n=m=10$) is approximately equal for VDS and simulated annealing. As noted in Section \ref{sec:selectingk}, our measure of solution quality (makespan gap) is bad in these cases. However, we can see that VDS and simulated annealing have similar results for these cases. In Section \ref{subsec:SolQual}, we will address this issue and compare the results of our simulated annealing algorithm to solutions given by an exact solution method.
 
 \subsection{Performance Limitations} \label{subsec:SimAnn_Limit}
 To test the performance limitations of the simulated annealing algorithm we experiment with very large input instances. By choosing to use the slowest of the cooling functions (i.e. quadratic multiplicative cooling) we may have limited the size of input instances that our algorithm can handle in a reasonable amount of time. Even so, we found instances with 10,000 jobs still terminate within 10 minutes. \\
 
 So far the input instances we generated had a uniform distribution of processing times between 1 and some constant maximum value. We chose the maximum processing time to be 100 for all the instances we generated for testing the limitations of the GLS and VDS algorithms. However, the processing times of the jobs and their distribution could also influence the solution quality. \\
 
-In order to explore this, we let the maximum processing time be defined as a function of $n$, namely: $\text{max-processing-time}=n/10$. The division by 10 here is an artefact of our heuristic being implemented in Python, as when we tested the input instance of 1,000,000 jobs and 2 machines, calculating the total load of a machine required storing large scalar values. Without the assistance of 3rd party packages to handle memory allocation, Python cannot store scalar values larger than $2^{31}$ and so this calculation resulted in overflow errors. Simply dividing by 10 solved this issue for the size of the instances we aimed to test. \\
+In order to explore this, we let the maximum processing time be defined as a function of $n$, namely: $\text{max-processing-time}=n/10$. The division by 10 here is an artefact of our heuristic being implemented in Python, as when we tested the input instance of 1,000,000 jobs and 2 machines, calculating the total load of a machine required storing large scalar values. Without the assistance of third party packages to handle memory allocation, Python cannot store scalar values larger than $2^{31}$ and so this calculation resulted in overflow errors. Simply dividing by 10 solved this issue for the size of the instances we aimed to test. \\
 
-For these experiments we vary the number of jobs but keep the number of machines constant at $m=2$. Our initial testing indicated that when $n$ became 2 orders of magnitude larger than $m$, the exact number of machines began to have very little influence on the results. Note, in Table \ref{tab:Q3SimulatedAnnealingruntimeRandom} and  \ref{tab:Q3SimulatedAnnealingruntimeGMS} and Figure \ref{fig:Q3InitSol}, the run time does not vary much with $m$. So, instead of testing $n=$ 100, 500, 1000, 5,000, 10,000 and 50,000 against a range of $m$ values, we chose $m$ to be a constant, thus saving computation time and still achieving the desired outcome of testing simulated annealing's limits. \\
+For these experiments we vary the number of jobs but keep the number of machines constant at $m=2$. Our initial testing indicated that when $n$ became 2 orders of magnitude larger than $m$, the exact number of machines began to have very little influence on the results. Note, in Tables \ref{tab:Q3SimulatedAnnealingruntimeRandom} and  \ref{tab:Q3SimulatedAnnealingruntimeGMS} and Figure \ref{fig:Q3InitSol}, the run time does not vary much with $m$. So, instead of testing $n=$ 100, 500, 1000, 5,000, 10,000 and 50,000 against a range of $m$ values, we chose $m$ to be a constant, thus saving computation time and still achieving the desired outcome of testing simulated annealing's limits. \\
 
 \subsubsection{Engineering Poor Input Instances}
 We aim to create instances of the problem which are particularly difficult to solve to optimality. To this end, we investigate ways to distribute the processing times between 1 and $n/10$ other than simply using the uniform distribution. We consider instances where the processing times were almost exclusively concentrated near the extreme values, i.e. the minimum and maximum. We introduce the following definitions before the formulation of the poor distribution is provided.
@@ -716,17 +716,17 @@ N: & \text{ Number of processing times assigned a large probability in each extr
 {\bf Poor Distribution Definition}\\
 Let $X$ be a random variable with probability density function, $f$, defined as follows,
 \[
-P(X=x)=f(x) := 
-\begin{cases} 
+P(X=x)=f(x) :=
+\begin{cases}
       \Pi/N & 1 \leq x < \kappa\varrho, \\
       \pi/\nu & \kappa\varrho \leq x < (1-\kappa)\varrho, \\
       \Pi/N & (1-\kappa)\varrho\leq x \leq \varrho .
    \end{cases}\textbf{}
 \]
 
-For the our experiments we chose $\Pi=0.45$, $\pi=0.1$ and $\kappa=0.01$. So 90\% of the total probability was concentrated in 2\% of the possible processing times. To implement this probability density function, we select processing times using Python's (Numpy) random inbuilt random number generator, which takes the probability density function as input. \\
+For our experiments we chose $\Pi=0.45$, $\pi=0.1$ and $\kappa=0.01$. So 90\% of the total probability was concentrated in 2\% of the possible processing times. To implement this probability density function, we select processing times using Python's (Numpy) random inbuilt random number generator, which takes the probability density function as input. \\
 
-We are motivated to try such a distribution as the makespan values between most neighbouring solutions will have a high level of volatility. This should result from the distribution heavily weighting the concentration of processing times to within a percent of 1 or $\varrho$. When the simulated annealing algorithm considers a random neighbour to move to, this neighbour will likely have an approximately equal makespan to our current solution or a drastically differing one. So the neighbourhood of any feasible solution will contain a large amount of exchanges that have little if any affect on the makespan (when moving small jobs), together with a large amount of neighbours which will have wildly large affects (when moving large jobs). \\
+We are motivated to try such a distribution as the makespan values between most neighbouring solutions will have a high level of volatility. This should result from the distribution heavily weighting the concentration of processing times to within a percent of 1 or $\varrho$. When the simulated annealing algorithm considers a random neighbour to move to, this neighbour will likely have an approximately equal makespan to our current solution or a drastically differing one. So the neighbourhood of any feasible solution will contain a large amount of exchanges that have little, if any, effect on the makespan (when moving small jobs), together with a large amount of neighbours which will have wildly large effects (when moving large jobs). \\
 
 % {\color{red} Options to end this subsubsection:\\
 %  Option 1:} \\
@@ -745,9 +745,9 @@ An instance with such a poor distribution of processing times will have a volati
 % The above cases make up the large majority of the possible exchanges which can occur at iteration $i$. In each case, the makespan of $x_i$ is either approximately equal to that of $x_j \in N(x_i)$ or drastically different. This indicates that for an input instance with such a poor distribution of processing times, the neighbourhood topology will be volatile. Simulated annealing should then have a more difficult time in finding good local optima.
 
 \subsubsection{Results of Performance Limits Experiments}
-The averaged results of 10 realisations for large $n$ and $m=2$ are shown in Tables \ref{tab:Q3Limitsresults} and Figure \ref{fig:Q3Limit}, for both the uniform and the poor distributions of processing times between 0 and $n/10$. We see that the makespan gap decreases with approximate slope 1, as $n$ increases. This gives that the makespan gap is of $O(1/n)$. The run time increases as $n$ increases and is approximately of $O(n^2)$. \\
+The averaged results of 10 realisations for large $n$ and $m=2$ are shown in Table \ref{tab:Q3Limitsresults} and Figure \ref{fig:Q3Limit}, for both the uniform and the poor distributions of processing times between 0 and $n/10$. We see that the makespan gap decreases with approximate slope 1, as $n$ increases. This gives that the makespan gap is of $O(1/n)$. The run time increases as $n$ increases and is approximately of $O(n^2)$. \\
 
-In Figure \ref{fig:Q3LimitSFig2}, where we have plotted the run time results for the $n=$ 100, 500, 1000, 5,000, 10,000 and 50,000, we can see that for the largest number of jobs considered our simulated annealing algorithm has taken longer than the specified 20 minutes to terminate. Specifically, the algorithm required on average 75 minutes for a uniform distribution of processing time and an average of 86 minutes for the poor distribution (see tables \ref{tab:Q3LimitsresultsRuntimeSFig2} and \ref{tab:Q3LimitsresultsRuntimeSFig4}). But for $n=10,000$, our heuristic terminated within 10 minutes for both distributions tested. Noting that Figure \ref{fig:Q3LimitSFig2} is a LogLog plot, we can see that the largest input instance our heuristic can handle in a reasonable amount of time has $n\approx$ 20,000-30,000. \\
+In Figure \ref{fig:Q3LimitSFig2}, where we have plotted the run time results for the $n=$ 100, 500, 1000, 5,000, 10,000 and 50,000, we can see that for the largest number of jobs considered our simulated annealing algorithm has taken longer than the specified 20 minutes to terminate. Specifically, the algorithm required on average 75 minutes for a uniform distribution of processing time and an average of 86 minutes for the poor distribution (see Tables \ref{tab:Q3LimitsresultsRuntimeSFig2} and \ref{tab:Q3LimitsresultsRuntimeSFig4}). However, for $n=10,000$, our heuristic terminated within 10 minutes for both distributions tested. Noting that Figure \ref{fig:Q3LimitSFig2} is a LogLog plot, we can see that the largest input instance our heuristic can handle in a reasonable amount of time has $n\approx$ 20,000-30,000. \\
 
 We also find that when the instance size became exceedingly large, using a uniform distribution of processing times (in blue) made the simulated annealing algorithm find close to optimal solutions more easily than the new distribution (in red). This indicates that our poor distribution of processing times is slightly more difficult for simulated annealing to solve. Moreover, as $n$ increases we can conclude that the large and small processing times in our pathological distribution `even out' and make the problem easier to solve.
 
@@ -781,7 +781,7 @@ So far, we have measured the solution quality by calculating the makespan gap, a
 % \subsubsection{Other measures of solution quality}
 % \color{red}
 % Another possible strategy for measuring the solution quality is to calculate the ratio between of the makespan output by GMS, described in Section \ref{sec:implementation}, and the makespan output of our simulated annealing algorithm. When we take the GMS as initial solution in the simulated annealing algorithm, the final makespan of our heuristic can not be worse than GMS, since we save the current best solution and output this if no better solution is found. We re-run the simulated annealing algorithm for the instances of MS we saved and used for GLS and VDS in Table \ref{tab:Q1d} and \ref{tab:Q2d}, and also determine the optimal solution using ....
-% GMS is an 2-approximation algorithm.... 
+% GMS is an 2-approximation algorithm....
 % \color{black}
 
 
@@ -807,7 +807,7 @@ For the instances that were not solved to optimality by the CP model within the 
 \footnotesize
 \begin{tabular}{l|C{1.3cm}C{1.3cm}C{1.3cm}C{1.3cm}C{1.3cm}C{1.3cm}C{1.3cm}C{1.3cm}C{1.3cm}C{1.3cm}C{1.3cm}}
 \backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
-\hline 
+\hline
  2&  0.002  & 0   & 0   & 0   & 0   & 0   & 0   & 0   & 0   & 0   \\
   4&  0.000    & 0.003 & 0.001 & 0.001 & 0.000   & 0.000   & 0.000   & 0.000   & 0.000   & 0   \\
   6&  0    & 0.013 & 0.007 & 0.004 & 0.003 & 0.002 & 0.001 & 0.001 & 0.001 & 0.001 \\
@@ -1228,7 +1228,7 @@ After numerous experiments on instances of varying size and processing time dist
 2& 0.005& 0.04& 0.12& 0.36& 0.73& 1.66& 2.73& 4.12& 6.89& 8.02 \\
 4& 0.02&  0.18& 0.73& 1.91& 3.73& 7.58& 14.25&  16.9& 30.05&  47.58 \\
 6& 0.03&  0.59& 2.12& 4.92& 10.35&  19.15&  35.08&  53.96&  83.02&  137.75 \\
-8& 0.05&  0.78& 4.02& 9.29& 21.99&  36.30&  82.26&  110.99& 168.01& 234.97 \\ 
+8& 0.05&  0.78& 4.02& 9.29& 21.99&  36.30&  82.26&  110.99& 168.01& 234.97 \\
 10& 0.08& 0.69& 7.07& 16.36&  28.4& 60.31&  99.14&  189.61& 229.96& 339.72
 \end{tabular}
 \label{tab:Q2druntimeGMS}
@@ -1371,7 +1371,7 @@ After numerous experiments on instances of varying size and processing time dist
 \scriptsize
 \begin{tabular}{l|*{11}{c}}
 \backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
-\hline 
+\hline
 2& 1.68&  0.50& 0.23& 0.17& 0.08& 0.13& 0.07& 0.10& 0.06& 0.05 \\[1.5ex]
 4& 13.57& 5.67& 3.60& 2.09& 2.10& 1.84& 1.52& 1.96& 1.80& 1.36 \\[1.5ex]
 6& 24.51& 14.50&  9.96& 7.34& 6.71& 6.97& 6.38& 6.45& 5.41& 6.64 \\[1.5ex]
@@ -1410,12 +1410,12 @@ After numerous experiments on instances of varying size and processing time dist
 \scriptsize
 \begin{tabular}{l|*{11}{c}}
 \backslashbox{m}{n} & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & 100 \\
-\hline 
+\hline
 2& 0.33&  0.06& 0.05& 0.04& 0.01& 0.01& 0.01& 0.01& 0.01& 0.01 \\
 4& 6.06&  0.37& 0.28& 0.13& 0.11& 0.08& 0.08& 0.05& 0.05& 0.03 \\
 6& 16.67& 1.66& 0.97& 0.85& 0.45& 0.29& 0.27& 0.33& 0.18& 0.19 \\
 8& 39.52& 4.79& 2.59& 1.65& 1.16& 1.03& 0.71& 0.72& 0.64& 0.40 \\
-10& 74.41&  11.17&  4.76& 3.23& 2.22& 1.93& 1.23& 1.08& 0.89& 0.81 
+10& 74.41&  11.17&  4.76& 3.23& 2.22& 1.93& 1.23& 1.08& 0.89& 0.81
 \end{tabular}
 \label{tab:Q3CoolingQuadmultmakespangap}
 \end{subtable}
@@ -1462,7 +1462,7 @@ After numerous experiments on instances of varying size and processing time dist
 4& 6.06&  0.37& 0.28& 0.13& 0.11& 0.08& 0.08& 0.05& 0.05& 0.03 \\
 6& 16.67& 1.66& 0.97& 0.85& 0.45& 0.29& 0.27& 0.33& 0.18& 0.19 \\
 8& 39.52& 4.79& 2.59& 1.65& 1.16& 1.03& 0.71& 0.72& 0.64& 0.40 \\
-10& 74.41&  11.17&  4.76& 3.23& 2.22& 1.93& 1.23& 1.08& 0.89& 0.81 
+10& 74.41&  11.17&  4.76& 3.23& 2.22& 1.93& 1.23& 1.08& 0.89& 0.81
 \end{tabular}
 \label{tab:Q3SimulatedAnnealingmakespangapRandom}
 \end{subtable}
@@ -1545,7 +1545,7 @@ After numerous experiments on instances of varying size and processing time dist
 \scriptsize
 \begin{tabular}{l|*{7}{c}}
 \backslashbox{m}{n} & $10^2$ & $5\times10^{2}$ & $10^{3}$ & $5\times10^{3}$ & $10^{4}$ & $5\times10^{4}$ \\
-\hline 
+\hline
 2& 0.127066&  0.009453& 0.002206& 0.000137& 0.000042& 0.000004 \\
 \end{tabular}
 \label{tab:Q3LimitsresultsMakespangapSFig1}
@@ -1577,7 +1577,7 @@ After numerous experiments on instances of varying size and processing time dist
 \scriptsize
 \begin{tabular}{l|*{7}{c}}
 \backslashbox{m}{n} & $10^2$ & $5\times10^{2}$ & $10^{3}$ & $5\times10^{3}$ & $10^{4}$ & $5\times10^{4}$ \\
-\hline 
+\hline
 2& 0.103995&  0.00808&  0.001029& 0.00006&  0.000023& 0.000003
 \end{tabular}
 \label{tab:Q3LimitsresultsMakespangapSFig3}
