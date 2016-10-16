@@ -1,0 +1,3 @@
+output [("LB: "++show(LB))++"\n"]++[("makespan = "++show(makespan))++"\n"];
+int: makespan;
+int: LB = 5061;

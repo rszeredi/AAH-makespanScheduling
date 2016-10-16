@@ -1,0 +1,1873 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.27)  16 OCT 2016 18:39
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**ProjectAAH.tex
+(./ProjectAAH.tex
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks15
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen111
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen112
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count90
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count91
+\leftroot@=\count92
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count93
+\DOTSCASE@=\count94
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen113
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count95
+\c@MaxMatrixCols=\count96
+\dotsspace@=\muskip10
+\c@parentequation=\count97
+\dspbrk@lvl=\count98
+\tag@help=\toks17
+\row@=\count99
+\column@=\count100
+\maxfields@=\count101
+\andhelp@=\toks18
+\eqnshift@=\dimen114
+\alignsep@=\dimen115
+\tagshift@=\dimen116
+\tagwidth@=\dimen117
+\totwidth@=\dimen118
+\lineht@=\dimen119
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks21
+\thm@bodyfont=\toks22
+\thm@headfont=\toks23
+\thm@notefont=\toks24
+\thm@headpunct=\toks25
+\thm@preskip=\skip46
+\thm@postskip=\skip47
+\thm@headsep=\skip48
+\dth@everypar=\toks26
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip49
+\bibsep=\skip50
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count102
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write3
+
+Excluding comment 'comment')
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks27
+\pgfutil@tempdima=\dimen120
+\pgfutil@tempdimb=\dimen121
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box28
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+Package: pgfrcs 2013/12/20 v3.0.0 (rcs-revision 1.28)
+))
+Package: pgf 2013/12/18 v3.0.0 (rcs-revision 1.14)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 94.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count103
+))
+\Gin@req@height=\dimen122
+\Gin@req@width=\dimen123
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2013/11/30 v3.0.0 (rcs-revision 1.47)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks28
+\pgfkeys@temptoks=\toks29
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks30
+))
+\pgf@x=\dimen124
+\pgf@y=\dimen125
+\pgf@xa=\dimen126
+\pgf@ya=\dimen127
+\pgf@xb=\dimen128
+\pgf@yb=\dimen129
+\pgf@xc=\dimen130
+\pgf@yc=\dimen131
+\w@pgf@writea=\write4
+\r@pgf@reada=\read1
+\c@pgf@counta=\count104
+\c@pgf@countb=\count105
+\c@pgf@countc=\count106
+\c@pgf@countd=\count107
+\t@pgf@toka=\toks31
+\t@pgf@tokb=\toks32
+\t@pgf@tokc=\toks33
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
+File: pgfsys-pdftex.def 2013/07/18  (rcs-revision 1.33)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count108
+\pgfsyssoftpath@bigbuffer@items=\count109
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+)) (/usr/local/texlive/2015/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2010/04/11 v3.0.0 (rcs-revision 1.7)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen132
+\pgfmath@count=\count110
+\pgfmath@box=\box29
+\pgfmath@toks=\toks34
+\pgfmath@stack@operand=\toks35
+\pgfmath@stack@operation=\toks36
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count111
+))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen133
+\pgf@picmaxx=\dimen134
+\pgf@picminy=\dimen135
+\pgf@picmaxy=\dimen136
+\pgf@pathminx=\dimen137
+\pgf@pathmaxx=\dimen138
+\pgf@pathminy=\dimen139
+\pgf@pathmaxy=\dimen140
+\pgf@xx=\dimen141
+\pgf@xy=\dimen142
+\pgf@yx=\dimen143
+\pgf@yy=\dimen144
+\pgf@zx=\dimen145
+\pgf@zy=\dimen146
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen147
+\pgf@path@lasty=\dimen148
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex
+File: pgfcorepathusage.code.tex 2013/12/13  (rcs-revision 1.23)
+\pgf@shorten@end@additional=\dimen149
+\pgf@shorten@start@additional=\dimen150
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex
+File: pgfcorescopes.code.tex 2013/10/09  (rcs-revision 1.44)
+\pgfpic=\box30
+\pgf@hbox=\box31
+\pgf@layerbox@main=\box32
+\pgf@picture@serial@count=\count112
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex
+File: pgfcoregraphicstate.code.tex 2013/09/19  (rcs-revision 1.11)
+\pgflinewidth=\dimen151
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex
+File: pgfcoretransformations.code.tex 2013/10/10  (rcs-revision 1.17)
+\pgf@pt@x=\dimen152
+\pgf@pt@y=\dimen153
+\pgf@pt@temp=\dimen154
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex
+File: pgfcorearrows.code.tex 2013/11/07  (rcs-revision 1.40)
+\pgfarrowsep=\dimen155
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen156
+\pgf@sys@shading@range@num=\count113
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex
+File: pgfcoreexternal.code.tex 2013/07/15  (rcs-revision 1.20)
+\pgfexternal@startupbox=\box33
+))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
+File: pgfmoduleshapes.code.tex 2013/10/31  (rcs-revision 1.34)
+\pgfnodeparttextbox=\box34
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
+File: pgfmoduleplot.code.tex 2013/07/31  (rcs-revision 1.12)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.0 (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen157
+\pgf@nodesepend=\dimen158
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.0 (rcs-revision 1.1)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2013/12/13 v3.0.0 (rcs-revision 1.25)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen159
+\pgffor@skip=\dimen160
+\pgffor@stack=\toks37
+\pgffor@toks=\toks38
+))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+Package: tikz 2013/12/13 v3.0.0 (rcs-revision 1.142)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.0 (rcs-revision 1.20)
+\pgf@plot@mark@count=\count114
+\pgfplotmarksize=\dimen161
+)
+\tikz@lastx=\dimen162
+\tikz@lasty=\dimen163
+\tikz@lastxsaved=\dimen164
+\tikz@lastysaved=\dimen165
+\tikzleveldistance=\dimen166
+\tikzsiblingdistance=\dimen167
+\tikz@figbox=\box35
+\tikz@figbox@bg=\box36
+\tikz@tempbox=\box37
+\tikz@tempbox@bg=\box38
+\tikztreelevel=\count115
+\tikznumberofchildren=\count116
+\tikznumberofcurrentchild=\count117
+\tikz@fig@count=\count118
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count119
+\pgfmatrixcurrentcolumn=\count120
+\pgf@matrix@numberofcolumns=\count121
+)
+\tikz@expandcount=\count122
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.0 (rcs-revision 1.2)
+)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count123
+\float@exts=\toks39
+\float@box=\box39
+\@float@everytoks=\toks40
+\@floatcapt=\box40
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/todonotes/todonotes.sty
+Package: todonotes 2012/07/25 .dtx Todonotes source and documentation.
+Package: todonotes 2012/07/25
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2015/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks41
+\XKV@tempa@toks=\toks42
+)
+\XKV@depth=\count124
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.0 (rcs-revision 1.7)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count125
+\calc@Bcount=\count126
+\calc@Adimen=\dimen168
+\calc@Bdimen=\dimen169
+\calc@Askip=\skip51
+\calc@Bskip=\skip52
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count127
+\calc@Cskip=\skip53
+)
+\c@@todonotes@numberoftodonotes=\count128
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
+LaTeX Info: Redefining \bm on input line 207.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen170
+\captionmargin@=\dimen171
+\captionwidth=\dimen172
+\caption@tempdima=\dimen173
+\caption@indent=\dimen174
+\caption@parindent=\dimen175
+\caption@hangindent=\dimen176
+)
+\c@ContinuedFloat=\count129
+Package caption Info: float package is loaded.
+)
+\c@subfigure=\count130
+\c@subtable=\count131
+)
+(./slashbox.sty
+slashbox style by K.Yasuoka, May 1993.
+\@slashboxa=\box41
+\@slashboxb=\box42
+\@slashboxc=\box43
+\@slashboxwd=\count132
+\@slashboxht=\count133
+\@slashsepl=\dimen177
+\@slashsepr=\dimen178
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip54
+\enit@outerparindent=\dimen179
+\enit@toks=\toks43
+\enit@inbox=\box44
+\enitdp@description=\count134
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen180
+\extrarowheight=\dimen181
+\NC@list=\toks44
+\extratabsurround=\skip55
+\backup@length=\skip56
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarymatrix.code.tex
+File: tikzlibrarymatrix.code.tex 2013/07/12 v3.0.0 (rcs-revision 1.4)
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2015/05/11 v1.16 mathematical typesetting tools
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count135
+\l_MT_multwidth_dim=\dimen182
+\origjot=\skip57
+\l_MT_shortvdotswithinadjustabove_dim=\dimen183
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen184
+\l_MT_above_intertext_sep=\dimen185
+\l_MT_below_intertext_sep=\dimen186
+\l_MT_above_shortintertext_sep=\dimen187
+\l_MT_below_shortintertext_sep=\dimen188
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip58
+\f@ncyO@elh=\skip59
+\f@ncyO@erh=\skip60
+\f@ncyO@olh=\skip61
+\f@ncyO@orh=\skip62
+\f@ncyO@elf=\skip63
+\f@ncyO@erf=\skip64
+\f@ncyO@olf=\skip65
+\f@ncyO@orf=\skip66
+)
+(./ProjectAAH.aux
+
+LaTeX Warning: Label `fig:Q1cSFig0' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:Q1cSFig0' multiply defined.
+
+
+LaTeX Warning: Label `fig:Q1cSFig0' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:Q1cSFig0' multiply defined.
+
+
+LaTeX Warning: Label `fig:Q1dSFig1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:Q1dSFig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:Q1dSFig2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:Q1dSFig2' multiply defined.
+
+
+LaTeX Warning: Label `fig:Q1dSFig3' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:Q1dSFig3' multiply defined.
+
+
+LaTeX Warning: Label `fig:Q1dSFig4' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:Q1dSFig4' multiply defined.
+
+
+LaTeX Warning: Label `tab:Q3InitialTemp' multiply defined.
+
+)
+\openout1 = `ProjectAAH.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(34.1433pt, 529.22128pt, 34.1433pt)
+* v-part:(T,H,B)=(108.405pt, 628.23685pt, 108.405pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=529.22128pt
+* \textheight=628.23685pt
+* \oddsidemargin=-38.1267pt
+* \evensidemargin=-38.1267pt
+* \topmargin=-0.86499pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ABD: EveryShipout initializing macros
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count136
+\scratchdimen=\dimen189
+\scratchbox=\box45
+\nofMPsegments=\count137
+\nofMParguments=\count138
+\everyMPshowfont=\toks45
+\MPscratchCnt=\count139
+\MPscratchDim=\dimen190
+\MPnumerator=\count140
+\makeMPintoPDFobject=\count141
+\everyMPtoPDFconversion=\toks46
+) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+msa on input line 46.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 46.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) in paragraph at lines 73--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--73
+
+ []
+
+
+Overfull \hbox (10.71661pt too wide) in paragraph at lines 49--74
+[] 
+ []
+
+[1
+
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 87.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
+
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+
+ []
+
+Excluding 'comment' comment.
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--179
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--182
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
+
+ []
+
+
+Overfull \hbox (1.73146pt too wide) in paragraph at lines 195--197
+[][]
+ []
+
+Package epstopdf Info: Source file: <plots/Q1cRandomMakespangapk=1.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 685976 bytes
+(epstopdf)             Output file: <plots/Q1cRandomMakespangapk=1-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 232933 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q1cRandomMakespangap
+k=1-eps-converted-to.pdf plots/Q1cRandomMakespangapk=1.eps>
+(epstopdf)             \includegraphics on input line 200.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q1cRandomMakespangapk=1-eps-converted-to.pdf, id=30, 289.08pt x 193.7237
+5pt>
+File: plots/Q1cRandomMakespangapk=1-eps-converted-to.pdf Graphic file (type pdf
+)
+ <use plots/Q1cRandomMakespangapk=1-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q1cRandomMakespangapk=1-eps-converted-to.pdf use
+d on input line 200.
+(pdftex.def)             Requested size: 226.24017pt x 166.70558pt.
+Package epstopdf Info: Source file: <plots/Q1cRandomRuntimek=1.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 470771 bytes
+(epstopdf)             Output file: <plots/Q1cRandomRuntimek=1-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 99178 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q1cRandomRuntimek=1-
+eps-converted-to.pdf plots/Q1cRandomRuntimek=1.eps>
+(epstopdf)             \includegraphics on input line 206.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q1cRandomRuntimek=1-eps-converted-to.pdf, id=31, 289.08pt x 205.76875pt>
+File: plots/Q1cRandomRuntimek=1-eps-converted-to.pdf Graphic file (type pdf)
+<use plots/Q1cRandomRuntimek=1-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q1cRandomRuntimek=1-eps-converted-to.pdf used on
+ input line 206.
+(pdftex.def)             Requested size: 226.24017pt x 166.70316pt.
+
+Overfull \hbox (1.73146pt too wide) in paragraph at lines 213--215
+[][]
+ []
+
+Package epstopdf Info: Source file: <plots/Q1cRandomMakespangapk=2.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 507705 bytes
+(epstopdf)             Output file: <plots/Q1cRandomMakespangapk=2-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2016-10-13 11:20:50
+(epstopdf)                    size: 108088 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q1cRandomMakespangap
+k=2-eps-converted-to.pdf plots/Q1cRandomMakespangapk=2.eps>
+(epstopdf)             \includegraphics on input line 218.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q1cRandomMakespangapk=2-eps-converted-to.pdf, id=32, 289.08pt x 193.7237
+5pt>
+File: plots/Q1cRandomMakespangapk=2-eps-converted-to.pdf Graphic file (type pdf
+)
+ <use plots/Q1cRandomMakespangapk=2-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q1cRandomMakespangapk=2-eps-converted-to.pdf use
+d on input line 218.
+(pdftex.def)             Requested size: 226.24017pt x 166.70558pt.
+Package epstopdf Info: Source file: <plots/Q1cRandomRuntimek=2.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 442823 bytes
+(epstopdf)             Output file: <plots/Q1cRandomRuntimek=2-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 87743 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q1cRandomRuntimek=2-
+eps-converted-to.pdf plots/Q1cRandomRuntimek=2.eps>
+(epstopdf)             \includegraphics on input line 224.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q1cRandomRuntimek=2-eps-converted-to.pdf, id=33, 289.08pt x 203.76125pt>
+File: plots/Q1cRandomRuntimek=2-eps-converted-to.pdf Graphic file (type pdf)
+<use plots/Q1cRandomRuntimek=2-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q1cRandomRuntimek=2-eps-converted-to.pdf used on
+ input line 224.
+(pdftex.def)             Requested size: 226.24017pt x 166.70909pt.
+
+Overfull \hbox (1.73146pt too wide) in paragraph at lines 231--233
+[][]
+ []
+
+Package epstopdf Info: Source file: <plots/Q1cRandomMakespangapk=3.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 464227 bytes
+(epstopdf)             Output file: <plots/Q1cRandomMakespangapk=3-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 100314 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q1cRandomMakespangap
+k=3-eps-converted-to.pdf plots/Q1cRandomMakespangapk=3.eps>
+(epstopdf)             \includegraphics on input line 236.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q1cRandomMakespangapk=3-eps-converted-to.pdf, id=34, 289.08pt x 193.7237
+5pt>
+File: plots/Q1cRandomMakespangapk=3-eps-converted-to.pdf Graphic file (type pdf
+)
+ <use plots/Q1cRandomMakespangapk=3-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q1cRandomMakespangapk=3-eps-converted-to.pdf use
+d on input line 236.
+(pdftex.def)             Requested size: 226.24017pt x 166.70558pt.
+Package epstopdf Info: Source file: <plots/Q1cRandomRuntimek=3.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 686910 bytes
+(epstopdf)             Output file: <plots/Q1cRandomRuntimek=3-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 234447 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q1cRandomRuntimek=3-
+eps-converted-to.pdf plots/Q1cRandomRuntimek=3.eps>
+(epstopdf)             \includegraphics on input line 242.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q1cRandomRuntimek=3-eps-converted-to.pdf, id=35, 289.08pt x 205.76875pt>
+File: plots/Q1cRandomRuntimek=3-eps-converted-to.pdf Graphic file (type pdf)
+<use plots/Q1cRandomRuntimek=3-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q1cRandomRuntimek=3-eps-converted-to.pdf used on
+ input line 242.
+(pdftex.def)             Requested size: 226.24017pt x 166.70316pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[5]
+Overfull \vbox (13.59906pt too high) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[6 <./plots/Q1cRandomMakespangapk=1-eps-converted-to.pdf> <./plots/Q1cRandomRun
+timek=1-eps-converted-to.pdf> <./plots/Q1cRandomMakespangapk=2-eps-converted-to
+.pdf> <./plots/Q1cRandomRuntimek=2-eps-converted-to.pdf> <./plots/Q1cRandomMake
+spangapk=3-eps-converted-to.pdf> <./plots/Q1cRandomRuntimek=3-eps-converted-to.
+pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--257
+
+ []
+
+Package epstopdf Info: Source file: <plots/Q1dRandomMakespanGap.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 487238 bytes
+(epstopdf)             Output file: <plots/Q1dRandomMakespanGap-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 103838 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q1dRandomMakespanGap
+-eps-converted-to.pdf plots/Q1dRandomMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 269.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q1dRandomMakespanGap-eps-converted-to.pdf, id=61, 289.08pt x 193.72375pt
+>
+File: plots/Q1dRandomMakespanGap-eps-converted-to.pdf Graphic file (type pdf)
+ <use plots/Q1dRandomMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q1dRandomMakespanGap-eps-converted-to.pdf used o
+n input line 269.
+(pdftex.def)             Requested size: 251.37846pt x 185.23073pt.
+Package epstopdf Info: Source file: <plots/Q1dRandomRunTime.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 497892 bytes
+(epstopdf)             Output file: <plots/Q1dRandomRunTime-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 115254 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q1dRandomRunTime-eps
+-converted-to.pdf plots/Q1dRandomRunTime.eps>
+(epstopdf)             \includegraphics on input line 276.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q1dRandomRunTime-eps-converted-to.pdf, id=62, 289.08pt x 205.76875pt>
+File: plots/Q1dRandomRunTime-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/Q1dRandomRunTime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q1dRandomRunTime-eps-converted-to.pdf used on in
+put line 276.
+(pdftex.def)             Requested size: 251.37846pt x 185.22783pt.
+Package epstopdf Info: Source file: <plots/Q1dGMSMakespanGap.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 483610 bytes
+(epstopdf)             Output file: <plots/Q1dGMSMakespanGap-eps-converted-to.p
+df>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 103922 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q1dGMSMakespanGap-ep
+s-converted-to.pdf plots/Q1dGMSMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 283.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q1dGMSMakespanGap-eps-converted-to.pdf, id=63, 289.08pt x 193.72375pt>
+File: plots/Q1dGMSMakespanGap-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/Q1dGMSMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q1dGMSMakespanGap-eps-converted-to.pdf used on i
+nput line 283.
+(pdftex.def)             Requested size: 251.37846pt x 185.23073pt.
+Package epstopdf Info: Source file: <plots/Q1dGMSRunTime.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 534299 bytes
+(epstopdf)             Output file: <plots/Q1dGMSRunTime-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 267674 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q1dGMSRunTime-eps-co
+nverted-to.pdf plots/Q1dGMSRunTime.eps>
+(epstopdf)             \includegraphics on input line 289.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q1dGMSRunTime-eps-converted-to.pdf, id=64, 289.08pt x 205.76875pt>
+File: plots/Q1dGMSRunTime-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/Q1dGMSRunTime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q1dGMSRunTime-eps-converted-to.pdf used on input
+ line 289.
+(pdftex.def)             Requested size: 251.37846pt x 185.22783pt.
+
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 267--293
+[]$ $[]$ 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[7]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8 <./plots/Q1dRandomMakespanGap-eps-converted-to.pdf> <./plots/Q1dRandomRunTim
+e-eps-converted-to.pdf> <./plots/Q1dGMSMakespanGap-eps-converted-to.pdf> <./plo
+ts/Q1dGMSRunTime-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 323--324
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 387--388
+
+ []
+
+Package epstopdf Info: Source file: <plots/Q2cRandomMakespanGap.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 492647 bytes
+(epstopdf)             Output file: <plots/Q2cRandomMakespanGap-eps-converted-t
+o.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 107820 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q2cRandomMakespanGap
+-eps-converted-to.pdf plots/Q2cRandomMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 398.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q2cRandomMakespanGap-eps-converted-to.pdf, id=90, 289.08pt x 193.72375pt
+>
+File: plots/Q2cRandomMakespanGap-eps-converted-to.pdf Graphic file (type pdf)
+ <use plots/Q2cRandomMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q2cRandomMakespanGap-eps-converted-to.pdf used o
+n input line 398.
+(pdftex.def)             Requested size: 251.37846pt x 185.23073pt.
+Package epstopdf Info: Source file: <plots/Q2cRandomRunTime.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 526124 bytes
+(epstopdf)             Output file: <plots/Q2cRandomRunTime-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 106574 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q2cRandomRunTime-eps
+-converted-to.pdf plots/Q2cRandomRunTime.eps>
+(epstopdf)             \includegraphics on input line 405.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q2cRandomRunTime-eps-converted-to.pdf, id=91, 289.08pt x 205.76875pt>
+File: plots/Q2cRandomRunTime-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/Q2cRandomRunTime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q2cRandomRunTime-eps-converted-to.pdf used on in
+put line 405.
+(pdftex.def)             Requested size: 251.37846pt x 185.22783pt.
+Package epstopdf Info: Source file: <plots/Q2cGMSMakespanGap.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 489575 bytes
+(epstopdf)             Output file: <plots/Q2cGMSMakespanGap-eps-converted-to.p
+df>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 104275 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q2cGMSMakespanGap-ep
+s-converted-to.pdf plots/Q2cGMSMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 412.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q2cGMSMakespanGap-eps-converted-to.pdf, id=92, 289.08pt x 193.72375pt>
+File: plots/Q2cGMSMakespanGap-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/Q2cGMSMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q2cGMSMakespanGap-eps-converted-to.pdf used on i
+nput line 412.
+(pdftex.def)             Requested size: 251.37846pt x 185.23073pt.
+Package epstopdf Info: Source file: <plots/Q2cGMSRunTime.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 460191 bytes
+(epstopdf)             Output file: <plots/Q2cGMSRunTime-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 98805 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q2cGMSRunTime-eps-co
+nverted-to.pdf plots/Q2cGMSRunTime.eps>
+(epstopdf)             \includegraphics on input line 418.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q2cGMSRunTime-eps-converted-to.pdf, id=93, 289.08pt x 205.76875pt>
+File: plots/Q2cGMSRunTime-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/Q2cGMSRunTime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q2cGMSRunTime-eps-converted-to.pdf used on input
+ line 418.
+(pdftex.def)             Requested size: 251.37846pt x 185.22783pt.
+
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 396--422
+[]$ $[]$ 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[11]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[12 <./plots/Q2cRandomMakespanGap-eps-converted-to.pdf> <./plots/Q2cRandomRunTi
+me-eps-converted-to.pdf> <./plots/Q2cGMSMakespanGap-eps-converted-to.pdf> <./pl
+ots/Q2cGMSRunTime-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 432--433
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 438--439
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 482--483
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 492--494
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[14] <plots/InitialTemperature.png, id=121, 493.845pt x 243.91125pt>
+File: plots/InitialTemperature.png Graphic file (type png)
+
+<use plots/InitialTemperature.png>
+Package pdftex.def Info: plots/InitialTemperature.png used on input line 528.
+(pdftex.def)             Requested size: 370.45065pt x 211.68745pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[16 <./plots/InitialTemperature.png>]
+<plots/coolingSchedulesPlot.png, id=132, 552.0625pt x 285.065pt>
+File: plots/coolingSchedulesPlot.png Graphic file (type png)
+
+<use plots/coolingSchedulesPlot.png>
+Package pdftex.def Info: plots/coolingSchedulesPlot.png used on input line 565.
+
+(pdftex.def)             Requested size: 423.37863pt x 218.62642pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 570--571
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 572--573
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--575
+
+ []
+
+Package epstopdf Info: Source file: <plots/Q3CoolingSimpleMakespanGap.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 780894 bytes
+(epstopdf)             Output file: <plots/Q3CoolingSimpleMakespanGap-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 224472 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3CoolingSimpleMakes
+panGap-eps-converted-to.pdf plots/Q3CoolingSimpleMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 584.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3CoolingSimpleMakespanGap-eps-converted-to.pdf, id=133, 289.08pt x 193.
+72375pt>
+File: plots/Q3CoolingSimpleMakespanGap-eps-converted-to.pdf Graphic file (type 
+pdf)
+ <use plots/Q3CoolingSimpleMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3CoolingSimpleMakespanGap-eps-converted-to.pdf 
+used on input line 584.
+(pdftex.def)             Requested size: 251.37846pt x 185.23073pt.
+Package epstopdf Info: Source file: <plots/Q3CoolingSimpleRuntime.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 495073 bytes
+(epstopdf)             Output file: <plots/Q3CoolingSimpleRuntime-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 123322 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3CoolingSimpleRunti
+me-eps-converted-to.pdf plots/Q3CoolingSimpleRuntime.eps>
+(epstopdf)             \includegraphics on input line 591.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3CoolingSimpleRuntime-eps-converted-to.pdf, id=134, 289.08pt x 205.7687
+5pt>
+File: plots/Q3CoolingSimpleRuntime-eps-converted-to.pdf Graphic file (type pdf)
+
+ <use plots/Q3CoolingSimpleRuntime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3CoolingSimpleRuntime-eps-converted-to.pdf used
+ on input line 591.
+(pdftex.def)             Requested size: 251.37846pt x 185.22783pt.
+Package epstopdf Info: Source file: <plots/Q3CoolingLinMultMakespanGap.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 730526 bytes
+(epstopdf)             Output file: <plots/Q3CoolingLinMultMakespanGap-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 238166 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3CoolingLinMultMake
+spanGap-eps-converted-to.pdf plots/Q3CoolingLinMultMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 598.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3CoolingLinMultMakespanGap-eps-converted-to.pdf, id=135, 289.08pt x 193
+.72375pt>
+File: plots/Q3CoolingLinMultMakespanGap-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use plots/Q3CoolingLinMultMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3CoolingLinMultMakespanGap-eps-converted-to.pdf
+ used on input line 598.
+(pdftex.def)             Requested size: 251.37846pt x 185.23073pt.
+Package epstopdf Info: Source file: <plots/Q3CoolingLinMultRuntime.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 497675 bytes
+(epstopdf)             Output file: <plots/Q3CoolingLinMultRuntime-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 122041 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3CoolingLinMultRunt
+ime-eps-converted-to.pdf plots/Q3CoolingLinMultRuntime.eps>
+(epstopdf)             \includegraphics on input line 604.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3CoolingLinMultRuntime-eps-converted-to.pdf, id=136, 289.08pt x 205.768
+75pt>
+File: plots/Q3CoolingLinMultRuntime-eps-converted-to.pdf Graphic file (type pdf
+)
+ <use plots/Q3CoolingLinMultRuntime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3CoolingLinMultRuntime-eps-converted-to.pdf use
+d on input line 604.
+(pdftex.def)             Requested size: 251.37846pt x 185.22783pt.
+
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 582--608
+[]$ $[]$ 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[17 <./plots/coolingSchedulesPlot.png>]
+Package epstopdf Info: Source file: <plots/Q3CoolingQuadMultMakespanGap.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 507121 bytes
+(epstopdf)             Output file: <plots/Q3CoolingQuadMultMakespanGap-eps-con
+verted-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 116474 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3CoolingQuadMultMak
+espanGap-eps-converted-to.pdf plots/Q3CoolingQuadMultMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 619.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3CoolingQuadMultMakespanGap-eps-converted-to.pdf, id=141, 289.08pt x 19
+3.72375pt>
+File: plots/Q3CoolingQuadMultMakespanGap-eps-converted-to.pdf Graphic file (typ
+e pdf)
+ <use plots/Q3CoolingQuadMultMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3CoolingQuadMultMakespanGap-eps-converted-to.pd
+f used on input line 619.
+(pdftex.def)             Requested size: 251.37846pt x 185.23073pt.
+Package epstopdf Info: Source file: <plots/Q3CoolingQuadMultRuntime.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 487341 bytes
+(epstopdf)             Output file: <plots/Q3CoolingQuadMultRuntime-eps-convert
+ed-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 121589 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3CoolingQuadMultRun
+time-eps-converted-to.pdf plots/Q3CoolingQuadMultRuntime.eps>
+(epstopdf)             \includegraphics on input line 626.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3CoolingQuadMultRuntime-eps-converted-to.pdf, id=142, 289.08pt x 205.76
+875pt>
+File: plots/Q3CoolingQuadMultRuntime-eps-converted-to.pdf Graphic file (type pd
+f)
+ <use plots/Q3CoolingQuadMultRuntime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3CoolingQuadMultRuntime-eps-converted-to.pdf us
+ed on input line 626.
+(pdftex.def)             Requested size: 251.37846pt x 185.22783pt.
+Package epstopdf Info: Source file: <plots/Q3CoolingExpMultMakespanGap.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 761230 bytes
+(epstopdf)             Output file: <plots/Q3CoolingExpMultMakespanGap-eps-conv
+erted-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 235869 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3CoolingExpMultMake
+spanGap-eps-converted-to.pdf plots/Q3CoolingExpMultMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 633.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3CoolingExpMultMakespanGap-eps-converted-to.pdf, id=143, 289.08pt x 193
+.72375pt>
+File: plots/Q3CoolingExpMultMakespanGap-eps-converted-to.pdf Graphic file (type
+ pdf)
+ <use plots/Q3CoolingExpMultMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3CoolingExpMultMakespanGap-eps-converted-to.pdf
+ used on input line 633.
+(pdftex.def)             Requested size: 251.37846pt x 185.23073pt.
+Package epstopdf Info: Source file: <plots/Q3CoolingExpMultRuntime.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 506864 bytes
+(epstopdf)             Output file: <plots/Q3CoolingExpMultRuntime-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 259396 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3CoolingExpMultRunt
+ime-eps-converted-to.pdf plots/Q3CoolingExpMultRuntime.eps>
+(epstopdf)             \includegraphics on input line 639.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3CoolingExpMultRuntime-eps-converted-to.pdf, id=144, 289.08pt x 205.768
+75pt>
+File: plots/Q3CoolingExpMultRuntime-eps-converted-to.pdf Graphic file (type pdf
+)
+ <use plots/Q3CoolingExpMultRuntime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3CoolingExpMultRuntime-eps-converted-to.pdf use
+d on input line 639.
+(pdftex.def)             Requested size: 251.37846pt x 185.22783pt.
+
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 617--643
+[]$ $[]$ 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[18 <./plots/Q3CoolingSimpleMakespanGap-eps-converted-to.pdf> <./plots/Q3Coolin
+gSimpleRuntime-eps-converted-to.pdf> <./plots/Q3CoolingLinMultMakespanGap-eps-c
+onverted-to.pdf> <./plots/Q3CoolingLinMultRuntime-eps-converted-to.pdf>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[19 <./plots/Q3CoolingQuadMultMakespanGap-eps-converted-to.pdf> <./plots/Q3Cool
+ingQuadMultRuntime-eps-converted-to.pdf> <./plots/Q3CoolingExpMultMakespanGap-e
+ps-converted-to.pdf> <./plots/Q3CoolingExpMultRuntime-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <plots/Q3RandomMakespanGap.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 502693 bytes
+(epstopdf)             Output file: <plots/Q3RandomMakespanGap-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 115999 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3RandomMakespanGap-
+eps-converted-to.pdf plots/Q3RandomMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 660.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3RandomMakespanGap-eps-converted-to.pdf, id=176, 289.08pt x 191.71625pt
+>
+File: plots/Q3RandomMakespanGap-eps-converted-to.pdf Graphic file (type pdf)
+ <use plots/Q3RandomMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3RandomMakespanGap-eps-converted-to.pdf used on
+ input line 660.
+(pdftex.def)             Requested size: 251.37846pt x 185.23611pt.
+Package epstopdf Info: Source file: <plots/Q3RandomRunTime.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 487341 bytes
+(epstopdf)             Output file: <plots/Q3RandomRunTime-eps-converted-to.pdf
+>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 121589 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3RandomRunTime-eps-
+converted-to.pdf plots/Q3RandomRunTime.eps>
+(epstopdf)             \includegraphics on input line 667.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3RandomRunTime-eps-converted-to.pdf, id=177, 289.08pt x 205.76875pt>
+File: plots/Q3RandomRunTime-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/Q3RandomRunTime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3RandomRunTime-eps-converted-to.pdf used on inp
+ut line 667.
+(pdftex.def)             Requested size: 251.37846pt x 185.22783pt.
+Package epstopdf Info: Source file: <plots/Q3GMSMakespanGap.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 505731 bytes
+(epstopdf)             Output file: <plots/Q3GMSMakespanGap-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 114527 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3GMSMakespanGap-eps
+-converted-to.pdf plots/Q3GMSMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 674.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3GMSMakespanGap-eps-converted-to.pdf, id=178, 289.08pt x 193.72375pt>
+File: plots/Q3GMSMakespanGap-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/Q3GMSMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3GMSMakespanGap-eps-converted-to.pdf used on in
+put line 674.
+(pdftex.def)             Requested size: 251.37846pt x 185.23073pt.
+Package epstopdf Info: Source file: <plots/Q3GMSRunTime.eps>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 495871 bytes
+(epstopdf)             Output file: <plots/Q3GMSRunTime-eps-converted-to.pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 123333 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3GMSRunTime-eps-con
+verted-to.pdf plots/Q3GMSRunTime.eps>
+(epstopdf)             \includegraphics on input line 680.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3GMSRunTime-eps-converted-to.pdf, id=179, 289.08pt x 205.76875pt>
+File: plots/Q3GMSRunTime-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/Q3GMSRunTime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3GMSRunTime-eps-converted-to.pdf used on input 
+line 680.
+(pdftex.def)             Requested size: 251.37846pt x 185.22783pt.
+
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 658--684
+[]$ $[]$ 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 690--692
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[21 <./plots/Q3RandomMakespanGap-eps-converted-to.pdf> <./plots/Q3RandomRunTime
+-eps-converted-to.pdf> <./plots/Q3GMSMakespanGap-eps-converted-to.pdf> <./plots
+/Q3GMSRunTime-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 696--697
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 698--699
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 700--701
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 702--703
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 727--728
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 729--730
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 748--749
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--751
+
+ []
+
+Package epstopdf Info: Source file: <plots/Q3LimitMakespanGap.eps>
+(epstopdf)                    date: 2016-10-10 20:40:02
+(epstopdf)                    size: 399117 bytes
+(epstopdf)             Output file: <plots/Q3LimitMakespanGap-eps-converted-to.
+pdf>
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 23874 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3LimitMakespanGap-e
+ps-converted-to.pdf plots/Q3LimitMakespanGap.eps>
+(epstopdf)             \includegraphics on input line 762.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3LimitMakespanGap-eps-converted-to.pdf, id=204, 289.08pt x 187.70125pt>
+File: plots/Q3LimitMakespanGap-eps-converted-to.pdf Graphic file (type pdf)
+<use plots/Q3LimitMakespanGap-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3LimitMakespanGap-eps-converted-to.pdf used on 
+input line 762.
+(pdftex.def)             Requested size: 251.37846pt x 185.23767pt.
+Package epstopdf Info: Source file: <plots/Q3LimitRuntime.eps>
+(epstopdf)                    date: 2016-10-10 20:40:02
+(epstopdf)                    size: 392378 bytes
+(epstopdf)             Output file: <plots/Q3LimitRuntime-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2016-10-12 16:03:33
+(epstopdf)                    size: 22318 bytes
+(epstopdf)             Command: <repstopdf --outfile=plots/Q3LimitRuntime-eps-c
+onverted-to.pdf plots/Q3LimitRuntime.eps>
+(epstopdf)             \includegraphics on input line 768.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/Q3LimitRuntime-eps-converted-to.pdf, id=205, 289.08pt x 190.7125pt>
+File: plots/Q3LimitRuntime-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/Q3LimitRuntime-eps-converted-to.pdf>
+Package pdftex.def Info: plots/Q3LimitRuntime-eps-converted-to.pdf used on inpu
+t line 768.
+(pdftex.def)             Requested size: 251.37846pt x 185.23242pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[24]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[25 <./plots/Q3LimitMakespanGap-eps-converted-to.pdf> <./plots/Q3LimitRuntime-e
+ps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 779--780
+
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[26]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[27] (./ProjectAAH.bbl)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[28]
+Overfull \vbox (6.6986pt too high) has occurred while \output is active []
+
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[29] Excluding 'comment' comment.
+Overfull \hbox (16.79034pt too wide) in paragraph at lines 1094--1104
+ [][] 
+ []
+
+
+Overfull \hbox (16.79034pt too wide) in paragraph at lines 1134--1144
+ [][] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[30]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[31]
+Overfull \hbox (25.29047pt too wide) in paragraph at lines 1257--1267
+ [][] 
+ []
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[32]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[33]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[34] (./ProjectAAH.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 16301 strings out of 493089
+ 315678 string characters out of 6134842
+ 387118 words of memory out of 5000000
+ 19411 multiletter control sequences out of 15000+600000
+ 22348 words of font info for 82 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 59i,16n,94p,1425b,949s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.p
+fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on ProjectAAH.pdf (34 pages, 4083464 bytes).
+PDF statistics:
+ 336 PDF objects out of 1000 (max. 8388607)
+ 206 compressed objects within 3 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 163 words of extra memory for PDF output out of 10000 (max. 10000000)
+

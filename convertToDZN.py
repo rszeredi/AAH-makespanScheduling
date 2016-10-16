@@ -33,11 +33,12 @@ def convertToDZN(filename):
 	file.close()
 
 if __name__ == "__main__":
-	instances = glob.glob('./test-instances/instance*.csv')
-	for i in range(len(instances)):
-		instances[i] = instances[i].replace('./test-instances/','')
-		instances[i] = instances[i].strip('.csv')
+	convertToDZN('instance_uniform_m100_n1000_001')
+	# instances = glob.glob('./test-instances/instance*.csv')
+	# for i in range(len(instances)):
+	# 	instances[i] = instances[i].replace('./test-instances/','')
+	# 	instances[i] = instances[i].strip('.csv')
 
-	for filename in instances:
-		print filename
-		convertToDZN(filename)
+	# for filename in instances:
+	# 	print filename
+	# 	convertToDZN(filename)

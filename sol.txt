@@ -1,0 +1,4848 @@
+LB: 508
+makespan = 5080
+----------
+LB: 508
+makespan = 5060
+----------
+LB: 508
+makespan = 4978
+----------
+LB: 508
+makespan = 4604
+----------
+LB: 508
+makespan = 4596
+----------
+LB: 508
+makespan = 4585
+----------
+LB: 508
+makespan = 4560
+----------
+LB: 508
+makespan = 4542
+----------
+LB: 508
+makespan = 4528
+----------
+LB: 508
+makespan = 4508
+----------
+LB: 508
+makespan = 4499
+----------
+LB: 508
+makespan = 4465
+----------
+LB: 508
+makespan = 4458
+----------
+LB: 508
+makespan = 4454
+----------
+LB: 508
+makespan = 4427
+----------
+LB: 508
+makespan = 4420
+----------
+LB: 508
+makespan = 4412
+----------
+LB: 508
+makespan = 4406
+----------
+LB: 508
+makespan = 4367
+----------
+LB: 508
+makespan = 4362
+----------
+LB: 508
+makespan = 4357
+----------
+LB: 508
+makespan = 4347
+----------
+LB: 508
+makespan = 4346
+----------
+LB: 508
+makespan = 4345
+----------
+LB: 508
+makespan = 4330
+----------
+LB: 508
+makespan = 4328
+----------
+LB: 508
+makespan = 4323
+----------
+LB: 508
+makespan = 4319
+----------
+LB: 508
+makespan = 4318
+----------
+LB: 508
+makespan = 4316
+----------
+LB: 508
+makespan = 4310
+----------
+LB: 508
+makespan = 4306
+----------
+LB: 508
+makespan = 4305
+----------
+LB: 508
+makespan = 4303
+----------
+LB: 508
+makespan = 4302
+----------
+LB: 508
+makespan = 4298
+----------
+LB: 508
+makespan = 4297
+----------
+LB: 508
+makespan = 4289
+----------
+LB: 508
+makespan = 4286
+----------
+LB: 508
+makespan = 4280
+----------
+LB: 508
+makespan = 4276
+----------
+LB: 508
+makespan = 4274
+----------
+LB: 508
+makespan = 4271
+----------
+LB: 508
+makespan = 4266
+----------
+LB: 508
+makespan = 4265
+----------
+LB: 508
+makespan = 4251
+----------
+LB: 508
+makespan = 4241
+----------
+LB: 508
+makespan = 4227
+----------
+LB: 508
+makespan = 4194
+----------
+LB: 508
+makespan = 4192
+----------
+LB: 508
+makespan = 4189
+----------
+LB: 508
+makespan = 4177
+----------
+LB: 508
+makespan = 4163
+----------
+LB: 508
+makespan = 4148
+----------
+LB: 508
+makespan = 4143
+----------
+LB: 508
+makespan = 4131
+----------
+LB: 508
+makespan = 4129
+----------
+LB: 508
+makespan = 4105
+----------
+LB: 508
+makespan = 4098
+----------
+LB: 508
+makespan = 4096
+----------
+LB: 508
+makespan = 4095
+----------
+LB: 508
+makespan = 4086
+----------
+LB: 508
+makespan = 4079
+----------
+LB: 508
+makespan = 4074
+----------
+LB: 508
+makespan = 4072
+----------
+LB: 508
+makespan = 4066
+----------
+LB: 508
+makespan = 4055
+----------
+LB: 508
+makespan = 4052
+----------
+LB: 508
+makespan = 4046
+----------
+LB: 508
+makespan = 4043
+----------
+LB: 508
+makespan = 4037
+----------
+LB: 508
+makespan = 4030
+----------
+LB: 508
+makespan = 4019
+----------
+LB: 508
+makespan = 4014
+----------
+LB: 508
+makespan = 4012
+----------
+LB: 508
+makespan = 4011
+----------
+LB: 508
+makespan = 4010
+----------
+LB: 508
+makespan = 4007
+----------
+LB: 508
+makespan = 4006
+----------
+LB: 508
+makespan = 4003
+----------
+LB: 508
+makespan = 3997
+----------
+LB: 508
+makespan = 3994
+----------
+LB: 508
+makespan = 3990
+----------
+LB: 508
+makespan = 3961
+----------
+LB: 508
+makespan = 3958
+----------
+LB: 508
+makespan = 3948
+----------
+LB: 508
+makespan = 3943
+----------
+LB: 508
+makespan = 3940
+----------
+LB: 508
+makespan = 3936
+----------
+LB: 508
+makespan = 3932
+----------
+LB: 508
+makespan = 3927
+----------
+LB: 508
+makespan = 3920
+----------
+LB: 508
+makespan = 3917
+----------
+LB: 508
+makespan = 3916
+----------
+LB: 508
+makespan = 3915
+----------
+LB: 508
+makespan = 3914
+----------
+LB: 508
+makespan = 3912
+----------
+LB: 508
+makespan = 3911
+----------
+LB: 508
+makespan = 3910
+----------
+LB: 508
+makespan = 3905
+----------
+LB: 508
+makespan = 3904
+----------
+LB: 508
+makespan = 3903
+----------
+LB: 508
+makespan = 3901
+----------
+LB: 508
+makespan = 3898
+----------
+LB: 508
+makespan = 3896
+----------
+LB: 508
+makespan = 3893
+----------
+LB: 508
+makespan = 3888
+----------
+LB: 508
+makespan = 3871
+----------
+LB: 508
+makespan = 3866
+----------
+LB: 508
+makespan = 3864
+----------
+LB: 508
+makespan = 3855
+----------
+LB: 508
+makespan = 3852
+----------
+LB: 508
+makespan = 3847
+----------
+LB: 508
+makespan = 3845
+----------
+LB: 508
+makespan = 3840
+----------
+LB: 508
+makespan = 3839
+----------
+LB: 508
+makespan = 3831
+----------
+LB: 508
+makespan = 3830
+----------
+LB: 508
+makespan = 3827
+----------
+LB: 508
+makespan = 3826
+----------
+LB: 508
+makespan = 3825
+----------
+LB: 508
+makespan = 3820
+----------
+LB: 508
+makespan = 3812
+----------
+LB: 508
+makespan = 3809
+----------
+LB: 508
+makespan = 3808
+----------
+LB: 508
+makespan = 3806
+----------
+LB: 508
+makespan = 3804
+----------
+LB: 508
+makespan = 3803
+----------
+LB: 508
+makespan = 3801
+----------
+LB: 508
+makespan = 3800
+----------
+LB: 508
+makespan = 3795
+----------
+LB: 508
+makespan = 3789
+----------
+LB: 508
+makespan = 3785
+----------
+LB: 508
+makespan = 3784
+----------
+LB: 508
+makespan = 3781
+----------
+LB: 508
+makespan = 3777
+----------
+LB: 508
+makespan = 3775
+----------
+LB: 508
+makespan = 3771
+----------
+LB: 508
+makespan = 3764
+----------
+LB: 508
+makespan = 3759
+----------
+LB: 508
+makespan = 3746
+----------
+LB: 508
+makespan = 3739
+----------
+LB: 508
+makespan = 3738
+----------
+LB: 508
+makespan = 3726
+----------
+LB: 508
+makespan = 3723
+----------
+LB: 508
+makespan = 3722
+----------
+LB: 508
+makespan = 3721
+----------
+LB: 508
+makespan = 3718
+----------
+LB: 508
+makespan = 3715
+----------
+LB: 508
+makespan = 3711
+----------
+LB: 508
+makespan = 3677
+----------
+LB: 508
+makespan = 3675
+----------
+LB: 508
+makespan = 3672
+----------
+LB: 508
+makespan = 3665
+----------
+LB: 508
+makespan = 3648
+----------
+LB: 508
+makespan = 3643
+----------
+LB: 508
+makespan = 3635
+----------
+LB: 508
+makespan = 3628
+----------
+LB: 508
+makespan = 3625
+----------
+LB: 508
+makespan = 3624
+----------
+LB: 508
+makespan = 3620
+----------
+LB: 508
+makespan = 3615
+----------
+LB: 508
+makespan = 3612
+----------
+LB: 508
+makespan = 3611
+----------
+LB: 508
+makespan = 3609
+----------
+LB: 508
+makespan = 3603
+----------
+LB: 508
+makespan = 3602
+----------
+LB: 508
+makespan = 3601
+----------
+LB: 508
+makespan = 3596
+----------
+LB: 508
+makespan = 3595
+----------
+LB: 508
+makespan = 3592
+----------
+LB: 508
+makespan = 3591
+----------
+LB: 508
+makespan = 3590
+----------
+LB: 508
+makespan = 3584
+----------
+LB: 508
+makespan = 3577
+----------
+LB: 508
+makespan = 3576
+----------
+LB: 508
+makespan = 3569
+----------
+LB: 508
+makespan = 3566
+----------
+LB: 508
+makespan = 3563
+----------
+LB: 508
+makespan = 3561
+----------
+LB: 508
+makespan = 3559
+----------
+LB: 508
+makespan = 3558
+----------
+LB: 508
+makespan = 3557
+----------
+LB: 508
+makespan = 3556
+----------
+LB: 508
+makespan = 3555
+----------
+LB: 508
+makespan = 3554
+----------
+LB: 508
+makespan = 3548
+----------
+LB: 508
+makespan = 3545
+----------
+LB: 508
+makespan = 3543
+----------
+LB: 508
+makespan = 3540
+----------
+LB: 508
+makespan = 3539
+----------
+LB: 508
+makespan = 3538
+----------
+LB: 508
+makespan = 3535
+----------
+LB: 508
+makespan = 3534
+----------
+LB: 508
+makespan = 3529
+----------
+LB: 508
+makespan = 3527
+----------
+LB: 508
+makespan = 3525
+----------
+LB: 508
+makespan = 3524
+----------
+LB: 508
+makespan = 3523
+----------
+LB: 508
+makespan = 3522
+----------
+LB: 508
+makespan = 3517
+----------
+LB: 508
+makespan = 3516
+----------
+LB: 508
+makespan = 3513
+----------
+LB: 508
+makespan = 3512
+----------
+LB: 508
+makespan = 3511
+----------
+LB: 508
+makespan = 3506
+----------
+LB: 508
+makespan = 3504
+----------
+LB: 508
+makespan = 3503
+----------
+LB: 508
+makespan = 3501
+----------
+LB: 508
+makespan = 3499
+----------
+LB: 508
+makespan = 3498
+----------
+LB: 508
+makespan = 3495
+----------
+LB: 508
+makespan = 3494
+----------
+LB: 508
+makespan = 3491
+----------
+LB: 508
+makespan = 3490
+----------
+LB: 508
+makespan = 3487
+----------
+LB: 508
+makespan = 3473
+----------
+LB: 508
+makespan = 3469
+----------
+LB: 508
+makespan = 3468
+----------
+LB: 508
+makespan = 3467
+----------
+LB: 508
+makespan = 3465
+----------
+LB: 508
+makespan = 3462
+----------
+LB: 508
+makespan = 3456
+----------
+LB: 508
+makespan = 3453
+----------
+LB: 508
+makespan = 3448
+----------
+LB: 508
+makespan = 3447
+----------
+LB: 508
+makespan = 3443
+----------
+LB: 508
+makespan = 3440
+----------
+LB: 508
+makespan = 3433
+----------
+LB: 508
+makespan = 3432
+----------
+LB: 508
+makespan = 3424
+----------
+LB: 508
+makespan = 3422
+----------
+LB: 508
+makespan = 3419
+----------
+LB: 508
+makespan = 3417
+----------
+LB: 508
+makespan = 3414
+----------
+LB: 508
+makespan = 3409
+----------
+LB: 508
+makespan = 3406
+----------
+LB: 508
+makespan = 3400
+----------
+LB: 508
+makespan = 3398
+----------
+LB: 508
+makespan = 3397
+----------
+LB: 508
+makespan = 3394
+----------
+LB: 508
+makespan = 3387
+----------
+LB: 508
+makespan = 3386
+----------
+LB: 508
+makespan = 3382
+----------
+LB: 508
+makespan = 3373
+----------
+LB: 508
+makespan = 3348
+----------
+LB: 508
+makespan = 3347
+----------
+LB: 508
+makespan = 3334
+----------
+LB: 508
+makespan = 3326
+----------
+LB: 508
+makespan = 3323
+----------
+LB: 508
+makespan = 3319
+----------
+LB: 508
+makespan = 3316
+----------
+LB: 508
+makespan = 3314
+----------
+LB: 508
+makespan = 3311
+----------
+LB: 508
+makespan = 3309
+----------
+LB: 508
+makespan = 3293
+----------
+LB: 508
+makespan = 3292
+----------
+LB: 508
+makespan = 3288
+----------
+LB: 508
+makespan = 3287
+----------
+LB: 508
+makespan = 3279
+----------
+LB: 508
+makespan = 3278
+----------
+LB: 508
+makespan = 3267
+----------
+LB: 508
+makespan = 3244
+----------
+LB: 508
+makespan = 3242
+----------
+LB: 508
+makespan = 3238
+----------
+LB: 508
+makespan = 3236
+----------
+LB: 508
+makespan = 3232
+----------
+LB: 508
+makespan = 3229
+----------
+LB: 508
+makespan = 3212
+----------
+LB: 508
+makespan = 3196
+----------
+LB: 508
+makespan = 3192
+----------
+LB: 508
+makespan = 3186
+----------
+LB: 508
+makespan = 3162
+----------
+LB: 508
+makespan = 3157
+----------
+LB: 508
+makespan = 3155
+----------
+LB: 508
+makespan = 3149
+----------
+LB: 508
+makespan = 3142
+----------
+LB: 508
+makespan = 3136
+----------
+LB: 508
+makespan = 3133
+----------
+LB: 508
+makespan = 3131
+----------
+LB: 508
+makespan = 3130
+----------
+LB: 508
+makespan = 3122
+----------
+LB: 508
+makespan = 3115
+----------
+LB: 508
+makespan = 3110
+----------
+LB: 508
+makespan = 3104
+----------
+LB: 508
+makespan = 3092
+----------
+LB: 508
+makespan = 3090
+----------
+LB: 508
+makespan = 3084
+----------
+LB: 508
+makespan = 3083
+----------
+LB: 508
+makespan = 3071
+----------
+LB: 508
+makespan = 3057
+----------
+LB: 508
+makespan = 3044
+----------
+LB: 508
+makespan = 3029
+----------
+LB: 508
+makespan = 3017
+----------
+LB: 508
+makespan = 3009
+----------
+LB: 508
+makespan = 2995
+----------
+LB: 508
+makespan = 2983
+----------
+LB: 508
+makespan = 2979
+----------
+LB: 508
+makespan = 2977
+----------
+LB: 508
+makespan = 2962
+----------
+LB: 508
+makespan = 2952
+----------
+LB: 508
+makespan = 2945
+----------
+LB: 508
+makespan = 2938
+----------
+LB: 508
+makespan = 2936
+----------
+LB: 508
+makespan = 2934
+----------
+LB: 508
+makespan = 2923
+----------
+LB: 508
+makespan = 2920
+----------
+LB: 508
+makespan = 2917
+----------
+LB: 508
+makespan = 2914
+----------
+LB: 508
+makespan = 2907
+----------
+LB: 508
+makespan = 2903
+----------
+LB: 508
+makespan = 2901
+----------
+LB: 508
+makespan = 2898
+----------
+LB: 508
+makespan = 2897
+----------
+LB: 508
+makespan = 2892
+----------
+LB: 508
+makespan = 2891
+----------
+LB: 508
+makespan = 2889
+----------
+LB: 508
+makespan = 2888
+----------
+LB: 508
+makespan = 2881
+----------
+LB: 508
+makespan = 2879
+----------
+LB: 508
+makespan = 2871
+----------
+LB: 508
+makespan = 2870
+----------
+LB: 508
+makespan = 2868
+----------
+LB: 508
+makespan = 2862
+----------
+LB: 508
+makespan = 2859
+----------
+LB: 508
+makespan = 2854
+----------
+LB: 508
+makespan = 2850
+----------
+LB: 508
+makespan = 2849
+----------
+LB: 508
+makespan = 2848
+----------
+LB: 508
+makespan = 2847
+----------
+LB: 508
+makespan = 2846
+----------
+LB: 508
+makespan = 2845
+----------
+LB: 508
+makespan = 2840
+----------
+LB: 508
+makespan = 2837
+----------
+LB: 508
+makespan = 2836
+----------
+LB: 508
+makespan = 2831
+----------
+LB: 508
+makespan = 2830
+----------
+LB: 508
+makespan = 2828
+----------
+LB: 508
+makespan = 2825
+----------
+LB: 508
+makespan = 2823
+----------
+LB: 508
+makespan = 2821
+----------
+LB: 508
+makespan = 2819
+----------
+LB: 508
+makespan = 2818
+----------
+LB: 508
+makespan = 2817
+----------
+LB: 508
+makespan = 2815
+----------
+LB: 508
+makespan = 2813
+----------
+LB: 508
+makespan = 2806
+----------
+LB: 508
+makespan = 2803
+----------
+LB: 508
+makespan = 2802
+----------
+LB: 508
+makespan = 2800
+----------
+LB: 508
+makespan = 2799
+----------
+LB: 508
+makespan = 2797
+----------
+LB: 508
+makespan = 2792
+----------
+LB: 508
+makespan = 2791
+----------
+LB: 508
+makespan = 2790
+----------
+LB: 508
+makespan = 2789
+----------
+LB: 508
+makespan = 2788
+----------
+LB: 508
+makespan = 2787
+----------
+LB: 508
+makespan = 2785
+----------
+LB: 508
+makespan = 2784
+----------
+LB: 508
+makespan = 2782
+----------
+LB: 508
+makespan = 2780
+----------
+LB: 508
+makespan = 2779
+----------
+LB: 508
+makespan = 2777
+----------
+LB: 508
+makespan = 2775
+----------
+LB: 508
+makespan = 2774
+----------
+LB: 508
+makespan = 2773
+----------
+LB: 508
+makespan = 2772
+----------
+LB: 508
+makespan = 2769
+----------
+LB: 508
+makespan = 2768
+----------
+LB: 508
+makespan = 2765
+----------
+LB: 508
+makespan = 2764
+----------
+LB: 508
+makespan = 2762
+----------
+LB: 508
+makespan = 2760
+----------
+LB: 508
+makespan = 2757
+----------
+LB: 508
+makespan = 2756
+----------
+LB: 508
+makespan = 2754
+----------
+LB: 508
+makespan = 2752
+----------
+LB: 508
+makespan = 2751
+----------
+LB: 508
+makespan = 2745
+----------
+LB: 508
+makespan = 2743
+----------
+LB: 508
+makespan = 2738
+----------
+LB: 508
+makespan = 2736
+----------
+LB: 508
+makespan = 2731
+----------
+LB: 508
+makespan = 2729
+----------
+LB: 508
+makespan = 2726
+----------
+LB: 508
+makespan = 2724
+----------
+LB: 508
+makespan = 2716
+----------
+LB: 508
+makespan = 2715
+----------
+LB: 508
+makespan = 2711
+----------
+LB: 508
+makespan = 2708
+----------
+LB: 508
+makespan = 2707
+----------
+LB: 508
+makespan = 2704
+----------
+LB: 508
+makespan = 2703
+----------
+LB: 508
+makespan = 2701
+----------
+LB: 508
+makespan = 2696
+----------
+LB: 508
+makespan = 2693
+----------
+LB: 508
+makespan = 2691
+----------
+LB: 508
+makespan = 2690
+----------
+LB: 508
+makespan = 2687
+----------
+LB: 508
+makespan = 2685
+----------
+LB: 508
+makespan = 2679
+----------
+LB: 508
+makespan = 2678
+----------
+LB: 508
+makespan = 2672
+----------
+LB: 508
+makespan = 2671
+----------
+LB: 508
+makespan = 2667
+----------
+LB: 508
+makespan = 2665
+----------
+LB: 508
+makespan = 2663
+----------
+LB: 508
+makespan = 2662
+----------
+LB: 508
+makespan = 2661
+----------
+LB: 508
+makespan = 2659
+----------
+LB: 508
+makespan = 2657
+----------
+LB: 508
+makespan = 2654
+----------
+LB: 508
+makespan = 2653
+----------
+LB: 508
+makespan = 2650
+----------
+LB: 508
+makespan = 2649
+----------
+LB: 508
+makespan = 2648
+----------
+LB: 508
+makespan = 2645
+----------
+LB: 508
+makespan = 2641
+----------
+LB: 508
+makespan = 2639
+----------
+LB: 508
+makespan = 2637
+----------
+LB: 508
+makespan = 2636
+----------
+LB: 508
+makespan = 2633
+----------
+LB: 508
+makespan = 2632
+----------
+LB: 508
+makespan = 2629
+----------
+LB: 508
+makespan = 2627
+----------
+LB: 508
+makespan = 2622
+----------
+LB: 508
+makespan = 2613
+----------
+LB: 508
+makespan = 2610
+----------
+LB: 508
+makespan = 2609
+----------
+LB: 508
+makespan = 2608
+----------
+LB: 508
+makespan = 2600
+----------
+LB: 508
+makespan = 2599
+----------
+LB: 508
+makespan = 2598
+----------
+LB: 508
+makespan = 2589
+----------
+LB: 508
+makespan = 2588
+----------
+LB: 508
+makespan = 2580
+----------
+LB: 508
+makespan = 2569
+----------
+LB: 508
+makespan = 2568
+----------
+LB: 508
+makespan = 2567
+----------
+LB: 508
+makespan = 2565
+----------
+LB: 508
+makespan = 2564
+----------
+LB: 508
+makespan = 2563
+----------
+LB: 508
+makespan = 2561
+----------
+LB: 508
+makespan = 2558
+----------
+LB: 508
+makespan = 2550
+----------
+LB: 508
+makespan = 2549
+----------
+LB: 508
+makespan = 2547
+----------
+LB: 508
+makespan = 2545
+----------
+LB: 508
+makespan = 2544
+----------
+LB: 508
+makespan = 2543
+----------
+LB: 508
+makespan = 2541
+----------
+LB: 508
+makespan = 2539
+----------
+LB: 508
+makespan = 2533
+----------
+LB: 508
+makespan = 2532
+----------
+LB: 508
+makespan = 2531
+----------
+LB: 508
+makespan = 2525
+----------
+LB: 508
+makespan = 2522
+----------
+LB: 508
+makespan = 2517
+----------
+LB: 508
+makespan = 2506
+----------
+LB: 508
+makespan = 2505
+----------
+LB: 508
+makespan = 2499
+----------
+LB: 508
+makespan = 2497
+----------
+LB: 508
+makespan = 2494
+----------
+LB: 508
+makespan = 2488
+----------
+LB: 508
+makespan = 2482
+----------
+LB: 508
+makespan = 2481
+----------
+LB: 508
+makespan = 2480
+----------
+LB: 508
+makespan = 2479
+----------
+LB: 508
+makespan = 2478
+----------
+LB: 508
+makespan = 2474
+----------
+LB: 508
+makespan = 2468
+----------
+LB: 508
+makespan = 2467
+----------
+LB: 508
+makespan = 2462
+----------
+LB: 508
+makespan = 2461
+----------
+LB: 508
+makespan = 2455
+----------
+LB: 508
+makespan = 2448
+----------
+LB: 508
+makespan = 2444
+----------
+LB: 508
+makespan = 2443
+----------
+LB: 508
+makespan = 2442
+----------
+LB: 508
+makespan = 2439
+----------
+LB: 508
+makespan = 2435
+----------
+LB: 508
+makespan = 2426
+----------
+LB: 508
+makespan = 2425
+----------
+LB: 508
+makespan = 2421
+----------
+LB: 508
+makespan = 2419
+----------
+LB: 508
+makespan = 2416
+----------
+LB: 508
+makespan = 2413
+----------
+LB: 508
+makespan = 2412
+----------
+LB: 508
+makespan = 2411
+----------
+LB: 508
+makespan = 2409
+----------
+LB: 508
+makespan = 2408
+----------
+LB: 508
+makespan = 2407
+----------
+LB: 508
+makespan = 2404
+----------
+LB: 508
+makespan = 2401
+----------
+LB: 508
+makespan = 2399
+----------
+LB: 508
+makespan = 2398
+----------
+LB: 508
+makespan = 2393
+----------
+LB: 508
+makespan = 2389
+----------
+LB: 508
+makespan = 2384
+----------
+LB: 508
+makespan = 2383
+----------
+LB: 508
+makespan = 2381
+----------
+LB: 508
+makespan = 2375
+----------
+LB: 508
+makespan = 2361
+----------
+LB: 508
+makespan = 2360
+----------
+LB: 508
+makespan = 2353
+----------
+LB: 508
+makespan = 2350
+----------
+LB: 508
+makespan = 2348
+----------
+LB: 508
+makespan = 2347
+----------
+LB: 508
+makespan = 2340
+----------
+LB: 508
+makespan = 2331
+----------
+LB: 508
+makespan = 2329
+----------
+LB: 508
+makespan = 2326
+----------
+LB: 508
+makespan = 2324
+----------
+LB: 508
+makespan = 2321
+----------
+LB: 508
+makespan = 2317
+----------
+LB: 508
+makespan = 2316
+----------
+LB: 508
+makespan = 2313
+----------
+LB: 508
+makespan = 2305
+----------
+LB: 508
+makespan = 2304
+----------
+LB: 508
+makespan = 2302
+----------
+LB: 508
+makespan = 2301
+----------
+LB: 508
+makespan = 2297
+----------
+LB: 508
+makespan = 2296
+----------
+LB: 508
+makespan = 2291
+----------
+LB: 508
+makespan = 2287
+----------
+LB: 508
+makespan = 2284
+----------
+LB: 508
+makespan = 2281
+----------
+LB: 508
+makespan = 2280
+----------
+LB: 508
+makespan = 2274
+----------
+LB: 508
+makespan = 2273
+----------
+LB: 508
+makespan = 2272
+----------
+LB: 508
+makespan = 2271
+----------
+LB: 508
+makespan = 2270
+----------
+LB: 508
+makespan = 2257
+----------
+LB: 508
+makespan = 2256
+----------
+LB: 508
+makespan = 2255
+----------
+LB: 508
+makespan = 2249
+----------
+LB: 508
+makespan = 2248
+----------
+LB: 508
+makespan = 2223
+----------
+LB: 508
+makespan = 2221
+----------
+LB: 508
+makespan = 2220
+----------
+LB: 508
+makespan = 2219
+----------
+LB: 508
+makespan = 2217
+----------
+LB: 508
+makespan = 2215
+----------
+LB: 508
+makespan = 2212
+----------
+LB: 508
+makespan = 2209
+----------
+LB: 508
+makespan = 2208
+----------
+LB: 508
+makespan = 2207
+----------
+LB: 508
+makespan = 2204
+----------
+LB: 508
+makespan = 2199
+----------
+LB: 508
+makespan = 2198
+----------
+LB: 508
+makespan = 2197
+----------
+LB: 508
+makespan = 2192
+----------
+LB: 508
+makespan = 2185
+----------
+LB: 508
+makespan = 2183
+----------
+LB: 508
+makespan = 2179
+----------
+LB: 508
+makespan = 2177
+----------
+LB: 508
+makespan = 2176
+----------
+LB: 508
+makespan = 2171
+----------
+LB: 508
+makespan = 2170
+----------
+LB: 508
+makespan = 2164
+----------
+LB: 508
+makespan = 2163
+----------
+LB: 508
+makespan = 2159
+----------
+LB: 508
+makespan = 2157
+----------
+LB: 508
+makespan = 2156
+----------
+LB: 508
+makespan = 2154
+----------
+LB: 508
+makespan = 2153
+----------
+LB: 508
+makespan = 2152
+----------
+LB: 508
+makespan = 2149
+----------
+LB: 508
+makespan = 2148
+----------
+LB: 508
+makespan = 2147
+----------
+LB: 508
+makespan = 2140
+----------
+LB: 508
+makespan = 2138
+----------
+LB: 508
+makespan = 2136
+----------
+LB: 508
+makespan = 2134
+----------
+LB: 508
+makespan = 2133
+----------
+LB: 508
+makespan = 2131
+----------
+LB: 508
+makespan = 2129
+----------
+LB: 508
+makespan = 2127
+----------
+LB: 508
+makespan = 2123
+----------
+LB: 508
+makespan = 2121
+----------
+LB: 508
+makespan = 2120
+----------
+LB: 508
+makespan = 2118
+----------
+LB: 508
+makespan = 2117
+----------
+LB: 508
+makespan = 2112
+----------
+LB: 508
+makespan = 2111
+----------
+LB: 508
+makespan = 2107
+----------
+LB: 508
+makespan = 2106
+----------
+LB: 508
+makespan = 2104
+----------
+LB: 508
+makespan = 2102
+----------
+LB: 508
+makespan = 2097
+----------
+LB: 508
+makespan = 2093
+----------
+LB: 508
+makespan = 2089
+----------
+LB: 508
+makespan = 2087
+----------
+LB: 508
+makespan = 2082
+----------
+LB: 508
+makespan = 2081
+----------
+LB: 508
+makespan = 2080
+----------
+LB: 508
+makespan = 2078
+----------
+LB: 508
+makespan = 2077
+----------
+LB: 508
+makespan = 2075
+----------
+LB: 508
+makespan = 2071
+----------
+LB: 508
+makespan = 2070
+----------
+LB: 508
+makespan = 2069
+----------
+LB: 508
+makespan = 2068
+----------
+LB: 508
+makespan = 2067
+----------
+LB: 508
+makespan = 2063
+----------
+LB: 508
+makespan = 2062
+----------
+LB: 508
+makespan = 2059
+----------
+LB: 508
+makespan = 2055
+----------
+LB: 508
+makespan = 2054
+----------
+LB: 508
+makespan = 2050
+----------
+LB: 508
+makespan = 2046
+----------
+LB: 508
+makespan = 2045
+----------
+LB: 508
+makespan = 2037
+----------
+LB: 508
+makespan = 2034
+----------
+LB: 508
+makespan = 2032
+----------
+LB: 508
+makespan = 2031
+----------
+LB: 508
+makespan = 2030
+----------
+LB: 508
+makespan = 2029
+----------
+LB: 508
+makespan = 2028
+----------
+LB: 508
+makespan = 2025
+----------
+LB: 508
+makespan = 2022
+----------
+LB: 508
+makespan = 2019
+----------
+LB: 508
+makespan = 2016
+----------
+LB: 508
+makespan = 2015
+----------
+LB: 508
+makespan = 2014
+----------
+LB: 508
+makespan = 2012
+----------
+LB: 508
+makespan = 2010
+----------
+LB: 508
+makespan = 2008
+----------
+LB: 508
+makespan = 2007
+----------
+LB: 508
+makespan = 2006
+----------
+LB: 508
+makespan = 2004
+----------
+LB: 508
+makespan = 2001
+----------
+LB: 508
+makespan = 2000
+----------
+LB: 508
+makespan = 1998
+----------
+LB: 508
+makespan = 1996
+----------
+LB: 508
+makespan = 1995
+----------
+LB: 508
+makespan = 1994
+----------
+LB: 508
+makespan = 1992
+----------
+LB: 508
+makespan = 1991
+----------
+LB: 508
+makespan = 1990
+----------
+LB: 508
+makespan = 1986
+----------
+LB: 508
+makespan = 1979
+----------
+LB: 508
+makespan = 1977
+----------
+LB: 508
+makespan = 1976
+----------
+LB: 508
+makespan = 1974
+----------
+LB: 508
+makespan = 1970
+----------
+LB: 508
+makespan = 1968
+----------
+LB: 508
+makespan = 1967
+----------
+LB: 508
+makespan = 1966
+----------
+LB: 508
+makespan = 1965
+----------
+LB: 508
+makespan = 1963
+----------
+LB: 508
+makespan = 1956
+----------
+LB: 508
+makespan = 1955
+----------
+LB: 508
+makespan = 1954
+----------
+LB: 508
+makespan = 1952
+----------
+LB: 508
+makespan = 1950
+----------
+LB: 508
+makespan = 1946
+----------
+LB: 508
+makespan = 1944
+----------
+LB: 508
+makespan = 1941
+----------
+LB: 508
+makespan = 1940
+----------
+LB: 508
+makespan = 1936
+----------
+LB: 508
+makespan = 1935
+----------
+LB: 508
+makespan = 1934
+----------
+LB: 508
+makespan = 1932
+----------
+LB: 508
+makespan = 1929
+----------
+LB: 508
+makespan = 1928
+----------
+LB: 508
+makespan = 1927
+----------
+LB: 508
+makespan = 1926
+----------
+LB: 508
+makespan = 1925
+----------
+LB: 508
+makespan = 1923
+----------
+LB: 508
+makespan = 1922
+----------
+LB: 508
+makespan = 1921
+----------
+LB: 508
+makespan = 1920
+----------
+LB: 508
+makespan = 1919
+----------
+LB: 508
+makespan = 1917
+----------
+LB: 508
+makespan = 1912
+----------
+LB: 508
+makespan = 1910
+----------
+LB: 508
+makespan = 1907
+----------
+LB: 508
+makespan = 1904
+----------
+LB: 508
+makespan = 1903
+----------
+LB: 508
+makespan = 1902
+----------
+LB: 508
+makespan = 1900
+----------
+LB: 508
+makespan = 1899
+----------
+LB: 508
+makespan = 1898
+----------
+LB: 508
+makespan = 1896
+----------
+LB: 508
+makespan = 1895
+----------
+LB: 508
+makespan = 1892
+----------
+LB: 508
+makespan = 1885
+----------
+LB: 508
+makespan = 1884
+----------
+LB: 508
+makespan = 1881
+----------
+LB: 508
+makespan = 1878
+----------
+LB: 508
+makespan = 1877
+----------
+LB: 508
+makespan = 1876
+----------
+LB: 508
+makespan = 1874
+----------
+LB: 508
+makespan = 1873
+----------
+LB: 508
+makespan = 1868
+----------
+LB: 508
+makespan = 1867
+----------
+LB: 508
+makespan = 1859
+----------
+LB: 508
+makespan = 1854
+----------
+LB: 508
+makespan = 1853
+----------
+LB: 508
+makespan = 1849
+----------
+LB: 508
+makespan = 1848
+----------
+LB: 508
+makespan = 1847
+----------
+LB: 508
+makespan = 1844
+----------
+LB: 508
+makespan = 1843
+----------
+LB: 508
+makespan = 1841
+----------
+LB: 508
+makespan = 1839
+----------
+LB: 508
+makespan = 1837
+----------
+LB: 508
+makespan = 1836
+----------
+LB: 508
+makespan = 1830
+----------
+LB: 508
+makespan = 1829
+----------
+LB: 508
+makespan = 1826
+----------
+LB: 508
+makespan = 1823
+----------
+LB: 508
+makespan = 1822
+----------
+LB: 508
+makespan = 1820
+----------
+LB: 508
+makespan = 1817
+----------
+LB: 508
+makespan = 1816
+----------
+LB: 508
+makespan = 1812
+----------
+LB: 508
+makespan = 1811
+----------
+LB: 508
+makespan = 1809
+----------
+LB: 508
+makespan = 1808
+----------
+LB: 508
+makespan = 1806
+----------
+LB: 508
+makespan = 1805
+----------
+LB: 508
+makespan = 1803
+----------
+LB: 508
+makespan = 1802
+----------
+LB: 508
+makespan = 1801
+----------
+LB: 508
+makespan = 1800
+----------
+LB: 508
+makespan = 1799
+----------
+LB: 508
+makespan = 1798
+----------
+LB: 508
+makespan = 1797
+----------
+LB: 508
+makespan = 1795
+----------
+LB: 508
+makespan = 1794
+----------
+LB: 508
+makespan = 1793
+----------
+LB: 508
+makespan = 1791
+----------
+LB: 508
+makespan = 1790
+----------
+LB: 508
+makespan = 1786
+----------
+LB: 508
+makespan = 1785
+----------
+LB: 508
+makespan = 1783
+----------
+LB: 508
+makespan = 1782
+----------
+LB: 508
+makespan = 1781
+----------
+LB: 508
+makespan = 1779
+----------
+LB: 508
+makespan = 1777
+----------
+LB: 508
+makespan = 1775
+----------
+LB: 508
+makespan = 1774
+----------
+LB: 508
+makespan = 1772
+----------
+LB: 508
+makespan = 1771
+----------
+LB: 508
+makespan = 1769
+----------
+LB: 508
+makespan = 1767
+----------
+LB: 508
+makespan = 1766
+----------
+LB: 508
+makespan = 1765
+----------
+LB: 508
+makespan = 1763
+----------
+LB: 508
+makespan = 1762
+----------
+LB: 508
+makespan = 1760
+----------
+LB: 508
+makespan = 1759
+----------
+LB: 508
+makespan = 1757
+----------
+LB: 508
+makespan = 1756
+----------
+LB: 508
+makespan = 1754
+----------
+LB: 508
+makespan = 1746
+----------
+LB: 508
+makespan = 1745
+----------
+LB: 508
+makespan = 1744
+----------
+LB: 508
+makespan = 1740
+----------
+LB: 508
+makespan = 1739
+----------
+LB: 508
+makespan = 1737
+----------
+LB: 508
+makespan = 1733
+----------
+LB: 508
+makespan = 1732
+----------
+LB: 508
+makespan = 1730
+----------
+LB: 508
+makespan = 1729
+----------
+LB: 508
+makespan = 1727
+----------
+LB: 508
+makespan = 1723
+----------
+LB: 508
+makespan = 1721
+----------
+LB: 508
+makespan = 1720
+----------
+LB: 508
+makespan = 1719
+----------
+LB: 508
+makespan = 1714
+----------
+LB: 508
+makespan = 1713
+----------
+LB: 508
+makespan = 1711
+----------
+LB: 508
+makespan = 1710
+----------
+LB: 508
+makespan = 1709
+----------
+LB: 508
+makespan = 1707
+----------
+LB: 508
+makespan = 1706
+----------
+LB: 508
+makespan = 1705
+----------
+LB: 508
+makespan = 1700
+----------
+LB: 508
+makespan = 1698
+----------
+LB: 508
+makespan = 1697
+----------
+LB: 508
+makespan = 1694
+----------
+LB: 508
+makespan = 1693
+----------
+LB: 508
+makespan = 1692
+----------
+LB: 508
+makespan = 1691
+----------
+LB: 508
+makespan = 1689
+----------
+LB: 508
+makespan = 1687
+----------
+LB: 508
+makespan = 1686
+----------
+LB: 508
+makespan = 1684
+----------
+LB: 508
+makespan = 1679
+----------
+LB: 508
+makespan = 1675
+----------
+LB: 508
+makespan = 1674
+----------
+LB: 508
+makespan = 1669
+----------
+LB: 508
+makespan = 1668
+----------
+LB: 508
+makespan = 1667
+----------
+LB: 508
+makespan = 1662
+----------
+LB: 508
+makespan = 1661
+----------
+LB: 508
+makespan = 1660
+----------
+LB: 508
+makespan = 1658
+----------
+LB: 508
+makespan = 1657
+----------
+LB: 508
+makespan = 1656
+----------
+LB: 508
+makespan = 1655
+----------
+LB: 508
+makespan = 1652
+----------
+LB: 508
+makespan = 1650
+----------
+LB: 508
+makespan = 1649
+----------
+LB: 508
+makespan = 1648
+----------
+LB: 508
+makespan = 1647
+----------
+LB: 508
+makespan = 1644
+----------
+LB: 508
+makespan = 1643
+----------
+LB: 508
+makespan = 1642
+----------
+LB: 508
+makespan = 1640
+----------
+LB: 508
+makespan = 1638
+----------
+LB: 508
+makespan = 1636
+----------
+LB: 508
+makespan = 1631
+----------
+LB: 508
+makespan = 1630
+----------
+LB: 508
+makespan = 1626
+----------
+LB: 508
+makespan = 1624
+----------
+LB: 508
+makespan = 1623
+----------
+LB: 508
+makespan = 1622
+----------
+LB: 508
+makespan = 1620
+----------
+LB: 508
+makespan = 1618
+----------
+LB: 508
+makespan = 1616
+----------
+LB: 508
+makespan = 1614
+----------
+LB: 508
+makespan = 1612
+----------
+LB: 508
+makespan = 1611
+----------
+LB: 508
+makespan = 1608
+----------
+LB: 508
+makespan = 1607
+----------
+LB: 508
+makespan = 1606
+----------
+LB: 508
+makespan = 1603
+----------
+LB: 508
+makespan = 1596
+----------
+LB: 508
+makespan = 1595
+----------
+LB: 508
+makespan = 1592
+----------
+LB: 508
+makespan = 1591
+----------
+LB: 508
+makespan = 1590
+----------
+LB: 508
+makespan = 1589
+----------
+LB: 508
+makespan = 1588
+----------
+LB: 508
+makespan = 1586
+----------
+LB: 508
+makespan = 1583
+----------
+LB: 508
+makespan = 1582
+----------
+LB: 508
+makespan = 1581
+----------
+LB: 508
+makespan = 1580
+----------
+LB: 508
+makespan = 1579
+----------
+LB: 508
+makespan = 1578
+----------
+LB: 508
+makespan = 1574
+----------
+LB: 508
+makespan = 1573
+----------
+LB: 508
+makespan = 1571
+----------
+LB: 508
+makespan = 1570
+----------
+LB: 508
+makespan = 1569
+----------
+LB: 508
+makespan = 1565
+----------
+LB: 508
+makespan = 1563
+----------
+LB: 508
+makespan = 1560
+----------
+LB: 508
+makespan = 1555
+----------
+LB: 508
+makespan = 1554
+----------
+LB: 508
+makespan = 1552
+----------
+LB: 508
+makespan = 1550
+----------
+LB: 508
+makespan = 1547
+----------
+LB: 508
+makespan = 1546
+----------
+LB: 508
+makespan = 1545
+----------
+LB: 508
+makespan = 1541
+----------
+LB: 508
+makespan = 1539
+----------
+LB: 508
+makespan = 1538
+----------
+LB: 508
+makespan = 1535
+----------
+LB: 508
+makespan = 1534
+----------
+LB: 508
+makespan = 1532
+----------
+LB: 508
+makespan = 1531
+----------
+LB: 508
+makespan = 1530
+----------
+LB: 508
+makespan = 1527
+----------
+LB: 508
+makespan = 1524
+----------
+LB: 508
+makespan = 1523
+----------
+LB: 508
+makespan = 1522
+----------
+LB: 508
+makespan = 1521
+----------
+LB: 508
+makespan = 1520
+----------
+LB: 508
+makespan = 1517
+----------
+LB: 508
+makespan = 1514
+----------
+LB: 508
+makespan = 1513
+----------
+LB: 508
+makespan = 1512
+----------
+LB: 508
+makespan = 1511
+----------
+LB: 508
+makespan = 1506
+----------
+LB: 508
+makespan = 1505
+----------
+LB: 508
+makespan = 1503
+----------
+LB: 508
+makespan = 1502
+----------
+LB: 508
+makespan = 1497
+----------
+LB: 508
+makespan = 1496
+----------
+LB: 508
+makespan = 1495
+----------
+LB: 508
+makespan = 1494
+----------
+LB: 508
+makespan = 1492
+----------
+LB: 508
+makespan = 1491
+----------
+LB: 508
+makespan = 1489
+----------
+LB: 508
+makespan = 1487
+----------
+LB: 508
+makespan = 1486
+----------
+LB: 508
+makespan = 1485
+----------
+LB: 508
+makespan = 1484
+----------
+LB: 508
+makespan = 1482
+----------
+LB: 508
+makespan = 1481
+----------
+LB: 508
+makespan = 1479
+----------
+LB: 508
+makespan = 1478
+----------
+LB: 508
+makespan = 1476
+----------
+LB: 508
+makespan = 1475
+----------
+LB: 508
+makespan = 1474
+----------
+LB: 508
+makespan = 1473
+----------
+LB: 508
+makespan = 1472
+----------
+LB: 508
+makespan = 1470
+----------
+LB: 508
+makespan = 1469
+----------
+LB: 508
+makespan = 1467
+----------
+LB: 508
+makespan = 1466
+----------
+LB: 508
+makespan = 1465
+----------
+LB: 508
+makespan = 1461
+----------
+LB: 508
+makespan = 1460
+----------
+LB: 508
+makespan = 1459
+----------
+LB: 508
+makespan = 1457
+----------
+LB: 508
+makespan = 1455
+----------
+LB: 508
+makespan = 1452
+----------
+LB: 508
+makespan = 1451
+----------
+LB: 508
+makespan = 1450
+----------
+LB: 508
+makespan = 1449
+----------
+LB: 508
+makespan = 1447
+----------
+LB: 508
+makespan = 1446
+----------
+LB: 508
+makespan = 1442
+----------
+LB: 508
+makespan = 1441
+----------
+LB: 508
+makespan = 1440
+----------
+LB: 508
+makespan = 1439
+----------
+LB: 508
+makespan = 1438
+----------
+LB: 508
+makespan = 1435
+----------
+LB: 508
+makespan = 1433
+----------
+LB: 508
+makespan = 1431
+----------
+LB: 508
+makespan = 1430
+----------
+LB: 508
+makespan = 1429
+----------
+LB: 508
+makespan = 1428
+----------
+LB: 508
+makespan = 1426
+----------
+LB: 508
+makespan = 1424
+----------
+LB: 508
+makespan = 1422
+----------
+LB: 508
+makespan = 1418
+----------
+LB: 508
+makespan = 1417
+----------
+LB: 508
+makespan = 1416
+----------
+LB: 508
+makespan = 1414
+----------
+LB: 508
+makespan = 1413
+----------
+LB: 508
+makespan = 1412
+----------
+LB: 508
+makespan = 1410
+----------
+LB: 508
+makespan = 1409
+----------
+LB: 508
+makespan = 1408
+----------
+LB: 508
+makespan = 1405
+----------
+LB: 508
+makespan = 1402
+----------
+LB: 508
+makespan = 1400
+----------
+LB: 508
+makespan = 1399
+----------
+LB: 508
+makespan = 1398
+----------
+LB: 508
+makespan = 1397
+----------
+LB: 508
+makespan = 1396
+----------
+LB: 508
+makespan = 1395
+----------
+LB: 508
+makespan = 1394
+----------
+LB: 508
+makespan = 1393
+----------
+LB: 508
+makespan = 1392
+----------
+LB: 508
+makespan = 1391
+----------
+LB: 508
+makespan = 1390
+----------
+LB: 508
+makespan = 1389
+----------
+LB: 508
+makespan = 1388
+----------
+LB: 508
+makespan = 1387
+----------
+LB: 508
+makespan = 1386
+----------
+LB: 508
+makespan = 1385
+----------
+LB: 508
+makespan = 1383
+----------
+LB: 508
+makespan = 1382
+----------
+LB: 508
+makespan = 1381
+----------
+LB: 508
+makespan = 1380
+----------
+LB: 508
+makespan = 1379
+----------
+LB: 508
+makespan = 1378
+----------
+LB: 508
+makespan = 1376
+----------
+LB: 508
+makespan = 1375
+----------
+LB: 508
+makespan = 1371
+----------
+LB: 508
+makespan = 1370
+----------
+LB: 508
+makespan = 1368
+----------
+LB: 508
+makespan = 1367
+----------
+LB: 508
+makespan = 1366
+----------
+LB: 508
+makespan = 1365
+----------
+LB: 508
+makespan = 1363
+----------
+LB: 508
+makespan = 1362
+----------
+LB: 508
+makespan = 1360
+----------
+LB: 508
+makespan = 1356
+----------
+LB: 508
+makespan = 1355
+----------
+LB: 508
+makespan = 1354
+----------
+LB: 508
+makespan = 1352
+----------
+LB: 508
+makespan = 1351
+----------
+LB: 508
+makespan = 1350
+----------
+LB: 508
+makespan = 1348
+----------
+LB: 508
+makespan = 1347
+----------
+LB: 508
+makespan = 1345
+----------
+LB: 508
+makespan = 1344
+----------
+LB: 508
+makespan = 1343
+----------
+LB: 508
+makespan = 1341
+----------
+LB: 508
+makespan = 1340
+----------
+LB: 508
+makespan = 1339
+----------
+LB: 508
+makespan = 1338
+----------
+LB: 508
+makespan = 1333
+----------
+LB: 508
+makespan = 1332
+----------
+LB: 508
+makespan = 1331
+----------
+LB: 508
+makespan = 1330
+----------
+LB: 508
+makespan = 1329
+----------
+LB: 508
+makespan = 1328
+----------
+LB: 508
+makespan = 1327
+----------
+LB: 508
+makespan = 1326
+----------
+LB: 508
+makespan = 1325
+----------
+LB: 508
+makespan = 1324
+----------
+LB: 508
+makespan = 1323
+----------
+LB: 508
+makespan = 1321
+----------
+LB: 508
+makespan = 1319
+----------
+LB: 508
+makespan = 1318
+----------
+LB: 508
+makespan = 1317
+----------
+LB: 508
+makespan = 1316
+----------
+LB: 508
+makespan = 1314
+----------
+LB: 508
+makespan = 1313
+----------
+LB: 508
+makespan = 1311
+----------
+LB: 508
+makespan = 1309
+----------
+LB: 508
+makespan = 1306
+----------
+LB: 508
+makespan = 1305
+----------
+LB: 508
+makespan = 1304
+----------
+LB: 508
+makespan = 1303
+----------
+LB: 508
+makespan = 1300
+----------
+LB: 508
+makespan = 1299
+----------
+LB: 508
+makespan = 1298
+----------
+LB: 508
+makespan = 1297
+----------
+LB: 508
+makespan = 1296
+----------
+LB: 508
+makespan = 1295
+----------
+LB: 508
+makespan = 1294
+----------
+LB: 508
+makespan = 1292
+----------
+LB: 508
+makespan = 1291
+----------
+LB: 508
+makespan = 1290
+----------
+LB: 508
+makespan = 1288
+----------
+LB: 508
+makespan = 1285
+----------
+LB: 508
+makespan = 1284
+----------
+LB: 508
+makespan = 1282
+----------
+LB: 508
+makespan = 1278
+----------
+LB: 508
+makespan = 1277
+----------
+LB: 508
+makespan = 1276
+----------
+LB: 508
+makespan = 1275
+----------
+LB: 508
+makespan = 1274
+----------
+LB: 508
+makespan = 1273
+----------
+LB: 508
+makespan = 1272
+----------
+LB: 508
+makespan = 1271
+----------
+LB: 508
+makespan = 1270
+----------
+LB: 508
+makespan = 1269
+----------
+LB: 508
+makespan = 1268
+----------
+LB: 508
+makespan = 1266
+----------
+LB: 508
+makespan = 1264
+----------
+LB: 508
+makespan = 1263
+----------
+LB: 508
+makespan = 1261
+----------
+LB: 508
+makespan = 1259
+----------
+LB: 508
+makespan = 1257
+----------
+LB: 508
+makespan = 1256
+----------
+LB: 508
+makespan = 1255
+----------
+LB: 508
+makespan = 1254
+----------
+LB: 508
+makespan = 1252
+----------
+LB: 508
+makespan = 1251
+----------
+LB: 508
+makespan = 1250
+----------
+LB: 508
+makespan = 1249
+----------
+LB: 508
+makespan = 1246
+----------
+LB: 508
+makespan = 1245
+----------
+LB: 508
+makespan = 1243
+----------
+LB: 508
+makespan = 1242
+----------
+LB: 508
+makespan = 1241
+----------
+LB: 508
+makespan = 1240
+----------
+LB: 508
+makespan = 1239
+----------
+LB: 508
+makespan = 1238
+----------
+LB: 508
+makespan = 1237
+----------
+LB: 508
+makespan = 1236
+----------
+LB: 508
+makespan = 1234
+----------
+LB: 508
+makespan = 1233
+----------
+LB: 508
+makespan = 1232
+----------
+LB: 508
+makespan = 1231
+----------
+LB: 508
+makespan = 1230
+----------
+LB: 508
+makespan = 1228
+----------
+LB: 508
+makespan = 1227
+----------
+LB: 508
+makespan = 1226
+----------
+LB: 508
+makespan = 1225
+----------
+LB: 508
+makespan = 1219
+----------
+LB: 508
+makespan = 1218
+----------
+LB: 508
+makespan = 1215
+----------
+LB: 508
+makespan = 1214
+----------
+LB: 508
+makespan = 1212
+----------
+LB: 508
+makespan = 1210
+----------
+LB: 508
+makespan = 1209
+----------
+LB: 508
+makespan = 1207
+----------
+LB: 508
+makespan = 1202
+----------
+LB: 508
+makespan = 1201
+----------
+LB: 508
+makespan = 1200
+----------
+LB: 508
+makespan = 1199
+----------
+LB: 508
+makespan = 1198
+----------
+LB: 508
+makespan = 1197
+----------
+LB: 508
+makespan = 1195
+----------
+LB: 508
+makespan = 1194
+----------
+LB: 508
+makespan = 1193
+----------
+LB: 508
+makespan = 1191
+----------
+LB: 508
+makespan = 1190
+----------
+LB: 508
+makespan = 1189
+----------
+LB: 508
+makespan = 1188
+----------
+LB: 508
+makespan = 1187
+----------
+LB: 508
+makespan = 1184
+----------
+LB: 508
+makespan = 1183
+----------
+LB: 508
+makespan = 1179
+----------
+LB: 508
+makespan = 1178
+----------
+LB: 508
+makespan = 1176
+----------
+LB: 508
+makespan = 1174
+----------
+LB: 508
+makespan = 1173
+----------
+LB: 508
+makespan = 1172
+----------
+LB: 508
+makespan = 1171
+----------
+LB: 508
+makespan = 1170
+----------
+LB: 508
+makespan = 1169
+----------
+LB: 508
+makespan = 1168
+----------
+LB: 508
+makespan = 1167
+----------
+LB: 508
+makespan = 1166
+----------
+LB: 508
+makespan = 1164
+----------
+LB: 508
+makespan = 1162
+----------
+LB: 508
+makespan = 1160
+----------
+LB: 508
+makespan = 1159
+----------
+LB: 508
+makespan = 1158
+----------
+LB: 508
+makespan = 1157
+----------
+LB: 508
+makespan = 1155
+----------
+LB: 508
+makespan = 1152
+----------
+LB: 508
+makespan = 1151
+----------
+LB: 508
+makespan = 1148
+----------
+LB: 508
+makespan = 1147
+----------
+LB: 508
+makespan = 1146
+----------
+LB: 508
+makespan = 1145
+----------
+LB: 508
+makespan = 1144
+----------
+LB: 508
+makespan = 1143
+----------
+LB: 508
+makespan = 1142
+----------
+LB: 508
+makespan = 1141
+----------
+LB: 508
+makespan = 1140
+----------
+LB: 508
+makespan = 1139
+----------
+LB: 508
+makespan = 1138
+----------
+LB: 508
+makespan = 1137
+----------
+LB: 508
+makespan = 1134
+----------
+LB: 508
+makespan = 1133
+----------
+LB: 508
+makespan = 1132
+----------
+LB: 508
+makespan = 1131
+----------
+LB: 508
+makespan = 1130
+----------
+LB: 508
+makespan = 1129
+----------
+LB: 508
+makespan = 1128
+----------
+LB: 508
+makespan = 1127
+----------
+LB: 508
+makespan = 1126
+----------
+LB: 508
+makespan = 1125
+----------
+LB: 508
+makespan = 1124
+----------
+LB: 508
+makespan = 1123
+----------
+LB: 508
+makespan = 1122
+----------
+LB: 508
+makespan = 1121
+----------
+LB: 508
+makespan = 1120
+----------
+LB: 508
+makespan = 1118
+----------
+LB: 508
+makespan = 1117
+----------
+LB: 508
+makespan = 1116
+----------
+LB: 508
+makespan = 1115
+----------
+LB: 508
+makespan = 1107
+----------
+LB: 508
+makespan = 1106
+----------
+LB: 508
+makespan = 1104
+----------
+LB: 508
+makespan = 1103
+----------
+LB: 508
+makespan = 1102
+----------
+LB: 508
+makespan = 1099
+----------
+LB: 508
+makespan = 1095
+----------
+LB: 508
+makespan = 1093
+----------
+LB: 508
+makespan = 1091
+----------
+LB: 508
+makespan = 1090
+----------
+LB: 508
+makespan = 1088
+----------
+LB: 508
+makespan = 1087
+----------
+LB: 508
+makespan = 1086
+----------
+LB: 508
+makespan = 1085
+----------
+LB: 508
+makespan = 1084
+----------
+LB: 508
+makespan = 1083
+----------
+LB: 508
+makespan = 1080
+----------
+LB: 508
+makespan = 1079
+----------
+LB: 508
+makespan = 1077
+----------
+LB: 508
+makespan = 1076
+----------
+LB: 508
+makespan = 1075
+----------
+LB: 508
+makespan = 1074
+----------
+LB: 508
+makespan = 1073
+----------
+LB: 508
+makespan = 1072
+----------
+LB: 508
+makespan = 1070
+----------
+LB: 508
+makespan = 1068
+----------
+LB: 508
+makespan = 1067
+----------
+LB: 508
+makespan = 1066
+----------
+LB: 508
+makespan = 1065
+----------
+LB: 508
+makespan = 1063
+----------
+LB: 508
+makespan = 1062
+----------
+LB: 508
+makespan = 1061
+----------
+LB: 508
+makespan = 1060
+----------
+LB: 508
+makespan = 1058
+----------
+LB: 508
+makespan = 1056
+----------
+LB: 508
+makespan = 1054
+----------
+LB: 508
+makespan = 1050
+----------
+LB: 508
+makespan = 1048
+----------
+LB: 508
+makespan = 1046
+----------
+LB: 508
+makespan = 1045
+----------
+LB: 508
+makespan = 1044
+----------
+LB: 508
+makespan = 1043
+----------
+LB: 508
+makespan = 1041
+----------
+LB: 508
+makespan = 1040
+----------
+LB: 508
+makespan = 1039
+----------
+LB: 508
+makespan = 1037
+----------
+LB: 508
+makespan = 1036
+----------
+LB: 508
+makespan = 1033
+----------
+LB: 508
+makespan = 1032
+----------
+LB: 508
+makespan = 1031
+----------
+LB: 508
+makespan = 1030
+----------
+LB: 508
+makespan = 1028
+----------
+LB: 508
+makespan = 1027
+----------
+LB: 508
+makespan = 1026
+----------
+LB: 508
+makespan = 1025
+----------
+LB: 508
+makespan = 1024
+----------
+LB: 508
+makespan = 1023
+----------
+LB: 508
+makespan = 1022
+----------
+LB: 508
+makespan = 1020
+----------
+LB: 508
+makespan = 1019
+----------
+LB: 508
+makespan = 1018
+----------
+LB: 508
+makespan = 1017
+----------
+LB: 508
+makespan = 1016
+----------
+LB: 508
+makespan = 1013
+----------
+LB: 508
+makespan = 1012
+----------
+LB: 508
+makespan = 1011
+----------
+LB: 508
+makespan = 1010
+----------
+LB: 508
+makespan = 1009
+----------
+LB: 508
+makespan = 1008
+----------
+LB: 508
+makespan = 1007
+----------
+LB: 508
+makespan = 1006
+----------
+LB: 508
+makespan = 1004
+----------
+LB: 508
+makespan = 1003
+----------
+LB: 508
+makespan = 1002
+----------
+LB: 508
+makespan = 1001
+----------
+LB: 508
+makespan = 999
+----------
+LB: 508
+makespan = 997
+----------
+LB: 508
+makespan = 996
+----------
+LB: 508
+makespan = 995
+----------
+LB: 508
+makespan = 994
+----------
+LB: 508
+makespan = 993
+----------
+LB: 508
+makespan = 990
+----------
+LB: 508
+makespan = 989
+----------
+LB: 508
+makespan = 988
+----------
+LB: 508
+makespan = 987
+----------
+LB: 508
+makespan = 986
+----------
+LB: 508
+makespan = 985
+----------
+LB: 508
+makespan = 983
+----------
+LB: 508
+makespan = 982
+----------
+LB: 508
+makespan = 980
+----------
+LB: 508
+makespan = 979
+----------
+LB: 508
+makespan = 978
+----------
+LB: 508
+makespan = 977
+----------
+LB: 508
+makespan = 976
+----------
+LB: 508
+makespan = 974
+----------
+LB: 508
+makespan = 972
+----------
+LB: 508
+makespan = 971
+----------
+LB: 508
+makespan = 968
+----------
+LB: 508
+makespan = 966
+----------
+LB: 508
+makespan = 964
+----------
+LB: 508
+makespan = 963
+----------
+LB: 508
+makespan = 962
+----------
+LB: 508
+makespan = 960
+----------
+LB: 508
+makespan = 959
+----------
+LB: 508
+makespan = 957
+----------
+LB: 508
+makespan = 956
+----------
+LB: 508
+makespan = 954
+----------
+LB: 508
+makespan = 953
+----------
+LB: 508
+makespan = 952
+----------
+LB: 508
+makespan = 951
+----------
+LB: 508
+makespan = 949
+----------
+LB: 508
+makespan = 948
+----------
+LB: 508
+makespan = 947
+----------
+LB: 508
+makespan = 946
+----------
+LB: 508
+makespan = 942
+----------
+LB: 508
+makespan = 941
+----------
+LB: 508
+makespan = 940
+----------
+LB: 508
+makespan = 939
+----------
+LB: 508
+makespan = 938
+----------
+LB: 508
+makespan = 937
+----------
+LB: 508
+makespan = 936
+----------
+LB: 508
+makespan = 934
+----------
+LB: 508
+makespan = 933
+----------
+LB: 508
+makespan = 930
+----------
+LB: 508
+makespan = 928
+----------
+LB: 508
+makespan = 926
+----------
+LB: 508
+makespan = 925
+----------
+LB: 508
+makespan = 924
+----------
+LB: 508
+makespan = 922
+----------
+LB: 508
+makespan = 920
+----------
+LB: 508
+makespan = 919
+----------
+LB: 508
+makespan = 918
+----------
+LB: 508
+makespan = 917
+----------
+LB: 508
+makespan = 916
+----------
+LB: 508
+makespan = 915
+----------
+LB: 508
+makespan = 914
+----------
+LB: 508
+makespan = 913
+----------
+LB: 508
+makespan = 910
+----------
+LB: 508
+makespan = 908
+----------
+LB: 508
+makespan = 907
+----------
+LB: 508
+makespan = 906
+----------
+LB: 508
+makespan = 905
+----------
+LB: 508
+makespan = 904
+----------
+LB: 508
+makespan = 903
+----------
+LB: 508
+makespan = 902
+----------
+LB: 508
+makespan = 901
+----------
+LB: 508
+makespan = 900
+----------
+LB: 508
+makespan = 898
+----------
+LB: 508
+makespan = 897
+----------
+LB: 508
+makespan = 896
+----------
+LB: 508
+makespan = 895
+----------
+LB: 508
+makespan = 894
+----------
+LB: 508
+makespan = 893
+----------
+LB: 508
+makespan = 891
+----------
+LB: 508
+makespan = 890
+----------
+LB: 508
+makespan = 889
+----------
+LB: 508
+makespan = 888
+----------
+LB: 508
+makespan = 887
+----------
+LB: 508
+makespan = 886
+----------
+LB: 508
+makespan = 885
+----------
+LB: 508
+makespan = 883
+----------
+LB: 508
+makespan = 882
+----------
+LB: 508
+makespan = 881
+----------
+LB: 508
+makespan = 880
+----------
+LB: 508
+makespan = 879
+----------
+LB: 508
+makespan = 878
+----------
+LB: 508
+makespan = 874
+----------
+LB: 508
+makespan = 873
+----------
+LB: 508
+makespan = 871
+----------
+LB: 508
+makespan = 870
+----------
+LB: 508
+makespan = 869
+----------
+LB: 508
+makespan = 868
+----------
+LB: 508
+makespan = 867
+----------
+LB: 508
+makespan = 866
+----------
+LB: 508
+makespan = 864
+----------
+LB: 508
+makespan = 863
+----------
+LB: 508
+makespan = 861
+----------
+LB: 508
+makespan = 859
+----------
+LB: 508
+makespan = 858
+----------
+LB: 508
+makespan = 856
+----------
+LB: 508
+makespan = 855
+----------
+LB: 508
+makespan = 853
+----------
+LB: 508
+makespan = 851
+----------
+LB: 508
+makespan = 850
+----------
+LB: 508
+makespan = 849
+----------
+LB: 508
+makespan = 848
+----------
+LB: 508
+makespan = 847
+----------
+LB: 508
+makespan = 846
+----------
+LB: 508
+makespan = 845
+----------
+LB: 508
+makespan = 844
+----------
+LB: 508
+makespan = 843
+----------
+LB: 508
+makespan = 842
+----------
+LB: 508
+makespan = 841
+----------
+LB: 508
+makespan = 840
+----------
+LB: 508
+makespan = 839
+----------
+LB: 508
+makespan = 838
+----------
+LB: 508
+makespan = 837
+----------
+LB: 508
+makespan = 836
+----------
+LB: 508
+makespan = 835
+----------
+LB: 508
+makespan = 833
+----------
+LB: 508
+makespan = 832
+----------
+LB: 508
+makespan = 828
+----------
+LB: 508
+makespan = 827
+----------
+LB: 508
+makespan = 826
+----------
+LB: 508
+makespan = 825
+----------
+LB: 508
+makespan = 824
+----------
+LB: 508
+makespan = 823
+----------
+LB: 508
+makespan = 822
+----------
+LB: 508
+makespan = 821
+----------
+LB: 508
+makespan = 820
+----------
+LB: 508
+makespan = 817
+----------
+LB: 508
+makespan = 816
+----------
+LB: 508
+makespan = 815
+----------
+LB: 508
+makespan = 814
+----------
+LB: 508
+makespan = 813
+----------
+LB: 508
+makespan = 812
+----------
+LB: 508
+makespan = 810
+----------
+LB: 508
+makespan = 809
+----------
+LB: 508
+makespan = 807
+----------
+LB: 508
+makespan = 806
+----------
+LB: 508
+makespan = 805
+----------
+LB: 508
+makespan = 804
+----------
+LB: 508
+makespan = 803
+----------
+LB: 508
+makespan = 802
+----------
+LB: 508
+makespan = 801
+----------
+LB: 508
+makespan = 800
+----------
+LB: 508
+makespan = 799
+----------
+LB: 508
+makespan = 798
+----------
+LB: 508
+makespan = 797
+----------
+LB: 508
+makespan = 796
+----------
+LB: 508
+makespan = 795
+----------
+LB: 508
+makespan = 793
+----------
+LB: 508
+makespan = 792
+----------
+LB: 508
+makespan = 791
+----------
+LB: 508
+makespan = 789
+----------
+LB: 508
+makespan = 787
+----------
+LB: 508
+makespan = 786
+----------
+LB: 508
+makespan = 785
+----------
+LB: 508
+makespan = 783
+----------
+LB: 508
+makespan = 782
+----------
+LB: 508
+makespan = 781
+----------
+LB: 508
+makespan = 780
+----------
+LB: 508
+makespan = 778
+----------
+LB: 508
+makespan = 777
+----------
+LB: 508
+makespan = 776
+----------
+LB: 508
+makespan = 775
+----------
+LB: 508
+makespan = 774
+----------
+LB: 508
+makespan = 772
+----------
+LB: 508
+makespan = 771
+----------
+LB: 508
+makespan = 770
+----------
+LB: 508
+makespan = 769
+----------
+LB: 508
+makespan = 768
+----------
+LB: 508
+makespan = 767
+----------
+LB: 508
+makespan = 766
+----------
+LB: 508
+makespan = 765
+----------
+LB: 508
+makespan = 764
+----------
+LB: 508
+makespan = 763
+----------
+LB: 508
+makespan = 762
+----------
+LB: 508
+makespan = 761
+----------
+LB: 508
+makespan = 757
+----------
+LB: 508
+makespan = 756
+----------
+LB: 508
+makespan = 752
+----------
+LB: 508
+makespan = 751
+----------
+LB: 508
+makespan = 750
+----------
+LB: 508
+makespan = 749
+----------
+LB: 508
+makespan = 747
+----------
+LB: 508
+makespan = 746
+----------
+LB: 508
+makespan = 744
+----------
+LB: 508
+makespan = 743
+----------
+LB: 508
+makespan = 742
+----------
+LB: 508
+makespan = 741
+----------
+LB: 508
+makespan = 740
+----------
+LB: 508
+makespan = 739
+----------
+LB: 508
+makespan = 738
+----------
+LB: 508
+makespan = 736
+----------
+LB: 508
+makespan = 735
+----------
+LB: 508
+makespan = 733
+----------
+LB: 508
+makespan = 732
+----------
+LB: 508
+makespan = 731
+----------
+LB: 508
+makespan = 730
+----------
+LB: 508
+makespan = 729
+----------
+LB: 508
+makespan = 728
+----------
+LB: 508
+makespan = 727
+----------
+LB: 508
+makespan = 726
+----------
+LB: 508
+makespan = 725
+----------
+LB: 508
+makespan = 724
+----------
+LB: 508
+makespan = 723
+----------
+LB: 508
+makespan = 722
+----------
+LB: 508
+makespan = 720
+----------
+LB: 508
+makespan = 719
+----------
+LB: 508
+makespan = 718
+----------
+LB: 508
+makespan = 717
+----------
+LB: 508
+makespan = 716
+----------
+LB: 508
+makespan = 715
+----------
+LB: 508
+makespan = 713
+----------
+LB: 508
+makespan = 712
+----------
+LB: 508
+makespan = 709
+----------
+LB: 508
+makespan = 708
+----------
+LB: 508
+makespan = 704
+----------
+LB: 508
+makespan = 703
+----------
+LB: 508
+makespan = 702
+----------
+LB: 508
+makespan = 701
+----------
+LB: 508
+makespan = 700
+----------
+LB: 508
+makespan = 698
+----------
+LB: 508
+makespan = 697
+----------
+LB: 508
+makespan = 696
+----------
+LB: 508
+makespan = 695
+----------
+LB: 508
+makespan = 693
+----------
+LB: 508
+makespan = 692
+----------
+LB: 508
+makespan = 691
+----------
+LB: 508
+makespan = 690
+----------
+LB: 508
+makespan = 689
+----------
+LB: 508
+makespan = 688
+----------
+LB: 508
+makespan = 685
+----------
+LB: 508
+makespan = 684
+----------
+LB: 508
+makespan = 682
+----------
+LB: 508
+makespan = 681
+----------
+LB: 508
+makespan = 680
+----------
+LB: 508
+makespan = 679
+----------
+LB: 508
+makespan = 678
+----------
+LB: 508
+makespan = 677
+----------
+LB: 508
+makespan = 675
+----------
+LB: 508
+makespan = 674
+----------
+LB: 508
+makespan = 673
+----------
+LB: 508
+makespan = 672
+----------
+LB: 508
+makespan = 671
+----------
+LB: 508
+makespan = 670
+----------
+LB: 508
+makespan = 669
+----------
+LB: 508
+makespan = 668
+----------
+LB: 508
+makespan = 667
+----------
+LB: 508
+makespan = 666
+----------
+LB: 508
+makespan = 664
+----------
+LB: 508
+makespan = 663
+----------
+LB: 508
+makespan = 662
+----------
+LB: 508
+makespan = 661
+----------
+LB: 508
+makespan = 660
+----------
+LB: 508
+makespan = 659
+----------
+LB: 508
+makespan = 658
+----------
+LB: 508
+makespan = 657
+----------
+LB: 508
+makespan = 656
+----------
+LB: 508
+makespan = 655
+----------
+LB: 508
+makespan = 654
+----------
+LB: 508
+makespan = 653
+----------
+LB: 508
+makespan = 652
+----------
+LB: 508
+makespan = 651
+----------
+LB: 508
+makespan = 650
+----------
+LB: 508
+makespan = 649
+----------
+LB: 508
+makespan = 648
+----------
+LB: 508
+makespan = 647
+----------
+LB: 508
+makespan = 645
+----------
+LB: 508
+makespan = 644
+----------
+LB: 508
+makespan = 642
+----------
+LB: 508
+makespan = 640
+----------
+LB: 508
+makespan = 639
+----------
+LB: 508
+makespan = 638
+----------
+LB: 508
+makespan = 637
+----------
+LB: 508
+makespan = 636
+----------
+LB: 508
+makespan = 635
+----------
+LB: 508
+makespan = 634
+----------
+LB: 508
+makespan = 631
+----------
+LB: 508
+makespan = 630
+----------
+LB: 508
+makespan = 629
+----------
+LB: 508
+makespan = 628
+----------
+LB: 508
+makespan = 627
+----------
+LB: 508
+makespan = 626
+----------
+LB: 508
+makespan = 625
+----------
+LB: 508
+makespan = 624
+----------
+LB: 508
+makespan = 623
+----------
+LB: 508
+makespan = 622
+----------
+LB: 508
+makespan = 621
+----------
+LB: 508
+makespan = 620
+----------
+LB: 508
+makespan = 619
+----------
+LB: 508
+makespan = 618
+----------
+LB: 508
+makespan = 617
+----------
+LB: 508
+makespan = 616
+----------
+LB: 508
+makespan = 615
+----------
+LB: 508
+makespan = 614
+----------
+LB: 508
+makespan = 613
+----------
+LB: 508
+makespan = 612
+----------
+LB: 508
+makespan = 611
+----------
+LB: 508
+makespan = 610
+----------
+LB: 508
+makespan = 609
+----------
+LB: 508
+makespan = 608
+----------
+LB: 508
+makespan = 607
+----------
+LB: 508
+makespan = 606
+----------
+LB: 508
+makespan = 603
+----------
+LB: 508
+makespan = 602
+----------
+LB: 508
+makespan = 601
+----------
+LB: 508
+makespan = 600
+----------
+LB: 508
+makespan = 598
+----------
+LB: 508
+makespan = 597
+----------
+LB: 508
+makespan = 596
+----------
+LB: 508
+makespan = 595
+----------
+LB: 508
+makespan = 593
+----------
+LB: 508
+makespan = 592
+----------
+LB: 508
+makespan = 590
+----------
+LB: 508
+makespan = 589
+----------
+LB: 508
+makespan = 587
+----------
+LB: 508
+makespan = 586
+----------
+LB: 508
+makespan = 584
+----------
+LB: 508
+makespan = 583
+----------
+LB: 508
+makespan = 582
+----------
+LB: 508
+makespan = 581
+----------
+LB: 508
+makespan = 580
+----------
+LB: 508
+makespan = 579
+----------
+LB: 508
+makespan = 576
+----------
+LB: 508
+makespan = 575
+----------
+LB: 508
+makespan = 574
+----------
+LB: 508
+makespan = 573
+----------
+LB: 508
+makespan = 572
+----------
+LB: 508
+makespan = 571
+----------
+LB: 508
+makespan = 569
+----------
+LB: 508
+makespan = 568
+----------
+LB: 508
+makespan = 567
+----------
+LB: 508
+makespan = 566
+----------
+LB: 508
+makespan = 565
+----------
+LB: 508
+makespan = 564
+----------
+LB: 508
+makespan = 563
+----------
+LB: 508
+makespan = 562
+----------
+LB: 508
+makespan = 561
+----------
+LB: 508
+makespan = 560
+----------
+LB: 508
+makespan = 559
+----------
+LB: 508
+makespan = 558
+----------
+LB: 508
+makespan = 557
+----------
+LB: 508
+makespan = 556
+----------
+LB: 508
+makespan = 555
+----------
+LB: 508
+makespan = 554
+----------
+LB: 508
+makespan = 553
+----------
+LB: 508
+makespan = 552
+----------
+LB: 508
+makespan = 551
+----------
+LB: 508
+makespan = 549
+----------
+LB: 508
+makespan = 548
+----------
+LB: 508
+makespan = 547
+----------
+LB: 508
+makespan = 546
+----------
+LB: 508
+makespan = 545
+----------
+LB: 508
+makespan = 544
+----------
+LB: 508
+makespan = 543
+----------
+LB: 508
+makespan = 542
+----------
+LB: 508
+makespan = 540
+----------
+LB: 508
+makespan = 539
+----------
+LB: 508
+makespan = 538
+----------
+LB: 508
+makespan = 537
+----------
+LB: 508
+makespan = 536
+----------
+LB: 508
+makespan = 535
+----------
+LB: 508
+makespan = 534
+----------
+LB: 508
+makespan = 532
+----------
+LB: 508
+makespan = 531
+----------
+LB: 508
+makespan = 530
+----------
+LB: 508
+makespan = 529
+----------
+LB: 508
+makespan = 528
+----------
+LB: 508
+makespan = 527
+----------
+LB: 508
+makespan = 526
+----------
+LB: 508
+makespan = 525
+----------
+LB: 508
+makespan = 524
+----------
+LB: 508
+makespan = 523
+----------
+LB: 508
+makespan = 521
+----------
+LB: 508
+makespan = 519
+----------
+LB: 508
+makespan = 518
+----------
+LB: 508
+makespan = 516
+----------
+LB: 508
+makespan = 515
+----------
+LB: 508
+makespan = 514
+----------
+LB: 508
+makespan = 513
+----------
+LB: 508
+makespan = 511
+----------
+LB: 508
+makespan = 510
+----------
+LB: 508
+makespan = 509
+----------

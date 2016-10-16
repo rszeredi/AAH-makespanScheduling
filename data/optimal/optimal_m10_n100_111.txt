@@ -1,0 +1,1 @@
+instance_m10_n100_020, GMS: 509, LB: 508, CP: Suboptimal, 509, 300 seconds, SA: 509, 1.81 seconds, CP_SA_gap: 0

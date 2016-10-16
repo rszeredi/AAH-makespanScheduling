@@ -14,7 +14,8 @@ echo n: $n
 TIMELIMIT="300"
 
 # Create output destination
-DEST="${SOURCE}/data/optimal/optimal_m${m}_n${n}.txt"
+# DEST="${SOURCE}/data/optimal/optimal_m${m}_n${n}.txt"
+DEST="${SOURCE}/data/optimal/optimal_uniform_m${m}_n${n}.txt"
 echo dest $DEST
 echo -n '' > $DEST
 

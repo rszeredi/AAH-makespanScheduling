@@ -6,3 +6,6 @@ instance_m6_n100_005, GMS: 797, LB: 796, CP: Optimal, 796, 60.84 seconds, SA: 79
 instance_m6_n100_006, GMS: 951, LB: 950, CP: Suboptimal, 952, 300 seconds, SA: 950, 1.54 seconds, CP_SA_gap: -.0022
 instance_m6_n100_007, GMS: 890, LB: 889, CP: Optimal, 889, 0.01 seconds, SA: 890, 1.50 seconds, CP_SA_gap: .0011
 instance_m6_n100_008, GMS: 782, LB: 781, CP: Suboptimal, 782, 300 seconds, SA: 782, 1.62 seconds, CP_SA_gap: 0
+instance_m6_n100_009, GMS: 785, LB: 784, CP: Suboptimal, 785, 300 seconds, SA: 785, 1.66 seconds, CP_SA_gap: 0
+instance_m6_n100_010, GMS: 821, LB: 819, CP: Optimal, 819, 4.96 seconds, SA: 820, 1.66 seconds, CP_SA_gap: .0012
+instance_m6_n100_011, GMS: 824, LB: 823, CP: Optimal, 823, 0.01 seconds, SA: 823, 1.63 seconds, CP_SA_gap: 0
