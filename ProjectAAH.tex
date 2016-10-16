@@ -698,7 +698,7 @@ We aim to create instances of the problem which are particularly difficult to so
 \varrho: & \text{ Maximum possible processing time.} \nonumber\\
 \kappa: & \text{ The concentration of the processing times in the extremes.} \nonumber\\
 \Pi: & \text{ Probability of a job having a processing time from one extreme.} \nonumber\\
-\pi: & \text{ Probability of a job having a processing time not from an extreme} \nonumber\\
+\pi: & \text{ Probability of a job having a processing time not from an extreme.} \nonumber\\
 N: & \text{ Number of processing times assigned a large probability in each extreme, } N =\lfloor \kappa\varrho \rfloor. \nonumber\\
 \nu: & \text{ Number of processing times assigned a small probability, } \nu =\varrho - 2N. \nonumber
 \
@@ -719,7 +719,21 @@ For the our experiments we chose $\Pi=0.45$, $\pi=0.1$ and $\kappa=0.01$. So 90\
 
 We are motivated to try such a distribution as the makespan values between most neighbouring solutions will have a high level of volatility. This should result from the distribution heavily weighting the concentration of processing times to within a percent of 1 or $\varrho$. When the simulated annealing algorithm considers a random neighbour to move to, this neighbour will likely have an approximately equal makespan to our current solution or a drastically differing one. So the neighbourhood of any feasible solution will contain a large amount of exchanges that have little if any affect on the makespan (when moving small jobs), together with a large amount of neighbours which will have wildly large affects (when moving large jobs). \\
 
+{\color{red} Options to end this subsubsection:\\
+ Option 1:} \\
 An instance with such a poor distribution of processing times will have a volatile neighbourhood topology. This should result in simulated annealing having more difficulty in finding the good local optima.
+
+{\color{red} Option 2:} \\
+{\bf Proof Sketch of Poor Distribution's ``Poorness":}\\
+We provide some more formal reasoning as to why the distribution we have defined will be particularly difficult for simulated annealing to solve. Given $k=2$ and a jump-neighbourhood, this is demonstrated as follows; first consider the two jobs chosen to be exchanged in iteration $i$ of the simulated annealing algorithm. \\
+
+Define the current solution as $x_i$, the neighbourhood of $x_i$ as $N(x_i)$ and the processing times of the jobs as $p_1$ and $p_2$. We can assume almost certainly, that they take values near either 1 or $\varrho$. Without loss of generality, let $p_1\leq p_2$ and there are now 3 cases to consider,
+\begin{enumerate}
+\item $\bm{p_1, p_2 \approx 1}$: Every $x_j \in N(x_i)$ which satisfies such a jump will have a makespan value at most $p_1+p_2$ above or below the makespan of $x_i$. This is a relatively small change when $n$ is large.
+\item $\bm{p_1\approx 1}~$ {\bf and } $\bm{p_2 \approx \varrho}$: Jumping job 1 will have little affect on the makespan, while jumping job 2 to a new machine may drastically increase or decrease the makespan.
+\item $\bm{p_1, p_2 \approx \varrho}$: Of all the possible neighbours which satisfy this case of the exchange, only when jobs 1 and 2 switch machines will the makespan have a stable value. However in that case the makespan will be changed at most by $p_2-p_1$, which, similar to case 1, is not a meaningful amount. Any neighbour where the jobs jump to new machines, the makespan is liable to change dramatically once again.
+\end{enumerate}
+The above cases make up the large majority of the possible exchanges which can occur at iteration $i$. In each case, the makespan of $x_i$ is either approximately equal to that of $x_j \in N(x_i)$ or drastically different. This indicates that for an input instance with such a poor distribution of processing times, the neighbourhood topology will be volatile. Simulated annealing should then have a more difficult time in finding good local optima.
 
 \subsubsection{Results of Performance Limits Experiments}
 The averaged results of 10 realisations for large $n$ and $m=2$ are shown in Tables \ref{tab:Q3Limitsresults} and Figure \ref{fig:Q3Limit}, for both the uniform and the poor distributions of processing times between 0 and $n/10$. We see that the makespan gap decreases with approximate slope 1, as $n$ increases. This gives that the makespan gap is of $O(1/n)$. The run time increases as $n$ increases and is approximately of $O(n^2)$. \\
