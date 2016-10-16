@@ -1153,8 +1153,6 @@ def main(argv):
 		print 'Runtime = \t%s' %(runtimeList[i])
 		print 'Solution = \t%s\n' %(solList[i])
 
-	
-
 if __name__ == "__main__":
 	main(sys.argv[1:])
 	# test()
